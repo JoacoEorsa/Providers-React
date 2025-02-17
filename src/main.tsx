@@ -1,9 +1,15 @@
+import { scan } from "react-scan";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 
 import { routeTree } from "./routes.gen";
+import "./i18n/i18n";
+
+scan({
+	enabled: true,
+});
 
 // Set up a Router instance
 const isBotAgent = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);

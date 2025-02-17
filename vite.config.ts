@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from "@tailwindcss/vite";
+import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 
 import path from "path";
 
@@ -22,7 +23,17 @@ export default defineConfig({
 	},
 
 	// Plugins
-	plugins: [react(), tailwindcss()],
+	plugins: [
+		TanStackRouterVite({
+			autoCodeSplitting: true,
+			routesDirectory: "./src/app",
+			generatedRouteTree: "./src/routes.gen.ts",
+			quoteStyle: "double",
+			semicolons: false,
+		}),
+		react(),
+		tailwindcss(),
+	],
 
 	// Resolve configuration
 	resolve: {

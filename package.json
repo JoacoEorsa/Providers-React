@@ -28,10 +28,13 @@
 	"packageManager": "npm@11.1.0",
 	"dependencies": {
 		"@tailwindcss/vite": "^4.0.6",
+		"@tanstack/react-query": "^5.66.3",
+		"@tanstack/react-router": "^1.105.0",
 		"axios": "^1.7.9",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
-		"tailwindcss": "^4.0.6"
+		"tailwindcss": "^4.0.6",
+		"zod": "^3.24.2"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.7.1",
@@ -39,6 +42,9 @@
 		"@eslint/compat": "^1.2.6",
 		"@eslint/eslintrc": "^3.2.0",
 		"@eslint/js": "^9.20.0",
+		"@tanstack/eslint-plugin-query": "^5.66.1",
+		"@tanstack/router-devtools": "^1.105.0",
+		"@tanstack/router-plugin": "^1.105.0",
 		"@types/react": "^19.0.9",
 		"@types/react-dom": "^19.0.3",
 		"@typescript-eslint/eslint-plugin": "^8.24.0",

@@ -25,9 +25,10 @@
 	"engines": {
 		"node": ">=22"
 	},
-	"packageManager": "npm@11.1.0",
+	"packageManager": "pnpm@latest",
 	"dependencies": {
 		"@hookform/resolvers": "^4.1.0",
+		"@sentry/react": "^9.1.0",
 		"@t3-oss/env-core": "^0.12.0",
 		"@tailwindcss/vite": "^4.0.6",
 		"@tanstack/react-query": "^5.66.3",

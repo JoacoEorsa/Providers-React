@@ -2,7 +2,7 @@
   <img src="logo.svg" alt="Logo">
 </p>
 
-# Eden 🌱
+# React Light Starter 🌱
 
 ![Node.js Version](https://img.shields.io/badge/Node.js-22%2B-339933?logo=nodedotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5%2B-007ACC?logo=typescript&logoColor=white)
@@ -10,7 +10,7 @@
 ![Vite](https://img.shields.io/badge/Vite-6%2B-646CFF?logo=vite&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-yellow?logo=open-source-initiative&logoColor=white)
 
-**Eden** is a minimal React + TypeScript template designed to get started quickly with [Vite](https://vitejs.dev/). It includes pre-configured tools like ESLint, Prettier, Husky, and Commitlint to streamline development and enforce consistent code quality.
+**React Light Starter** is a minimal React + TypeScript template designed to get started quickly with [Vite](https://vitejs.dev/). It includes pre-configured tools like ESLint, Prettier, Husky, and Commitlint to streamline development and enforce consistent code quality.
 
 ---
 
@@ -42,19 +42,19 @@ Ensure you have the following installed:
 1. Clone the repository:  
 
    ```bash
-   git clone https://github.com/tejastn10/eden.git
-   cd eden
+   git clone https://github.com/Light-it-labs/react-starter
+   cd react-starter
 
 2. Install dependencies:
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. Start the development server:
 
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 
 4. Open your browser at `http://localhost:3000` to see Eden in action.
@@ -66,9 +66,3 @@ Ensure you have the following installed:
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
-
-## Acknowledgments 🙌
-
-- Built with **Vite** for blazing-fast development workflows.
-- Inspired by the simplicity of **Eden**, a lush and minimal starting point for React projects.
-- Made with ❤️ for developers who love clean and scalable codebases.

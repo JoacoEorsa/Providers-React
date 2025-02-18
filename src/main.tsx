@@ -1,40 +1,25 @@
 import { scan } from "react-scan";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createRouter, RouterProvider } from "@tanstack/react-router";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { RouterProvider } from "@tanstack/react-router";
+import { initializeSentry, getSentryErrorHandlers } from "@/config/sentry";
+import { queryClient } from "@/config/queryClient";
+import { router } from "@/config/router";
+import "@/i18n/i18n";
 
-import { routeTree } from "./routes.gen";
-import "./i18n/i18n";
+scan({ enabled: true });
 
-scan({
-	enabled: true,
-});
+initializeSentry();
 
-// Set up a Router instance
-const isBotAgent = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
-const router = createRouter({
-	routeTree,
-	defaultPreload: "intent",
-	defaultPendingMinMs: isBotAgent ? 100 : 0,
-});
-
-// Register things for typesafety
-declare module "@tanstack/react-router" {
-	interface Register {
-		router: typeof router;
-	}
+const container = document.getElementById("root");
+if (!container) {
+	throw new Error("There's no #root div, something's wrong with our index.html");
 }
 
-const queryClient = new QueryClient({
-	defaultOptions: {
-		queries: {
-			refetchOnWindowFocus: false,
-		},
-	},
-});
+const root = ReactDOM.createRoot(container, getSentryErrorHandlers());
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+root.render(
 	<React.StrictMode>
 		<QueryClientProvider client={queryClient}>
 			<RouterProvider router={router} />

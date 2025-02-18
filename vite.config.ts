@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
+import { sentryVitePlugin } from "@sentry/vite-plugin";
+import { analyzer } from "vite-bundle-analyzer";
 
 import path from "path";
 
@@ -33,6 +35,15 @@ export default defineConfig({
 		}),
 		react(),
 		tailwindcss(),
+		analyzer(),
+		// Put the Sentry vite plugin after all other plugins
+		sentryVitePlugin({
+			org: process.env.SENTRY_ORG,
+			project: process.env.SENTRY_PROJECT,
+
+			// Auth tokens can be obtained from https://sentry.io/orgredirect/organizations/:orgslug/settings/auth-tokens/
+			authToken: process.env.SENTRY_AUTH_TOKEN,
+		}),
 	],
 
 	// Resolve configuration

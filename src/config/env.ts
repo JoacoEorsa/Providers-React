@@ -16,6 +16,11 @@ export const env = createEnv({
 			.string()
 			.refine((s) => s === "true" || s === "false")
 			.transform((s) => s === "true"),
+		VITE_SENTRY_AUTH_TOKEN: z.string().optional(),
+		VITE_SENTRY_DSN: z.string().optional(),
+		VITE_SENTRY_ORGANIZATION: z.string().optional(),
+		VITE_SENTRY_PROJECT: z.string().optional(),
+		VITE_SENTRY_TRACE_PROPAGATION_TARGET_REGEX: z.string().optional().default(""),
 	},
 
 	/**

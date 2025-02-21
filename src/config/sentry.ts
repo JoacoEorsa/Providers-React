@@ -1,6 +1,6 @@
 import * as Sentry from "@sentry/react";
 import { env } from "@/config/env";
-import { router } from "@/config/router";
+import { router } from "./router";
 
 export const isSentryEnabled = Boolean(env.VITE_SENTRY_DSN);
 

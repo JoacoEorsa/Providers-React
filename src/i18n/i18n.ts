@@ -1,27 +1,22 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import HttpApi from "i18next-http-backend";
-import LanguageDetector from "i18next-browser-languagedetector";
-import { loadApiTranslations } from "./loadApiTranslations";
+import enTranslation from "./translations/en.json";
+import esTranslation from "./translations/es.json";
 
-i18n
-	.use(HttpApi)
-	.use(LanguageDetector)
-	.use(initReactI18next)
-	.init({
-		supportedLngs: ["en", "es"],
-		fallbackLng: "en",
-		debug: import.meta.env.APP_ENV === "development",
-		interpolation: { escapeValue: false },
-		backend: {
-			loadPath: "/locales/{{lng}}.json",
-		},
-		detection: {
-			order: ["querystring", "localStorage", "navigator"],
-			caches: ["localStorage"],
-		},
-	});
+export const defaultNS = "US";
 
-loadApiTranslations();
+export const resources = {
+	en: { US: enTranslation },
+	es: { ES: esTranslation },
+} as const;
+
+i18n.use(initReactI18next).init({
+	supportedLngs: ["en", "es"],
+	fallbackLng: "en",
+	debug: import.meta.env.APP_ENV === "development",
+	detection: { order: ["querystring", "localStorage", "navigator"], caches: ["localStorage"] },
+	interpolation: { escapeValue: false },
+	resources: { en: { translation: resources.en.US }, es: { translation: resources.es.ES } },
+});
 
 export default i18n;

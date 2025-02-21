@@ -1,15 +1,12 @@
 import { createRouter } from "@tanstack/react-router";
-import { routeTree } from "@/routes.gen";
 
-const isBotAgent = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
+// Import the generated route tree
+import { routeTree } from "../routeTree.gen";
 
-export const router = createRouter({
-	routeTree,
-	defaultPreload: "intent",
-	defaultPendingMinMs: isBotAgent ? 100 : 0,
-});
+// Create a new router instance
+export const router = createRouter({ routeTree });
 
-// Register things for typesafety
+// Register the router instance for type safety
 declare module "@tanstack/react-router" {
 	interface Register {
 		router: typeof router;

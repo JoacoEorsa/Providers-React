@@ -1,10 +1,10 @@
 {
-	"Root layout! I render on all paths": "Root layout! Me renderizo en todas las rutas (en español)",
-	"Hello {exactPath} exact path!": "Hola {exactPath} ruta exacta!",
-	"Hello {layout} layout!": "Hola {layout} layout!",
-	"Hello logged-in layout! I render on all paths inside the /_logged-in/ folder": "Hola layout logueado! Me renderizo en todas las rutas dentro de la carpeta /_logged-in/",
-	"Guest layout! I render on all paths inside the /_guest/ folder": "Layout de invitado! Me renderizo en todas las rutas dentro de la carpeta /_guest/",
-	"Email": "Email",
-	"Password": "Contraseña",
-	"Submit": "Enviar"
+  "Root layout! I render on all paths": "Root layout! Me renderizo en todas las rutas (en español)",
+  "Hello {exactPath} exact path!": "Hola {exactPath} ruta exacta!",
+  "Hello {layout} layout!": "Hola {layout} layout!",
+  "Hello logged-in layout! I render on all paths inside the /_logged-in/ folder": "Hola layout logueado! Me renderizo en todas las rutas dentro de la carpeta /_logged-in/",
+  "Guest layout! I render on all paths inside the /_guest/ folder": "Layout de invitado! Me renderizo en todas las rutas dentro de la carpeta /_guest/",
+  "Email": "Email",
+  "Password": "Contraseña",
+  "Submit": "Enviar"
 }

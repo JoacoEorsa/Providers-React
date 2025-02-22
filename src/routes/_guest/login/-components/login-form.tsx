@@ -1,10 +1,11 @@
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
 import { useTranslation } from 'react-i18next';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 const schema = z.object({
   email: z.string().email(),
@@ -16,10 +17,10 @@ type LoginValues = z.infer<typeof schema>;
 export const LoginForm = ({ onSubmit }: { onSubmit: (data: LoginValues) => void }) => {
   const { t } = useTranslation();
 
-  const { register, handleSubmit } = useForm<LoginValues>({ resolver: zodResolver(schema) });
+  const { handleSubmit, register } = useForm<LoginValues>({ resolver: zodResolver(schema) });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
       <div>
         <Label htmlFor="email">{t('Email')}</Label>
         <Input {...register('email')} />

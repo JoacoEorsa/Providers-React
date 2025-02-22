@@ -1,14 +1,14 @@
-import '@/styles.css';
-import '@/i18n/i18n';
-
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider } from '@tanstack/react-router';
 import { QueryClientProvider } from '@tanstack/react-query';
-import { router } from '@/config/router';
+import { RouterProvider } from '@tanstack/react-router';
+
 import { queryClient } from '@/config/queryClient';
+import { router } from '@/config/router';
 import { getSentryErrorHandlers, initializeSentry } from '@/config/sentry';
 import reportWebVitals from '@/reportWebVitals';
+
+import '@/styles.css';
 
 initializeSentry();
 

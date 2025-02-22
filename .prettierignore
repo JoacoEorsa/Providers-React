@@ -6,3 +6,5 @@ node_modules
 *.md
 *.less
 *.css
+**/pnpm-lock.yaml
+**/routeTree.gen.ts

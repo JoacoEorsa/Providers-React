@@ -1,2 +1,4 @@
 pnpm type-check
-npx lint-staged
+pnpm lint --max-warnings 0
+pnpm format:check
+pnpm spell-check

@@ -1,4 +1,4 @@
-Welcome to your new TanStack app! 
+Welcome to your new TanStack app!
 
 # Getting Started
 
@@ -30,6 +30,7 @@ pnpm run test
 This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
 
 ## Routing
+
 This project uses [TanStack Router](https://tanstack.com/router). The initial setup is a code based router. Which means that the routes are defined in code (in the `./src/main.tsx` file). If you like you can also use a file based routing setup by following the [File Based Routing](https://tanstack.com/router/latest/docs/framework/react/guide/file-based-routing) guide.
 
 ### Adding A Route
@@ -90,7 +91,6 @@ More information on the `Link` component can be found in the [Link documentation
 
 ### Using A Layout
 
-
 Layouts can be used to wrap the contents of the routes in menus, headers, footers, etc.
 
 There is already a layout in the `src/main.tsx` file:
@@ -130,7 +130,6 @@ const rootRoute = createRootRoute({
 The `<TanStackRouterDevtools />` component is not required so you can remove it if you don't want it in your layout.
 
 More information on layouts can be found in the [Layouts documentation](hthttps://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
 
 ### Migrating To File Base Routing
 
@@ -196,10 +195,9 @@ export const Route = createFileRoute("/")({
 function App() {
   return (
     <div className="text-center">
-      <header className="min-h-screen flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]">
+      <header>
         <img
           src={logo}
-          className="h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]"
           alt="logo"
         />
         <p>
@@ -318,7 +316,7 @@ First add your dependencies:
 pnpm install @tanstack/react-query @tanstack/react-query-devtools
 ```
 
-Next we'll need to creata query client and provider. We recommend putting those in `main.tsx`.
+Next we'll need to create query client and provider. We recommend putting those in `main.tsx`.
 
 ```tsx
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

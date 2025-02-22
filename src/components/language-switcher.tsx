@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { Button } from './ui/button';
+
 import { resources } from '@/i18n';
+import { Button } from './ui/button';
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
@@ -9,10 +10,27 @@ const LanguageSwitcher = () => {
     i18n.changeLanguage(lng);
   };
 
+  const languages: { code: keyof typeof resources; label: string }[] = [
+    // cspell: disable
+    { code: 'en', label: '🇺🇸 English' },
+    { code: 'es', label: '🇪🇸 Español' }
+    // cspell: enable
+  ];
+
   return (
     <div className="flex space-x-2">
-      <Button onClick={() => changeLanguage('en')}>🇺🇸 English</Button>
-      <Button onClick={() => changeLanguage('es')}>🇪🇸 Español</Button>
+      {languages.map(({ code, label }) => {
+        return (
+          <Button
+            key={code}
+            onClick={() => {
+              return changeLanguage(code);
+            }}
+          >
+            {label}
+          </Button>
+        );
+      })}
     </div>
   );
 };

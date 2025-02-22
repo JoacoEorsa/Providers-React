@@ -1,11 +1,14 @@
 import * as Sentry from '@sentry/react';
+
 import { env } from '@/config/env';
 import { router } from './router';
 
 export const isSentryEnabled = Boolean(env.VITE_SENTRY_DSN);
 
 export const initializeSentry = () => {
-  if (!isSentryEnabled) return;
+  if (!isSentryEnabled) {
+    return;
+  }
 
   Sentry.init({
     dsn: env.VITE_SENTRY_DSN,
@@ -22,10 +25,13 @@ export const initializeSentry = () => {
 };
 
 export const getSentryErrorHandlers = () => {
-  if (!isSentryEnabled) return {};
+  if (!isSentryEnabled) {
+    return {};
+  }
 
   return {
     onUncaughtError: Sentry.reactErrorHandler((error, errorInfo) => {
+      // eslint-disable-next-line no-console
       console.warn('Uncaught error', error, errorInfo.componentStack);
     }),
     onCaughtError: Sentry.reactErrorHandler(),

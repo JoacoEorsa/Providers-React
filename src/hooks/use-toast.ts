@@ -1,4 +1,5 @@
 import { useEffect, useId, useState } from 'react';
+
 import type { ToastActionElement, ToastProps } from '@/components/ui/toast';
 
 const TOAST_LIMIT = 1;
@@ -55,9 +56,9 @@ export const reducer = (state: State, action: Action): State => {
     case 'UPDATE_TOAST':
       return {
         ...state,
-        toasts: state.toasts.map((toast) =>
-          toast.id === action.toast.id ? { ...toast, ...action.toast } : toast
-        )
+        toasts: state.toasts.map((toast) => {
+          return toast.id === action.toast.id ? { ...toast, ...action.toast } : toast;
+        })
       };
 
     case 'DISMISS_TOAST': {
@@ -75,9 +76,9 @@ export const reducer = (state: State, action: Action): State => {
 
       return {
         ...state,
-        toasts: state.toasts.map((toast) =>
-          toast.id === toastId || !toastId ? { ...toast, open: false } : toast
-        )
+        toasts: state.toasts.map((toast) => {
+          return toast.id === toastId || !toastId ? { ...toast, open: false } : toast;
+        })
       };
     }
 
@@ -86,7 +87,12 @@ export const reducer = (state: State, action: Action): State => {
         return { ...state, toasts: [] };
       }
 
-      return { ...state, toasts: state.toasts.filter(({ id }) => id !== action.toastId) };
+      return {
+        ...state,
+        toasts: state.toasts.filter(({ id }) => {
+          return id !== action.toastId;
+        })
+      };
   }
 };
 
@@ -106,10 +112,13 @@ type Toast = Omit<ToasterToast, 'id'>;
 const toast = ({ ...props }: Toast) => {
   const id = useId();
 
-  const update = (props: ToasterToast) =>
-    dispatch({ type: 'UPDATE_TOAST', toast: { ...props, id } });
+  const update = (props: ToasterToast) => {
+    return dispatch({ type: 'UPDATE_TOAST', toast: { ...props, id } });
+  };
 
-  const dismiss = () => dispatch({ type: 'DISMISS_TOAST', toastId: id });
+  const dismiss = () => {
+    return dispatch({ type: 'DISMISS_TOAST', toastId: id });
+  };
 
   dispatch({
     type: 'ADD_TOAST',
@@ -118,7 +127,9 @@ const toast = ({ ...props }: Toast) => {
       id,
       open: true,
       onOpenChange: (open) => {
-        if (!open) dismiss();
+        if (!open) {
+          dismiss();
+        }
       }
     }
   });
@@ -144,8 +155,10 @@ const useToast = () => {
   return {
     ...state,
     toast,
-    dismiss: (toastId?: string) => dispatch({ type: 'DISMISS_TOAST', toastId })
+    dismiss: (toastId?: string) => {
+      return dispatch({ type: 'DISMISS_TOAST', toastId });
+    }
   };
 };
 
-export { useToast, toast };
+export { toast, useToast };

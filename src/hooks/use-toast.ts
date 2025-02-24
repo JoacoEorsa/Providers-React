@@ -17,7 +17,7 @@ const actionTypes = {
   ADD_TOAST: 'ADD_TOAST',
   UPDATE_TOAST: 'UPDATE_TOAST',
   DISMISS_TOAST: 'DISMISS_TOAST',
-  REMOVE_TOAST: 'REMOVE_TOAST'
+  REMOVE_TOAST: 'REMOVE_TOAST',
 } as const;
 
 type ActionType = typeof actionTypes;
@@ -58,7 +58,7 @@ export const reducer = (state: State, action: Action): State => {
         ...state,
         toasts: state.toasts.map((toast) => {
           return toast.id === action.toast.id ? { ...toast, ...action.toast } : toast;
-        })
+        }),
       };
 
     case 'DISMISS_TOAST': {
@@ -78,7 +78,7 @@ export const reducer = (state: State, action: Action): State => {
         ...state,
         toasts: state.toasts.map((toast) => {
           return toast.id === toastId || !toastId ? { ...toast, open: false } : toast;
-        })
+        }),
       };
     }
 
@@ -91,7 +91,7 @@ export const reducer = (state: State, action: Action): State => {
         ...state,
         toasts: state.toasts.filter(({ id }) => {
           return id !== action.toastId;
-        })
+        }),
       };
   }
 };
@@ -130,8 +130,8 @@ const toast = ({ ...props }: Toast) => {
         if (!open) {
           dismiss();
         }
-      }
-    }
+      },
+    },
   });
 
   return { id, dismiss, update };
@@ -157,7 +157,7 @@ const useToast = () => {
     toast,
     dismiss: (toastId?: string) => {
       return dispatch({ type: 'DISMISS_TOAST', toastId });
-    }
+    },
   };
 };
 

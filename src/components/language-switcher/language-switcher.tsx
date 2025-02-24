@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { resources } from '@/i18n';
+import type { resources } from '@/i18n';
 import { Button } from '../ui/button';
 
 export const LanguageSwitcher = () => {
@@ -13,7 +13,7 @@ export const LanguageSwitcher = () => {
   const languages: { code: keyof typeof resources; label: string }[] = [
     // cspell: disable
     { code: 'en', label: '🇺🇸 English' },
-    { code: 'es', label: '🇪🇸 Español' }
+    { code: 'es', label: '🇪🇸 Español' },
     // cspell: enable
   ];
 

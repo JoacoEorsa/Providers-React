@@ -5,7 +5,7 @@ import {
   ToastDescription,
   ToastProvider,
   ToastTitle,
-  ToastViewport
+  ToastViewport,
 } from './toast';
 
 export const Toaster = () => {

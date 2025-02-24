@@ -3,16 +3,17 @@
  * @type {import("prettier").Config}
  */
 const config = {
-  semi: true,
-  tabWidth: 2,
-  singleQuote: true,
-  proseWrap: 'always',
-  useTabs: false,
   bracketSpacing: true,
-  printWidth: 100,
   endOfLine: 'lf',
-  trailingComma: 'none',
-  overrides: [{ files: '*.yml', options: { singleQuote: false } }]
+  overrides: [{ files: '*.yml', options: { singleQuote: false } }],
+  plugins: ['prettier-plugin-tailwindcss'],
+  printWidth: 100,
+  proseWrap: 'always',
+  semi: true,
+  singleQuote: true,
+  tabWidth: 2,
+  trailingComma: 'all',
+  useTabs: false,
 };
 
 export default config;

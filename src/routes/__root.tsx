@@ -8,7 +8,7 @@ const RootComponent = () => {
 
   return (
     <>
-      <div className="flex justify-between p-4 bg-purple-300">
+      <div className="flex justify-between bg-purple-300 p-4">
         <span>{t('Root layout! I render on all paths')}</span>
         <LanguageSwitcher />
       </div>

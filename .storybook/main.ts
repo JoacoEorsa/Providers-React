@@ -8,9 +8,9 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-onboarding',
-    '@storybook/addon-viewport'
+    '@storybook/addon-viewport',
   ],
-  framework: { name: '@storybook/react-vite', options: {} }
+  framework: { name: '@storybook/react-vite', options: {} },
 };
 
 export default config;

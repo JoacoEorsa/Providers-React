@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 
 const schema = z.object({
   email: z.string().email(),
-  password: z.string().min(6)
+  password: z.string().min(6),
 });
 
 type LoginValues = z.infer<typeof schema>;

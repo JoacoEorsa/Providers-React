@@ -2,7 +2,7 @@ import {
   type ComponentPropsWithoutRef,
   type ComponentRef,
   forwardRef,
-  type ReactElement
+  type ReactElement,
 } from 'react';
 import * as ToastPrimitives from '@radix-ui/react-toast';
 import { X } from 'lucide-react';
@@ -13,7 +13,7 @@ import type { Styled } from '@/types/styles';
 const ToastProvider = ToastPrimitives.Provider;
 
 const toastViewportVariants = tv({
-  base: 'fixed top-0 z-50 flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-md'
+  base: 'fixed top-0 z-50 flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-md',
 });
 
 const ToastViewport = forwardRef<
@@ -35,12 +35,13 @@ const toastVariants = tv({
   variants: {
     variant: {
       default: 'border bg-background text-foreground',
-      destructive: 'destructive group border-destructive bg-destructive text-destructive-foreground'
-    }
+      destructive:
+        'destructive group border-destructive bg-destructive text-destructive-foreground',
+    },
   },
   defaultVariants: {
-    variant: 'default'
-  }
+    variant: 'default',
+  },
 });
 
 export type ToastProps = ComponentPropsWithoutRef<typeof ToastPrimitives.Root> &
@@ -56,12 +57,12 @@ const Toast = forwardRef<ComponentRef<typeof ToastPrimitives.Root>, ToastProps>(
         {...props}
       />
     );
-  }
+  },
 );
 Toast.displayName = ToastPrimitives.Root.displayName;
 
 const toastActionVariants = tv({
-  base: 'inline-flex h-8 shrink-0 items-center justify-center rounded-md border bg-transparent px-3 text-sm font-medium transition-colors hover:bg-secondary focus:outline-none focus:ring-1 focus:ring-ring disabled:pointer-events-none disabled:opacity-50 group-[.destructive]:border-muted/40 group-[.destructive]:hover:border-destructive/30 group-[.destructive]:hover:bg-destructive group-[.destructive]:hover:text-destructive-foreground group-[.destructive]:focus:ring-destructive'
+  base: 'inline-flex h-8 shrink-0 items-center justify-center rounded-md border bg-transparent px-3 text-sm font-medium transition-colors hover:bg-secondary focus:outline-none focus:ring-1 focus:ring-ring disabled:pointer-events-none disabled:opacity-50 group-[.destructive]:border-muted/40 group-[.destructive]:hover:border-destructive/30 group-[.destructive]:hover:bg-destructive group-[.destructive]:hover:text-destructive-foreground group-[.destructive]:focus:ring-destructive',
 });
 
 const ToastAction = forwardRef<
@@ -75,7 +76,7 @@ const ToastAction = forwardRef<
 ToastAction.displayName = ToastPrimitives.Action.displayName;
 
 const toastCloseVariants = tv({
-  base: 'absolute right-1 top-1 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity hover:text-foreground focus:opacity-100 focus:outline-none focus:ring-1 group-hover:opacity-100 group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50 group-[.destructive]:focus:ring-red-400 group-[.destructive]:focus:ring-offset-red-600'
+  base: 'absolute right-1 top-1 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity hover:text-foreground focus:opacity-100 focus:outline-none focus:ring-1 group-hover:opacity-100 group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50 group-[.destructive]:focus:ring-red-400 group-[.destructive]:focus:ring-offset-red-600',
 });
 
 const ToastClose = forwardRef<
@@ -96,7 +97,7 @@ const ToastClose = forwardRef<
 ToastClose.displayName = ToastPrimitives.Close.displayName;
 
 const toastTitleVariants = tv({
-  base: 'text-sm font-semibold [&+div]:text-xs'
+  base: 'text-sm font-semibold [&+div]:text-xs',
 });
 
 const ToastTitle = forwardRef<
@@ -110,7 +111,7 @@ const ToastTitle = forwardRef<
 ToastTitle.displayName = ToastPrimitives.Title.displayName;
 
 const toastDescriptionVariants = tv({
-  base: 'text-sm opacity-90'
+  base: 'text-sm opacity-90',
 });
 
 const ToastDescription = forwardRef<
@@ -137,5 +138,5 @@ export {
   ToastDescription,
   ToastProvider,
   ToastTitle,
-  ToastViewport
+  ToastViewport,
 };

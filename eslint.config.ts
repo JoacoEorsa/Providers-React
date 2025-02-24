@@ -26,8 +26,8 @@ const config: Linter.Config[] = [
       'no-console': 'warn',
       'no-extra-boolean-cast': 'error',
       'no-unneeded-ternary': 'error',
-      'object-shorthand': 'warn'
-    }
+      'object-shorthand': 'warn',
+    },
   },
 
   // React rules
@@ -38,8 +38,10 @@ const config: Linter.Config[] = [
       'react/hook-use-state': 'warn',
       'react/jsx-no-useless-fragment': 'warn',
       'react/jsx-sort-props': ['warn', { shorthandLast: true }],
-      'react/react-in-jsx-scope': 'off'
-    }
+      'react/react-in-jsx-scope': 'off',
+      'react/self-closing-comp': 'warn',
+      'react/jsx-curly-brace-presence': 'warn',
+    },
   },
 
   // TypeScript rules
@@ -47,10 +49,11 @@ const config: Linter.Config[] = [
     ...ts.configs.recommended,
     {
       rules: {
+        '@typescript-eslint/consistent-type-imports': 'warn',
         '@typescript-eslint/method-signature-style': ['error', 'property'],
-        '@typescript-eslint/no-unused-vars': 'off'
-      }
-    }
+        '@typescript-eslint/no-unused-vars': 'off',
+      },
+    },
   ] as Linter.Config[]),
 
   // Custom plugins rules
@@ -60,7 +63,7 @@ const config: Linter.Config[] = [
       'prefer-arrow-functions': preferArrowFunctions as ESLint.Plugin,
       'simple-import-sort': simpleImportSort,
       'sort-destructure-keys': sortDestructureKeys,
-      'unused-imports': unusedImports
+      'unused-imports': unusedImports,
     },
     rules: {
       '@stylistic/js/no-multi-spaces': 'warn',
@@ -89,22 +92,22 @@ const config: Linter.Config[] = [
               // Other relative imports. Put same-folder imports and `.` last.
               '^\\./(?=.*/)(?!/?$)',
               '^\\.(?!/?$)',
-              '^\\./?$'
+              '^\\./?$',
             ],
 
             // Style imports.
-            ['^.+\\.s?css$']
-          ]
-        }
+            ['^.+\\.s?css$'],
+          ],
+        },
       ],
       'sort-destructure-keys/sort-destructure-keys': 'warn',
       'unused-imports/no-unused-imports': 'warn',
       'unused-imports/no-unused-vars': [
         'warn',
-        { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' }
-      ]
-    }
-  }
+        { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+      ],
+    },
+  },
 ];
 
 export default config;

@@ -7,7 +7,7 @@ const meta: Meta<typeof Label> = {
   component: Label,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],
-  title: 'Components/UI/Label'
+  title: 'Components/UI/Label',
 } satisfies Meta<typeof Label>;
 
 export default meta;
@@ -16,5 +16,5 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (props) => {
     return <Label {...props} />;
-  }
+  },
 };

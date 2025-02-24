@@ -15,12 +15,12 @@ export const initializeSentry = () => {
     integrations: [
       Sentry.tanstackRouterBrowserTracingIntegration(router),
       Sentry.browserTracingIntegration(),
-      Sentry.replayIntegration()
+      Sentry.replayIntegration(),
     ],
     tracesSampleRate: 1.0,
     tracePropagationTargets: [new RegExp(env.VITE_SENTRY_TRACE_PROPAGATION_TARGET_REGEX)],
     replaysSessionSampleRate: 0.1,
-    replaysOnErrorSampleRate: 1.0
+    replaysOnErrorSampleRate: 1.0,
   });
 };
 
@@ -35,6 +35,6 @@ export const getSentryErrorHandlers = () => {
       console.warn('Uncaught error', error, errorInfo.componentStack);
     }),
     onCaughtError: Sentry.reactErrorHandler(),
-    onRecoverableError: Sentry.reactErrorHandler()
+    onRecoverableError: Sentry.reactErrorHandler(),
   };
 };

@@ -8,7 +8,7 @@ const meta: Meta<typeof Input> = {
   component: Input,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],
-  title: 'Components/UI/Input'
+  title: 'Components/UI/Input',
 } satisfies Meta<typeof Input>;
 
 export default meta;
@@ -27,5 +27,5 @@ export const Default: Story = {
         value={value}
       />
     );
-  }
+  },
 };

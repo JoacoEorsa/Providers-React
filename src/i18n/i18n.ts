@@ -8,7 +8,7 @@ export const defaultNS = 'US';
 
 export const resources = {
   en: { US: enTranslation },
-  es: { ES: esTranslation }
+  es: { ES: esTranslation },
 } as const;
 
 i18n.use(initReactI18next).init({
@@ -17,7 +17,7 @@ i18n.use(initReactI18next).init({
   debug: import.meta.env.APP_ENV === 'development',
   detection: { order: ['querystring', 'localStorage', 'navigator'], caches: ['localStorage'] },
   interpolation: { escapeValue: false },
-  resources: { en: { translation: resources.en.US }, es: { translation: resources.es.ES } }
+  resources: { en: { translation: resources.en.US }, es: { translation: resources.es.ES } },
 });
 
 export default i18n;

@@ -10,7 +10,7 @@ const variants: ButtonProps['variant'][] = [
   'ghost',
   'link',
   'outline',
-  'secondary'
+  'secondary',
 ];
 
 const meta: Meta<typeof Button> = {
@@ -18,12 +18,12 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     disabled: { control: { type: 'boolean' } },
     size: { control: { type: 'select' }, options: sizes },
-    variant: { control: { type: 'select' }, options: variants }
+    variant: { control: { type: 'select' }, options: variants },
   },
   component: Button,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],
-  title: 'Components/UI/Button'
+  title: 'Components/UI/Button',
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -32,7 +32,7 @@ type Story = StoryObj<typeof meta>;
 export const All: Story = {
   render: ({ children, ...props }) => {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
         {variants.map((variant) => {
           return (
             <div className="flex flex-col gap-4" key={variant}>
@@ -56,7 +56,7 @@ export const All: Story = {
         })}
       </div>
     );
-  }
+  },
 };
 
 export const Disabled: Story = {
@@ -86,7 +86,7 @@ export const Disabled: Story = {
         })}
       </div>
     );
-  }
+  },
 };
 
 export const Default: Story = {};

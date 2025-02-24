@@ -19,8 +19,8 @@ export default {
       project: process.env.VITE_SENTRY_PROJECT,
 
       // Auth tokens can be obtained from https://sentry.io/orgredirect/organizations/:orgslug/settings/auth-tokens/
-      authToken: process.env.VITE_SENTRY_AUTH_TOKEN
-    })
+      authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
+    }),
   ],
-  resolve: { alias: { '@': path.resolve(__dirname, './src') } }
+  resolve: { alias: { '@': path.resolve(__dirname, './src') } },
 } satisfies UserConfig;

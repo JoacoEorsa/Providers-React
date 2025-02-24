@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 
-import LanguageSwitcher from '@/components/language-switcher';
+import { LanguageSwitcher } from '@/components/language-switcher';
 
 const RootComponent = () => {
   const { t } = useTranslation();

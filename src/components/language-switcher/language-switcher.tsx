@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
 import { resources } from '@/i18n';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 
-const LanguageSwitcher = () => {
+export const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
 
   const changeLanguage = (lng: keyof typeof resources) => {
@@ -34,5 +34,3 @@ const LanguageSwitcher = () => {
     </div>
   );
 };
-
-export default LanguageSwitcher;

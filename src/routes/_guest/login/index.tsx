@@ -6,8 +6,7 @@ const RouteComponent = () => {
   return (
     <div className="flex h-screen flex-col items-center justify-center">
       <div className="w-96 rounded-2xl p-5 shadow">
-        {/* eslint-disable-next-line no-console */}
-        <LoginForm onSubmit={console.log} />
+        <LoginForm />
       </div>
     </div>
   );

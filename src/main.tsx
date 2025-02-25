@@ -7,6 +7,7 @@ import { queryClient } from '@/config/queryClient';
 import { router } from '@/config/router';
 import { getSentryErrorHandlers, initializeSentry } from '@/config/sentry';
 import reportWebVitals from '@/reportWebVitals';
+import '@/i18n';
 
 import '@/styles.css';
 

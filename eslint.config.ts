@@ -36,11 +36,12 @@ const config: Linter.Config[] = [
     rules: {
       ...react.configs.recommended.rules,
       'react/hook-use-state': 'warn',
+      'react/jsx-curly-brace-presence': 'warn',
+      'react/jsx-no-leaked-render': 'warn',
       'react/jsx-no-useless-fragment': 'warn',
       'react/jsx-sort-props': ['warn', { shorthandLast: true }],
       'react/react-in-jsx-scope': 'off',
       'react/self-closing-comp': 'warn',
-      'react/jsx-curly-brace-presence': 'warn',
     },
   },
 

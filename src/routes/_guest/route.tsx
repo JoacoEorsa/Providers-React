@@ -1,12 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { createFileRoute, Navigate, Outlet } from '@tanstack/react-router';
 
+import { useUserStore } from '@/stores';
+
 const RouteComponent = () => {
   const { t } = useTranslation();
+  const token = useUserStore((s) => {
+    return s.token;
+  });
 
-  const loggedIn = false;
-
-  if (loggedIn) {
+  if (token) {
     return <Navigate to="/admin" />;
   }
 

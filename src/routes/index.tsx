@@ -1,9 +1,13 @@
 import { createFileRoute, Navigate } from '@tanstack/react-router';
 
-const RouteComponent = () => {
-  const loggedIn = false;
+import { useUserStore } from '@/stores';
 
-  if (loggedIn) {
+const RouteComponent = () => {
+  const token = useUserStore((s) => {
+    return s.token;
+  });
+
+  if (token) {
     return <Navigate to="/dashboard" />;
   }
 

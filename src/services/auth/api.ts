@@ -1,6 +1,8 @@
-import { api } from '@/config/api';
-import type { LoginPayload, LoginResponse } from './types';
+import type { LoginPayload } from './types';
 
 export const login = ({ email, password }: LoginPayload) => {
-  return api.post<LoginResponse>('auth/login', { email, password });
+  return Promise.resolve({
+    data: { authToken: `super-encrypted-auth-token-for-${email}-${password}` },
+  });
+  // return api.post<LoginResponse>('auth/login', { email, password });
 };

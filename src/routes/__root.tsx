@@ -15,7 +15,7 @@ const RootComponent = () => {
   });
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <div className="flex justify-between bg-purple-300 p-4">
         <span>{t('Root layout! I render on all paths')}</span>
 
@@ -27,7 +27,7 @@ const RootComponent = () => {
       </div>
 
       <Outlet />
-    </>
+    </div>
   );
 };
 

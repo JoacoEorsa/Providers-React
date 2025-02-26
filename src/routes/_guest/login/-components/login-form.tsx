@@ -6,7 +6,9 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { toast } from '@/components/ui/toast';
 import { useLoginMutation } from '@/services';
+import { useUserStore } from '@/stores';
 
 const schema = z.object({
   email: z.string().email(),
@@ -17,6 +19,9 @@ type LoginValues = z.infer<typeof schema>;
 
 export const LoginForm = () => {
   const { t } = useTranslation();
+  const setToken = useUserStore((s) => {
+    return s.setToken;
+  });
 
   const loginMutation = useLoginMutation();
 
@@ -30,7 +35,15 @@ export const LoginForm = () => {
   });
 
   const onSubmit: SubmitHandler<LoginValues> = (data) => {
-    loginMutation.mutate(data);
+    loginMutation.mutate(data, {
+      onSuccess: ({ data: { authToken } }) => {
+        toast.success('Logged in successfully');
+        setToken(authToken);
+      },
+      onError: () => {
+        toast.error('Not able to log in');
+      },
+    });
   };
 
   return (

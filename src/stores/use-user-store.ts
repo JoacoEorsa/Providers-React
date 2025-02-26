@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
 interface User {
   email: string;
@@ -17,28 +16,23 @@ interface State {
   token: string | null;
 }
 
-export const useUserStore = create<State & Actions>()(
-  persist(
-    (set) => {
-      return {
-        user: null,
-        token: null,
+export const useUserStore = create<State & Actions>()((set) => {
+  return {
+    user: null,
+    token: null,
 
-        setUser: (user: User | null) => {
-          set(() => {
-            return { user };
-          });
-        },
-        setToken: (token: string | null) => {
-          set(() => {
-            return { token };
-          });
-        },
-        reset: () => {
-          set({ user: null, token: null });
-        },
-      };
+    setUser: (user: User | null) => {
+      set(() => {
+        return { user };
+      });
     },
-    { name: 'user' },
-  ),
-);
+    setToken: (token: string | null) => {
+      set(() => {
+        return { token };
+      });
+    },
+    reset: () => {
+      set({ user: null, token: null });
+    },
+  };
+});

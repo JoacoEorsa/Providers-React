@@ -4,7 +4,7 @@ import { LoginForm } from './-components/login-form';
 
 const RouteComponent = () => {
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
+    <div className="flex flex-1 flex-col items-center justify-center">
       <div className="w-96 rounded-2xl p-5 shadow">
         <LoginForm />
       </div>

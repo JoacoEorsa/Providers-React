@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from '@tanstack/react-router';
 
+import { Toaster } from '@/components/ui/toast';
 import { queryClient } from '@/config/queryClient';
 import { router } from '@/config/router';
 import { getSentryErrorHandlers, initializeSentry } from '@/config/sentry';
@@ -22,6 +23,7 @@ if (!rootElement.innerHTML) {
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
+        <Toaster />
       </QueryClientProvider>
     </StrictMode>,
   );

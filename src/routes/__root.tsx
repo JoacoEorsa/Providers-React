@@ -1,18 +1,51 @@
+import { lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { createRootRoute, Outlet, useNavigate, useRouter } from '@tanstack/react-router';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { Button } from '@/components/ui/button';
-import { useUserStore } from '@/stores';
+import { setAuthStoreToken, useAuthStoreToken } from '@/stores';
 
 const RootComponent = () => {
   const { t } = useTranslation();
-  const token = useUserStore((s) => {
-    return s.token;
-  });
-  const reset = useUserStore((s) => {
-    return s.reset;
-  });
+
+  const token = useAuthStoreToken();
+
+  const router = useRouter();
+  const navigate = useNavigate();
+
+  const LazyDevtools =
+    import.meta.env.VITE_APP_ENV === 'production'
+      ? {
+          Router: () => {
+            return null;
+          },
+          Query: () => {
+            return null;
+          },
+        }
+      : {
+          Router: lazy(async () => {
+            const res = await import('@tanstack/router-devtools');
+
+            return { default: res.TanStackRouterDevtools };
+          }),
+          Query: lazy(async () => {
+            const res = await import('@tanstack/react-query-devtools');
+
+            return { default: res.ReactQueryDevtools };
+          }),
+        };
+
+  const handleLogout = () => {
+    if (window.confirm('Are you sure you want to logout?')) {
+      setAuthStoreToken(null);
+
+      router.invalidate().finally(() => {
+        navigate({ to: '/login' });
+      });
+    }
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -22,11 +55,18 @@ const RootComponent = () => {
         <div className="flex gap-x-2">
           <LanguageSwitcher />
 
-          {token ? <Button onClick={reset}>Log out</Button> : null}
+          {token ? <Button onClick={handleLogout}>Log out</Button> : null}
         </div>
       </div>
 
       <Outlet />
+
+      {import.meta.env.VITE_ENABLE_DEVTOOLS ? (
+        <Suspense>
+          <LazyDevtools.Router position="bottom-left" />
+          <LazyDevtools.Query buttonPosition="bottom-right" />
+        </Suspense>
+      ) : null}
     </div>
   );
 };

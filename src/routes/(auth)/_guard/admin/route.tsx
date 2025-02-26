@@ -6,10 +6,10 @@ const RouteComponent = () => {
 
   return (
     <div>
-      {t('Hello {layout} layout!', { layout: '/dashboard' })}
+      {t('Hello {layout} layout!', { layout: '/_guard/admin' })}
       <Outlet />
     </div>
   );
 };
 
-export const Route = createFileRoute('/_logged-in/dashboard')({ component: RouteComponent });
+export const Route = createFileRoute('/(auth)/_guard/admin')({ component: RouteComponent });

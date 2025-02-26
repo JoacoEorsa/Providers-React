@@ -7,4 +7,4 @@ const RouteComponent = () => {
   return <div>{t('Hello {exactPath} exact path!', { exactPath: '/dashboard/' })}</div>;
 };
 
-export const Route = createFileRoute('/_logged-in/dashboard/')({ component: RouteComponent });
+export const Route = createFileRoute('/(auth)/_guard/dashboard/')({ component: RouteComponent });

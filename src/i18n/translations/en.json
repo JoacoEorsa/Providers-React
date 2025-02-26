@@ -2,7 +2,7 @@
   "Root layout! I render on all paths": "Root layout! I render on all paths (in English)",
   "Hello {exactPath} exact path!": "Hello {exactPath} exact path!",
   "Hello {layout} layout!": "Hello {layout} layout!",
-  "Hello logged-in layout! I render on all paths inside the /_logged-in/ folder": "Hello logged-in layout! I render on all paths inside the /_logged-in/ folder",
+  "Hello guard layout! I render on all paths inside the /_guard/ folder": "Hello guard layout! I render on all paths inside the /_guard/ folder",
   "Guest layout! I render on all paths inside the /_guest/ folder": "Guest layout! I render on all paths inside the /_guest/ folder",
   "Email": "Email",
   "Password": "Password",

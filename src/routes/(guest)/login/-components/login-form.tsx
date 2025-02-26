@@ -1,6 +1,7 @@
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useNavigate, useRouter, useSearch } from '@tanstack/react-router';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -8,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/components/ui/toast';
 import { useLoginMutation } from '@/services';
-import { useUserStore } from '@/stores';
+import { setAuthStoreToken } from '@/stores';
 
 const schema = z.object({
   email: z.string().email(),
@@ -19,11 +20,12 @@ type LoginValues = z.infer<typeof schema>;
 
 export const LoginForm = () => {
   const { t } = useTranslation();
-  const setToken = useUserStore((s) => {
-    return s.setToken;
-  });
 
   const loginMutation = useLoginMutation();
+
+  const router = useRouter();
+  const search = useSearch({ from: '/(guest)/login/' });
+  const navigate = useNavigate();
 
   const {
     formState: { errors },
@@ -36,9 +38,11 @@ export const LoginForm = () => {
 
   const onSubmit: SubmitHandler<LoginValues> = (data) => {
     loginMutation.mutate(data, {
-      onSuccess: ({ data: { authToken } }) => {
+      onSuccess: async ({ data: { authToken } }) => {
         toast.success('Logged in successfully');
-        setToken(authToken);
+        setAuthStoreToken(authToken);
+        await router.invalidate();
+        await navigate({ to: search.redirect || '/' });
       },
       onError: () => {
         toast.error('Not able to log in');

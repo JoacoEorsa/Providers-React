@@ -8,270 +8,235 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root';
-import { Route as LoggedInRouteImport } from './routes/_logged-in/route';
-import { Route as GuestRouteImport } from './routes/_guest/route';
-import { Route as IndexImport } from './routes/index';
-import { Route as LoggedInDashboardRouteImport } from './routes/_logged-in/dashboard/route';
-import { Route as LoggedInAdminRouteImport } from './routes/_logged-in/admin/route';
-import { Route as LoggedInDashboardIndexImport } from './routes/_logged-in/dashboard/index';
-import { Route as LoggedInAdminIndexImport } from './routes/_logged-in/admin/index';
-import { Route as GuestRegisterIndexImport } from './routes/_guest/register/index';
-import { Route as GuestLoginIndexImport } from './routes/_guest/login/index';
+import { Route as rootRoute } from './routes/__root'
+import { Route as authGuardImport } from './routes/(auth)/_guard'
+import { Route as guestRegisterIndexImport } from './routes/(guest)/register/index'
+import { Route as guestLoginIndexImport } from './routes/(guest)/login/index'
+import { Route as authGuardIndexImport } from './routes/(auth)/_guard/index'
+import { Route as authGuardAdminRouteImport } from './routes/(auth)/_guard/admin/route'
+import { Route as authGuardDashboardIndexImport } from './routes/(auth)/_guard/dashboard/index'
+import { Route as authGuardAdminIndexImport } from './routes/(auth)/_guard/admin/index'
+
+// Create Virtual Routes
+
+const authImport = createFileRoute('/(auth)')()
 
 // Create/Update Routes
 
-const LoggedInRouteRoute = LoggedInRouteImport.update({
-  id: '/_logged-in',
-  getParentRoute: () => rootRoute
-} as any);
+const authRoute = authImport.update({
+  id: '/(auth)',
+  getParentRoute: () => rootRoute,
+} as any)
 
-const GuestRouteRoute = GuestRouteImport.update({
-  id: '/_guest',
-  getParentRoute: () => rootRoute
-} as any);
+const authGuardRoute = authGuardImport.update({
+  id: '/_guard',
+  getParentRoute: () => authRoute,
+} as any)
 
-const IndexRoute = IndexImport.update({
+const guestRegisterIndexRoute = guestRegisterIndexImport.update({
+  id: '/(guest)/register/',
+  path: '/register/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const guestLoginIndexRoute = guestLoginIndexImport.update({
+  id: '/(guest)/login/',
+  path: '/login/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const authGuardIndexRoute = authGuardIndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute
-} as any);
+  getParentRoute: () => authGuardRoute,
+} as any)
 
-const LoggedInDashboardRouteRoute = LoggedInDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => LoggedInRouteRoute
-} as any);
-
-const LoggedInAdminRouteRoute = LoggedInAdminRouteImport.update({
+const authGuardAdminRouteRoute = authGuardAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
-  getParentRoute: () => LoggedInRouteRoute
-} as any);
+  getParentRoute: () => authGuardRoute,
+} as any)
 
-const LoggedInDashboardIndexRoute = LoggedInDashboardIndexImport.update({
+const authGuardDashboardIndexRoute = authGuardDashboardIndexImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => authGuardRoute,
+} as any)
+
+const authGuardAdminIndexRoute = authGuardAdminIndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => LoggedInDashboardRouteRoute
-} as any);
-
-const LoggedInAdminIndexRoute = LoggedInAdminIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => LoggedInAdminRouteRoute
-} as any);
-
-const GuestRegisterIndexRoute = GuestRegisterIndexImport.update({
-  id: '/register/',
-  path: '/register/',
-  getParentRoute: () => GuestRouteRoute
-} as any);
-
-const GuestLoginIndexRoute = GuestLoginIndexImport.update({
-  id: '/login/',
-  path: '/login/',
-  getParentRoute: () => GuestRouteRoute
-} as any);
+  getParentRoute: () => authGuardAdminRouteRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/';
-      path: '/';
-      fullPath: '/';
-      preLoaderRoute: typeof IndexImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/_guest': {
-      id: '/_guest';
-      path: '';
-      fullPath: '';
-      preLoaderRoute: typeof GuestRouteImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/_logged-in': {
-      id: '/_logged-in';
-      path: '';
-      fullPath: '';
-      preLoaderRoute: typeof LoggedInRouteImport;
-      parentRoute: typeof rootRoute;
-    };
-    '/_logged-in/admin': {
-      id: '/_logged-in/admin';
-      path: '/admin';
-      fullPath: '/admin';
-      preLoaderRoute: typeof LoggedInAdminRouteImport;
-      parentRoute: typeof LoggedInRouteImport;
-    };
-    '/_logged-in/dashboard': {
-      id: '/_logged-in/dashboard';
-      path: '/dashboard';
-      fullPath: '/dashboard';
-      preLoaderRoute: typeof LoggedInDashboardRouteImport;
-      parentRoute: typeof LoggedInRouteImport;
-    };
-    '/_guest/login/': {
-      id: '/_guest/login/';
-      path: '/login';
-      fullPath: '/login';
-      preLoaderRoute: typeof GuestLoginIndexImport;
-      parentRoute: typeof GuestRouteImport;
-    };
-    '/_guest/register/': {
-      id: '/_guest/register/';
-      path: '/register';
-      fullPath: '/register';
-      preLoaderRoute: typeof GuestRegisterIndexImport;
-      parentRoute: typeof GuestRouteImport;
-    };
-    '/_logged-in/admin/': {
-      id: '/_logged-in/admin/';
-      path: '/';
-      fullPath: '/admin/';
-      preLoaderRoute: typeof LoggedInAdminIndexImport;
-      parentRoute: typeof LoggedInAdminRouteImport;
-    };
-    '/_logged-in/dashboard/': {
-      id: '/_logged-in/dashboard/';
-      path: '/';
-      fullPath: '/dashboard/';
-      preLoaderRoute: typeof LoggedInDashboardIndexImport;
-      parentRoute: typeof LoggedInDashboardRouteImport;
-    };
+    '/(auth)': {
+      id: '/(auth)'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof authImport
+      parentRoute: typeof rootRoute
+    }
+    '/(auth)/_guard': {
+      id: '/(auth)/_guard'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof authGuardImport
+      parentRoute: typeof authRoute
+    }
+    '/(auth)/_guard/admin': {
+      id: '/(auth)/_guard/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof authGuardAdminRouteImport
+      parentRoute: typeof authGuardImport
+    }
+    '/(auth)/_guard/': {
+      id: '/(auth)/_guard/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof authGuardIndexImport
+      parentRoute: typeof authGuardImport
+    }
+    '/(guest)/login/': {
+      id: '/(guest)/login/'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof guestLoginIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/(guest)/register/': {
+      id: '/(guest)/register/'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof guestRegisterIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/(auth)/_guard/admin/': {
+      id: '/(auth)/_guard/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof authGuardAdminIndexImport
+      parentRoute: typeof authGuardAdminRouteImport
+    }
+    '/(auth)/_guard/dashboard/': {
+      id: '/(auth)/_guard/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof authGuardDashboardIndexImport
+      parentRoute: typeof authGuardImport
+    }
   }
 }
 
 // Create and export the route tree
 
-interface GuestRouteRouteChildren {
-  GuestLoginIndexRoute: typeof GuestLoginIndexRoute;
-  GuestRegisterIndexRoute: typeof GuestRegisterIndexRoute;
+interface authGuardAdminRouteRouteChildren {
+  authGuardAdminIndexRoute: typeof authGuardAdminIndexRoute
 }
 
-const GuestRouteRouteChildren: GuestRouteRouteChildren = {
-  GuestLoginIndexRoute: GuestLoginIndexRoute,
-  GuestRegisterIndexRoute: GuestRegisterIndexRoute
-};
-
-const GuestRouteRouteWithChildren = GuestRouteRoute._addFileChildren(GuestRouteRouteChildren);
-
-interface LoggedInAdminRouteRouteChildren {
-  LoggedInAdminIndexRoute: typeof LoggedInAdminIndexRoute;
+const authGuardAdminRouteRouteChildren: authGuardAdminRouteRouteChildren = {
+  authGuardAdminIndexRoute: authGuardAdminIndexRoute,
 }
 
-const LoggedInAdminRouteRouteChildren: LoggedInAdminRouteRouteChildren = {
-  LoggedInAdminIndexRoute: LoggedInAdminIndexRoute
-};
+const authGuardAdminRouteRouteWithChildren =
+  authGuardAdminRouteRoute._addFileChildren(authGuardAdminRouteRouteChildren)
 
-const LoggedInAdminRouteRouteWithChildren = LoggedInAdminRouteRoute._addFileChildren(
-  LoggedInAdminRouteRouteChildren
-);
-
-interface LoggedInDashboardRouteRouteChildren {
-  LoggedInDashboardIndexRoute: typeof LoggedInDashboardIndexRoute;
+interface authGuardRouteChildren {
+  authGuardAdminRouteRoute: typeof authGuardAdminRouteRouteWithChildren
+  authGuardIndexRoute: typeof authGuardIndexRoute
+  authGuardDashboardIndexRoute: typeof authGuardDashboardIndexRoute
 }
 
-const LoggedInDashboardRouteRouteChildren: LoggedInDashboardRouteRouteChildren = {
-  LoggedInDashboardIndexRoute: LoggedInDashboardIndexRoute
-};
-
-const LoggedInDashboardRouteRouteWithChildren = LoggedInDashboardRouteRoute._addFileChildren(
-  LoggedInDashboardRouteRouteChildren
-);
-
-interface LoggedInRouteRouteChildren {
-  LoggedInAdminRouteRoute: typeof LoggedInAdminRouteRouteWithChildren;
-  LoggedInDashboardRouteRoute: typeof LoggedInDashboardRouteRouteWithChildren;
+const authGuardRouteChildren: authGuardRouteChildren = {
+  authGuardAdminRouteRoute: authGuardAdminRouteRouteWithChildren,
+  authGuardIndexRoute: authGuardIndexRoute,
+  authGuardDashboardIndexRoute: authGuardDashboardIndexRoute,
 }
 
-const LoggedInRouteRouteChildren: LoggedInRouteRouteChildren = {
-  LoggedInAdminRouteRoute: LoggedInAdminRouteRouteWithChildren,
-  LoggedInDashboardRouteRoute: LoggedInDashboardRouteRouteWithChildren
-};
+const authGuardRouteWithChildren = authGuardRoute._addFileChildren(
+  authGuardRouteChildren,
+)
 
-const LoggedInRouteRouteWithChildren = LoggedInRouteRoute._addFileChildren(
-  LoggedInRouteRouteChildren
-);
+interface authRouteChildren {
+  authGuardRoute: typeof authGuardRouteWithChildren
+}
+
+const authRouteChildren: authRouteChildren = {
+  authGuardRoute: authGuardRouteWithChildren,
+}
+
+const authRouteWithChildren = authRoute._addFileChildren(authRouteChildren)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute;
-  '': typeof LoggedInRouteRouteWithChildren;
-  '/admin': typeof LoggedInAdminRouteRouteWithChildren;
-  '/dashboard': typeof LoggedInDashboardRouteRouteWithChildren;
-  '/login': typeof GuestLoginIndexRoute;
-  '/register': typeof GuestRegisterIndexRoute;
-  '/admin/': typeof LoggedInAdminIndexRoute;
-  '/dashboard/': typeof LoggedInDashboardIndexRoute;
+  '/': typeof authGuardIndexRoute
+  '/admin': typeof authGuardAdminRouteRouteWithChildren
+  '/login': typeof guestLoginIndexRoute
+  '/register': typeof guestRegisterIndexRoute
+  '/admin/': typeof authGuardAdminIndexRoute
+  '/dashboard': typeof authGuardDashboardIndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute;
-  '': typeof LoggedInRouteRouteWithChildren;
-  '/login': typeof GuestLoginIndexRoute;
-  '/register': typeof GuestRegisterIndexRoute;
-  '/admin': typeof LoggedInAdminIndexRoute;
-  '/dashboard': typeof LoggedInDashboardIndexRoute;
+  '/': typeof authGuardIndexRoute
+  '/login': typeof guestLoginIndexRoute
+  '/register': typeof guestRegisterIndexRoute
+  '/admin': typeof authGuardAdminIndexRoute
+  '/dashboard': typeof authGuardDashboardIndexRoute
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute;
-  '/': typeof IndexRoute;
-  '/_guest': typeof GuestRouteRouteWithChildren;
-  '/_logged-in': typeof LoggedInRouteRouteWithChildren;
-  '/_logged-in/admin': typeof LoggedInAdminRouteRouteWithChildren;
-  '/_logged-in/dashboard': typeof LoggedInDashboardRouteRouteWithChildren;
-  '/_guest/login/': typeof GuestLoginIndexRoute;
-  '/_guest/register/': typeof GuestRegisterIndexRoute;
-  '/_logged-in/admin/': typeof LoggedInAdminIndexRoute;
-  '/_logged-in/dashboard/': typeof LoggedInDashboardIndexRoute;
+  __root__: typeof rootRoute
+  '/(auth)': typeof authRouteWithChildren
+  '/(auth)/_guard': typeof authGuardRouteWithChildren
+  '/(auth)/_guard/admin': typeof authGuardAdminRouteRouteWithChildren
+  '/(auth)/_guard/': typeof authGuardIndexRoute
+  '/(guest)/login/': typeof guestLoginIndexRoute
+  '/(guest)/register/': typeof guestRegisterIndexRoute
+  '/(auth)/_guard/admin/': typeof authGuardAdminIndexRoute
+  '/(auth)/_guard/dashboard/': typeof authGuardDashboardIndexRoute
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths:
-    | '/'
-    | ''
-    | '/admin'
-    | '/dashboard'
-    | '/login'
-    | '/register'
-    | '/admin/'
-    | '/dashboard/';
-  fileRoutesByTo: FileRoutesByTo;
-  to: '/' | '' | '/login' | '/register' | '/admin' | '/dashboard';
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/admin' | '/login' | '/register' | '/admin/' | '/dashboard'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/login' | '/register' | '/admin' | '/dashboard'
   id:
     | '__root__'
-    | '/'
-    | '/_guest'
-    | '/_logged-in'
-    | '/_logged-in/admin'
-    | '/_logged-in/dashboard'
-    | '/_guest/login/'
-    | '/_guest/register/'
-    | '/_logged-in/admin/'
-    | '/_logged-in/dashboard/';
-  fileRoutesById: FileRoutesById;
+    | '/(auth)'
+    | '/(auth)/_guard'
+    | '/(auth)/_guard/admin'
+    | '/(auth)/_guard/'
+    | '/(guest)/login/'
+    | '/(guest)/register/'
+    | '/(auth)/_guard/admin/'
+    | '/(auth)/_guard/dashboard/'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute;
-  GuestRouteRoute: typeof GuestRouteRouteWithChildren;
-  LoggedInRouteRoute: typeof LoggedInRouteRouteWithChildren;
+  authRoute: typeof authRouteWithChildren
+  guestLoginIndexRoute: typeof guestLoginIndexRoute
+  guestRegisterIndexRoute: typeof guestRegisterIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  GuestRouteRoute: GuestRouteRouteWithChildren,
-  LoggedInRouteRoute: LoggedInRouteRouteWithChildren
-};
+  authRoute: authRouteWithChildren,
+  guestLoginIndexRoute: guestLoginIndexRoute,
+  guestRegisterIndexRoute: guestRegisterIndexRoute,
+}
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
 
 /* ROUTE_MANIFEST_START
 {
@@ -279,57 +244,50 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/",
-        "/_guest",
-        "/_logged-in"
+        "/(auth)",
+        "/(guest)/login/",
+        "/(guest)/register/"
       ]
     },
-    "/": {
-      "filePath": "index.tsx"
-    },
-    "/_guest": {
-      "filePath": "_guest/route.tsx",
+    "/(auth)": {
+      "filePath": "(auth)",
       "children": [
-        "/_guest/login/",
-        "/_guest/register/"
+        "/(auth)/_guard"
       ]
     },
-    "/_logged-in": {
-      "filePath": "_logged-in/route.tsx",
+    "/(auth)/_guard": {
+      "filePath": "(auth)/_guard.tsx",
+      "parent": "/(auth)",
       "children": [
-        "/_logged-in/admin",
-        "/_logged-in/dashboard"
+        "/(auth)/_guard/admin",
+        "/(auth)/_guard/",
+        "/(auth)/_guard/dashboard/"
       ]
     },
-    "/_logged-in/admin": {
-      "filePath": "_logged-in/admin/route.tsx",
-      "parent": "/_logged-in",
+    "/(auth)/_guard/admin": {
+      "filePath": "(auth)/_guard/admin/route.tsx",
+      "parent": "/(auth)/_guard",
       "children": [
-        "/_logged-in/admin/"
+        "/(auth)/_guard/admin/"
       ]
     },
-    "/_logged-in/dashboard": {
-      "filePath": "_logged-in/dashboard/route.tsx",
-      "parent": "/_logged-in",
-      "children": [
-        "/_logged-in/dashboard/"
-      ]
+    "/(auth)/_guard/": {
+      "filePath": "(auth)/_guard/index.tsx",
+      "parent": "/(auth)/_guard"
     },
-    "/_guest/login/": {
-      "filePath": "_guest/login/index.tsx",
-      "parent": "/_guest"
+    "/(guest)/login/": {
+      "filePath": "(guest)/login/index.tsx"
     },
-    "/_guest/register/": {
-      "filePath": "_guest/register/index.tsx",
-      "parent": "/_guest"
+    "/(guest)/register/": {
+      "filePath": "(guest)/register/index.tsx"
     },
-    "/_logged-in/admin/": {
-      "filePath": "_logged-in/admin/index.tsx",
-      "parent": "/_logged-in/admin"
+    "/(auth)/_guard/admin/": {
+      "filePath": "(auth)/_guard/admin/index.tsx",
+      "parent": "/(auth)/_guard/admin"
     },
-    "/_logged-in/dashboard/": {
-      "filePath": "_logged-in/dashboard/index.tsx",
-      "parent": "/_logged-in/dashboard"
+    "/(auth)/_guard/dashboard/": {
+      "filePath": "(auth)/_guard/dashboard/index.tsx",
+      "parent": "/(auth)/_guard"
     }
   }
 }

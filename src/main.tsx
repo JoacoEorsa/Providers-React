@@ -1,3 +1,5 @@
+// eslint-disable-next-line simple-import-sort/imports -- react-scan must be imported before React and React DOM
+import { scan } from 'react-scan';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClientProvider } from '@tanstack/react-query';
@@ -13,6 +15,7 @@ import reportWebVitals from '@/reportWebVitals';
 import '@/styles.css';
 
 initializeSentry();
+scan({ enabled: import.meta.env.VITE_ENABLE_REACT_SCAN });
 
 const rootElement = document.getElementById('root')!;
 

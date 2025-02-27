@@ -20,6 +20,7 @@ export const env = createEnv({
     VITE_SENTRY_TRACE_PROPAGATION_TARGET_REGEX: z.string().optional().default(''),
 
     VITE_ENABLE_DEVTOOLS: z.string().optional(),
+    VITE_ENABLE_REACT_SCAN: z.string().optional(),
   },
 
   /**

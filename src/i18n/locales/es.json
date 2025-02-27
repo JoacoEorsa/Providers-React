@@ -3,8 +3,8 @@
     "rootLayout": "Root layout! Me renderizo en todas las rutas (en español)",
     "exactPath": "Hola {exactPath} ruta exacta!",
     "layout": "Hola {layout} layout!",
-    "guardedLayout": "Hola layout guard! Me renderizo en todas las rutas dentro de la carpeta /_guard/",
-    "guestLayout": "Layout de invitado! Me renderizo en todas las rutas dentro de la carpeta /_guest/",
+    "privateLayout": "Hola layout privado! Me renderizo en todas las rutas dentro de la carpeta /_private/",
+    "publicLayout": "Layout público! Me renderizo en todas las rutas dentro de la carpeta /(public)/",
     "home": "Bienvenido al home!"
   },
   "login": {

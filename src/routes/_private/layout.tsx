@@ -3,18 +3,19 @@ import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
 
 import { getAuthStoreState } from '@/stores';
 
-const AuthGuard = () => {
+const PrivateLayout = () => {
   const { t } = useTranslation();
 
   return (
     <div>
-      {t('greetings.guardedLayout')}
+      {t('greetings.privateLayout')}
+
       <Outlet />
     </div>
   );
 };
 
-export const Route = createFileRoute('/(auth)/_guard')({
+export const Route = createFileRoute('/_private')({
   beforeLoad: ({ location }) => {
     const { token } = getAuthStoreState();
 
@@ -22,5 +23,5 @@ export const Route = createFileRoute('/(auth)/_guard')({
       throw redirect({ to: '/login', search: { redirect: location.href } });
     }
   },
-  component: AuthGuard,
+  component: PrivateLayout,
 });

@@ -3,8 +3,8 @@
     "rootLayout": "Root layout! I render on all paths (in English)",
     "exactPath": "Hello {exactPath} exact path!",
     "layout": "Hello {layout} layout!",
-    "guardedLayout": "Hello guard layout! I render on all paths inside the /_guard/ folder",
-    "guestLayout": "Guest layout! I render on all paths inside the /_guest/ folder",
+    "privateLayout": "Hello private layout! I render on all paths inside the /_private/ folder",
+    "publicLayout": "Public layout! I render on all paths inside the /(public)/ folder",
     "home": "Welcome Home!"
   },
   "login": {

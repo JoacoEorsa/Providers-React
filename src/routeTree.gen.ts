@@ -8,230 +8,208 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from '@tanstack/react-router'
-
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as authGuardImport } from './routes/(auth)/_guard'
-import { Route as guestRegisterIndexImport } from './routes/(guest)/register/index'
-import { Route as guestLoginIndexImport } from './routes/(guest)/login/index'
-import { Route as authGuardIndexImport } from './routes/(auth)/_guard/index'
-import { Route as authGuardAdminRouteImport } from './routes/(auth)/_guard/admin/route'
-import { Route as authGuardDashboardIndexImport } from './routes/(auth)/_guard/dashboard/index'
-import { Route as authGuardAdminIndexImport } from './routes/(auth)/_guard/admin/index'
-
-// Create Virtual Routes
-
-const authImport = createFileRoute('/(auth)')()
+import { Route as PrivateLayoutImport } from './routes/_private/layout'
+import { Route as PrivatePageImport } from './routes/_private/page'
+import { Route as PrivateAdminLayoutImport } from './routes/_private/admin/layout'
+import { Route as PrivateDashboardPageImport } from './routes/_private/dashboard.page'
+import { Route as PrivateAdminPageImport } from './routes/_private/admin/page'
+import { Route as publicRegisterPageImport } from './routes/(public)/register.page'
+import { Route as publicLoginPageImport } from './routes/(public)/login/page'
 
 // Create/Update Routes
 
-const authRoute = authImport.update({
-  id: '/(auth)',
+const PrivateLayoutRoute = PrivateLayoutImport.update({
+  id: '/_private',
   getParentRoute: () => rootRoute,
 } as any)
 
-const authGuardRoute = authGuardImport.update({
-  id: '/_guard',
-  getParentRoute: () => authRoute,
+const PrivatePageRoute = PrivatePageImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PrivateLayoutRoute,
 } as any)
 
-const guestRegisterIndexRoute = guestRegisterIndexImport.update({
-  id: '/(guest)/register/',
+const PrivateAdminLayoutRoute = PrivateAdminLayoutImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => PrivateLayoutRoute,
+} as any)
+
+const PrivateDashboardPageRoute = PrivateDashboardPageImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => PrivateLayoutRoute,
+} as any)
+
+const PrivateAdminPageRoute = PrivateAdminPageImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PrivateAdminLayoutRoute,
+} as any)
+
+const publicRegisterPageRoute = publicRegisterPageImport.update({
+  id: '/(public)/register/',
   path: '/register/',
   getParentRoute: () => rootRoute,
 } as any)
 
-const guestLoginIndexRoute = guestLoginIndexImport.update({
-  id: '/(guest)/login/',
+const publicLoginPageRoute = publicLoginPageImport.update({
+  id: '/(public)/login/',
   path: '/login/',
   getParentRoute: () => rootRoute,
-} as any)
-
-const authGuardIndexRoute = authGuardIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => authGuardRoute,
-} as any)
-
-const authGuardAdminRouteRoute = authGuardAdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
-  getParentRoute: () => authGuardRoute,
-} as any)
-
-const authGuardDashboardIndexRoute = authGuardDashboardIndexImport.update({
-  id: '/dashboard/',
-  path: '/dashboard/',
-  getParentRoute: () => authGuardRoute,
-} as any)
-
-const authGuardAdminIndexRoute = authGuardAdminIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => authGuardAdminRouteRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/(auth)': {
-      id: '/(auth)'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof authImport
+    '/_private': {
+      id: '/_private'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof PrivateLayoutImport
       parentRoute: typeof rootRoute
     }
-    '/(auth)/_guard': {
-      id: '/(auth)/_guard'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof authGuardImport
-      parentRoute: typeof authRoute
-    }
-    '/(auth)/_guard/admin': {
-      id: '/(auth)/_guard/admin'
+    '/_private/admin': {
+      id: '/_private/admin'
       path: '/admin'
       fullPath: '/admin'
-      preLoaderRoute: typeof authGuardAdminRouteImport
-      parentRoute: typeof authGuardImport
+      preLoaderRoute: typeof PrivateAdminLayoutImport
+      parentRoute: typeof PrivateLayoutImport
     }
-    '/(auth)/_guard/': {
-      id: '/(auth)/_guard/'
+    '/_private/': {
+      id: '/_private/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof authGuardIndexImport
-      parentRoute: typeof authGuardImport
+      preLoaderRoute: typeof PrivatePageImport
+      parentRoute: typeof PrivateLayoutImport
     }
-    '/(guest)/login/': {
-      id: '/(guest)/login/'
+    '/(public)/login/': {
+      id: '/(public)/login/'
       path: '/login'
       fullPath: '/login'
-      preLoaderRoute: typeof guestLoginIndexImport
+      preLoaderRoute: typeof publicLoginPageImport
       parentRoute: typeof rootRoute
     }
-    '/(guest)/register/': {
-      id: '/(guest)/register/'
+    '/(public)/register/': {
+      id: '/(public)/register/'
       path: '/register'
       fullPath: '/register'
-      preLoaderRoute: typeof guestRegisterIndexImport
+      preLoaderRoute: typeof publicRegisterPageImport
       parentRoute: typeof rootRoute
     }
-    '/(auth)/_guard/admin/': {
-      id: '/(auth)/_guard/admin/'
+    '/_private/admin/': {
+      id: '/_private/admin/'
       path: '/'
       fullPath: '/admin/'
-      preLoaderRoute: typeof authGuardAdminIndexImport
-      parentRoute: typeof authGuardAdminRouteImport
+      preLoaderRoute: typeof PrivateAdminPageImport
+      parentRoute: typeof PrivateAdminLayoutImport
     }
-    '/(auth)/_guard/dashboard/': {
-      id: '/(auth)/_guard/dashboard/'
+    '/_private/dashboard/': {
+      id: '/_private/dashboard/'
       path: '/dashboard'
       fullPath: '/dashboard'
-      preLoaderRoute: typeof authGuardDashboardIndexImport
-      parentRoute: typeof authGuardImport
+      preLoaderRoute: typeof PrivateDashboardPageImport
+      parentRoute: typeof PrivateLayoutImport
     }
   }
 }
 
 // Create and export the route tree
 
-interface authGuardAdminRouteRouteChildren {
-  authGuardAdminIndexRoute: typeof authGuardAdminIndexRoute
+interface PrivateAdminLayoutRouteChildren {
+  PrivateAdminPageRoute: typeof PrivateAdminPageRoute
 }
 
-const authGuardAdminRouteRouteChildren: authGuardAdminRouteRouteChildren = {
-  authGuardAdminIndexRoute: authGuardAdminIndexRoute,
+const PrivateAdminLayoutRouteChildren: PrivateAdminLayoutRouteChildren = {
+  PrivateAdminPageRoute: PrivateAdminPageRoute,
 }
 
-const authGuardAdminRouteRouteWithChildren =
-  authGuardAdminRouteRoute._addFileChildren(authGuardAdminRouteRouteChildren)
+const PrivateAdminLayoutRouteWithChildren =
+  PrivateAdminLayoutRoute._addFileChildren(PrivateAdminLayoutRouteChildren)
 
-interface authGuardRouteChildren {
-  authGuardAdminRouteRoute: typeof authGuardAdminRouteRouteWithChildren
-  authGuardIndexRoute: typeof authGuardIndexRoute
-  authGuardDashboardIndexRoute: typeof authGuardDashboardIndexRoute
+interface PrivateLayoutRouteChildren {
+  PrivateAdminLayoutRoute: typeof PrivateAdminLayoutRouteWithChildren
+  PrivatePageRoute: typeof PrivatePageRoute
+  PrivateDashboardPageRoute: typeof PrivateDashboardPageRoute
 }
 
-const authGuardRouteChildren: authGuardRouteChildren = {
-  authGuardAdminRouteRoute: authGuardAdminRouteRouteWithChildren,
-  authGuardIndexRoute: authGuardIndexRoute,
-  authGuardDashboardIndexRoute: authGuardDashboardIndexRoute,
+const PrivateLayoutRouteChildren: PrivateLayoutRouteChildren = {
+  PrivateAdminLayoutRoute: PrivateAdminLayoutRouteWithChildren,
+  PrivatePageRoute: PrivatePageRoute,
+  PrivateDashboardPageRoute: PrivateDashboardPageRoute,
 }
 
-const authGuardRouteWithChildren = authGuardRoute._addFileChildren(
-  authGuardRouteChildren,
+const PrivateLayoutRouteWithChildren = PrivateLayoutRoute._addFileChildren(
+  PrivateLayoutRouteChildren,
 )
 
-interface authRouteChildren {
-  authGuardRoute: typeof authGuardRouteWithChildren
-}
-
-const authRouteChildren: authRouteChildren = {
-  authGuardRoute: authGuardRouteWithChildren,
-}
-
-const authRouteWithChildren = authRoute._addFileChildren(authRouteChildren)
-
 export interface FileRoutesByFullPath {
-  '/': typeof authGuardIndexRoute
-  '/admin': typeof authGuardAdminRouteRouteWithChildren
-  '/login': typeof guestLoginIndexRoute
-  '/register': typeof guestRegisterIndexRoute
-  '/admin/': typeof authGuardAdminIndexRoute
-  '/dashboard': typeof authGuardDashboardIndexRoute
+  '': typeof PrivateLayoutRouteWithChildren
+  '/admin': typeof PrivateAdminLayoutRouteWithChildren
+  '/': typeof PrivatePageRoute
+  '/login': typeof publicLoginPageRoute
+  '/register': typeof publicRegisterPageRoute
+  '/admin/': typeof PrivateAdminPageRoute
+  '/dashboard': typeof PrivateDashboardPageRoute
 }
 
 export interface FileRoutesByTo {
-  '/': typeof authGuardIndexRoute
-  '/login': typeof guestLoginIndexRoute
-  '/register': typeof guestRegisterIndexRoute
-  '/admin': typeof authGuardAdminIndexRoute
-  '/dashboard': typeof authGuardDashboardIndexRoute
+  '/': typeof PrivatePageRoute
+  '/login': typeof publicLoginPageRoute
+  '/register': typeof publicRegisterPageRoute
+  '/admin': typeof PrivateAdminPageRoute
+  '/dashboard': typeof PrivateDashboardPageRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/(auth)': typeof authRouteWithChildren
-  '/(auth)/_guard': typeof authGuardRouteWithChildren
-  '/(auth)/_guard/admin': typeof authGuardAdminRouteRouteWithChildren
-  '/(auth)/_guard/': typeof authGuardIndexRoute
-  '/(guest)/login/': typeof guestLoginIndexRoute
-  '/(guest)/register/': typeof guestRegisterIndexRoute
-  '/(auth)/_guard/admin/': typeof authGuardAdminIndexRoute
-  '/(auth)/_guard/dashboard/': typeof authGuardDashboardIndexRoute
+  '/_private': typeof PrivateLayoutRouteWithChildren
+  '/_private/admin': typeof PrivateAdminLayoutRouteWithChildren
+  '/_private/': typeof PrivatePageRoute
+  '/(public)/login/': typeof publicLoginPageRoute
+  '/(public)/register/': typeof publicRegisterPageRoute
+  '/_private/admin/': typeof PrivateAdminPageRoute
+  '/_private/dashboard/': typeof PrivateDashboardPageRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/login' | '/register' | '/admin/' | '/dashboard'
+  fullPaths:
+    | ''
+    | '/admin'
+    | '/'
+    | '/login'
+    | '/register'
+    | '/admin/'
+    | '/dashboard'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/login' | '/register' | '/admin' | '/dashboard'
   id:
     | '__root__'
-    | '/(auth)'
-    | '/(auth)/_guard'
-    | '/(auth)/_guard/admin'
-    | '/(auth)/_guard/'
-    | '/(guest)/login/'
-    | '/(guest)/register/'
-    | '/(auth)/_guard/admin/'
-    | '/(auth)/_guard/dashboard/'
+    | '/_private'
+    | '/_private/admin'
+    | '/_private/'
+    | '/(public)/login/'
+    | '/(public)/register/'
+    | '/_private/admin/'
+    | '/_private/dashboard/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  authRoute: typeof authRouteWithChildren
-  guestLoginIndexRoute: typeof guestLoginIndexRoute
-  guestRegisterIndexRoute: typeof guestRegisterIndexRoute
+  PrivateLayoutRoute: typeof PrivateLayoutRouteWithChildren
+  publicLoginPageRoute: typeof publicLoginPageRoute
+  publicRegisterPageRoute: typeof publicRegisterPageRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  authRoute: authRouteWithChildren,
-  guestLoginIndexRoute: guestLoginIndexRoute,
-  guestRegisterIndexRoute: guestRegisterIndexRoute,
+  PrivateLayoutRoute: PrivateLayoutRouteWithChildren,
+  publicLoginPageRoute: publicLoginPageRoute,
+  publicRegisterPageRoute: publicRegisterPageRoute,
 }
 
 export const routeTree = rootRoute
@@ -244,50 +222,43 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/(auth)",
-        "/(guest)/login/",
-        "/(guest)/register/"
+        "/_private",
+        "/(public)/login/",
+        "/(public)/register/"
       ]
     },
-    "/(auth)": {
-      "filePath": "(auth)",
+    "/_private": {
+      "filePath": "_private/layout.tsx",
       "children": [
-        "/(auth)/_guard"
+        "/_private/admin",
+        "/_private/",
+        "/_private/dashboard/"
       ]
     },
-    "/(auth)/_guard": {
-      "filePath": "(auth)/_guard.tsx",
-      "parent": "/(auth)",
+    "/_private/admin": {
+      "filePath": "_private/admin/layout.tsx",
+      "parent": "/_private",
       "children": [
-        "/(auth)/_guard/admin",
-        "/(auth)/_guard/",
-        "/(auth)/_guard/dashboard/"
+        "/_private/admin/"
       ]
     },
-    "/(auth)/_guard/admin": {
-      "filePath": "(auth)/_guard/admin/route.tsx",
-      "parent": "/(auth)/_guard",
-      "children": [
-        "/(auth)/_guard/admin/"
-      ]
+    "/_private/": {
+      "filePath": "_private/page.tsx",
+      "parent": "/_private"
     },
-    "/(auth)/_guard/": {
-      "filePath": "(auth)/_guard/index.tsx",
-      "parent": "/(auth)/_guard"
+    "/(public)/login/": {
+      "filePath": "(public)/login/page.tsx"
     },
-    "/(guest)/login/": {
-      "filePath": "(guest)/login/index.tsx"
+    "/(public)/register/": {
+      "filePath": "(public)/register.page.tsx"
     },
-    "/(guest)/register/": {
-      "filePath": "(guest)/register/index.tsx"
+    "/_private/admin/": {
+      "filePath": "_private/admin/page.tsx",
+      "parent": "/_private/admin"
     },
-    "/(auth)/_guard/admin/": {
-      "filePath": "(auth)/_guard/admin/index.tsx",
-      "parent": "/(auth)/_guard/admin"
-    },
-    "/(auth)/_guard/dashboard/": {
-      "filePath": "(auth)/_guard/dashboard/index.tsx",
-      "parent": "/(auth)/_guard"
+    "/_private/dashboard/": {
+      "filePath": "_private/dashboard.page.tsx",
+      "parent": "/_private"
     }
   }
 }

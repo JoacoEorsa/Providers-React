@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 
 import { useTranslation } from '@/i18n';
 
-const Home = () => {
+const HomePage = () => {
   const { t } = useTranslation();
 
   return (
@@ -12,4 +12,4 @@ const Home = () => {
   );
 };
 
-export const Route = createFileRoute('/(auth)/_guard/')({ component: Home });
+export const Route = createFileRoute('/_private/')({ component: HomePage });

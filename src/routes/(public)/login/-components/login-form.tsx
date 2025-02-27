@@ -18,7 +18,7 @@ export const LoginForm = () => {
   const loginMutation = useLoginMutation();
 
   const router = useRouter();
-  const search = useSearch({ from: '/(guest)/login/' });
+  const search = useSearch({ from: '/(public)/login/' });
   const navigate = useNavigate();
 
   const schema = useMemo(() => {

@@ -1,5 +1,7 @@
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createRootRoute, Outlet, useNavigate, useRouter } from '@tanstack/react-router';
+import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { Button } from '@/components/ui/button';
@@ -13,29 +15,6 @@ const RootComponent = () => {
 
   const router = useRouter();
   const navigate = useNavigate();
-
-  const LazyDevtools =
-    import.meta.env.VITE_APP_ENV === 'production'
-      ? {
-          Router: () => {
-            return null;
-          },
-          Query: () => {
-            return null;
-          },
-        }
-      : {
-          Router: lazy(async () => {
-            const res = await import('@tanstack/router-devtools');
-
-            return { default: res.TanStackRouterDevtools };
-          }),
-          Query: lazy(async () => {
-            const res = await import('@tanstack/react-query-devtools');
-
-            return { default: res.ReactQueryDevtools };
-          }),
-        };
 
   const handleLogout = () => {
     if (window.confirm('Are you sure you want to logout?')) {
@@ -61,10 +40,10 @@ const RootComponent = () => {
 
       <Outlet />
 
-      {import.meta.env.VITE_ENABLE_DEVTOOLS ? (
+      {import.meta.env.VITE_APP_ENV === 'local' && import.meta.env.VITE_ENABLE_DEVTOOLS ? (
         <Suspense>
-          <LazyDevtools.Router position="bottom-left" />
-          <LazyDevtools.Query buttonPosition="bottom-right" />
+          <TanStackRouterDevtools position="bottom-left" />
+          <ReactQueryDevtools buttonPosition="bottom-right" />
         </Suspense>
       ) : null}
     </div>

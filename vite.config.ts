@@ -1,10 +1,10 @@
-import path from 'path';
-import { type UserConfig } from 'vite';
-import { analyzer } from 'vite-bundle-analyzer';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
 import viteReact from '@vitejs/plugin-react';
+import path from 'path';
+import { type UserConfig } from 'vite';
+import { analyzer } from 'vite-bundle-analyzer';
 
 // https://vitejs.dev/config/
 export default {

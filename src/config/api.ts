@@ -1,7 +1,44 @@
-import axios, { type AxiosRequestConfig } from 'axios';
+import axios, { type AxiosError } from 'axios';
 
-const baseURL = `${(import.meta.env.VITE_API_BASE_URL as string) ?? 'http://localhost:3000'}/api/`;
+import { getAuthStoreState, setAuthStoreToken } from '@/stores';
 
-const axiosRequestConfig: AxiosRequestConfig = { baseURL };
+const baseApiConfiguration = {
+  baseURL: import.meta.env.VITE_API_URL,
+  headers: { 'Content-Type': 'application/json' },
+};
 
-export const api = axios.create(axiosRequestConfig);
+const privateApi = axios.create(baseApiConfiguration);
+
+privateApi.interceptors.request.use(
+  (config) => {
+    const { token } = getAuthStoreState();
+
+    if (token) {
+      config.headers.set('Authorization', `Bearer ${token}`);
+    }
+
+    return config;
+  },
+  (error: Error) => {
+    return Promise.reject(error);
+  },
+);
+
+privateApi.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error: AxiosError) => {
+    if (error?.response?.status === 401) {
+      return setAuthStoreToken(null);
+    }
+
+    return Promise.reject(error);
+  },
+);
+
+const publicApi = axios.create(baseApiConfiguration);
+
+export const getApi = ({ isPrivateApi } = { isPrivateApi: true }) => {
+  return isPrivateApi ? privateApi : publicApi;
+};

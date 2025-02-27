@@ -11,7 +11,7 @@ export const env = createEnv({
   client: {
     VITE_APP_NAME: z.string().min(1),
     VITE_APP_ENV: z.enum(['local', 'development', 'staging', 'production']).default('local'),
-    VITE_API_BASE_URL: z.string().min(1),
+    VITE_API_URL: z.string().min(1),
 
     VITE_SENTRY_AUTH_TOKEN: z.string().optional(),
     VITE_SENTRY_DSN: z.string().optional(),

@@ -1,0 +1,23 @@
+{
+  "greetings": {
+    "rootLayout": "Root layout! Me renderizo en todas las rutas (en español)",
+    "exactPath": "Hola {exactPath} ruta exacta!",
+    "layout": "Hola {layout} layout!",
+    "guardedLayout": "Hola layout guard! Me renderizo en todas las rutas dentro de la carpeta /_guard/",
+    "guestLayout": "Layout de invitado! Me renderizo en todas las rutas dentro de la carpeta /_guest/",
+    "home": "Bienvenido al home!"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Contraseña",
+    "submit": "Enviar",
+    "errors": {
+      "required": "{field} es requerido",
+      "invalidField": "Por favor ingresar un/a {field} válido/a",
+      "minLength": "{field} debe contener al menos {length} caracteres"
+    }
+  },
+  "buttons": {
+    "logOut": "Cerrar sesión"
+  }
+}

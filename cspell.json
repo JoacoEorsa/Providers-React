@@ -4,7 +4,7 @@
     "node_modules/",
     "**/*.css",
     "**/pnpm-lock.yaml",
-    "**/translations/es.json",
+    "**/locales/es.json",
     "dist/"
   ],
   "words": ["autodocs", "commitlint", "Lngs", "lukemorales", "sonner", "TTFB", "VITE"]

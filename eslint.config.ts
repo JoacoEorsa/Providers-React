@@ -1,6 +1,9 @@
 import js from '@eslint/js';
 import stylisticJs from '@stylistic/eslint-plugin-js';
 import type { ESLint, Linter } from 'eslint';
+import i18next from 'eslint-plugin-i18next';
+// @ts-expect-error: No types available for eslint-plugin-import
+import importPlugin from 'eslint-plugin-import';
 import preferArrowFunctions from 'eslint-plugin-prefer-arrow-functions';
 import react from 'eslint-plugin-react';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
@@ -61,6 +64,8 @@ const config: Linter.Config[] = [
   {
     plugins: {
       '@stylistic/js': stylisticJs,
+      i18next,
+      import: importPlugin,
       'prefer-arrow-functions': preferArrowFunctions as ESLint.Plugin,
       'simple-import-sort': simpleImportSort,
       'sort-destructure-keys': sortDestructureKeys,
@@ -71,6 +76,8 @@ const config: Linter.Config[] = [
       '@stylistic/js/no-multiple-empty-lines': ['warn', { max: 1 }],
       '@stylistic/js/no-trailing-spaces': 'warn',
       '@stylistic/js/object-curly-spacing': ['warn', 'always'],
+      'i18next/no-literal-string': 'warn',
+      'import/no-duplicates': ['warn', { 'prefer-inline': true }],
       'prefer-arrow-functions/prefer-arrow-functions': 'error',
       'simple-import-sort/exports': 'warn',
       'simple-import-sort/imports': [
@@ -109,6 +116,8 @@ const config: Linter.Config[] = [
       ],
     },
   },
+
+  { files: ['**/*.stories.{ts,tsx}'], rules: { 'i18next/no-literal-string': 'off' } },
 ];
 
 export default config;

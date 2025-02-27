@@ -1,9 +1,9 @@
 import { lazy, Suspense } from 'react';
-import { useTranslation } from 'react-i18next';
 import { createRootRoute, Outlet, useNavigate, useRouter } from '@tanstack/react-router';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/i18n';
 import { setAuthStoreToken, useAuthStoreToken } from '@/stores';
 
 const RootComponent = () => {
@@ -50,12 +50,12 @@ const RootComponent = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <div className="flex justify-between bg-purple-300 p-4">
-        <span>{t('Root layout! I render on all paths')}</span>
+        <span>{t('greetings.rootLayout')}</span>
 
         <div className="flex gap-x-2">
           <LanguageSwitcher />
 
-          {token ? <Button onClick={handleLogout}>Log out</Button> : null}
+          {token ? <Button onClick={handleLogout}>{t('buttons.logOut')}</Button> : null}
         </div>
       </div>
 

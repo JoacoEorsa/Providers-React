@@ -1,10 +1,11 @@
-import { useTranslation } from 'react-i18next';
 import { createFileRoute } from '@tanstack/react-router';
+
+import { useTranslation } from '@/i18n';
 
 const RouteComponent = () => {
   const { t } = useTranslation();
 
-  return <div>{t('Hello {exactPath} exact path!', { exactPath: '/register' })}</div>;
+  return <div>{t('greetings.exactPath', { exactPath: '/register' })}</div>;
 };
 
 export const Route = createFileRoute('/(guest)/register/')({ component: RouteComponent });

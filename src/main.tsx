@@ -7,8 +7,8 @@ import { Toaster } from '@/components/ui/toast';
 import { queryClient } from '@/config/queryClient';
 import { router } from '@/config/router';
 import { getSentryErrorHandlers, initializeSentry } from '@/config/sentry';
+import { I18nextProvider } from '@/i18n';
 import reportWebVitals from '@/reportWebVitals';
-import '@/i18n';
 
 import '@/styles.css';
 
@@ -21,10 +21,12 @@ if (!rootElement.innerHTML) {
 
   root.render(
     <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <Toaster />
-      </QueryClientProvider>
+      <I18nextProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+          <Toaster />
+        </QueryClientProvider>
+      </I18nextProvider>
     </StrictMode>,
   );
 }

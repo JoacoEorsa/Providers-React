@@ -1,6 +1,4 @@
-import { useTranslation } from 'react-i18next';
-
-import type { resources } from '@/i18n';
+import { type resources, useTranslation } from '@/i18n';
 import { Button } from '../ui/button';
 
 export const LanguageSwitcher = () => {

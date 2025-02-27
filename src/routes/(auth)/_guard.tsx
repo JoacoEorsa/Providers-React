@@ -8,7 +8,7 @@ const AuthGuard = () => {
 
   return (
     <div>
-      {t('Hello guard layout! I render on all paths inside the /_guard/ folder')}
+      {t('greetings.guardedLayout')}
       <Outlet />
     </div>
   );

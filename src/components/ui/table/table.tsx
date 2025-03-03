@@ -10,7 +10,7 @@ import {
 } from '@tanstack/react-table';
 import { tv } from 'tailwind-variants';
 
-const tableWrapper = tv({
+const tableVariants = tv({
   slots: {
     root: 'w-full caption-bottom text-sm',
     header: '[&_tr]:border-b',
@@ -24,7 +24,7 @@ const tableWrapper = tv({
   },
 });
 
-const { body, caption, cell, footer, head, header, root, row, skeleton } = tableWrapper();
+const { body, caption, cell, footer, head, header, root, row, skeleton } = tableVariants();
 
 const Root = ({ className, ...props }: ComponentProps<'table'>) => {
   return (

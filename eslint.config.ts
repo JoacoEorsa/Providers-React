@@ -8,6 +8,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- The type doesn't exist.
 // @ts-expect-error
 import sortDestructureKeys from 'eslint-plugin-sort-destructure-keys';
+import storybook from 'eslint-plugin-storybook';
 import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import ts from 'typescript-eslint';
@@ -113,6 +114,8 @@ const config: Linter.Config[] = [
     },
   },
 
+  // Storybook rules
+  ...storybook.configs['flat/recommended'],
   { files: ['**/*.stories.{ts,tsx}'], rules: { 'i18next/no-literal-string': 'off' } },
 ];
 

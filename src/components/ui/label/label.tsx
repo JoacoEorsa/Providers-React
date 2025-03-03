@@ -1,4 +1,4 @@
-import { type ComponentPropsWithoutRef, type ComponentRef, forwardRef } from 'react';
+import { type ComponentProps } from 'react';
 import * as LabelPrimitive from '@radix-ui/react-label';
 import { tv } from 'tailwind-variants';
 
@@ -8,13 +8,11 @@ const labelVariants = tv({
   base: 'text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
 });
 
-const Label = forwardRef<
-  ComponentRef<typeof LabelPrimitive.Root>,
-  ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & Styled
->(({ className, ...props }, ref) => {
-  return <LabelPrimitive.Root className={labelVariants({ className })} ref={ref} {...props} />;
-});
+type LabelProps = ComponentProps<typeof LabelPrimitive.Root> & Styled;
 
+const Label = ({ className, ...props }: LabelProps) => {
+  return <LabelPrimitive.Root className={labelVariants({ className })} {...props} />;
+};
 Label.displayName = LabelPrimitive.Root.displayName;
 
 export { Label };

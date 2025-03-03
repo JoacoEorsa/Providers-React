@@ -13,12 +13,11 @@ import { I18nextProvider } from '@/i18n';
 import reportWebVitals from '@/reportWebVitals';
 
 import '@/styles.css';
+import { env } from './config/env';
 
 initializeSentry();
 scan({
-  enabled: Boolean(
-    import.meta.env.VITE_APP_ENV === 'local' && import.meta.env.VITE_ENABLE_REACT_SCAN,
-  ),
+  enabled: Boolean(env.VITE_APP_ENV === 'local' && env.VITE_ENABLE_REACT_SCAN),
 });
 
 const rootElement = document.getElementById('root')!;

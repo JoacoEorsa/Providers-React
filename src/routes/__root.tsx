@@ -5,6 +5,7 @@ import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { Button } from '@/components/ui/button';
+import { env } from '@/config/env';
 import { useTranslation } from '@/i18n';
 import { setAuthStoreToken, useAuthStoreToken } from '@/stores';
 
@@ -40,7 +41,7 @@ const RootComponent = () => {
 
       <Outlet />
 
-      {import.meta.env.VITE_APP_ENV === 'local' && import.meta.env.VITE_ENABLE_DEVTOOLS ? (
+      {env.VITE_APP_ENV === 'local' && env.VITE_ENABLE_DEVTOOLS ? (
         <Suspense>
           <TanStackRouterDevtools position="bottom-left" />
           <ReactQueryDevtools buttonPosition="bottom-right" />

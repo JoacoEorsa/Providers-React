@@ -1,9 +1,10 @@
 import axios, { type AxiosError } from 'axios';
 
 import { getAuthStoreState, setAuthStoreToken } from '@/stores';
+import { env } from './env';
 
 const baseApiConfiguration = {
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: env.VITE_API_URL,
   headers: { 'Content-Type': 'application/json' },
 };
 

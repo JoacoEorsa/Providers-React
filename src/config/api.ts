@@ -39,6 +39,4 @@ privateApi.interceptors.response.use(
 
 const publicApi = axios.create(baseApiConfiguration);
 
-export const getApi = ({ isPrivateApi } = { isPrivateApi: true }) => {
-  return isPrivateApi ? privateApi : publicApi;
-};
+export { privateApi, publicApi };

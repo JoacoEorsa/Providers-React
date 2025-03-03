@@ -13,9 +13,9 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as PrivateLayoutImport } from './routes/_private/layout'
 import { Route as PrivatePageImport } from './routes/_private/page'
-import { Route as PrivateAdminLayoutImport } from './routes/_private/admin/layout'
+import { Route as PrivatePaymentsPageImport } from './routes/_private/payments.page'
 import { Route as PrivateDashboardPageImport } from './routes/_private/dashboard.page'
-import { Route as PrivateAdminPageImport } from './routes/_private/admin/page'
+import { Route as PrivateAdminPageImport } from './routes/_private/admin.page'
 import { Route as publicRegisterPageImport } from './routes/(public)/register.page'
 import { Route as publicLoginPageImport } from './routes/(public)/login/page'
 
@@ -32,9 +32,9 @@ const PrivatePageRoute = PrivatePageImport.update({
   getParentRoute: () => PrivateLayoutRoute,
 } as any)
 
-const PrivateAdminLayoutRoute = PrivateAdminLayoutImport.update({
-  id: '/admin',
-  path: '/admin',
+const PrivatePaymentsPageRoute = PrivatePaymentsPageImport.update({
+  id: '/payments/',
+  path: '/payments/',
   getParentRoute: () => PrivateLayoutRoute,
 } as any)
 
@@ -45,9 +45,9 @@ const PrivateDashboardPageRoute = PrivateDashboardPageImport.update({
 } as any)
 
 const PrivateAdminPageRoute = PrivateAdminPageImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => PrivateAdminLayoutRoute,
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => PrivateLayoutRoute,
 } as any)
 
 const publicRegisterPageRoute = publicRegisterPageImport.update({
@@ -73,13 +73,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivateLayoutImport
       parentRoute: typeof rootRoute
     }
-    '/_private/admin': {
-      id: '/_private/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof PrivateAdminLayoutImport
-      parentRoute: typeof PrivateLayoutImport
-    }
     '/_private/': {
       id: '/_private/'
       path: '/'
@@ -103,10 +96,10 @@ declare module '@tanstack/react-router' {
     }
     '/_private/admin/': {
       id: '/_private/admin/'
-      path: '/'
-      fullPath: '/admin/'
+      path: '/admin'
+      fullPath: '/admin'
       preLoaderRoute: typeof PrivateAdminPageImport
-      parentRoute: typeof PrivateAdminLayoutImport
+      parentRoute: typeof PrivateLayoutImport
     }
     '/_private/dashboard/': {
       id: '/_private/dashboard/'
@@ -115,32 +108,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivateDashboardPageImport
       parentRoute: typeof PrivateLayoutImport
     }
+    '/_private/payments/': {
+      id: '/_private/payments/'
+      path: '/payments'
+      fullPath: '/payments'
+      preLoaderRoute: typeof PrivatePaymentsPageImport
+      parentRoute: typeof PrivateLayoutImport
+    }
   }
 }
 
 // Create and export the route tree
 
-interface PrivateAdminLayoutRouteChildren {
-  PrivateAdminPageRoute: typeof PrivateAdminPageRoute
-}
-
-const PrivateAdminLayoutRouteChildren: PrivateAdminLayoutRouteChildren = {
-  PrivateAdminPageRoute: PrivateAdminPageRoute,
-}
-
-const PrivateAdminLayoutRouteWithChildren =
-  PrivateAdminLayoutRoute._addFileChildren(PrivateAdminLayoutRouteChildren)
-
 interface PrivateLayoutRouteChildren {
-  PrivateAdminLayoutRoute: typeof PrivateAdminLayoutRouteWithChildren
   PrivatePageRoute: typeof PrivatePageRoute
+  PrivateAdminPageRoute: typeof PrivateAdminPageRoute
   PrivateDashboardPageRoute: typeof PrivateDashboardPageRoute
+  PrivatePaymentsPageRoute: typeof PrivatePaymentsPageRoute
 }
 
 const PrivateLayoutRouteChildren: PrivateLayoutRouteChildren = {
-  PrivateAdminLayoutRoute: PrivateAdminLayoutRouteWithChildren,
   PrivatePageRoute: PrivatePageRoute,
+  PrivateAdminPageRoute: PrivateAdminPageRoute,
   PrivateDashboardPageRoute: PrivateDashboardPageRoute,
+  PrivatePaymentsPageRoute: PrivatePaymentsPageRoute,
 }
 
 const PrivateLayoutRouteWithChildren = PrivateLayoutRoute._addFileChildren(
@@ -149,12 +140,12 @@ const PrivateLayoutRouteWithChildren = PrivateLayoutRoute._addFileChildren(
 
 export interface FileRoutesByFullPath {
   '': typeof PrivateLayoutRouteWithChildren
-  '/admin': typeof PrivateAdminLayoutRouteWithChildren
   '/': typeof PrivatePageRoute
   '/login': typeof publicLoginPageRoute
   '/register': typeof publicRegisterPageRoute
-  '/admin/': typeof PrivateAdminPageRoute
+  '/admin': typeof PrivateAdminPageRoute
   '/dashboard': typeof PrivateDashboardPageRoute
+  '/payments': typeof PrivatePaymentsPageRoute
 }
 
 export interface FileRoutesByTo {
@@ -163,40 +154,41 @@ export interface FileRoutesByTo {
   '/register': typeof publicRegisterPageRoute
   '/admin': typeof PrivateAdminPageRoute
   '/dashboard': typeof PrivateDashboardPageRoute
+  '/payments': typeof PrivatePaymentsPageRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/_private': typeof PrivateLayoutRouteWithChildren
-  '/_private/admin': typeof PrivateAdminLayoutRouteWithChildren
   '/_private/': typeof PrivatePageRoute
   '/(public)/login/': typeof publicLoginPageRoute
   '/(public)/register/': typeof publicRegisterPageRoute
   '/_private/admin/': typeof PrivateAdminPageRoute
   '/_private/dashboard/': typeof PrivateDashboardPageRoute
+  '/_private/payments/': typeof PrivatePaymentsPageRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | ''
-    | '/admin'
     | '/'
     | '/login'
     | '/register'
-    | '/admin/'
+    | '/admin'
     | '/dashboard'
+    | '/payments'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/register' | '/admin' | '/dashboard'
+  to: '/' | '/login' | '/register' | '/admin' | '/dashboard' | '/payments'
   id:
     | '__root__'
     | '/_private'
-    | '/_private/admin'
     | '/_private/'
     | '/(public)/login/'
     | '/(public)/register/'
     | '/_private/admin/'
     | '/_private/dashboard/'
+    | '/_private/payments/'
   fileRoutesById: FileRoutesById
 }
 
@@ -230,16 +222,10 @@ export const routeTree = rootRoute
     "/_private": {
       "filePath": "_private/layout.tsx",
       "children": [
-        "/_private/admin",
         "/_private/",
-        "/_private/dashboard/"
-      ]
-    },
-    "/_private/admin": {
-      "filePath": "_private/admin/layout.tsx",
-      "parent": "/_private",
-      "children": [
-        "/_private/admin/"
+        "/_private/admin/",
+        "/_private/dashboard/",
+        "/_private/payments/"
       ]
     },
     "/_private/": {
@@ -253,11 +239,15 @@ export const routeTree = rootRoute
       "filePath": "(public)/register.page.tsx"
     },
     "/_private/admin/": {
-      "filePath": "_private/admin/page.tsx",
-      "parent": "/_private/admin"
+      "filePath": "_private/admin.page.tsx",
+      "parent": "/_private"
     },
     "/_private/dashboard/": {
       "filePath": "_private/dashboard.page.tsx",
+      "parent": "/_private"
+    },
+    "/_private/payments/": {
+      "filePath": "_private/payments.page.tsx",
       "parent": "/_private"
     }
   }

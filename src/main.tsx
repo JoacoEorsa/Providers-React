@@ -15,7 +15,11 @@ import reportWebVitals from '@/reportWebVitals';
 import '@/styles.css';
 
 initializeSentry();
-scan({ enabled: import.meta.env.VITE_ENABLE_REACT_SCAN });
+scan({
+  enabled: Boolean(
+    import.meta.env.VITE_APP_ENV === 'local' && import.meta.env.VITE_ENABLE_REACT_SCAN,
+  ),
+});
 
 const rootElement = document.getElementById('root')!;
 

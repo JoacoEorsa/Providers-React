@@ -2,7 +2,6 @@
   "greetings": {
     "rootLayout": "Root layout! I render on all paths (in English)",
     "exactPath": "Hello {exactPath} exact path!",
-    "layout": "Hello {layout} layout!",
     "privateLayout": "Hello private layout! I render on all paths inside the /_private/ folder",
     "publicLayout": "Public layout! I render on all paths inside the /(public)/ folder",
     "home": "Welcome Home!"
@@ -19,5 +18,29 @@
   },
   "buttons": {
     "logOut": "Log out"
+  },
+  "home": {
+    "links": {
+      "goToPayments": "Go to payments"
+    }
+  },
+  "payments": {
+    "table": {
+      "columns": {
+        "amount": "Amount",
+        "status": "Status",
+        "email": "Email"
+      }
+    }
+  },
+  "table": {
+    "noResults": "No results",
+    "pagination": {
+      "pageCount": "{currentPage} of {totalPages}",
+      "buttons": {
+        "next": "Next",
+        "previous": "Previous"
+      }
+    }
   }
 }

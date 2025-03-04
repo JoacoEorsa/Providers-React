@@ -1,6 +1,9 @@
 import type { UseMutationOptions, UseQueryOptions } from '@tanstack/react-query';
 
-type QueryKey = { queryKey: readonly unknown[]; queryFn: (...args: never) => unknown };
+interface QueryKey {
+  queryKey: readonly unknown[];
+  queryFn: (...args: never) => unknown;
+}
 
 type QueryFnReturnType<T> = T extends (...args: never) => QueryKey
   ? Awaited<ReturnType<ReturnType<T>['queryFn']>>

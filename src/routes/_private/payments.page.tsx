@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 
 import { DataTable, type PaginationState } from '@/components/ui/table';
+import { useTranslation } from '@/i18n';
 import { usePaymentsListQuery } from '@/services';
 import { usePaymentsTable } from './-hooks';
 
@@ -12,6 +13,8 @@ const PaymentsPage = () => {
     pageIndex: 0,
     pageSize: PAGE_SIZE,
   });
+
+  const { t } = useTranslation();
 
   const { data, isLoading } = usePaymentsListQuery({
     pageSize: pagination.pageSize,
@@ -26,8 +29,10 @@ const PaymentsPage = () => {
   });
 
   return (
-    <div className="p-4">
-      <DataTable isLoadingData={isLoading} table={table} />
+    <div className="flex flex-col gap-y-2 p-4">
+      <h1>{t('payments.title')}</h1>
+
+      <DataTable isLoadingData={isLoading} table={table} withColumnVisibility />
     </div>
   );
 };

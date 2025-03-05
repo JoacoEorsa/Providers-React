@@ -1,26 +1,45 @@
+import type { AvailableRoutes } from '@/config/router';
 import { useTranslation } from '@/i18n';
 import { flexRender, Table, type TableProps } from '../table';
 import { Pagination } from './pagination';
+import { SearchTextInput } from './search-text-input';
 import { ViewOptions } from './view-options';
 
-interface DataTableProps<T> {
-  isLoadingData?: boolean;
+interface BaseDataTableProps<T> {
+  isLoading?: boolean;
   table: TableProps<T>;
   withColumnVisibility?: boolean;
-  withPagination?: boolean;
 }
 
+interface DataTablePropsWithSearch {
+  withSearch: true;
+  path: AvailableRoutes;
+}
+
+interface DataTablePropsWithoutSearch {
+  withSearch?: false;
+  path?: never;
+}
+
+type DataTableProps<T> = BaseDataTableProps<T> &
+  (DataTablePropsWithSearch | DataTablePropsWithoutSearch);
+
 export const DataTable = <T,>({
-  isLoadingData,
+  isLoading,
+  path,
   table,
   withColumnVisibility = false,
-  withPagination = true,
+  withSearch = false,
 }: DataTableProps<T>) => {
   const { t } = useTranslation();
 
   return (
     <div className="flex w-full flex-col gap-y-2">
-      {withColumnVisibility ? <ViewOptions table={table} /> : null}
+      <div className="flex items-center gap-x-4">
+        {withSearch && path ? <SearchTextInput path={path} /> : null}
+
+        {withColumnVisibility ? <ViewOptions table={table} /> : null}
+      </div>
 
       <Table.Root>
         <Table.Header>
@@ -42,12 +61,14 @@ export const DataTable = <T,>({
         </Table.Header>
 
         <Table.Body>
-          {isLoadingData ? (
+          {isLoading ? (
             <Table.Skeleton
               columnsLength={table.getAllColumns().length}
               pageSize={table.getState().pagination.pageSize}
             />
-          ) : table.getRowModel().rows?.length ? (
+          ) : null}
+
+          {!isLoading && table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => {
               return (
                 <Table.Row key={row.id}>
@@ -71,7 +92,7 @@ export const DataTable = <T,>({
         </Table.Body>
       </Table.Root>
 
-      {withPagination ? <Pagination table={table} /> : null}
+      {table.options.manualPagination ? <Pagination isLoading={isLoading} table={table} /> : null}
     </div>
   );
 };

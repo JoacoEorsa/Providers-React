@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { MoreHorizontal } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Dropdown } from '@/components/ui/dropdown';
+import { Icons } from '@/components/ui/icons';
 import { createColumnHelper, useTable, type UseTableProps } from '@/components/ui/table';
 import { useTranslation } from '@/i18n';
 import type { Payment } from '@/services/payments/types';
@@ -56,7 +56,7 @@ export const usePaymentsTable = ({
                   <Button className="size-8" variant="ghost">
                     <span className="sr-only">{t('payments.table.columns.actions.ariaLabel')}</span>
 
-                    <MoreHorizontal />
+                    <Icons.MoreHorizontal />
                   </Button>
                 </Dropdown.MenuTrigger>
 

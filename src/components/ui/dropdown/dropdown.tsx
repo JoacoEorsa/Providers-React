@@ -1,7 +1,8 @@
 import type { ComponentProps } from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
 import { tv } from 'tailwind-variants';
+
+import { Icons } from '@/components/ui/icons';
 
 const dropdownVariants = tv({
   slots: {
@@ -102,7 +103,7 @@ const MenuCheckboxItem = ({
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
-          <CheckIcon className="size-4" />
+          <Icons.Check />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -127,7 +128,7 @@ const MenuRadioItem = ({
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
-          <CircleIcon className="size-2 fill-current" />
+          <Icons.Circle className="size-2 fill-current" />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -189,7 +190,8 @@ const MenuSubTrigger = ({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto size-4" />
+
+      <Icons.ChevronRight className="ml-auto" />
     </DropdownMenuPrimitive.SubTrigger>
   );
 };

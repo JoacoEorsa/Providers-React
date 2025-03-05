@@ -71,7 +71,7 @@ const Skeleton = ({ columnsLength, pageSize }: { columnsLength: number; pageSize
       <Row key={index}>
         {Array.from({ length: columnsLength }, (_, idx) => {
           return (
-            <Cell className="h-9" key={idx}>
+            <Cell className="h-12" key={idx}>
               <div className={skeleton()} />
             </Cell>
           );

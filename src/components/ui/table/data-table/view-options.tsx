@@ -1,7 +1,6 @@
-import { ChevronDown } from 'lucide-react';
-
 import { Button } from '@/components/ui/button';
 import { Dropdown } from '@/components/ui/dropdown';
+import { Icons } from '@/components/ui/icons';
 import { useTranslation } from '@/i18n';
 import type { TableProps } from '../table';
 
@@ -16,7 +15,7 @@ export const ViewOptions = <T,>({ table }: ViewOptionsProps<T>) => {
     <Dropdown.Menu>
       <Dropdown.MenuTrigger asChild>
         <Button className="ml-auto" variant="outline">
-          {t('table.filters.columns')} <ChevronDown />
+          {t('table.filters.columns')} <Icons.ChevronDown />
         </Button>
       </Dropdown.MenuTrigger>
 

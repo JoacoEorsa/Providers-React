@@ -12,6 +12,7 @@ const config = {
   semi: true,
   singleQuote: true,
   tabWidth: 2,
+  tailwindFunctions: ['tv'],
   trailingComma: 'all',
   useTabs: false,
 };

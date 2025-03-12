@@ -11,6 +11,16 @@ interface ViewOptionsProps<T> {
 export const ViewOptions = <T,>({ table }: ViewOptionsProps<T>) => {
   const { t } = useTranslation();
 
+  const columns = table.getAllLeafColumns();
+
+  const hidableColumns = columns.filter((column) => {
+    return column.getCanHide();
+  });
+
+  const visibleColumns = columns.filter((column) => {
+    return column.getIsVisible() && typeof column.columnDef.header === 'string';
+  });
+
   return (
     <Dropdown.Menu>
       <Dropdown.MenuTrigger asChild>
@@ -20,25 +30,23 @@ export const ViewOptions = <T,>({ table }: ViewOptionsProps<T>) => {
       </Dropdown.MenuTrigger>
 
       <Dropdown.MenuContent align="end">
-        {table
-          .getAllColumns()
-          .filter((column) => {
-            return column.getCanHide();
-          })
-          .map((column) => {
-            return (
-              <Dropdown.MenuCheckboxItem
-                checked={column.getIsVisible()}
-                className="capitalize"
-                key={column.id}
-                onCheckedChange={(value) => {
-                  return column.toggleVisibility(!!value);
-                }}
-              >
-                {column.columnDef.meta?.stringifiedHeader || column.id}
-              </Dropdown.MenuCheckboxItem>
-            );
-          })}
+        {hidableColumns.map((column) => {
+          const isLastColumnVisible = visibleColumns.length === 1 && column.getIsVisible();
+
+          return (
+            <Dropdown.MenuCheckboxItem
+              checked={column.getIsVisible()}
+              className="capitalize"
+              disabled={isLastColumnVisible}
+              key={column.id}
+              onCheckedChange={(value) => {
+                return column.toggleVisibility(!!value);
+              }}
+            >
+              {column.columnDef.meta?.stringifiedHeader || column.id}
+            </Dropdown.MenuCheckboxItem>
+          );
+        })}
       </Dropdown.MenuContent>
     </Dropdown.Menu>
   );

@@ -3,7 +3,7 @@ import { getRouteApi } from '@tanstack/react-router';
 import { z } from 'zod';
 
 import type { PaginationState } from '@/components/ui/table';
-import type { AvailableRoutes } from '@/config/router';
+import type { AvailableRoutesId } from '@/config/router';
 
 const PAGE_SIZE = 10;
 
@@ -17,7 +17,7 @@ export const paginationValidationWithDefaults = z.object({
   pageSize: z.number().default(PAGE_SIZE),
 });
 
-export const usePagination = (path: AvailableRoutes) => {
+export const usePagination = (path: AvailableRoutesId) => {
   const { useNavigate, useSearch } = getRouteApi(path);
 
   const search = useSearch();

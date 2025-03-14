@@ -1,11 +1,11 @@
 import { Icons } from '@/components/ui/icons';
 import { Input } from '@/components/ui/input';
-import type { AvailableRoutes } from '@/config/router';
+import type { AvailableRoutesId } from '@/config/router';
 import { useSearchText } from '@/hooks';
 import { SIZE } from '@/types/styles';
 
 interface SearchTextInputProps {
-  path: AvailableRoutes;
+  path: AvailableRoutesId;
 }
 
 export const SearchTextInput = ({ path }: SearchTextInputProps) => {

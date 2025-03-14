@@ -44,7 +44,7 @@ const PaymentsPage = () => {
   });
 
   return (
-    <div className="flex flex-col gap-y-2 p-4">
+    <div className="flex flex-col gap-y-2">
       <h1>{t('payments.title')}</h1>
 
       <DataTable

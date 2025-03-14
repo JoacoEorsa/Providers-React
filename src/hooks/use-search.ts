@@ -2,14 +2,14 @@ import { useMemo } from 'react';
 import { getRouteApi } from '@tanstack/react-router';
 import { z } from 'zod';
 
-import type { AvailableRoutes } from '@/config/router';
+import type { AvailableRoutesId } from '@/config/router';
 import { usePagination } from './use-pagination';
 
 export const searchTextValidation = z.object({
   searchText: z.string().optional(),
 });
 
-export const useSearchText = (path: AvailableRoutes) => {
+export const useSearchText = (path: AvailableRoutesId) => {
   const { useNavigate, useSearch } = getRouteApi(path);
 
   const search = useSearch();

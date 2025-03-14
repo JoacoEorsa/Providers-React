@@ -1,4 +1,4 @@
-import type { AvailableRoutes } from '@/config/router';
+import type { AvailableRoutesId } from '@/config/router';
 import { useTranslation } from '@/i18n';
 import { flexRender, Table, type TableProps } from '../table';
 import { Pagination } from './pagination';
@@ -13,7 +13,7 @@ interface BaseDataTableProps<T> {
 
 interface DataTablePropsWithSearch {
   withSearch: true;
-  path: AvailableRoutes;
+  path: AvailableRoutesId;
 }
 
 interface DataTablePropsWithoutSearch {

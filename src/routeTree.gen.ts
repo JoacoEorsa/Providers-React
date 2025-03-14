@@ -15,7 +15,6 @@ import { Route as PrivateLayoutImport } from './routes/_private/layout'
 import { Route as PrivatePageImport } from './routes/_private/page'
 import { Route as PrivatePaymentsPageImport } from './routes/_private/payments.page'
 import { Route as PrivateDashboardPageImport } from './routes/_private/dashboard.page'
-import { Route as PrivateAdminPageImport } from './routes/_private/admin.page'
 import { Route as publicRegisterPageImport } from './routes/(public)/register.page'
 import { Route as publicLoginPageImport } from './routes/(public)/login/page'
 
@@ -41,12 +40,6 @@ const PrivatePaymentsPageRoute = PrivatePaymentsPageImport.update({
 const PrivateDashboardPageRoute = PrivateDashboardPageImport.update({
   id: '/dashboard/',
   path: '/dashboard/',
-  getParentRoute: () => PrivateLayoutRoute,
-} as any)
-
-const PrivateAdminPageRoute = PrivateAdminPageImport.update({
-  id: '/admin/',
-  path: '/admin/',
   getParentRoute: () => PrivateLayoutRoute,
 } as any)
 
@@ -94,13 +87,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof publicRegisterPageImport
       parentRoute: typeof rootRoute
     }
-    '/_private/admin/': {
-      id: '/_private/admin/'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof PrivateAdminPageImport
-      parentRoute: typeof PrivateLayoutImport
-    }
     '/_private/dashboard/': {
       id: '/_private/dashboard/'
       path: '/dashboard'
@@ -122,14 +108,12 @@ declare module '@tanstack/react-router' {
 
 interface PrivateLayoutRouteChildren {
   PrivatePageRoute: typeof PrivatePageRoute
-  PrivateAdminPageRoute: typeof PrivateAdminPageRoute
   PrivateDashboardPageRoute: typeof PrivateDashboardPageRoute
   PrivatePaymentsPageRoute: typeof PrivatePaymentsPageRoute
 }
 
 const PrivateLayoutRouteChildren: PrivateLayoutRouteChildren = {
   PrivatePageRoute: PrivatePageRoute,
-  PrivateAdminPageRoute: PrivateAdminPageRoute,
   PrivateDashboardPageRoute: PrivateDashboardPageRoute,
   PrivatePaymentsPageRoute: PrivatePaymentsPageRoute,
 }
@@ -143,7 +127,6 @@ export interface FileRoutesByFullPath {
   '/': typeof PrivatePageRoute
   '/login': typeof publicLoginPageRoute
   '/register': typeof publicRegisterPageRoute
-  '/admin': typeof PrivateAdminPageRoute
   '/dashboard': typeof PrivateDashboardPageRoute
   '/payments': typeof PrivatePaymentsPageRoute
 }
@@ -152,7 +135,6 @@ export interface FileRoutesByTo {
   '/': typeof PrivatePageRoute
   '/login': typeof publicLoginPageRoute
   '/register': typeof publicRegisterPageRoute
-  '/admin': typeof PrivateAdminPageRoute
   '/dashboard': typeof PrivateDashboardPageRoute
   '/payments': typeof PrivatePaymentsPageRoute
 }
@@ -163,30 +145,21 @@ export interface FileRoutesById {
   '/_private/': typeof PrivatePageRoute
   '/(public)/login/': typeof publicLoginPageRoute
   '/(public)/register/': typeof publicRegisterPageRoute
-  '/_private/admin/': typeof PrivateAdminPageRoute
   '/_private/dashboard/': typeof PrivateDashboardPageRoute
   '/_private/payments/': typeof PrivatePaymentsPageRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | ''
-    | '/'
-    | '/login'
-    | '/register'
-    | '/admin'
-    | '/dashboard'
-    | '/payments'
+  fullPaths: '' | '/' | '/login' | '/register' | '/dashboard' | '/payments'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/register' | '/admin' | '/dashboard' | '/payments'
+  to: '/' | '/login' | '/register' | '/dashboard' | '/payments'
   id:
     | '__root__'
     | '/_private'
     | '/_private/'
     | '/(public)/login/'
     | '/(public)/register/'
-    | '/_private/admin/'
     | '/_private/dashboard/'
     | '/_private/payments/'
   fileRoutesById: FileRoutesById
@@ -223,7 +196,6 @@ export const routeTree = rootRoute
       "filePath": "_private/layout.tsx",
       "children": [
         "/_private/",
-        "/_private/admin/",
         "/_private/dashboard/",
         "/_private/payments/"
       ]
@@ -237,10 +209,6 @@ export const routeTree = rootRoute
     },
     "/(public)/register/": {
       "filePath": "(public)/register.page.tsx"
-    },
-    "/_private/admin/": {
-      "filePath": "_private/admin.page.tsx",
-      "parent": "/_private"
     },
     "/_private/dashboard/": {
       "filePath": "_private/dashboard.page.tsx",

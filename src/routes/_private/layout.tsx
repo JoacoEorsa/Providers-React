@@ -2,13 +2,16 @@ import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
 
 import { NavigationMenu } from '@/components/ui/navigation-menu';
 import type { AvailableRoutesToPath } from '@/config/router';
+import { useTranslation } from '@/i18n';
 import { getAuthStoreState } from '@/stores';
 
 const PrivateLayout = () => {
+  const { t } = useTranslation();
+
   const links: { path: AvailableRoutesToPath; label: string }[] = [
-    { path: '/', label: 'Home' },
-    { path: '/dashboard', label: 'Dashboard' },
-    { path: '/payments', label: 'Payments' },
+    { path: '/', label: t('navigation.links.home') },
+    { path: '/dashboard', label: t('navigation.links.dashboard') },
+    { path: '/payments', label: t('navigation.links.payments') },
   ];
 
   return (

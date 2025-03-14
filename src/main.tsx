@@ -7,7 +7,7 @@ import { RouterProvider } from '@tanstack/react-router';
 
 import { initializeIcons } from '@/components/ui/icons';
 import { Toaster } from '@/components/ui/toast';
-import { queryClient } from '@/config/queryClient';
+import { queryClient } from '@/config/query-client';
 import { router } from '@/config/router';
 import { getSentryErrorHandlers, initializeSentry } from '@/config/sentry';
 import { I18nextProvider } from '@/i18n';

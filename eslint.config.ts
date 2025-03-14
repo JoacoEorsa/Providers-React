@@ -1,5 +1,6 @@
 import js from '@eslint/js';
 import stylisticJs from '@stylistic/eslint-plugin-js';
+import tanstackRouter from '@tanstack/eslint-plugin-router';
 import type { ESLint, Linter } from 'eslint';
 import i18next from 'eslint-plugin-i18next';
 import preferArrowFunctions from 'eslint-plugin-prefer-arrow-functions';
@@ -9,6 +10,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 // @ts-expect-error
 import sortDestructureKeys from 'eslint-plugin-sort-destructure-keys';
 import storybook from 'eslint-plugin-storybook';
+import unicorn from 'eslint-plugin-unicorn';
 import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import ts from 'typescript-eslint';
@@ -65,10 +67,12 @@ const config: Linter.Config[] = [
   {
     plugins: {
       '@stylistic/js': stylisticJs,
+      '@tanstack/router': tanstackRouter as unknown as ESLint.Plugin,
       i18next,
       'prefer-arrow-functions': preferArrowFunctions as ESLint.Plugin,
       'simple-import-sort': simpleImportSort,
       'sort-destructure-keys': sortDestructureKeys,
+      unicorn,
       'unused-imports': unusedImports,
     },
     rules: {
@@ -76,6 +80,7 @@ const config: Linter.Config[] = [
       '@stylistic/js/no-multiple-empty-lines': ['warn', { max: 1 }],
       '@stylistic/js/no-trailing-spaces': 'warn',
       '@stylistic/js/object-curly-spacing': ['warn', 'always'],
+      '@tanstack/router/create-route-property-order': 'error',
       'i18next/no-literal-string': 'warn',
       'prefer-arrow-functions/prefer-arrow-functions': 'error',
       'simple-import-sort/exports': 'warn',
@@ -108,6 +113,7 @@ const config: Linter.Config[] = [
         },
       ],
       'sort-destructure-keys/sort-destructure-keys': 'warn',
+      'unicorn/filename-case': ['error', { case: 'kebabCase' }],
       'unused-imports/no-unused-imports': 'warn',
       'unused-imports/no-unused-vars': [
         'warn',

@@ -15,6 +15,10 @@ const LoginPage = () => {
 };
 
 export const Route = createFileRoute('/(public)/login/')({
+  validateSearch: z.object({
+    redirect: z.string().optional().catch(''),
+  }),
+  component: LoginPage,
   beforeLoad: ({ search }) => {
     const { token } = getAuthStoreState();
 
@@ -22,8 +26,4 @@ export const Route = createFileRoute('/(public)/login/')({
       throw redirect({ to: search.redirect || '/' });
     }
   },
-  component: LoginPage,
-  validateSearch: z.object({
-    redirect: z.string().optional().catch(''),
-  }),
 });

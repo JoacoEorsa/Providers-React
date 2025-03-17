@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { getRouteApi } from '@tanstack/react-router';
 import { z } from 'zod';
 
-import type { PaginationState } from '@/components/ui/table';
+import type { PaginationState } from '@/components/ui';
 import type { AvailableRoutesId } from '@/config/router';
 
 const PAGE_SIZE = 10;

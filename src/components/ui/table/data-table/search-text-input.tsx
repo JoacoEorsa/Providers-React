@@ -1,5 +1,4 @@
-import { Icons } from '@/components/ui/icons';
-import { Input } from '@/components/ui/input';
+import { Icons, Input } from '@/components/ui';
 import type { AvailableRoutesId } from '@/config/router';
 import { useSearchText } from '@/hooks';
 import { SIZE } from '@/types/styles';

@@ -2,6 +2,7 @@ import { type ComponentProps } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { tv, type VariantProps } from 'tailwind-variants';
 
+import { Icons } from '@/components/ui';
 import type { Styled } from '@/types/styles';
 
 const buttonVariants = tv({
@@ -20,7 +21,7 @@ const buttonVariants = tv({
       default: 'h-9 px-4 py-2',
       sm: 'h-8 rounded-md px-3 text-xs',
       lg: 'h-10 rounded-md px-8',
-      icon: 'size-9',
+      icon: 'px-4 py-2',
     },
   },
   defaultVariants: {
@@ -34,12 +35,34 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants>,
     Styled {
   asChild?: boolean;
+  isLoading?: boolean;
 }
 
-const Button = ({ asChild = false, className, size, variant, ...props }: ButtonProps) => {
-  const Comp = asChild ? Slot : 'button';
-
-  return <Comp className={buttonVariants({ variant, size, className })} {...props} />;
+const Button = ({
+  asChild = false,
+  children,
+  className,
+  disabled,
+  isLoading = false,
+  size,
+  variant,
+  ...props
+}: ButtonProps) => {
+  return asChild ? (
+    <Slot className={buttonVariants({ variant, size, className })} {...props}>
+      {children}
+    </Slot>
+  ) : (
+    <button
+      className={buttonVariants({ variant, size, className })}
+      disabled={isLoading || disabled}
+      type="button"
+      {...props}
+    >
+      {isLoading ? <Icons.LoaderCircle className="animate-spin" /> : null}
+      {children}
+    </button>
+  );
 };
 
 export { Button, buttonVariants };

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { NavigationMenu } from '@/components/ui';
 import type { AvailableRoutesToPath } from '@/config/router';
-import { NavigationMenu } from './navigation-menu';
 
 const meta: Meta<typeof NavigationMenu.Root> = {
   args: { children: 'NavigationMenu' },

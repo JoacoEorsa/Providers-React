@@ -1,7 +1,5 @@
-import { Button } from '@/components/ui/button';
-import { Icons } from '@/components/ui/icons';
+import { Button, Icons, type TableProps } from '@/components/ui';
 import { useTranslation } from '@/i18n';
-import type { TableProps } from '../table';
 
 interface PaginationProps<T> {
   table: TableProps<T>;

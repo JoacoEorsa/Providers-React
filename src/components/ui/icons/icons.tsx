@@ -16,6 +16,7 @@ const AVAILABLE_ICONIFY_ICONS = {
   LoaderCircle: 'loader-circle',
   MoreHorizontal: 'more-horizontal',
   Search: 'search',
+  Close: 'x',
 };
 
 export const initializeIcons = () => {

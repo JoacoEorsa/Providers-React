@@ -1,9 +1,8 @@
 import { useArgs } from '@storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Icons } from '@/components/ui/icons';
+import { Icons, Input } from '@/components/ui';
 import { SIZE } from '@/types/styles';
-import { Input } from './input';
 
 const meta: Meta<typeof Input> = {
   args: { placeholder: 'Type your text here...' },

@@ -2,7 +2,7 @@ import { createQueryKeys } from '@lukemorales/query-key-factory';
 import { skipToken } from '@tanstack/react-query';
 
 import type { RequestParams } from '../types';
-import { createPayment, getPaymentsDetail, getPaymentsList } from './api';
+import { createPayment, deletePayment, getPaymentsDetail, getPaymentsList } from './api';
 
 export const queries = createQueryKeys('payments', {
   detail: (paymentId: string) => {
@@ -23,4 +23,7 @@ export const queries = createQueryKeys('payments', {
   },
 });
 
-export const mutations = { create: createPayment };
+export const mutations = {
+  create: createPayment,
+  delete: deletePayment,
+};

@@ -1,31 +1,17 @@
 import { Suspense } from 'react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { createRootRoute, Outlet, useNavigate, useRouter } from '@tanstack/react-router';
+import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
-import { Button } from '@/components/ui/button';
+import { LogoutButton } from '@/components/logout-button';
 import { env } from '@/config/env';
 import { useTranslation } from '@/i18n';
-import { setAuthStoreToken, useAuthStoreToken } from '@/stores';
+import { useAuthStoreToken } from '@/stores';
 
 const RootComponent = () => {
   const { t } = useTranslation();
-
   const token = useAuthStoreToken();
-
-  const router = useRouter();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    if (window.confirm('Are you sure you want to logout?')) {
-      setAuthStoreToken(null);
-
-      router.invalidate().finally(() => {
-        navigate({ to: '/login' });
-      });
-    }
-  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -35,7 +21,7 @@ const RootComponent = () => {
         <div className="flex gap-x-2">
           <LanguageSwitcher />
 
-          {token ? <Button onClick={handleLogout}>{t('buttons.logOut')}</Button> : null}
+          {token ? <LogoutButton /> : null}
         </div>
       </div>
 

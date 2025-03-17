@@ -1,4 +1,9 @@
 {
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "close": "Close"
+  },
   "greetings": {
     "rootLayout": "Root layout! I render on all paths (in English)",
     "exactPath": "Hello {exactPath} exact path!",
@@ -16,8 +21,10 @@
       "minLength": "{field} should contain at least {length} characters"
     }
   },
-  "buttons": {
-    "logOut": "Log out"
+  "logout": {
+    "logOut": "Log out",
+    "areYouSureYouWantToLogout": "Are you sure you want to logout?",
+    "youWillLoseYourChanges": "You will lose your changes!"
   },
   "home": {
     "links": {
@@ -34,10 +41,19 @@
         "actions": {
           "title": "Actions",
           "ariaLabel": "Open menu",
-          "copyPaymentEmail": "Copy payment email"
+          "copyPaymentEmail": "Copy payment email",
+          "areYouAbsolutelySure": "Are you absolutely sure?",
+          "thisActionCantBeUndone": "This action cannot be undone. Are you sure you want to permanently delete { email }?",
+          "deletionSuccess": "{ email } was deleted successfully!",
+          "deletionError": "There was an error deleting { email }."
         }
       }
     }
+  },
+  "buttons": {
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
   },
   "table": {
     "noResults": "No results",

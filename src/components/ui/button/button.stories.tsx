@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Icons } from '@/components/ui/icons';
-import { Button, type ButtonProps } from './button';
+import { Button, type ButtonProps, Icons } from '@/components/ui';
 
 const sizes: ButtonProps['size'][] = ['default', 'icon', 'lg', 'sm'];
 const variants: ButtonProps['variant'][] = [
@@ -90,3 +89,12 @@ export const Disabled: Story = {
 };
 
 export const Default: Story = {};
+
+export const Loading: Story = {
+  args: {
+    isLoading: true,
+  },
+  render: ({ children, ...props }) => {
+    return <Button {...props}>{children}</Button>;
+  },
+};

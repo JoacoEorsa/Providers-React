@@ -20,3 +20,7 @@ export const usePaymentsListQuery = (
 export const usePaymentsCreateMutation = (props?: UseMutationProps<typeof mutations.create>) => {
   return useMutation({ mutationFn: mutations.create, ...props });
 };
+
+export const usePaymentsDeleteMutation = (props?: UseMutationProps<typeof mutations.delete>) => {
+  return useMutation({ mutationFn: mutations.delete, ...props });
+};

@@ -3,7 +3,7 @@ import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { Link, type LinkProps } from '@tanstack/react-router';
 import { tv } from 'tailwind-variants';
 
-import { Icons } from '@/components/ui/icons';
+import { Icons } from '@/components/ui';
 import type { Styled } from '@/types/styles';
 
 export const navigationVariants = tv({

@@ -80,6 +80,10 @@ const config: Linter.Config[] = [
       '@stylistic/js/no-multiple-empty-lines': ['warn', { max: 1 }],
       '@stylistic/js/no-trailing-spaces': 'warn',
       '@stylistic/js/object-curly-spacing': ['warn', 'always'],
+      '@stylistic/js/padding-line-between-statements': [
+        'warn',
+        { blankLine: 'always', prev: '*', next: 'return' },
+      ],
       '@tanstack/router/create-route-property-order': 'error',
       'i18next/no-literal-string': 'warn',
       'prefer-arrow-functions/prefer-arrow-functions': 'error',

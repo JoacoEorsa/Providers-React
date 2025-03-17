@@ -13,7 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as PrivateLayoutImport } from './routes/_private/layout'
 import { Route as PrivatePageImport } from './routes/_private/page'
-import { Route as PrivatePaymentsPageImport } from './routes/_private/payments.page'
+import { Route as PrivatePaymentsPageImport } from './routes/_private/payments/page'
 import { Route as PrivateDashboardPageImport } from './routes/_private/dashboard.page'
 import { Route as publicRegisterPageImport } from './routes/(public)/register.page'
 import { Route as publicLoginPageImport } from './routes/(public)/login/page'
@@ -215,7 +215,7 @@ export const routeTree = rootRoute
       "parent": "/_private"
     },
     "/_private/payments/": {
-      "filePath": "_private/payments.page.tsx",
+      "filePath": "_private/payments/page.tsx",
       "parent": "/_private"
     }
   }

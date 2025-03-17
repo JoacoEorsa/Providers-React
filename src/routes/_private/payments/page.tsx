@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { z } from 'zod';
 
-import { DataTable } from '@/components/ui/table';
+import { DataTable } from '@/components/ui';
 import {
   paginationValidationWithDefaults,
   searchTextValidation,
@@ -11,7 +11,7 @@ import {
 } from '@/hooks';
 import { useTranslation } from '@/i18n';
 import { usePaymentsListQuery } from '@/services';
-import { usePaymentsTable } from './-hooks';
+import { usePaymentsTable } from './-hooks/use-payments-table';
 
 const PaymentsPage = () => {
   const {

@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
 
-import { NavigationMenu } from '@/components/ui/navigation-menu';
+import { NavigationMenu } from '@/components/ui';
 import type { AvailableRoutesToPath } from '@/config/router';
 import { useTranslation } from '@/i18n';
 import { getAuthStoreState } from '@/stores';

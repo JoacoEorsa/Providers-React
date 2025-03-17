@@ -1,20 +1,18 @@
 import { useMemo } from 'react';
 
-import { Button } from '@/components/ui/button';
-import { Dropdown } from '@/components/ui/dropdown';
-import { Icons } from '@/components/ui/icons';
-import { createColumnHelper, useTable, type UseTableProps } from '@/components/ui/table';
+import { createColumnHelper, useTable, type UseTableProps } from '@/components/ui';
 import { useTranslation } from '@/i18n';
-import type { Payment } from '@/services/payments/types';
+import type { PaymentResponse } from '@/services/payments/types';
+import { PaymentRowActions } from '../-components/payment-row-actions';
 
 export const usePaymentsTable = ({
   data = [],
   ...props
-}: Omit<UseTableProps<Payment>, 'columns'>) => {
+}: Omit<UseTableProps<PaymentResponse>, 'columns'>) => {
   const { t } = useTranslation();
 
   const columns = useMemo(() => {
-    const columnHelper = createColumnHelper<Payment>();
+    const columnHelper = createColumnHelper<PaymentResponse>();
 
     return [
       columnHelper.accessor('status', {
@@ -49,33 +47,7 @@ export const usePaymentsTable = ({
         id: 'actions',
         enableHiding: false,
         cell: ({ row }) => {
-          return (
-            <div className="text-right">
-              <Dropdown.Menu>
-                <Dropdown.MenuTrigger asChild>
-                  <Button className="size-8" variant="ghost">
-                    <span className="sr-only">{t('payments.table.columns.actions.ariaLabel')}</span>
-
-                    <Icons.MoreHorizontal />
-                  </Button>
-                </Dropdown.MenuTrigger>
-
-                <Dropdown.MenuContent align="end">
-                  <Dropdown.MenuLabel>
-                    {t('payments.table.columns.actions.title')}
-                  </Dropdown.MenuLabel>
-
-                  <Dropdown.MenuItem
-                    onClick={() => {
-                      return navigator.clipboard.writeText(row.getValue('email'));
-                    }}
-                  >
-                    {t('payments.table.columns.actions.copyPaymentEmail')}
-                  </Dropdown.MenuItem>
-                </Dropdown.MenuContent>
-              </Dropdown.Menu>
-            </div>
-          );
+          return <PaymentRowActions row={row} />;
         },
       }),
     ];

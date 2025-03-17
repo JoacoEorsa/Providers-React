@@ -1,4 +1,9 @@
 {
+  "common": {
+    "yes": "Sí",
+    "no": "No",
+    "close": "Cerrar"
+  },
   "greetings": {
     "rootLayout": "Root layout! Me renderizo en todas las rutas (en español)",
     "exactPath": "Hola {exactPath} ruta exacta!",
@@ -16,8 +21,10 @@
       "minLength": "{field} debe contener al menos {length} caracteres"
     }
   },
-  "buttons": {
-    "logOut": "Cerrar sesión"
+  "logout": {
+    "logOut": "Cerrar sesión",
+    "areYouSureYouWantToLogout": "¿Estás seguro que quieres cerrar sesión?",
+    "youWillLoseYourChanges": "¡Perderás tus cambios!"
   },
   "home": {
     "links": {
@@ -34,10 +41,19 @@
         "actions": {
           "title": "Acciones",
           "ariaLabel": "Abrir menú",
-          "copyPaymentEmail": "Copiar email de pago"
+          "copyPaymentEmail": "Copiar email de pago",
+          "areYouAbsolutelySure": "¿Estás absolutamente seguro/a?",
+          "thisActionCantBeUndone": "Esta acción no se puede deshacer. ¿Estás seguro/a de borrar permanentemente a {{ email }}?",
+          "deletionSuccess": "¡{ email } fue borrado con éxito!",
+          "deletionError": "Hubo un error borrando { email }."
         }
       }
     }
+  },
+  "buttons": {
+    "delete": "Borrar",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar"
   },
   "table": {
     "noResults": "Sin resultados",

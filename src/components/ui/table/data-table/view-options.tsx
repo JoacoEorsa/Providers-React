@@ -1,8 +1,5 @@
-import { Button } from '@/components/ui/button';
-import { Dropdown } from '@/components/ui/dropdown';
-import { Icons } from '@/components/ui/icons';
+import { Button, Dropdown, Icons, type TableProps } from '@/components/ui';
 import { useTranslation } from '@/i18n';
-import type { TableProps } from '../table';
 
 interface ViewOptionsProps<T> {
   table: TableProps<T>;

@@ -1,12 +1,11 @@
-type Status = 'pending' | 'processing' | 'success' | 'failed';
+import type { z } from 'zod';
 
-export interface Payment {
-  id: string;
-  amount: number;
-  status: Status;
-  email: string;
-}
+import type {
+  createPaymentRequestSchema,
+  deletePaymentRequestSchema,
+  paymentResponseSchema,
+} from './schemas';
 
-export interface CreatePaymentResponse {
-  payment: Payment;
-}
+export type PaymentResponse = z.infer<typeof paymentResponseSchema>;
+export type CreatePaymentRequest = z.infer<typeof createPaymentRequestSchema>;
+export type DeletePaymentRequest = z.infer<typeof deletePaymentRequestSchema>;

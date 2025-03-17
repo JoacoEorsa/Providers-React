@@ -1,5 +1,5 @@
+import { Button } from '@/components/ui';
 import { type resources, useTranslation } from '@/i18n';
-import { Button } from '../ui/button';
 
 export const LanguageSwitcher = () => {
   const { i18n } = useTranslation();

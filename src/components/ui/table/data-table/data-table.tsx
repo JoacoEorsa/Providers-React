@@ -33,6 +33,10 @@ export const DataTable = <T,>({
 }: DataTableProps<T>) => {
   const { t } = useTranslation();
 
+  const showSkeleton = isLoading;
+  const showEmptyState = !isLoading && !table.getRowModel().rows?.length;
+  const showTableContent = !isLoading && table.getRowModel().rows?.length;
+
   return (
     <div className="flex w-full flex-col gap-y-2">
       <div className="flex items-center gap-x-4">
@@ -61,34 +65,36 @@ export const DataTable = <T,>({
         </Table.Header>
 
         <Table.Body>
-          {isLoading ? (
+          {showSkeleton ? (
             <Table.Skeleton
               columnsLength={table.getAllColumns().length}
               pageSize={table.getState().pagination.pageSize}
             />
           ) : null}
 
-          {!isLoading && table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => {
-              return (
-                <Table.Row key={row.id}>
-                  {row.getVisibleCells().map((cell) => {
-                    return (
-                      <Table.Cell key={cell.id}>
-                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                      </Table.Cell>
-                    );
-                  })}
-                </Table.Row>
-              );
-            })
-          ) : (
+          {showTableContent
+            ? table.getRowModel().rows.map((row) => {
+                return (
+                  <Table.Row key={row.id}>
+                    {row.getVisibleCells().map((cell) => {
+                      return (
+                        <Table.Cell key={cell.id}>
+                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                        </Table.Cell>
+                      );
+                    })}
+                  </Table.Row>
+                );
+              })
+            : null}
+
+          {showEmptyState ? (
             <Table.Row>
               <Table.Cell className="h-24 text-center" colSpan={table.getAllColumns().length}>
                 {t('table.noResults')}
               </Table.Cell>
             </Table.Row>
-          )}
+          ) : null}
         </Table.Body>
       </Table.Root>
 

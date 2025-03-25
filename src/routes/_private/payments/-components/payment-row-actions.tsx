@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { Row } from '@tanstack/react-table';
 
-import { Button, Dialog, Dropdown, Icons, toast } from '@/components/ui';
+import { Button, Dialog, DropdownMenu, Icons, toast } from '@/components/ui';
 import { useTranslation } from '@/i18n';
 import { usePaymentsDeleteMutation } from '@/services';
 import type { PaymentResponse } from '@/services/payments/types';
@@ -42,32 +42,32 @@ export const PaymentRowActions = ({ row }: PaymentRowActionsProps) => {
 
   return (
     <Dialog.Root onOpenChange={setShowConfirmDelete} open={showConfirmDelete}>
-      <Dropdown.Menu>
-        <Dropdown.MenuTrigger asChild>
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger asChild>
           <div className="flex justify-end">
             <Button className="size-8" variant="ghost">
               <span className="sr-only">{t('payments.table.columns.actions.ariaLabel')}</span>
               <Icons.MoreHorizontal />
             </Button>
           </div>
-        </Dropdown.MenuTrigger>
+        </DropdownMenu.Trigger>
 
-        <Dropdown.MenuContent align="end">
-          <Dropdown.MenuLabel>{t('payments.table.columns.actions.title')}</Dropdown.MenuLabel>
+        <DropdownMenu.Content align="end">
+          <DropdownMenu.Label>{t('payments.table.columns.actions.title')}</DropdownMenu.Label>
 
-          <Dropdown.MenuItem
+          <DropdownMenu.Item
             onClick={() => {
               return navigator.clipboard.writeText(row.getValue('email'));
             }}
           >
             {t('payments.table.columns.actions.copyPaymentEmail')}
-          </Dropdown.MenuItem>
+          </DropdownMenu.Item>
 
           <Dialog.Trigger asChild>
-            <Dropdown.MenuItem>{t('buttons.delete')}</Dropdown.MenuItem>
+            <DropdownMenu.Item>{t('buttons.delete')}</DropdownMenu.Item>
           </Dialog.Trigger>
-        </Dropdown.MenuContent>
-      </Dropdown.Menu>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
 
       <Dialog.Content isDismissible={false}>
         <Dialog.Header>

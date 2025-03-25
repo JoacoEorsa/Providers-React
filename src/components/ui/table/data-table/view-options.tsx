@@ -1,4 +1,4 @@
-import { Button, Dropdown, Icons, type TableProps } from '@/components/ui';
+import { Button, DropdownMenu, Icons, type TableProps } from '@/components/ui';
 import { useTranslation } from '@/i18n';
 
 interface ViewOptionsProps<T> {
@@ -19,19 +19,19 @@ export const ViewOptions = <T,>({ table }: ViewOptionsProps<T>) => {
   });
 
   return (
-    <Dropdown.Menu>
-      <Dropdown.MenuTrigger asChild>
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger asChild>
         <Button className="ml-auto" variant="outline">
           {t('table.filters.columns')} <Icons.ChevronDown />
         </Button>
-      </Dropdown.MenuTrigger>
+      </DropdownMenu.Trigger>
 
-      <Dropdown.MenuContent align="end">
+      <DropdownMenu.Content align="end">
         {hidableColumns.map((column) => {
           const isLastColumnVisible = visibleColumns.length === 1 && column.getIsVisible();
 
           return (
-            <Dropdown.MenuCheckboxItem
+            <DropdownMenu.CheckboxItem
               checked={column.getIsVisible()}
               className="capitalize"
               disabled={isLastColumnVisible}
@@ -41,10 +41,10 @@ export const ViewOptions = <T,>({ table }: ViewOptionsProps<T>) => {
               }}
             >
               {column.columnDef.meta?.stringifiedHeader || column.id}
-            </Dropdown.MenuCheckboxItem>
+            </DropdownMenu.CheckboxItem>
           );
         })}
-      </Dropdown.MenuContent>
-    </Dropdown.Menu>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
   );
 };

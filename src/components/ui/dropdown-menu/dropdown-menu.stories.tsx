@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, Dropdown } from '@/components/ui';
+import { Button, DropdownMenu } from '@/components/ui';
 
-const meta: Meta<typeof Dropdown.Menu> = {
+const meta: Meta<typeof DropdownMenu.Root> = {
   args: { children: 'Dropdown' },
-  component: Dropdown.Menu,
+  component: DropdownMenu.Root,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],
-  title: 'Components/UI/Dropdown',
-} satisfies Meta<typeof Dropdown.Menu>;
+  title: 'Components/UI/DropdownMenu',
+} satisfies Meta<typeof DropdownMenu.Root>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -16,31 +16,31 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => {
     return (
-      <Dropdown.Menu>
-        <Dropdown.MenuTrigger asChild>
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger asChild>
           <Button className="ml-auto" variant="outline">
             Open dropdown
           </Button>
-        </Dropdown.MenuTrigger>
+        </DropdownMenu.Trigger>
 
-        <Dropdown.MenuContent align="end">
+        <DropdownMenu.Content align="end">
           {[
             { label: 'option 1', checked: false },
             { label: 'option 2', checked: true },
             { label: 'option 3', checked: false },
           ].map((option) => {
             return (
-              <Dropdown.MenuCheckboxItem
+              <DropdownMenu.CheckboxItem
                 checked={option.checked}
                 className="capitalize"
                 key={option.label}
               >
                 {option.label}
-              </Dropdown.MenuCheckboxItem>
+              </DropdownMenu.CheckboxItem>
             );
           })}
-        </Dropdown.MenuContent>
-      </Dropdown.Menu>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
     );
   },
 };

@@ -35,19 +35,19 @@ const {
   subTrigger,
 } = dropdownVariants();
 
-const Menu = ({ ...props }: ComponentProps<typeof DropdownMenuPrimitive.Root>) => {
+const Root = ({ ...props }: ComponentProps<typeof DropdownMenuPrimitive.Root>) => {
   return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />;
 };
 
-const MenuPortal = ({ ...props }: ComponentProps<typeof DropdownMenuPrimitive.Portal>) => {
+const Portal = ({ ...props }: ComponentProps<typeof DropdownMenuPrimitive.Portal>) => {
   return <DropdownMenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />;
 };
 
-const MenuTrigger = ({ ...props }: ComponentProps<typeof DropdownMenuPrimitive.Trigger>) => {
+const Trigger = ({ ...props }: ComponentProps<typeof DropdownMenuPrimitive.Trigger>) => {
   return <DropdownMenuPrimitive.Trigger data-slot="dropdown-menu-trigger" {...props} />;
 };
 
-const MenuContent = ({
+const Content = ({
   className,
   sideOffset = 4,
   ...props
@@ -64,11 +64,11 @@ const MenuContent = ({
   );
 };
 
-const MenuGroup = ({ ...props }: ComponentProps<typeof DropdownMenuPrimitive.Group>) => {
+const Group = ({ ...props }: ComponentProps<typeof DropdownMenuPrimitive.Group>) => {
   return <DropdownMenuPrimitive.Group data-slot="dropdown-menu-group" {...props} />;
 };
 
-const MenuItem = ({
+const Item = ({
   className,
   inset,
   variant = 'default',
@@ -88,7 +88,7 @@ const MenuItem = ({
   );
 };
 
-const MenuCheckboxItem = ({
+const CheckboxItem = ({
   checked,
   children,
   className,
@@ -111,11 +111,11 @@ const MenuCheckboxItem = ({
   );
 };
 
-const MenuRadioGroup = ({ ...props }: ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>) => {
+const RadioGroup = ({ ...props }: ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>) => {
   return <DropdownMenuPrimitive.RadioGroup data-slot="dropdown-menu-radio-group" {...props} />;
 };
 
-const MenuRadioItem = ({
+const RadioItem = ({
   children,
   className,
   ...props
@@ -136,7 +136,7 @@ const MenuRadioItem = ({
   );
 };
 
-const MenuLabel = ({
+const Label = ({
   className,
   inset,
   ...props
@@ -153,7 +153,7 @@ const MenuLabel = ({
   );
 };
 
-const MenuSeparator = ({
+const Separator = ({
   className,
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.Separator>) => {
@@ -166,15 +166,15 @@ const MenuSeparator = ({
   );
 };
 
-const MenuShortcut = ({ className, ...props }: ComponentProps<'span'>) => {
+const Shortcut = ({ className, ...props }: ComponentProps<'span'>) => {
   return <span className={shortcut({ className })} data-slot="dropdown-menu-shortcut" {...props} />;
 };
 
-const MenuSub = ({ ...props }: ComponentProps<typeof DropdownMenuPrimitive.Sub>) => {
+const Sub = ({ ...props }: ComponentProps<typeof DropdownMenuPrimitive.Sub>) => {
   return <DropdownMenuPrimitive.Sub data-slot="dropdown-menu-sub" {...props} />;
 };
 
-const MenuSubTrigger = ({
+const SubTrigger = ({
   children,
   className,
   inset,
@@ -196,7 +196,7 @@ const MenuSubTrigger = ({
   );
 };
 
-const MenuSubContent = ({
+const SubContent = ({
   className,
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.SubContent>) => {
@@ -209,20 +209,20 @@ const MenuSubContent = ({
   );
 };
 
-export const Dropdown = {
-  Menu,
-  MenuCheckboxItem,
-  MenuContent,
-  MenuGroup,
-  MenuItem,
-  MenuLabel,
-  MenuPortal,
-  MenuRadioGroup,
-  MenuRadioItem,
-  MenuSeparator,
-  MenuShortcut,
-  MenuSub,
-  MenuSubContent,
-  MenuSubTrigger,
-  MenuTrigger,
+export const DropdownMenu = {
+  Root,
+  CheckboxItem,
+  Content,
+  Group,
+  Item,
+  Label,
+  Portal,
+  RadioGroup,
+  RadioItem,
+  Separator,
+  Shortcut,
+  Sub,
+  SubContent,
+  SubTrigger,
+  Trigger,
 };

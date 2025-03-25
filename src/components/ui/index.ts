@@ -1,6 +1,6 @@
 export * from './button';
 export * from './dialog';
-export * from './dropdown';
+export * from './dropdown-menu';
 export * from './icons';
 export * from './input';
 export * from './label';

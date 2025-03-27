@@ -4,6 +4,7 @@ import { NavigationMenu } from '@/components/ui';
 import type { AvailableRoutesToPath } from '@/config/router';
 import { useTranslation } from '@/i18n';
 import { getAuthStoreState } from '@/stores';
+import { Header } from './-components';
 
 const PrivateLayout = () => {
   const { t } = useTranslation();
@@ -15,20 +16,24 @@ const PrivateLayout = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-y-4 p-4">
-      <NavigationMenu.Root>
-        <NavigationMenu.List>
-          {links.map(({ label, path }) => {
-            return (
-              <NavigationMenu.Link key={path} to={path}>
-                {label}
-              </NavigationMenu.Link>
-            );
-          })}
-        </NavigationMenu.List>
-      </NavigationMenu.Root>
+    <div>
+      <Header />
 
-      <Outlet />
+      <main className="flex flex-col gap-4 p-4">
+        <NavigationMenu.Root>
+          <NavigationMenu.List>
+            {links.map(({ label, path }) => {
+              return (
+                <NavigationMenu.Link key={path} to={path}>
+                  {label}
+                </NavigationMenu.Link>
+              );
+            })}
+          </NavigationMenu.List>
+        </NavigationMenu.Root>
+
+        <Outlet />
+      </main>
     </div>
   );
 };

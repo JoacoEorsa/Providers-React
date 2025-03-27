@@ -8,4 +8,4 @@ const RegisterPage = () => {
   return <div>{t('greetings.exactPath', { exactPath: '/register' })}</div>;
 };
 
-export const Route = createFileRoute('/(public)/register/')({ component: RegisterPage });
+export const Route = createFileRoute('/(public)/_guest/register/')({ component: RegisterPage });

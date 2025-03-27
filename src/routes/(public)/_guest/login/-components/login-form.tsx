@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
+import { Trans } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useNavigate, useRouter, useSearch } from '@tanstack/react-router';
+import { Link, useNavigate, useRouter, useSearch } from '@tanstack/react-router';
 import { z } from 'zod';
 
 import { Button, Input, Label, toast } from '@/components/ui';
@@ -15,7 +16,7 @@ export const LoginForm = () => {
   const loginMutation = useLoginMutation();
 
   const router = useRouter();
-  const search = useSearch({ from: '/(public)/login/' });
+  const search = useSearch({ from: '/(public)/_guest/login/' });
   const navigate = useNavigate();
 
   const schema = useMemo(() => {
@@ -56,22 +57,41 @@ export const LoginForm = () => {
   };
 
   return (
-    <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-      <div>
+    <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+      <div className="flex flex-col gap-2">
         <Label htmlFor="email">{t('login.email')}</Label>
         <Input {...register('email')} />
-        {errors.email ? <p className="mt-2 text-red-600">{errors.email.message}</p> : null}
+        {errors.email ? <p className="mt-2 text-sm text-red-600">{errors.email.message}</p> : null}
       </div>
 
-      <div>
-        <Label htmlFor="password">{t('login.password')}</Label>
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center justify-between">
+          <Label htmlFor="password">{t('login.password')}</Label>
+          <Link
+            className="ml-auto inline-block text-sm underline-offset-4 hover:underline hover:opacity-80"
+            to="/"
+          >
+            {t('login.forgotYourPassword')}
+          </Link>
+        </div>
         <Input {...register('password')} type="password" />
-        {errors.password ? <p className="mt-2 text-red-600">{errors.password.message}</p> : null}
+        {errors.password ? (
+          <p className="mt-2 text-sm text-red-600">{errors.password.message}</p>
+        ) : null}
       </div>
 
-      <div className="flex justify-end">
-        <Button type="submit">{t('login.submit')}</Button>
-      </div>
+      <Button className="w-full" type="submit">
+        {t('login.login')}
+      </Button>
+
+      <p className="text-center text-sm">
+        <Trans
+          components={{
+            Link: <Link className="underline underline-offset-4 hover:opacity-80" to="/register" />,
+          }}
+          i18nKey="login.noAccount"
+        />
+      </p>
     </form>
   );
 };

@@ -14,7 +14,9 @@
   "login": {
     "email": "Email",
     "password": "Password",
-    "submit": "Submit",
+    "forgotYourPassword": "Forgot your password?",
+    "login": "Login",
+    "noAccount": "Don't have an account? <Link>Sign up</Link>",
     "errors": {
       "required": "{field} is required",
       "invalidField": "Please enter a valid {field}.",

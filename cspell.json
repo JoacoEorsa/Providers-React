@@ -5,7 +5,18 @@
     "**/*.css",
     "**/pnpm-lock.yaml",
     "**/locales/es.json",
-    "dist/"
+    "dist/",
+    "**/*.svg"
   ],
-  "words": ["autodocs", "commitlint", "ICONIFY", "Lngs", "lukemorales", "sonner", "TTFB", "VITE"]
+  "words": [
+    "autodocs",
+    "commitlint",
+    "iconify",
+    "ICONIFY",
+    "Lngs",
+    "lukemorales",
+    "sonner",
+    "TTFB",
+    "VITE"
+  ]
 }

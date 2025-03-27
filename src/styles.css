@@ -20,7 +20,7 @@ code {
 :root {
   --background: hsl(0 0% 100%);
   --foreground: hsl(0 0% 3.9%);
-  --primary: hsl(0 0% 9%);
+  --primary: hsl(226 24% 15%);
   --primary-foreground: hsl(0 0% 98%);
   --secondary: hsl(0 0% 96.1%);
   --secondary-foreground: hsl(0 0% 9%);
@@ -33,7 +33,6 @@ code {
   --border: hsl(0 0% 89.8%);
   --input: hsl(0 0% 89.8%);
   --ring: hsl(0 0% 3.9%);
-  --radius: 0.6rem;
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(0 0% 3.9%);
 }
@@ -74,10 +73,7 @@ code {
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius: 0.5rem;
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
 }

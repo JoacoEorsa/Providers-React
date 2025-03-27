@@ -8,17 +8,30 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as PrivateLayoutImport } from './routes/_private/layout'
 import { Route as PrivatePageImport } from './routes/_private/page'
+import { Route as publicGuestLayoutImport } from './routes/(public)/_guest/layout'
 import { Route as PrivatePaymentsPageImport } from './routes/_private/payments/page'
 import { Route as PrivateDashboardPageImport } from './routes/_private/dashboard.page'
-import { Route as publicRegisterPageImport } from './routes/(public)/register.page'
-import { Route as publicLoginPageImport } from './routes/(public)/login/page'
+import { Route as publicTermsPageImport } from './routes/(public)/terms.page'
+import { Route as publicGuestRegisterPageImport } from './routes/(public)/_guest/register.page'
+import { Route as publicGuestLoginPageImport } from './routes/(public)/_guest/login/page'
+
+// Create Virtual Routes
+
+const publicImport = createFileRoute('/(public)')()
 
 // Create/Update Routes
+
+const publicRoute = publicImport.update({
+  id: '/(public)',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const PrivateLayoutRoute = PrivateLayoutImport.update({
   id: '/_private',
@@ -29,6 +42,11 @@ const PrivatePageRoute = PrivatePageImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => PrivateLayoutRoute,
+} as any)
+
+const publicGuestLayoutRoute = publicGuestLayoutImport.update({
+  id: '/_guest',
+  getParentRoute: () => publicRoute,
 } as any)
 
 const PrivatePaymentsPageRoute = PrivatePaymentsPageImport.update({
@@ -43,16 +61,22 @@ const PrivateDashboardPageRoute = PrivateDashboardPageImport.update({
   getParentRoute: () => PrivateLayoutRoute,
 } as any)
 
-const publicRegisterPageRoute = publicRegisterPageImport.update({
-  id: '/(public)/register/',
-  path: '/register/',
-  getParentRoute: () => rootRoute,
+const publicTermsPageRoute = publicTermsPageImport.update({
+  id: '/terms/',
+  path: '/terms/',
+  getParentRoute: () => publicRoute,
 } as any)
 
-const publicLoginPageRoute = publicLoginPageImport.update({
-  id: '/(public)/login/',
+const publicGuestRegisterPageRoute = publicGuestRegisterPageImport.update({
+  id: '/register/',
+  path: '/register/',
+  getParentRoute: () => publicGuestLayoutRoute,
+} as any)
+
+const publicGuestLoginPageRoute = publicGuestLoginPageImport.update({
+  id: '/login/',
   path: '/login/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => publicGuestLayoutRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -66,6 +90,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivateLayoutImport
       parentRoute: typeof rootRoute
     }
+    '/(public)': {
+      id: '/(public)'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof publicImport
+      parentRoute: typeof rootRoute
+    }
+    '/(public)/_guest': {
+      id: '/(public)/_guest'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof publicGuestLayoutImport
+      parentRoute: typeof publicRoute
+    }
     '/_private/': {
       id: '/_private/'
       path: '/'
@@ -73,19 +111,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivatePageImport
       parentRoute: typeof PrivateLayoutImport
     }
-    '/(public)/login/': {
-      id: '/(public)/login/'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof publicLoginPageImport
-      parentRoute: typeof rootRoute
-    }
-    '/(public)/register/': {
-      id: '/(public)/register/'
-      path: '/register'
-      fullPath: '/register'
-      preLoaderRoute: typeof publicRegisterPageImport
-      parentRoute: typeof rootRoute
+    '/(public)/terms/': {
+      id: '/(public)/terms/'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof publicTermsPageImport
+      parentRoute: typeof publicImport
     }
     '/_private/dashboard/': {
       id: '/_private/dashboard/'
@@ -100,6 +131,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/payments'
       preLoaderRoute: typeof PrivatePaymentsPageImport
       parentRoute: typeof PrivateLayoutImport
+    }
+    '/(public)/_guest/login/': {
+      id: '/(public)/_guest/login/'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof publicGuestLoginPageImport
+      parentRoute: typeof publicGuestLayoutImport
+    }
+    '/(public)/_guest/register/': {
+      id: '/(public)/_guest/register/'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof publicGuestRegisterPageImport
+      parentRoute: typeof publicGuestLayoutImport
     }
   }
 }
@@ -122,59 +167,98 @@ const PrivateLayoutRouteWithChildren = PrivateLayoutRoute._addFileChildren(
   PrivateLayoutRouteChildren,
 )
 
+interface publicGuestLayoutRouteChildren {
+  publicGuestLoginPageRoute: typeof publicGuestLoginPageRoute
+  publicGuestRegisterPageRoute: typeof publicGuestRegisterPageRoute
+}
+
+const publicGuestLayoutRouteChildren: publicGuestLayoutRouteChildren = {
+  publicGuestLoginPageRoute: publicGuestLoginPageRoute,
+  publicGuestRegisterPageRoute: publicGuestRegisterPageRoute,
+}
+
+const publicGuestLayoutRouteWithChildren =
+  publicGuestLayoutRoute._addFileChildren(publicGuestLayoutRouteChildren)
+
+interface publicRouteChildren {
+  publicGuestLayoutRoute: typeof publicGuestLayoutRouteWithChildren
+  publicTermsPageRoute: typeof publicTermsPageRoute
+}
+
+const publicRouteChildren: publicRouteChildren = {
+  publicGuestLayoutRoute: publicGuestLayoutRouteWithChildren,
+  publicTermsPageRoute: publicTermsPageRoute,
+}
+
+const publicRouteWithChildren =
+  publicRoute._addFileChildren(publicRouteChildren)
+
 export interface FileRoutesByFullPath {
   '': typeof PrivateLayoutRouteWithChildren
   '/': typeof PrivatePageRoute
-  '/login': typeof publicLoginPageRoute
-  '/register': typeof publicRegisterPageRoute
+  '/terms': typeof publicTermsPageRoute
   '/dashboard': typeof PrivateDashboardPageRoute
   '/payments': typeof PrivatePaymentsPageRoute
+  '/login': typeof publicGuestLoginPageRoute
+  '/register': typeof publicGuestRegisterPageRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof PrivatePageRoute
-  '/login': typeof publicLoginPageRoute
-  '/register': typeof publicRegisterPageRoute
+  '/terms': typeof publicTermsPageRoute
   '/dashboard': typeof PrivateDashboardPageRoute
   '/payments': typeof PrivatePaymentsPageRoute
+  '/login': typeof publicGuestLoginPageRoute
+  '/register': typeof publicGuestRegisterPageRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/_private': typeof PrivateLayoutRouteWithChildren
+  '/(public)': typeof publicRouteWithChildren
+  '/(public)/_guest': typeof publicGuestLayoutRouteWithChildren
   '/_private/': typeof PrivatePageRoute
-  '/(public)/login/': typeof publicLoginPageRoute
-  '/(public)/register/': typeof publicRegisterPageRoute
+  '/(public)/terms/': typeof publicTermsPageRoute
   '/_private/dashboard/': typeof PrivateDashboardPageRoute
   '/_private/payments/': typeof PrivatePaymentsPageRoute
+  '/(public)/_guest/login/': typeof publicGuestLoginPageRoute
+  '/(public)/_guest/register/': typeof publicGuestRegisterPageRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '' | '/' | '/login' | '/register' | '/dashboard' | '/payments'
+  fullPaths:
+    | ''
+    | '/'
+    | '/terms'
+    | '/dashboard'
+    | '/payments'
+    | '/login'
+    | '/register'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/register' | '/dashboard' | '/payments'
+  to: '/' | '/terms' | '/dashboard' | '/payments' | '/login' | '/register'
   id:
     | '__root__'
     | '/_private'
+    | '/(public)'
+    | '/(public)/_guest'
     | '/_private/'
-    | '/(public)/login/'
-    | '/(public)/register/'
+    | '/(public)/terms/'
     | '/_private/dashboard/'
     | '/_private/payments/'
+    | '/(public)/_guest/login/'
+    | '/(public)/_guest/register/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   PrivateLayoutRoute: typeof PrivateLayoutRouteWithChildren
-  publicLoginPageRoute: typeof publicLoginPageRoute
-  publicRegisterPageRoute: typeof publicRegisterPageRoute
+  publicRoute: typeof publicRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   PrivateLayoutRoute: PrivateLayoutRouteWithChildren,
-  publicLoginPageRoute: publicLoginPageRoute,
-  publicRegisterPageRoute: publicRegisterPageRoute,
+  publicRoute: publicRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -188,8 +272,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/_private",
-        "/(public)/login/",
-        "/(public)/register/"
+        "/(public)"
       ]
     },
     "/_private": {
@@ -200,15 +283,28 @@ export const routeTree = rootRoute
         "/_private/payments/"
       ]
     },
+    "/(public)": {
+      "filePath": "(public)/_guest",
+      "children": [
+        "/(public)/_guest",
+        "/(public)/terms/"
+      ]
+    },
+    "/(public)/_guest": {
+      "filePath": "(public)/_guest/layout.tsx",
+      "parent": "/(public)",
+      "children": [
+        "/(public)/_guest/login/",
+        "/(public)/_guest/register/"
+      ]
+    },
     "/_private/": {
       "filePath": "_private/page.tsx",
       "parent": "/_private"
     },
-    "/(public)/login/": {
-      "filePath": "(public)/login/page.tsx"
-    },
-    "/(public)/register/": {
-      "filePath": "(public)/register.page.tsx"
+    "/(public)/terms/": {
+      "filePath": "(public)/terms.page.tsx",
+      "parent": "/(public)"
     },
     "/_private/dashboard/": {
       "filePath": "_private/dashboard.page.tsx",
@@ -217,6 +313,14 @@ export const routeTree = rootRoute
     "/_private/payments/": {
       "filePath": "_private/payments/page.tsx",
       "parent": "/_private"
+    },
+    "/(public)/_guest/login/": {
+      "filePath": "(public)/_guest/login/page.tsx",
+      "parent": "/(public)/_guest"
+    },
+    "/(public)/_guest/register/": {
+      "filePath": "(public)/_guest/register.page.tsx",
+      "parent": "/(public)/_guest"
     }
   }
 }

@@ -14,7 +14,9 @@ const AVAILABLE_ICONIFY_ICONS = {
   Circle: 'circle',
   Home: 'home',
   LoaderCircle: 'loader-circle',
+  LogOut: 'log-out',
   MoreHorizontal: 'more-horizontal',
+  Menu: 'menu',
   Search: 'search',
   Close: 'x',
 };

@@ -1,6 +1,6 @@
 import { useNavigate, useRouter } from '@tanstack/react-router';
 
-import { Button, Dialog } from '@/components/ui';
+import { Button, Dialog, Icons } from '@/components/ui';
 import { useTranslation } from '@/i18n';
 import { setAuthStoreToken } from '@/stores';
 
@@ -20,7 +20,11 @@ export const LogoutButton = () => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <Button>{t('logout.logOut')}</Button>
+        <Button className="w-full justify-start" size="sm" variant="ghost">
+          <Icons.LogOut />
+
+          {t('logout.logOut')}
+        </Button>
       </Dialog.Trigger>
 
       <Dialog.Content>

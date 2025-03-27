@@ -14,7 +14,9 @@
   "login": {
     "email": "Email",
     "password": "Contraseña",
-    "submit": "Enviar",
+    "forgotYourPassword": "¿Olvidaste tu contraseña?",
+    "login": "Iniciar Sesión",
+    "noAccount": "¿No tienes una cuenta? <Link>Regístrate</Link>",
     "errors": {
       "required": "{field} es requerido",
       "invalidField": "Por favor ingresar un/a {field} válido/a",
@@ -66,6 +68,13 @@
         "next": "Siguiente",
         "previous": "Anterior"
       }
+    }
+  },
+  "navigation": {
+    "links": {
+      "home": "Inicio",
+      "dashboard": "Panel",
+      "payments": "Pagos"
     }
   }
 }

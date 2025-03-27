@@ -6,22 +6,25 @@ import { Icons } from '@/components/ui';
 import type { Styled } from '@/types/styles';
 
 const buttonVariants = tv({
-  base: 'focus-visible:ring-ring inline-flex cursor-pointer items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+  base: 'focus-visible:ring-ring inline-flex cursor-pointer items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap transition-all duration-300 ease-in-out focus-visible:ring-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
   variants: {
     variant: {
-      default: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow',
-      destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-sm',
+      default:
+        'bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80 focus-visible:ring-primary/50 shadow',
+      destructive:
+        'bg-destructive text-destructive-foreground hover:bg-destructive/90 active:bg-destructive/80 focus-visible:ring-destructive/50 shadow-sm',
       outline:
-        'border-input bg-background hover:bg-accent hover:text-accent-foreground border shadow-sm',
-      secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-sm',
+        'border-input hover:bg-accent hover:text-accent-foreground border bg-transparent shadow-sm',
+      secondary:
+        'bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary/80 focus-visible:ring-secondary/50 shadow-sm',
       ghost: 'hover:bg-accent hover:text-accent-foreground',
       link: 'text-primary underline-offset-4 hover:underline',
     },
     size: {
-      default: 'h-9 px-4 py-2',
-      sm: 'h-8 rounded-md px-3 text-xs',
-      lg: 'h-10 rounded-md px-8',
-      icon: 'px-4 py-2',
+      sm: 'px-1.5 py-1 text-xs md:px-2 md:py-1.5 md:text-sm',
+      default: 'px-1.5 py-1 text-sm md:px-2 md:py-1.5 md:text-base',
+      lg: 'px-3 py-2 text-lg',
+      icon: 'p-3',
     },
   },
   defaultVariants: {

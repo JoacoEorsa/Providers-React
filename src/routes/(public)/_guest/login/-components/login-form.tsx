@@ -37,7 +37,7 @@ export const LoginForm = () => {
     formState: { errors },
     handleSubmit,
     register,
-  } = useForm<LoginValues>({
+  } = useForm({
     mode: 'onTouched',
     resolver: zodResolver(schema),
   });

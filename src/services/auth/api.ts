@@ -1,6 +1,6 @@
-import type { LoginPayload } from './types';
+import type { LoginRequest } from './types';
 
-export const login = ({ email, password }: LoginPayload) => {
+export const login = ({ email, password }: LoginRequest) => {
   return Promise.resolve({
     data: { authToken: `super-encrypted-auth-token-for-${email}-${password}` },
   });

@@ -20,8 +20,8 @@ export const HamburgerMenu = () => {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
-        <Button size="icon" variant="outline">
+      <DropdownMenu.Trigger asChild>
+        <Button className="focus-visible:ring-secondary/50" size="icon" variant="outline">
           <Icons.Menu />
         </Button>
       </DropdownMenu.Trigger>
@@ -39,6 +39,8 @@ export const HamburgerMenu = () => {
                 {icon}
 
                 <span>{label}</span>
+
+                {i18n.language === code ? <Icons.Check className="ml-auto" /> : null}
               </DropdownMenu.Item>
             );
           })}

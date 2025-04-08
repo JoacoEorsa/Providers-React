@@ -1,13 +1,11 @@
-import { useMemo } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { Trans } from 'react-i18next';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, useNavigate, useRouter, useSearch } from '@tanstack/react-router';
-import { z } from 'zod';
 
 import { Button, Input, Label, toast } from '@/components/ui';
 import { useTranslation } from '@/i18n';
-import { useLoginMutation } from '@/services';
+import { getLoginRequestSchema, type LoginRequest, useLoginMutation } from '@/services';
 import { setAuthStoreToken } from '@/stores';
 
 export const LoginForm = () => {
@@ -19,30 +17,16 @@ export const LoginForm = () => {
   const search = useSearch({ from: '/(public)/_guest/login/' });
   const navigate = useNavigate();
 
-  const schema = useMemo(() => {
-    return z.object({
-      email: z
-        .string()
-        .min(1, { message: t('login.errors.required', { field: t('login.email') }) })
-        .email({ message: t('login.errors.invalidField', { field: t('login.email') }) }),
-      password: z.string().min(6, {
-        message: t('login.errors.minLength', { field: t('login.password'), length: 6 }),
-      }),
-    });
-  }, [t]);
-
-  type LoginValues = z.infer<typeof schema>;
-
   const {
     formState: { errors },
     handleSubmit,
     register,
   } = useForm({
     mode: 'onTouched',
-    resolver: zodResolver(schema),
+    resolver: zodResolver(getLoginRequestSchema()),
   });
 
-  const onSubmit: SubmitHandler<LoginValues> = (data) => {
+  const onSubmit: SubmitHandler<LoginRequest> = (data) => {
     loginMutation.mutate(data, {
       onSuccess: async ({ data: { authToken } }) => {
         toast.success('Logged in successfully');

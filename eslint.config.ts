@@ -5,6 +5,7 @@ import type { ESLint, Linter } from 'eslint';
 import i18next from 'eslint-plugin-i18next';
 import preferArrowFunctions from 'eslint-plugin-prefer-arrow-functions';
 import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- The type doesn't exist.
 // @ts-expect-error
@@ -70,6 +71,7 @@ const config: Linter.Config[] = [
       '@tanstack/router': tanstackRouter as unknown as ESLint.Plugin,
       i18next,
       'prefer-arrow-functions': preferArrowFunctions as ESLint.Plugin,
+      'react-hooks': reactHooks,
       'simple-import-sort': simpleImportSort,
       'sort-destructure-keys': sortDestructureKeys,
       unicorn,
@@ -87,6 +89,8 @@ const config: Linter.Config[] = [
       '@tanstack/router/create-route-property-order': 'error',
       'i18next/no-literal-string': 'warn',
       'prefer-arrow-functions/prefer-arrow-functions': 'error',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
       'simple-import-sort/exports': 'warn',
       'simple-import-sort/imports': [
         'warn',

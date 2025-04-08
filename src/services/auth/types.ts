@@ -1,8 +1,6 @@
-export interface LoginResponse {
-  authToken: string;
-}
+import type { z } from 'zod';
 
-export interface LoginPayload {
-  email: string;
-  password: string;
-}
+import type { getLoginRequestSchema, loginResponseSchema } from './schemas';
+
+export type LoginRequest = z.infer<ReturnType<typeof getLoginRequestSchema>>;
+export type LoginResponse = z.infer<typeof loginResponseSchema>;

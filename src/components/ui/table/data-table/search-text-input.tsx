@@ -3,9 +3,9 @@ import type { AvailableRoutesId } from "@/config/router";
 import { useSearchText } from "@/hooks";
 import { SIZE } from "@/types/styles";
 
-interface SearchTextInputProps {
+type SearchTextInputProps = {
   path: AvailableRoutesId;
-}
+};
 
 export const SearchTextInput = ({ path }: SearchTextInputProps) => {
   const {

@@ -1,9 +1,9 @@
 import { Button, DropdownMenu, Icons, type TableProps } from "@/components/ui";
 import { useTranslation } from "@/i18n";
 
-interface ViewOptionsProps<T> {
+type ViewOptionsProps<T> = {
   table: TableProps<T>;
-}
+};
 
 export const ViewOptions = <T,>({ table }: ViewOptionsProps<T>) => {
   const { t } = useTranslation();

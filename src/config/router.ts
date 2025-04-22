@@ -10,6 +10,7 @@ export type AvailableRoutesId = FileRouteTypes["id"];
 export type AvailableRoutesToPath = FileRouteTypes["to"];
 
 declare module "@tanstack/react-router" {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Register {
     router: typeof router;
   }

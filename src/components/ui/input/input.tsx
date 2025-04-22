@@ -32,11 +32,12 @@ const inputVariants = tv({
 
 const { container, icon, input, wrapper } = inputVariants();
 
-interface InputProps extends Omit<ComponentProps<"input">, "size">, Styled {
+type InputProps = {
   containerClassName?: string;
   left?: ReactNode;
   size?: Size;
-}
+} & Omit<ComponentProps<"input">, "size"> &
+  Styled;
 
 const Input = ({
   className,

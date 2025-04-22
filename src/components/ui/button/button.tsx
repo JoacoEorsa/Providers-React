@@ -33,13 +33,12 @@ const buttonVariants = tv({
   },
 });
 
-export interface ButtonProps
-  extends ComponentProps<"button">,
-    VariantProps<typeof buttonVariants>,
-    Styled {
+export type ButtonProps = {
   asChild?: boolean;
   isLoading?: boolean;
-}
+} & ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> &
+  Styled;
 
 const Button = ({
   asChild = false,

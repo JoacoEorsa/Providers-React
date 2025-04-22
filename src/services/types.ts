@@ -1,9 +1,9 @@
 import type { UseMutationOptions, UseQueryOptions } from "@tanstack/react-query";
 
-interface QueryKey {
+type QueryKey = {
   queryKey: readonly unknown[];
   queryFn: (...args: never) => unknown;
-}
+};
 
 type QueryFnReturnType<T> = T extends (...args: never) => QueryKey
   ? Awaited<ReturnType<ReturnType<T>["queryFn"]>>
@@ -27,24 +27,24 @@ export type UseMutationProps<T extends (...args: never) => unknown> = Omit<
   "mutationFn"
 >;
 
-export interface RequestParams {
+export type RequestParams = {
   searchText?: string;
   page?: number;
   pageSize?: number;
-}
+};
 
-interface ServicePagination {
+type ServicePagination = {
   count: number;
   currentPage: number;
   links: { next: string; previous: string };
   perPage: number;
   total: number;
   totalPages: number;
-}
+};
 
-export interface ServiceResponse<T> {
+export type ServiceResponse<T> = {
   data: T;
   pagination?: ServicePagination;
   status: number;
   success: boolean;
-}
+};

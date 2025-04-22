@@ -62,10 +62,11 @@ const iconifyIcons = Object.fromEntries(
 
 export const Icons = { ...iconifyIcons } as const;
 
-interface IconWrapperProps<TElement extends ElementType> extends Styled, PropsWithChildren {
+type IconWrapperProps<TElement extends ElementType> = {
   size?: Size;
   as?: TElement;
-}
+} & Styled &
+  PropsWithChildren;
 
 export const IconWrapper = <TElement extends ElementType = "div">({
   as,

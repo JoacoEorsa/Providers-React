@@ -12,11 +12,11 @@ const meta: Meta<typeof Table.Root> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-interface Person {
+type Person = {
   firstName: string;
   lastName: string;
   age: number;
-}
+};
 
 const MOCK_DATA: Person[] = [
   // cspell: disable

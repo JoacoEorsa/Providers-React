@@ -1,6 +1,6 @@
-export interface Styled {
+export type Styled = {
   className?: string;
-}
+};
 
 export const SIZE = {
   X_SMALL: "xs",

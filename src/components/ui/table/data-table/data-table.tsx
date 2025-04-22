@@ -5,21 +5,21 @@ import { Pagination } from "./pagination";
 import { SearchTextInput } from "./search-text-input";
 import { ViewOptions } from "./view-options";
 
-interface BaseDataTableProps<T> {
+type BaseDataTableProps<T> = {
   isLoading?: boolean;
   table: TableProps<T>;
   withColumnVisibility?: boolean;
-}
+};
 
-interface DataTablePropsWithSearch {
+type DataTablePropsWithSearch = {
   withSearch: true;
   path: AvailableRoutesId;
-}
+};
 
-interface DataTablePropsWithoutSearch {
+type DataTablePropsWithoutSearch = {
   withSearch?: false;
   path?: never;
-}
+};
 
 type DataTableProps<T> = BaseDataTableProps<T> &
   (DataTablePropsWithSearch | DataTablePropsWithoutSearch);

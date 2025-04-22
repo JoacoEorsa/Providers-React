@@ -1,10 +1,10 @@
 import { Button, Icons, type TableProps } from "@/components/ui";
 import { useTranslation } from "@/i18n";
 
-interface PaginationProps<T> {
+type PaginationProps<T> = {
   table: TableProps<T>;
   isLoading?: boolean;
-}
+};
 
 export const Pagination = <T,>({ isLoading = false, table }: PaginationProps<T>) => {
   const { t } = useTranslation();

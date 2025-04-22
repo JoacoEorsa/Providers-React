@@ -60,6 +60,7 @@ const config: Linter.Config[] = [
         "@typescript-eslint/consistent-type-imports": "warn",
         "@typescript-eslint/method-signature-style": ["error", "property"],
         "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
       },
     },
   ] as Linter.Config[]),

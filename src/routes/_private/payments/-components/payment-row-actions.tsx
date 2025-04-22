@@ -6,9 +6,9 @@ import { useTranslation } from "@/i18n";
 import { usePaymentsDeleteMutation } from "@/services";
 import type { PaymentResponse } from "@/services/payments/types";
 
-interface PaymentRowActionsProps {
+type PaymentRowActionsProps = {
   row: Row<PaymentResponse>;
-}
+};
 
 export const PaymentRowActions = ({ row }: PaymentRowActionsProps) => {
   const { t } = useTranslation();

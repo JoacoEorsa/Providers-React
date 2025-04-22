@@ -1,5 +1,5 @@
-import { Button, Icons, type TableProps } from '@/components/ui';
-import { useTranslation } from '@/i18n';
+import { Button, Icons, type TableProps } from "@/components/ui";
+import { useTranslation } from "@/i18n";
 
 interface PaginationProps<T> {
   table: TableProps<T>;
@@ -15,7 +15,7 @@ export const Pagination = <T,>({ isLoading = false, table }: PaginationProps<T>)
         {isLoading ? <Icons.LoaderCircle className="animate-spin" /> : null}
 
         {!isLoading && table.getPageCount()
-          ? t('table.pagination.pageCount', {
+          ? t("table.pagination.pageCount", {
               currentPage: table.getState().pagination.pageIndex + 1,
               totalPages: table.getPageCount().toLocaleString(),
             })
@@ -31,7 +31,7 @@ export const Pagination = <T,>({ isLoading = false, table }: PaginationProps<T>)
           size="sm"
           variant="outline"
         >
-          {t('table.pagination.buttons.previous')}
+          {t("table.pagination.buttons.previous")}
         </Button>
 
         <Button
@@ -42,7 +42,7 @@ export const Pagination = <T,>({ isLoading = false, table }: PaginationProps<T>)
           size="sm"
           variant="outline"
         >
-          {t('table.pagination.buttons.next')}
+          {t("table.pagination.buttons.next")}
         </Button>
       </div>
     </div>

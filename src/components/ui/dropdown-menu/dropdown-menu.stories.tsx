@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, DropdownMenu } from '@/components/ui';
+import { Button, DropdownMenu } from "@/components/ui";
 
 const meta: Meta<typeof DropdownMenu.Root> = {
-  args: { children: 'Dropdown' },
+  args: { children: "Dropdown" },
   component: DropdownMenu.Root,
-  parameters: { layout: 'centered' },
-  tags: ['autodocs'],
-  title: 'Components/UI/DropdownMenu',
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
+  title: "Components/UI/DropdownMenu",
 } satisfies Meta<typeof DropdownMenu.Root>;
 
 export default meta;
@@ -25,9 +25,9 @@ export const Default: Story = {
 
         <DropdownMenu.Content align="end">
           {[
-            { label: 'option 1', checked: false },
-            { label: 'option 2', checked: true },
-            { label: 'option 3', checked: false },
+            { label: "option 1", checked: false },
+            { label: "option 2", checked: true },
+            { label: "option 3", checked: false },
           ].map((option) => {
             return (
               <DropdownMenu.CheckboxItem

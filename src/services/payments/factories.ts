@@ -1,10 +1,10 @@
-import { createQueryKeys } from '@lukemorales/query-key-factory';
-import { skipToken } from '@tanstack/react-query';
+import { createQueryKeys } from "@lukemorales/query-key-factory";
+import { skipToken } from "@tanstack/react-query";
 
-import type { RequestParams } from '../types';
-import { createPayment, deletePayment, getPaymentsDetail, getPaymentsList } from './api';
+import type { RequestParams } from "../types";
+import { createPayment, deletePayment, getPaymentsDetail, getPaymentsList } from "./api";
 
-export const queries = createQueryKeys('payments', {
+export const queries = createQueryKeys("payments", {
   detail: (paymentId: string) => {
     return {
       queryKey: [paymentId],

@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute } from "@tanstack/react-router";
 
-import { LoginForm } from './-components/login-form';
+import { LoginForm } from "./-components/login-form";
 
 const LoginPage = () => {
   return (
@@ -12,4 +12,4 @@ const LoginPage = () => {
   );
 };
 
-export const Route = createFileRoute('/(public)/_guest/login/')({ component: LoginPage });
+export const Route = createFileRoute("/(public)/_guest/login/")({ component: LoginPage });

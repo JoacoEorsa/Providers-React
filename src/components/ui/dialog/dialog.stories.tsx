@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, Dialog } from '@/components/ui';
+import { Button, Dialog } from "@/components/ui";
 
 const meta: Meta<typeof Dialog.Root> = {
   component: Dialog.Root,
-  parameters: { layout: 'centered' },
-  tags: ['autodocs'],
-  title: 'Components/UI/Dialog',
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
+  title: "Components/UI/Dialog",
 } satisfies Meta<typeof Dialog.Root>;
 
 export default meta;

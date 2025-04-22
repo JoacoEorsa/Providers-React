@@ -1,6 +1,6 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import { paymentStatus } from '@/services/payments/constants';
+import { paymentStatus } from "@/services/payments/constants";
 
 export const paymentResponseSchema = z.object({
   id: z.string(),

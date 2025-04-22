@@ -1,7 +1,7 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from "@tanstack/react-query";
 
-import type { RequestParams, UseMutationProps, UseQueryProps } from '@/services/types';
-import { mutations, queries } from './factories';
+import type { RequestParams, UseMutationProps, UseQueryProps } from "@/services/types";
+import { mutations, queries } from "./factories";
 
 export const usePaymentsDetailQuery = (
   paymentId: string,

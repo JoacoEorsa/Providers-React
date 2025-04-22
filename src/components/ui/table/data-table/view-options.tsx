@@ -1,5 +1,5 @@
-import { Button, DropdownMenu, Icons, type TableProps } from '@/components/ui';
-import { useTranslation } from '@/i18n';
+import { Button, DropdownMenu, Icons, type TableProps } from "@/components/ui";
+import { useTranslation } from "@/i18n";
 
 interface ViewOptionsProps<T> {
   table: TableProps<T>;
@@ -15,14 +15,14 @@ export const ViewOptions = <T,>({ table }: ViewOptionsProps<T>) => {
   });
 
   const visibleColumns = columns.filter((column) => {
-    return column.getIsVisible() && typeof column.columnDef.header === 'string';
+    return column.getIsVisible() && typeof column.columnDef.header === "string";
   });
 
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <Button className="ml-auto" variant="outline">
-          {t('table.filters.columns')} <Icons.ChevronDown />
+          {t("table.filters.columns")} <Icons.ChevronDown />
         </Button>
       </DropdownMenu.Trigger>
 

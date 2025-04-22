@@ -1,4 +1,4 @@
-import type { LoginRequest } from './types';
+import type { LoginRequest } from "./types";
 
 export const login = ({ email, password }: LoginRequest) => {
   return Promise.resolve({

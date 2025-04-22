@@ -1,24 +1,24 @@
-import type { ComponentPropsWithoutRef, ElementType, JSX, PropsWithChildren } from 'react';
-import type { IconProps } from '@iconify/react';
-import { Icon, loadIcons } from '@iconify/react';
-import { tv } from 'tailwind-variants';
+import type { ComponentPropsWithoutRef, ElementType, JSX, PropsWithChildren } from "react";
+import type { IconProps } from "@iconify/react";
+import { Icon, loadIcons } from "@iconify/react";
+import { tv } from "tailwind-variants";
 
-import { SIZE, type Size, type Styled } from '@/types/styles';
+import { SIZE, type Size, type Styled } from "@/types/styles";
 
-const LUCIDE_PREFIX = 'lucide:';
+const LUCIDE_PREFIX = "lucide:";
 
 const AVAILABLE_ICONIFY_ICONS = {
-  Check: 'check',
-  ChevronDown: 'chevron-down',
-  ChevronRight: 'chevron-right',
-  Circle: 'circle',
-  Home: 'home',
-  LoaderCircle: 'loader-circle',
-  LogOut: 'log-out',
-  MoreHorizontal: 'more-horizontal',
-  Menu: 'menu',
-  Search: 'search',
-  Close: 'x',
+  Check: "check",
+  ChevronDown: "chevron-down",
+  ChevronRight: "chevron-right",
+  Circle: "circle",
+  Home: "home",
+  LoaderCircle: "loader-circle",
+  LogOut: "log-out",
+  MoreHorizontal: "more-horizontal",
+  Menu: "menu",
+  Search: "search",
+  Close: "x",
 };
 
 export const initializeIcons = () => {
@@ -31,23 +31,23 @@ export const initializeIcons = () => {
 
 const iconsVariants = tv({
   slots: {
-    icon: 'size-4',
-    wrapper: 'flex shrink-0 flex-row items-center justify-center',
+    icon: "size-4",
+    wrapper: "flex shrink-0 flex-row items-center justify-center",
   },
   variants: {
     size: {
-      [SIZE.X_SMALL]: { wrapper: 'size-4' },
-      [SIZE.SMALL]: { wrapper: 'size-5' },
-      [SIZE.MEDIUM]: { wrapper: 'size-6' },
-      [SIZE.LARGE]: { wrapper: 'size-9' },
-      [SIZE.X_LARGE]: { wrapper: 'size-10' },
+      [SIZE.X_SMALL]: { wrapper: "size-4" },
+      [SIZE.SMALL]: { wrapper: "size-5" },
+      [SIZE.MEDIUM]: { wrapper: "size-6" },
+      [SIZE.LARGE]: { wrapper: "size-9" },
+      [SIZE.X_LARGE]: { wrapper: "size-10" },
     },
   },
 });
 
 const { icon, wrapper } = iconsVariants();
 
-type IconifyIconProps = Omit<IconProps, 'icon'>;
+type IconifyIconProps = Omit<IconProps, "icon">;
 
 const iconifyIcons = Object.fromEntries(
   Object.entries(AVAILABLE_ICONIFY_ICONS).map(([key, value]) => {
@@ -67,7 +67,7 @@ interface IconWrapperProps<TElement extends ElementType> extends Styled, PropsWi
   as?: TElement;
 }
 
-export const IconWrapper = <TElement extends ElementType = 'div'>({
+export const IconWrapper = <TElement extends ElementType = "div">({
   as,
   children,
   className,
@@ -75,7 +75,7 @@ export const IconWrapper = <TElement extends ElementType = 'div'>({
   ...rest
 }: Omit<ComponentPropsWithoutRef<TElement>, keyof IconWrapperProps<TElement>> &
   IconWrapperProps<TElement>) => {
-  const Component = as ?? 'div';
+  const Component = as ?? "div";
 
   return (
     <Component className={wrapper({ size, className })} {...rest}>

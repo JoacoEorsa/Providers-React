@@ -1,25 +1,25 @@
 // eslint-disable-next-line simple-import-sort/imports -- react-scan must be imported before React and React DOM
-import { scan } from 'react-scan';
-import { StrictMode } from 'react';
-import ReactDOM from 'react-dom/client';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { RouterProvider } from '@tanstack/react-router';
+import { scan } from "react-scan";
+import { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { RouterProvider } from "@tanstack/react-router";
 
-import { initializeIcons, Toaster } from '@/components/ui';
-import { queryClient } from '@/config/query-client';
-import { router } from '@/config/router';
-import { getSentryErrorHandlers, initializeSentry } from '@/config/sentry';
-import { I18nextProvider } from '@/i18n';
-import reportWebVitals from '@/reportWebVitals';
+import { initializeIcons, Toaster } from "@/components/ui";
+import { queryClient } from "@/config/query-client";
+import { router } from "@/config/router";
+import { getSentryErrorHandlers, initializeSentry } from "@/config/sentry";
+import { I18nextProvider } from "@/i18n";
+import reportWebVitals from "@/reportWebVitals";
 
-import '@/styles.css';
-import { env } from './config/env';
+import "@/styles.css";
+import { env } from "./config/env";
 
 initializeSentry();
 initializeIcons();
-scan({ enabled: Boolean(env.VITE_APP_ENV === 'local' && env.VITE_ENABLE_REACT_SCAN) });
+scan({ enabled: Boolean(env.VITE_APP_ENV === "local" && env.VITE_ENABLE_REACT_SCAN) });
 
-const rootElement = document.getElementById('root')!;
+const rootElement = document.getElementById("root")!;
 
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement, getSentryErrorHandlers());

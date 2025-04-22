@@ -1,28 +1,28 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, type ButtonProps, Icons } from '@/components/ui';
+import { Button, type ButtonProps, Icons } from "@/components/ui";
 
-const sizes: ButtonProps['size'][] = ['default', 'icon', 'lg', 'sm'];
-const variants: ButtonProps['variant'][] = [
-  'default',
-  'destructive',
-  'ghost',
-  'link',
-  'outline',
-  'secondary',
+const sizes: ButtonProps["size"][] = ["default", "icon", "lg", "sm"];
+const variants: ButtonProps["variant"][] = [
+  "default",
+  "destructive",
+  "ghost",
+  "link",
+  "outline",
+  "secondary",
 ];
 
 const meta: Meta<typeof Button> = {
-  args: { children: 'Button' },
+  args: { children: "Button" },
   argTypes: {
-    disabled: { control: { type: 'boolean' } },
-    size: { control: { type: 'select' }, options: sizes },
-    variant: { control: { type: 'select' }, options: variants },
+    disabled: { control: { type: "boolean" } },
+    size: { control: { type: "select" }, options: sizes },
+    variant: { control: { type: "select" }, options: variants },
   },
   component: Button,
-  parameters: { layout: 'centered' },
-  tags: ['autodocs'],
-  title: 'Components/UI/Button',
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
+  title: "Components/UI/Button",
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -44,7 +44,7 @@ export const All: Story = {
                       <p className="font-medium uppercase">{size}</p>
 
                       <Button {...props} size={size} variant={variant}>
-                        {size === 'icon' ? <Icons.Home /> : children}
+                        {size === "icon" ? <Icons.Home /> : children}
                       </Button>
                     </div>
                   </div>
@@ -74,7 +74,7 @@ export const Disabled: Story = {
                       <p className="font-medium uppercase">{size}</p>
 
                       <Button {...props} size={size} variant={variant} disabled>
-                        {size === 'icon' ? <Icons.Home /> : children}
+                        {size === "icon" ? <Icons.Home /> : children}
                       </Button>
                     </div>
                   </div>

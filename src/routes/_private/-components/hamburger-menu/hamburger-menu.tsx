@@ -1,9 +1,9 @@
-import { useTranslation } from 'react-i18next';
-import type { ReactNode } from '@tanstack/react-router';
+import { useTranslation } from "react-i18next";
+import type { ReactNode } from "@tanstack/react-router";
 
-import { Button, DropdownMenu, Icons } from '@/components/ui';
-import type { resources } from '@/i18n';
-import { LogoutButton } from './logout-button';
+import { Button, DropdownMenu, Icons } from "@/components/ui";
+import type { resources } from "@/i18n";
+import { LogoutButton } from "./logout-button";
 
 export const HamburgerMenu = () => {
   const { i18n } = useTranslation();
@@ -13,9 +13,9 @@ export const HamburgerMenu = () => {
   };
 
   const languages: { code: keyof typeof resources; label: string; icon: ReactNode }[] = [
-    { code: 'en', label: 'English', icon: '🇺🇸' },
+    { code: "en", label: "English", icon: "🇺🇸" },
     // cspell: disable-next-line
-    { code: 'es', label: 'Español', icon: '🇪🇸' },
+    { code: "es", label: "Español", icon: "🇪🇸" },
   ];
 
   return (

@@ -1,18 +1,18 @@
-import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
-import { NavigationMenu } from '@/components/ui';
-import type { AvailableRoutesToPath } from '@/config/router';
-import { useTranslation } from '@/i18n';
-import { getAuthStoreState } from '@/stores';
-import { Header } from './-components';
+import { NavigationMenu } from "@/components/ui";
+import type { AvailableRoutesToPath } from "@/config/router";
+import { useTranslation } from "@/i18n";
+import { getAuthStoreState } from "@/stores";
+import { Header } from "./-components";
 
 const PrivateLayout = () => {
   const { t } = useTranslation();
 
   const links: { path: AvailableRoutesToPath; label: string }[] = [
-    { path: '/', label: t('navigation.links.home') },
-    { path: '/dashboard', label: t('navigation.links.dashboard') },
-    { path: '/payments', label: t('navigation.links.payments') },
+    { path: "/", label: t("navigation.links.home") },
+    { path: "/dashboard", label: t("navigation.links.dashboard") },
+    { path: "/payments", label: t("navigation.links.payments") },
   ];
 
   return (
@@ -38,12 +38,12 @@ const PrivateLayout = () => {
   );
 };
 
-export const Route = createFileRoute('/_private')({
+export const Route = createFileRoute("/_private")({
   beforeLoad: ({ location }) => {
     const { token } = getAuthStoreState();
 
     if (!token) {
-      throw redirect({ to: '/login', search: { redirect: location.href } });
+      throw redirect({ to: "/login", search: { redirect: location.href } });
     }
   },
   component: PrivateLayout,

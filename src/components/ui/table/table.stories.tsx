@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { createColumnHelper, flexRender, Table, useTable } from './table';
+import { createColumnHelper, flexRender, Table, useTable } from "./table";
 
 const meta: Meta<typeof Table.Root> = {
   component: Table.Root,
-  parameters: { layout: 'centered' },
-  tags: ['autodocs'],
-  title: 'Components/UI/Table',
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
+  title: "Components/UI/Table",
 } satisfies Meta<typeof Table.Root>;
 
 export default meta;
@@ -20,22 +20,22 @@ interface Person {
 
 const MOCK_DATA: Person[] = [
   // cspell: disable
-  { firstName: 'Andreane', lastName: 'Nicolas', age: 6 },
-  { firstName: 'Easter', lastName: 'Gleichner', age: 11 },
-  { firstName: 'Nova', lastName: 'Dibbert', age: 22 },
-  { firstName: 'Jairo', lastName: 'Beer', age: 25 },
-  { firstName: 'Emelia', lastName: 'Cole', age: 31 },
-  { firstName: 'Mylene', lastName: 'Kessler', age: 7 },
-  { firstName: 'Jeffry', lastName: 'Abshire', age: 24 },
+  { firstName: "Andreane", lastName: "Nicolas", age: 6 },
+  { firstName: "Easter", lastName: "Gleichner", age: 11 },
+  { firstName: "Nova", lastName: "Dibbert", age: 22 },
+  { firstName: "Jairo", lastName: "Beer", age: 25 },
+  { firstName: "Emelia", lastName: "Cole", age: 31 },
+  { firstName: "Mylene", lastName: "Kessler", age: 7 },
+  { firstName: "Jeffry", lastName: "Abshire", age: 24 },
   // cspell: enable
 ];
 
 const columnHelper = createColumnHelper<Person>();
 
 const columns = [
-  columnHelper.accessor('firstName', { header: 'First Name' }),
-  columnHelper.accessor('lastName', { header: 'Last Name' }),
-  columnHelper.accessor('age', { header: 'Age' }),
+  columnHelper.accessor("firstName", { header: "First Name" }),
+  columnHelper.accessor("lastName", { header: "Last Name" }),
+  columnHelper.accessor("age", { header: "Age" }),
 ];
 
 export const Default: Story = {

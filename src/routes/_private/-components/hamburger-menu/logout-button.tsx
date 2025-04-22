@@ -1,8 +1,8 @@
-import { useNavigate, useRouter } from '@tanstack/react-router';
+import { useNavigate, useRouter } from "@tanstack/react-router";
 
-import { Button, Dialog, Icons } from '@/components/ui';
-import { useTranslation } from '@/i18n';
-import { setAuthStoreToken } from '@/stores';
+import { Button, Dialog, Icons } from "@/components/ui";
+import { useTranslation } from "@/i18n";
+import { setAuthStoreToken } from "@/stores";
 
 export const LogoutButton = () => {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ export const LogoutButton = () => {
     setAuthStoreToken(null);
 
     router.invalidate().finally(() => {
-      navigate({ to: '/login' });
+      navigate({ to: "/login" });
     });
   };
 
@@ -23,20 +23,20 @@ export const LogoutButton = () => {
         <Button className="w-full justify-start" size="sm" variant="ghost">
           <Icons.LogOut />
 
-          {t('logout.logOut')}
+          {t("logout.logOut")}
         </Button>
       </Dialog.Trigger>
 
       <Dialog.Content>
         <Dialog.Header>
-          <Dialog.Title>{t('logout.areYouSureYouWantToLogout')}</Dialog.Title>
-          <Dialog.Description>{t('logout.youWillLoseYourChanges')}</Dialog.Description>
+          <Dialog.Title>{t("logout.areYouSureYouWantToLogout")}</Dialog.Title>
+          <Dialog.Description>{t("logout.youWillLoseYourChanges")}</Dialog.Description>
         </Dialog.Header>
         <Dialog.Footer className="flex items-center justify-end gap-2">
           <Dialog.Close asChild>
-            <Button variant="outline">{t('common.no')}</Button>
+            <Button variant="outline">{t("common.no")}</Button>
           </Dialog.Close>
-          <Button onClick={handleClick}>{t('common.yes')}</Button>
+          <Button onClick={handleClick}>{t("common.yes")}</Button>
         </Dialog.Footer>
       </Dialog.Content>
     </Dialog.Root>

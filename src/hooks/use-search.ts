@@ -1,9 +1,9 @@
-import { useMemo } from 'react';
-import { getRouteApi } from '@tanstack/react-router';
-import { z } from 'zod';
+import { useMemo } from "react";
+import { getRouteApi } from "@tanstack/react-router";
+import { z } from "zod";
 
-import type { AvailableRoutesId } from '@/config/router';
-import { usePagination } from './use-pagination';
+import type { AvailableRoutesId } from "@/config/router";
+import { usePagination } from "./use-pagination";
 
 export const searchTextValidation = z.object({
   searchText: z.string().optional(),

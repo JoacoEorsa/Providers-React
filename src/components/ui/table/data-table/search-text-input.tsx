@@ -1,7 +1,7 @@
-import { Icons, Input } from '@/components/ui';
-import type { AvailableRoutesId } from '@/config/router';
-import { useSearchText } from '@/hooks';
-import { SIZE } from '@/types/styles';
+import { Icons, Input } from "@/components/ui";
+import type { AvailableRoutesId } from "@/config/router";
+import { useSearchText } from "@/hooks";
+import { SIZE } from "@/types/styles";
 
 interface SearchTextInputProps {
   path: AvailableRoutesId;
@@ -22,7 +22,7 @@ export const SearchTextInput = ({ path }: SearchTextInputProps) => {
       }}
       placeholder="Filter..."
       size={SIZE.SMALL}
-      value={searchText ?? ''}
+      value={searchText ?? ""}
     />
   );
 };

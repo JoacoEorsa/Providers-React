@@ -1,11 +1,11 @@
-import axios, { type AxiosError } from 'axios';
+import axios, { type AxiosError } from "axios";
 
-import { getAuthStoreState, setAuthStoreToken } from '@/stores';
-import { env } from './env';
+import { getAuthStoreState, setAuthStoreToken } from "@/stores";
+import { env } from "./env";
 
 const baseApiConfiguration = {
   baseURL: env.VITE_API_URL,
-  headers: { 'Content-Type': 'application/json' },
+  headers: { "Content-Type": "application/json" },
 };
 
 const privateApi = axios.create(baseApiConfiguration);
@@ -15,7 +15,7 @@ privateApi.interceptors.request.use(
     const { token } = getAuthStoreState();
 
     if (token) {
-      config.headers.set('Authorization', `Bearer ${token}`);
+      config.headers.set("Authorization", `Bearer ${token}`);
     }
 
     return config;

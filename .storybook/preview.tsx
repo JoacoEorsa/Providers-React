@@ -1,13 +1,13 @@
-import React from 'react';
-import type { Preview } from '@storybook/react';
+import React from "react";
+import type { Preview } from "@storybook/react";
 import {
   createMemoryHistory,
   createRootRoute,
   createRouter,
   RouterProvider,
-} from '@tanstack/react-router';
+} from "@tanstack/react-router";
 
-import '@/styles.css';
+import "@/styles.css";
 
 const preview: Preview = {
   decorators: [

@@ -1,18 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, toast, Toaster } from '@/components/ui';
+import { Button, toast, Toaster } from "@/components/ui";
 
 const meta: Meta<typeof Toaster> = {
   component: Toaster,
-  parameters: { layout: 'centered' },
-  tags: ['autodocs'],
-  title: 'Components/UI/Toast',
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
+  title: "Components/UI/Toast",
 } satisfies Meta<typeof Toaster>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const toastTypes = ['error', 'info', 'loading', 'message', 'success', 'warning'];
+const toastTypes = ["error", "info", "loading", "message", "success", "warning"];
 
 type ToastTypes = (typeof toastTypes)[number];
 
@@ -24,7 +24,7 @@ export const Default: Story = {
 
         <Button
           onClick={() => {
-            return toast('Toast!!!');
+            return toast("Toast!!!");
           }}
         >
           Show toast
@@ -40,32 +40,32 @@ export const All: Story = {
       const message = `${type} toast!`;
 
       switch (type) {
-        case 'error': {
+        case "error": {
           toast.error(message);
           break;
         }
 
-        case 'info': {
+        case "info": {
           toast.info(message);
           break;
         }
 
-        case 'loading': {
+        case "loading": {
           toast.loading(message);
           break;
         }
 
-        case 'message': {
+        case "message": {
           toast.message(message);
           break;
         }
 
-        case 'success': {
+        case "success": {
           toast.success(message);
           break;
         }
 
-        case 'warning': {
+        case "warning": {
           toast.warning(message);
           break;
         }

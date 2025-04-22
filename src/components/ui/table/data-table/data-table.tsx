@@ -1,9 +1,9 @@
-import type { AvailableRoutesId } from '@/config/router';
-import { useTranslation } from '@/i18n';
-import { flexRender, Table, type TableProps } from '../table';
-import { Pagination } from './pagination';
-import { SearchTextInput } from './search-text-input';
-import { ViewOptions } from './view-options';
+import type { AvailableRoutesId } from "@/config/router";
+import { useTranslation } from "@/i18n";
+import { flexRender, Table, type TableProps } from "../table";
+import { Pagination } from "./pagination";
+import { SearchTextInput } from "./search-text-input";
+import { ViewOptions } from "./view-options";
 
 interface BaseDataTableProps<T> {
   isLoading?: boolean;
@@ -91,7 +91,7 @@ export const DataTable = <T,>({
           {showEmptyState ? (
             <Table.Row>
               <Table.Cell className="h-24 text-center" colSpan={table.getAllColumns().length}>
-                {t('table.noResults')}
+                {t("table.noResults")}
               </Table.Cell>
             </Table.Row>
           ) : null}

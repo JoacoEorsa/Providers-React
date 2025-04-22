@@ -1,17 +1,17 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { z } from 'zod';
+import { createFileRoute } from "@tanstack/react-router";
+import { z } from "zod";
 
-import { DataTable } from '@/components/ui';
+import { DataTable } from "@/components/ui";
 import {
   paginationValidationWithDefaults,
   searchTextValidation,
   useDebounce,
   usePagination,
   useSearchText,
-} from '@/hooks';
-import { useTranslation } from '@/i18n';
-import { usePaymentsListQuery } from '@/services';
-import { usePaymentsTable } from './-hooks/use-payments-table';
+} from "@/hooks";
+import { useTranslation } from "@/i18n";
+import { usePaymentsListQuery } from "@/services";
+import { usePaymentsTable } from "./-hooks/use-payments-table";
 
 const PaymentsPage = () => {
   const {
@@ -36,7 +36,7 @@ const PaymentsPage = () => {
     data: data?.data ?? [],
     state: { pagination: { pageIndex, pageSize } },
     onPaginationChange: (updater) => {
-      if (typeof updater === 'function') {
+      if (typeof updater === "function") {
         changePage(updater({ pageIndex, pageSize }));
       }
     },
@@ -45,7 +45,7 @@ const PaymentsPage = () => {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <h1>{t('payments.title')}</h1>
+      <h1>{t("payments.title")}</h1>
 
       <DataTable
         isLoading={isLoading}
@@ -58,7 +58,7 @@ const PaymentsPage = () => {
   );
 };
 
-export const Route = createFileRoute('/_private/payments/')({
+export const Route = createFileRoute("/_private/payments/")({
   component: PaymentsPage,
   validateSearch: z.object({
     ...searchTextValidation.shape,

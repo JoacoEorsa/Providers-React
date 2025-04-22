@@ -5,8 +5,8 @@
  *
  */
 
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 export interface AuthStoreState {
   token: string | null;
@@ -17,7 +17,7 @@ const useAuthStore = create<AuthStoreState>()(
     (_) => {
       return { token: null };
     },
-    { name: 'auth' },
+    { name: "auth" },
   ),
 );
 

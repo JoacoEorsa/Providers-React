@@ -1,10 +1,10 @@
-import { sentryVitePlugin } from '@sentry/vite-plugin';
-import tailwindcss from '@tailwindcss/vite';
-import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
-import viteReact from '@vitejs/plugin-react';
-import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
-import { analyzer } from 'vite-bundle-analyzer';
+import { sentryVitePlugin } from "@sentry/vite-plugin";
+import tailwindcss from "@tailwindcss/vite";
+import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
+import viteReact from "@vitejs/plugin-react";
+import path from "path";
+import { defineConfig, loadEnv } from "vite";
+import { analyzer } from "vite-bundle-analyzer";
 
 export default defineConfig(({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
       TanStackRouterVite(),
       viteReact(),
       tailwindcss(),
-      ...(process.env.VITE_APP_ENV === 'local' ? [analyzer()] : []),
+      ...(process.env.VITE_APP_ENV === "local" ? [analyzer()] : []),
       sentryVitePlugin({
         org: process.env.VITE_SENTRY_ORG,
         project: process.env.VITE_SENTRY_PROJECT,
@@ -23,6 +23,6 @@ export default defineConfig(({ mode }) => {
         authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
       }),
     ],
-    resolve: { alias: { '@': path.resolve(__dirname, './src') } },
+    resolve: { alias: { "@": path.resolve(__dirname, "./src") } },
   };
 });

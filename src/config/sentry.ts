@@ -1,7 +1,7 @@
-import * as Sentry from '@sentry/react';
+import * as Sentry from "@sentry/react";
 
-import { env } from '@/config/env';
-import { router } from './router';
+import { env } from "@/config/env";
+import { router } from "./router";
 
 export const isSentryEnabled = Boolean(env.VITE_SENTRY_DSN);
 
@@ -32,7 +32,7 @@ export const getSentryErrorHandlers = () => {
   return {
     onUncaughtError: Sentry.reactErrorHandler((error, errorInfo) => {
       // eslint-disable-next-line no-console
-      console.warn('Uncaught error', error, errorInfo.componentStack);
+      console.warn("Uncaught error", error, errorInfo.componentStack);
     }),
     onCaughtError: Sentry.reactErrorHandler(),
     onRecoverableError: Sentry.reactErrorHandler(),

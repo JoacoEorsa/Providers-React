@@ -4,16 +4,16 @@
  */
 const config = {
   bracketSpacing: true,
-  endOfLine: 'lf',
-  overrides: [{ files: '*.yml', options: { singleQuote: false } }],
-  plugins: ['prettier-plugin-tailwindcss'],
+  endOfLine: "lf",
+  overrides: [{ files: "*.yml", options: { singleQuote: false } }],
+  plugins: ["prettier-plugin-tailwindcss"],
   printWidth: 100,
-  proseWrap: 'always',
+  proseWrap: "always",
   semi: true,
-  singleQuote: true,
+  singleQuote: false,
   tabWidth: 2,
-  tailwindFunctions: ['tv'],
-  trailingComma: 'all',
+  tailwindFunctions: ["tv"],
+  trailingComma: "all",
   useTabs: false,
 };
 

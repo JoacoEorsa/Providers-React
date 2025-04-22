@@ -1,15 +1,15 @@
-import { useArgs } from '@storybook/preview-api';
-import type { Meta, StoryObj } from '@storybook/react';
+import { useArgs } from "@storybook/preview-api";
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Icons, Input } from '@/components/ui';
-import { SIZE } from '@/types/styles';
+import { Icons, Input } from "@/components/ui";
+import { SIZE } from "@/types/styles";
 
 const meta: Meta<typeof Input> = {
-  args: { placeholder: 'Type your text here...' },
+  args: { placeholder: "Type your text here..." },
   component: Input,
-  parameters: { layout: 'centered' },
-  tags: ['autodocs'],
-  title: 'Components/UI/Input',
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
+  title: "Components/UI/Input",
 } satisfies Meta<typeof Input>;
 
 export default meta;

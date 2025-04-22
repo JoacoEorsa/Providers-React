@@ -1,4 +1,4 @@
-import type { UseMutationOptions, UseQueryOptions } from '@tanstack/react-query';
+import type { UseMutationOptions, UseQueryOptions } from "@tanstack/react-query";
 
 interface QueryKey {
   queryKey: readonly unknown[];
@@ -6,25 +6,25 @@ interface QueryKey {
 }
 
 type QueryFnReturnType<T> = T extends (...args: never) => QueryKey
-  ? Awaited<ReturnType<ReturnType<T>['queryFn']>>
+  ? Awaited<ReturnType<ReturnType<T>["queryFn"]>>
   : T extends QueryKey
-    ? Awaited<ReturnType<T['queryFn']>>
+    ? Awaited<ReturnType<T["queryFn"]>>
     : never;
 
 type QueryKeyReturnType<T> = T extends (...args: never) => QueryKey
-  ? ReturnType<T>['queryKey']
+  ? ReturnType<T>["queryKey"]
   : T extends QueryKey
-    ? T['queryKey']
+    ? T["queryKey"]
     : never;
 
 export type UseQueryProps<T extends ((...args: never) => QueryKey) | QueryKey> = Omit<
   UseQueryOptions<QueryFnReturnType<T>, unknown, QueryFnReturnType<T>, QueryKeyReturnType<T>>,
-  'queryFn' | 'queryKey'
+  "queryFn" | "queryKey"
 >;
 
 export type UseMutationProps<T extends (...args: never) => unknown> = Omit<
   UseMutationOptions<Awaited<ReturnType<T>>, unknown, Parameters<T>[0]>,
-  'mutationFn'
+  "mutationFn"
 >;
 
 export interface RequestParams {

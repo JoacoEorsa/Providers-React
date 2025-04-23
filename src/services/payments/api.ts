@@ -1,4 +1,5 @@
 import { privateApi } from "@/config/api";
+import { DEFAULT_PAGE_SIZE } from "@/constants";
 import type { RequestParams, ServiceResponse } from "../types";
 import { paymentStatus } from "./constants";
 import {
@@ -13,7 +14,6 @@ export const getPaymentsDetail = async (paymentId: string) => {
 
 export const getPaymentsList = async ({
   page,
-  pageSize,
   searchText,
 }: RequestParams): Promise<ServiceResponse<PaymentResponse[]>> => {
   const sleep = (ms: number) => {
@@ -97,27 +97,23 @@ export const getPaymentsList = async ({
     });
   }
 
-  if (pageSize) {
-    const startIndex = ((page ?? 1) - 1) * pageSize;
+  const startIndex = ((page ?? 1) - 1) * DEFAULT_PAGE_SIZE;
 
-    const slicedData = data.slice(startIndex, startIndex + pageSize);
+  const slicedData = data.slice(startIndex, startIndex + DEFAULT_PAGE_SIZE);
 
-    return Promise.resolve({
-      data: slicedData,
-      pagination: {
-        total: data.length,
-        currentPage: page ?? 1,
-        totalPages: Math.ceil(data.length / pageSize),
-        perPage: pageSize,
-        links: { next: "", previous: "" },
-        count: slicedData.length,
-      },
-      status: 200,
-      success: true,
-    });
-  }
-
-  return Promise.resolve({ data, status: 200, success: true });
+  return Promise.resolve({
+    data: slicedData,
+    pagination: {
+      total: data.length,
+      currentPage: page ?? 1,
+      totalPages: Math.ceil(data.length / DEFAULT_PAGE_SIZE),
+      perPage: DEFAULT_PAGE_SIZE,
+      links: { next: "", previous: "" },
+      count: slicedData.length,
+    },
+    status: 200,
+    success: true,
+  });
 
   // TODO: return privateApi.get<ServiceResponse<Payment[]>>('payments', { params });
 };

@@ -30,7 +30,6 @@ export type UseMutationProps<T extends (...args: never) => unknown> = Omit<
 export type RequestParams = {
   searchText?: string;
   page?: number;
-  pageSize?: number;
 };
 
 type ServicePagination = {

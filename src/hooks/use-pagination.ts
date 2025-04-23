@@ -1,20 +1,16 @@
 import { useMemo } from "react";
 import { getRouteApi } from "@tanstack/react-router";
+import type { PaginationState } from "@tanstack/react-table";
 import { z } from "zod";
 
-import type { PaginationState } from "@/components/ui";
 import type { AvailableRoutesId } from "@/config/router";
-
-const PAGE_SIZE = 10;
 
 const paginationValidation = z.object({
   page: z.number(),
-  pageSize: z.number(),
 });
 
 export const paginationValidationWithDefaults = z.object({
   page: z.number().default(1),
-  pageSize: z.number().default(PAGE_SIZE),
 });
 
 export const usePagination = (path: AvailableRoutesId) => {
@@ -23,31 +19,23 @@ export const usePagination = (path: AvailableRoutesId) => {
   const search = useSearch();
   const navigate = useNavigate();
 
-  const { page, pageSize } = useMemo(() => {
+  const { page } = useMemo(() => {
     return paginationValidation.parse(search);
   }, [search]);
 
   const pageIndex = page - 1;
 
-  const changePage = ({ pageIndex: newPageIndex, pageSize: newPageSize }: PaginationState) => {
+  const changePage = ({ pageIndex: newPageIndex }: { pageIndex: PaginationState["pageIndex"] }) => {
     navigate({
       search: (prev) => {
-        return { ...prev, page: newPageIndex + 1, pageSize: newPageSize };
-      },
-    });
-  };
-
-  const changePageSize = (pageSize: number) => {
-    navigate({
-      search: (prev) => {
-        return { ...prev, pageSize, page: 1 };
+        return { ...prev, page: newPageIndex + 1 };
       },
     });
   };
 
   const resetPage = () => {
-    return changePage({ pageIndex: 0, pageSize: PAGE_SIZE });
+    return changePage({ pageIndex: 0 });
   };
 
-  return { actions: { changePage, changePageSize, resetPage }, page, pageIndex, pageSize };
+  return { actions: { changePage, resetPage }, page, pageIndex };
 };

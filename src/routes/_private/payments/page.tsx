@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { DataTable } from "@/components/ui";
+import { DEFAULT_PAGE_SIZE } from "@/constants";
 import {
   paginationValidationWithDefaults,
   searchTextValidation,
@@ -18,7 +19,6 @@ const PaymentsPage = () => {
     actions: { changePage },
     page,
     pageIndex,
-    pageSize,
   } = usePagination(Route.id);
   const { searchText } = useSearchText(Route.id);
 
@@ -27,10 +27,11 @@ const PaymentsPage = () => {
   const { t } = useTranslation();
 
   const { data, isLoading } = usePaymentsListQuery({
-    pageSize,
     page,
     searchText: debouncedSearchText,
   });
+
+  const pageSize = data?.pagination?.perPage ?? DEFAULT_PAGE_SIZE;
 
   const table = usePaymentsTable({
     data: data?.data ?? [],

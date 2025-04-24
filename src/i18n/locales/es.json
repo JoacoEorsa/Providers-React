@@ -2,7 +2,8 @@
   "common": {
     "yes": "Sí",
     "no": "No",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "filter": "Filtrar"
   },
   "greetings": {
     "rootLayout": "Root layout! Me renderizo en todas las rutas (en español)",
@@ -28,26 +29,22 @@
     "areYouSureYouWantToLogout": "¿Estás seguro que quieres cerrar sesión?",
     "youWillLoseYourChanges": "¡Perderás tus cambios!"
   },
-  "home": {
-    "links": {
-      "goToPayments": "Ir a pagos"
-    }
-  },
-  "payments": {
-    "title": "Información de Pagos",
+  "users": {
+    "title": "Información de Usuarios",
     "table": {
       "columns": {
-        "amount": "Cantidad",
-        "status": "Estado",
+        "id": "ID",
         "email": "Email",
+        "name": "Nombre",
         "actions": {
           "title": "Acciones",
           "ariaLabel": "Abrir menú",
-          "copyPaymentEmail": "Copiar email de pago",
+          "copyUserEmail": "Copiar email de usuario",
           "areYouAbsolutelySure": "¿Estás absolutamente seguro/a?",
-          "thisActionCantBeUndone": "Esta acción no se puede deshacer. ¿Estás seguro/a de borrar permanentemente a {{ email }}?",
-          "deletionSuccess": "¡{ email } fue borrado con éxito!",
-          "deletionError": "Hubo un error borrando { email }."
+          "thisActionCantBeUndone": "Esta acción no se puede deshacer. ¿Estás seguro/a de borrar permanentemente a { name }?",
+          "deletionSuccess": "¡{ name } fue borrado con éxito!",
+          "deletionError": "Hubo un error borrando { name }.",
+          "filterByEmail": "Filtrar por email..."
         }
       }
     }
@@ -74,7 +71,7 @@
     "links": {
       "home": "Inicio",
       "dashboard": "Panel",
-      "payments": "Pagos"
+      "users": "Usuarios"
     }
   }
 }

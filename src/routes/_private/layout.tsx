@@ -12,7 +12,7 @@ const PrivateLayout = () => {
   const links: { path: AvailableRoutesToPath; label: string }[] = [
     { path: "/", label: t("navigation.links.home") },
     { path: "/dashboard", label: t("navigation.links.dashboard") },
-    { path: "/payments", label: t("navigation.links.payments") },
+    { path: "/users", label: t("navigation.links.users") },
   ];
 
   return (

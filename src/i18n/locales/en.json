@@ -2,7 +2,8 @@
   "common": {
     "yes": "Yes",
     "no": "No",
-    "close": "Close"
+    "close": "Close",
+    "filter": "Filter"
   },
   "greetings": {
     "rootLayout": "Root layout! I render on all paths (in English)",
@@ -28,26 +29,22 @@
     "areYouSureYouWantToLogout": "Are you sure you want to logout?",
     "youWillLoseYourChanges": "You will lose your changes!"
   },
-  "home": {
-    "links": {
-      "goToPayments": "Go to payments"
-    }
-  },
-  "payments": {
-    "title": "Payments Information",
+  "users": {
+    "title": "Users Information",
     "table": {
       "columns": {
-        "amount": "Amount",
-        "status": "Status",
+        "id": "ID",
         "email": "Email",
+        "name": "Name",
         "actions": {
           "title": "Actions",
           "ariaLabel": "Open menu",
-          "copyPaymentEmail": "Copy payment email",
+          "copyUserEmail": "Copy user email",
           "areYouAbsolutelySure": "Are you absolutely sure?",
-          "thisActionCantBeUndone": "This action cannot be undone. Are you sure you want to permanently delete { email }?",
-          "deletionSuccess": "{ email } was deleted successfully!",
-          "deletionError": "There was an error deleting { email }."
+          "thisActionCantBeUndone": "This action cannot be undone. Are you sure you want to permanently delete { name }?",
+          "deletionSuccess": "{ name } was deleted successfully!",
+          "deletionError": "There was an error deleting { name }.",
+          "filterByEmail": "Filter by email..."
         }
       }
     }
@@ -74,7 +71,7 @@
     "links": {
       "home": "Home",
       "dashboard": "Dashboard",
-      "payments": "Payments"
+      "users": "Users"
     }
   }
 }

@@ -16,7 +16,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as PrivateLayoutImport } from './routes/_private/layout'
 import { Route as PrivatePageImport } from './routes/_private/page'
 import { Route as publicGuestLayoutImport } from './routes/(public)/_guest/layout'
-import { Route as PrivatePaymentsPageImport } from './routes/_private/payments/page'
+import { Route as PrivateUsersPageImport } from './routes/_private/users/page'
 import { Route as PrivateDashboardPageImport } from './routes/_private/dashboard.page'
 import { Route as publicTermsPageImport } from './routes/(public)/terms.page'
 import { Route as publicGuestRegisterPageImport } from './routes/(public)/_guest/register.page'
@@ -49,9 +49,9 @@ const publicGuestLayoutRoute = publicGuestLayoutImport.update({
   getParentRoute: () => publicRoute,
 } as any)
 
-const PrivatePaymentsPageRoute = PrivatePaymentsPageImport.update({
-  id: '/payments/',
-  path: '/payments/',
+const PrivateUsersPageRoute = PrivateUsersPageImport.update({
+  id: '/users/',
+  path: '/users/',
   getParentRoute: () => PrivateLayoutRoute,
 } as any)
 
@@ -125,11 +125,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivateDashboardPageImport
       parentRoute: typeof PrivateLayoutImport
     }
-    '/_private/payments/': {
-      id: '/_private/payments/'
-      path: '/payments'
-      fullPath: '/payments'
-      preLoaderRoute: typeof PrivatePaymentsPageImport
+    '/_private/users/': {
+      id: '/_private/users/'
+      path: '/users'
+      fullPath: '/users'
+      preLoaderRoute: typeof PrivateUsersPageImport
       parentRoute: typeof PrivateLayoutImport
     }
     '/(public)/_guest/login/': {
@@ -154,13 +154,13 @@ declare module '@tanstack/react-router' {
 interface PrivateLayoutRouteChildren {
   PrivatePageRoute: typeof PrivatePageRoute
   PrivateDashboardPageRoute: typeof PrivateDashboardPageRoute
-  PrivatePaymentsPageRoute: typeof PrivatePaymentsPageRoute
+  PrivateUsersPageRoute: typeof PrivateUsersPageRoute
 }
 
 const PrivateLayoutRouteChildren: PrivateLayoutRouteChildren = {
   PrivatePageRoute: PrivatePageRoute,
   PrivateDashboardPageRoute: PrivateDashboardPageRoute,
-  PrivatePaymentsPageRoute: PrivatePaymentsPageRoute,
+  PrivateUsersPageRoute: PrivateUsersPageRoute,
 }
 
 const PrivateLayoutRouteWithChildren = PrivateLayoutRoute._addFileChildren(
@@ -198,7 +198,7 @@ export interface FileRoutesByFullPath {
   '/': typeof PrivatePageRoute
   '/terms': typeof publicTermsPageRoute
   '/dashboard': typeof PrivateDashboardPageRoute
-  '/payments': typeof PrivatePaymentsPageRoute
+  '/users': typeof PrivateUsersPageRoute
   '/login': typeof publicGuestLoginPageRoute
   '/register': typeof publicGuestRegisterPageRoute
 }
@@ -207,7 +207,7 @@ export interface FileRoutesByTo {
   '/': typeof PrivatePageRoute
   '/terms': typeof publicTermsPageRoute
   '/dashboard': typeof PrivateDashboardPageRoute
-  '/payments': typeof PrivatePaymentsPageRoute
+  '/users': typeof PrivateUsersPageRoute
   '/login': typeof publicGuestLoginPageRoute
   '/register': typeof publicGuestRegisterPageRoute
 }
@@ -220,7 +220,7 @@ export interface FileRoutesById {
   '/_private/': typeof PrivatePageRoute
   '/(public)/terms/': typeof publicTermsPageRoute
   '/_private/dashboard/': typeof PrivateDashboardPageRoute
-  '/_private/payments/': typeof PrivatePaymentsPageRoute
+  '/_private/users/': typeof PrivateUsersPageRoute
   '/(public)/_guest/login/': typeof publicGuestLoginPageRoute
   '/(public)/_guest/register/': typeof publicGuestRegisterPageRoute
 }
@@ -232,11 +232,11 @@ export interface FileRouteTypes {
     | '/'
     | '/terms'
     | '/dashboard'
-    | '/payments'
+    | '/users'
     | '/login'
     | '/register'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/terms' | '/dashboard' | '/payments' | '/login' | '/register'
+  to: '/' | '/terms' | '/dashboard' | '/users' | '/login' | '/register'
   id:
     | '__root__'
     | '/_private'
@@ -245,7 +245,7 @@ export interface FileRouteTypes {
     | '/_private/'
     | '/(public)/terms/'
     | '/_private/dashboard/'
-    | '/_private/payments/'
+    | '/_private/users/'
     | '/(public)/_guest/login/'
     | '/(public)/_guest/register/'
   fileRoutesById: FileRoutesById
@@ -280,7 +280,7 @@ export const routeTree = rootRoute
       "children": [
         "/_private/",
         "/_private/dashboard/",
-        "/_private/payments/"
+        "/_private/users/"
       ]
     },
     "/(public)": {
@@ -310,8 +310,8 @@ export const routeTree = rootRoute
       "filePath": "_private/dashboard.page.tsx",
       "parent": "/_private"
     },
-    "/_private/payments/": {
-      "filePath": "_private/payments/page.tsx",
+    "/_private/users/": {
+      "filePath": "_private/users/page.tsx",
       "parent": "/_private"
     },
     "/(public)/_guest/login/": {

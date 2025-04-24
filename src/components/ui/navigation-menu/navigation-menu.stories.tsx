@@ -19,7 +19,7 @@ export const Default: Story = {
     const routes: { path: AvailableRoutesToPath; label: string }[] = [
       { path: "/", label: "Root" },
       { path: "/dashboard", label: "Dashboard" },
-      { path: "/payments", label: "Payments" },
+      { path: "/users", label: "Users" },
     ];
 
     return (

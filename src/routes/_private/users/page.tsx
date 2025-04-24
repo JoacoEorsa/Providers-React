@@ -11,44 +11,48 @@ import {
   useSearchText,
 } from "@/hooks";
 import { useTranslation } from "@/i18n";
-import { usePaymentsListQuery } from "@/services";
-import { usePaymentsTable } from "./-hooks/use-payments-table";
+import { USER_FILTER_KEYS, useUsersListQuery } from "@/services";
+import { useUsersTable } from "./-hooks/use-users-table";
 
-const PaymentsPage = () => {
+const UsersPage = () => {
   const {
     actions: { changePage },
     page,
     pageIndex,
   } = usePagination(Route.id);
+
   const { searchText } = useSearchText(Route.id);
 
   const debouncedSearchText = useDebounce(searchText, 500);
 
   const { t } = useTranslation();
 
-  const { data, isLoading } = usePaymentsListQuery({
+  const { data: usersListData, isLoading } = useUsersListQuery({
+    filter: {
+      [USER_FILTER_KEYS.EMAIL]: debouncedSearchText,
+    },
     page,
-    searchText: debouncedSearchText,
   });
 
-  const pageSize = data?.pagination?.perPage ?? DEFAULT_PAGE_SIZE;
+  const pageSize = usersListData?.meta?.per_page ?? DEFAULT_PAGE_SIZE;
 
-  const table = usePaymentsTable({
-    data: data?.data ?? [],
+  const table = useUsersTable({
+    data: usersListData?.data ?? [],
     state: { pagination: { pageIndex, pageSize } },
     onPaginationChange: (updater) => {
       if (typeof updater === "function") {
         changePage(updater({ pageIndex, pageSize }));
       }
     },
-    pageCount: data?.pagination?.totalPages,
+    pageCount: usersListData?.meta?.last_page,
   });
 
   return (
     <div className="flex flex-col gap-y-2">
-      <h1>{t("payments.title")}</h1>
+      <h1>{t("users.title")}</h1>
 
       <DataTable
+        inputPlaceholder={t("users.table.columns.actions.filterByEmail")}
         isLoading={isLoading}
         path={Route.id}
         table={table}
@@ -59,8 +63,8 @@ const PaymentsPage = () => {
   );
 };
 
-export const Route = createFileRoute("/_private/payments/")({
-  component: PaymentsPage,
+export const Route = createFileRoute("/_private/users/")({
+  component: UsersPage,
   validateSearch: z.object({
     ...searchTextValidation.shape,
     ...paginationValidationWithDefaults.shape,

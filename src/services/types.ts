@@ -27,23 +27,35 @@ export type UseMutationProps<T extends (...args: never) => unknown> = Omit<
   "mutationFn"
 >;
 
-export type RequestParams = {
-  searchText?: string;
+export type RequestParams<T> = {
   page?: number;
+  filter?: T;
 };
 
-type ServicePagination = {
-  count: number;
-  currentPage: number;
-  links: { next: string; previous: string };
-  perPage: number;
-  total: number;
-  totalPages: number;
+export type PaginationLinks = {
+  first: string;
+  last: string;
+  prev: string | null;
+  next: string | null;
+};
+
+type MetaLink = {
+  url: string | null;
+  label: string;
+  active: boolean;
 };
 
 export type ServiceResponse<T> = {
   data: T;
-  pagination?: ServicePagination;
-  status: number;
-  success: boolean;
+  links?: PaginationLinks;
+  meta?: {
+    current_page: number;
+    from: number;
+    last_page: number;
+    links: MetaLink[];
+    path: string;
+    per_page: number;
+    to: number;
+    total: number;
+  };
 };

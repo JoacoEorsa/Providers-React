@@ -9,6 +9,7 @@ type BaseDataTableProps<T> = {
   isLoading?: boolean;
   table: TableProps<T>;
   withColumnVisibility?: boolean;
+  inputPlaceholder?: string;
 };
 
 type DataTablePropsWithSearch = {
@@ -25,6 +26,7 @@ type DataTableProps<T> = BaseDataTableProps<T> &
   (DataTablePropsWithSearch | DataTablePropsWithoutSearch);
 
 export const DataTable = <T,>({
+  inputPlaceholder,
   isLoading,
   path,
   table,
@@ -40,7 +42,7 @@ export const DataTable = <T,>({
   return (
     <div className="flex w-full flex-col gap-y-2">
       <div className="flex items-center gap-x-4">
-        {withSearch && path ? <SearchTextInput path={path} /> : null}
+        {withSearch && path ? <SearchTextInput path={path} placeholder={inputPlaceholder} /> : null}
 
         {withColumnVisibility ? <ViewOptions table={table} /> : null}
       </div>

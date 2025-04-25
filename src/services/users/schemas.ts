@@ -5,3 +5,5 @@ export const userResponseSchema = z.object({
   name: z.string(),
   email_address: z.string(),
 });
+
+export const deleteUserRequestSchema = userResponseSchema.pick({ id: true });

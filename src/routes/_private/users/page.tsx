@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 
@@ -27,14 +28,26 @@ const UsersPage = () => {
 
   const { t } = useTranslation();
 
-  const { data: usersListData, isLoading } = useUsersListQuery({
+  const {
+    data: usersListData,
+    isLoading,
+    isSuccess,
+  } = useUsersListQuery({
     filter: {
       [USER_FILTER_KEYS.EMAIL]: debouncedSearchText,
     },
     page,
   });
 
+  const lastPage = usersListData?.meta?.last_page;
   const pageSize = usersListData?.meta?.per_page ?? DEFAULT_PAGE_SIZE;
+
+  useEffect(() => {
+    if (isSuccess && lastPage && page > lastPage) {
+      changePage({ pageIndex: lastPage - 1 });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [changePage, isSuccess]);
 
   const table = useUsersTable({
     data: usersListData?.data ?? [],
@@ -44,7 +57,7 @@ const UsersPage = () => {
         changePage(updater({ pageIndex, pageSize }));
       }
     },
-    pageCount: usersListData?.meta?.last_page,
+    pageCount: lastPage,
   });
 
   return (

@@ -23,3 +23,16 @@ export const useUsersDeleteMutation = (props?: UseMutationProps<typeof mutations
     },
   });
 };
+
+export const useCreateUserMutation = (props?: UseMutationProps<typeof mutations.create>) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: mutations.create,
+    ...props,
+    onSuccess: (...args) => {
+      queryClient.invalidateQueries({ queryKey: queries.list._def });
+      props?.onSuccess?.(...args);
+    },
+  });
+};

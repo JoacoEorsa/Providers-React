@@ -13,6 +13,7 @@ import {
 } from "@/hooks";
 import { useTranslation } from "@/i18n";
 import { USER_FILTER_KEYS, useUsersListQuery } from "@/services";
+import { CreateUserDialog } from "./-components/create-user-dialog";
 import { useUsersTable } from "./-hooks/use-users-table";
 
 const UsersPage = () => {
@@ -65,6 +66,7 @@ const UsersPage = () => {
       <h1>{t("users.title")}</h1>
 
       <DataTable
+        actions={<CreateUserDialog />}
         inputPlaceholder={t("users.table.columns.actions.filterByEmail")}
         isLoading={isLoading}
         path={Route.id}

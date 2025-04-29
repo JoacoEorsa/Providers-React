@@ -3,7 +3,7 @@ import { Trans } from "react-i18next";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate, useRouter, useSearch } from "@tanstack/react-router";
 
-import { Button, Input, Label, toast } from "@/components/ui";
+import { Button, ErrorMessage, Input, Label, toast } from "@/components/ui";
 import { useTranslation } from "@/i18n";
 import { getLoginRequestSchema, type LoginRequest, useLoginMutation } from "@/services";
 import { setAuthStoreToken } from "@/stores";
@@ -43,14 +43,17 @@ export const LoginForm = () => {
   return (
     <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-2">
-        <Label htmlFor="email">{t("login.email")}</Label>
+        <Label htmlFor="email">{t("form.email")}</Label>
+
         <Input {...register("email")} />
-        {errors.email ? <p className="mt-2 text-sm text-red-600">{errors.email.message}</p> : null}
+
+        <ErrorMessage errorMessage={errors?.email?.message} />
       </div>
 
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <Label htmlFor="password">{t("login.password")}</Label>
+          <Label htmlFor="password">{t("form.password")}</Label>
+
           <Link
             className="ml-auto inline-block text-sm underline-offset-4 hover:underline hover:opacity-80"
             to="/"
@@ -58,10 +61,10 @@ export const LoginForm = () => {
             {t("login.forgotYourPassword")}
           </Link>
         </div>
+
         <Input {...register("password")} type="password" />
-        {errors.password ? (
-          <p className="mt-2 text-sm text-red-600">{errors.password.message}</p>
-        ) : null}
+
+        <ErrorMessage errorMessage={errors?.password?.message} />
       </div>
 
       <Button className="w-full" type="submit">

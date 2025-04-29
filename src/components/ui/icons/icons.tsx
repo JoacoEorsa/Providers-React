@@ -19,6 +19,7 @@ const AVAILABLE_ICONIFY_ICONS = {
   Menu: "menu",
   Search: "search",
   Close: "x",
+  Plus: "plus",
 };
 
 export const initializeIcons = () => {

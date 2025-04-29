@@ -21,7 +21,7 @@ export const ViewOptions = <T,>({ table }: ViewOptionsProps<T>) => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <Button className="ml-auto" variant="outline">
+        <Button className="sm:ml-auto" variant="outline">
           {t("table.filters.columns")} <Icons.ChevronDown />
         </Button>
       </DropdownMenu.Trigger>

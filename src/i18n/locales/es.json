@@ -12,17 +12,23 @@
     "publicLayout": "Layout público! Me renderizo en todas las rutas dentro de la carpeta /(public)/",
     "home": "Bienvenido al home!"
   },
-  "login": {
+  "form": {
     "email": "Email",
     "password": "Contraseña",
-    "forgotYourPassword": "¿Olvidaste tu contraseña?",
-    "login": "Iniciar Sesión",
-    "noAccount": "¿No tienes una cuenta? <Link>Regístrate</Link>",
+    "name": "Nombre",
+    "confirmPassword": "Confirmar contraseña",
     "errors": {
       "required": "{field} es requerido",
       "invalidField": "Por favor ingresar un/a {field} válido/a",
-      "minLength": "{field} debe contener al menos {length} caracteres"
+      "minLength": "{field} debe contener al menos {length} caracteres",
+      "containsNumber": "{field} debe contener al menos un número",
+      "passwordMismatch": "Las contraseñas no coinciden"
     }
+  },
+  "login": {
+    "forgotYourPassword": "¿Olvidaste tu contraseña?",
+    "login": "Iniciar Sesión",
+    "noAccount": "¿No tienes una cuenta? <Link>Regístrate</Link>"
   },
   "logout": {
     "logOut": "Cerrar sesión",
@@ -47,12 +53,19 @@
           "filterByEmail": "Filtrar por email..."
         }
       }
+    },
+    "create": {
+      "description": "Complete the form to create a new user",
+      "title": "Add User",
+      "success": "User created successfully",
+      "error": "Not able to create user"
     }
   },
   "buttons": {
     "delete": "Borrar",
     "confirm": "Confirmar",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "create": "Crear"
   },
   "table": {
     "noResults": "Sin resultados",

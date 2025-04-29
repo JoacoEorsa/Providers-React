@@ -12,17 +12,23 @@
     "publicLayout": "Public layout! I render on all paths inside the /(public)/ folder",
     "home": "Welcome Home!"
   },
-  "login": {
+  "form": {
     "email": "Email",
     "password": "Password",
-    "forgotYourPassword": "Forgot your password?",
-    "login": "Login",
-    "noAccount": "Don't have an account? <Link>Sign up</Link>",
+    "name": "Name",
+    "confirmPassword": "Confirm Password",
     "errors": {
       "required": "{field} is required",
       "invalidField": "Please enter a valid {field}.",
-      "minLength": "{field} should contain at least {length} characters"
+      "minLength": "{field} should contain at least {length} characters",
+      "containsNumber": "{field} must contain at least one number",
+      "passwordMismatch": "Passwords don't match"
     }
+  },
+  "login": {
+    "forgotYourPassword": "Forgot your password?",
+    "login": "Login",
+    "noAccount": "Don't have an account? <Link>Sign up</Link>"
   },
   "logout": {
     "logOut": "Log out",
@@ -47,12 +53,19 @@
           "filterByEmail": "Filter by email..."
         }
       }
+    },
+    "create": {
+      "description": "Complete the form to create a new user",
+      "title": "Add User",
+      "success": "User created successfully",
+      "error": "Not able to create user"
     }
   },
   "buttons": {
     "delete": "Delete",
     "confirm": "Confirm",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "create": "Create"
   },
   "table": {
     "noResults": "No results",

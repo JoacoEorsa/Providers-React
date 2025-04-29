@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import type { AvailableRoutesId } from "@/config/router";
 import { useTranslation } from "@/i18n";
 import { flexRender, Table, type TableProps } from "../table";
@@ -10,6 +12,7 @@ type BaseDataTableProps<T> = {
   table: TableProps<T>;
   withColumnVisibility?: boolean;
   inputPlaceholder?: string;
+  actions?: ReactNode;
 };
 
 type DataTablePropsWithSearch = {
@@ -26,6 +29,7 @@ type DataTableProps<T> = BaseDataTableProps<T> &
   (DataTablePropsWithSearch | DataTablePropsWithoutSearch);
 
 export const DataTable = <T,>({
+  actions,
   inputPlaceholder,
   isLoading,
   path,
@@ -41,9 +45,9 @@ export const DataTable = <T,>({
 
   return (
     <div className="flex w-full flex-col gap-y-2">
-      <div className="flex items-center gap-x-4">
+      <div className="flex flex-wrap gap-x-4 gap-y-2 sm:flex-nowrap">
         {withSearch && path ? <SearchTextInput path={path} placeholder={inputPlaceholder} /> : null}
-
+        {actions}
         {withColumnVisibility ? <ViewOptions table={table} /> : null}
       </div>
 

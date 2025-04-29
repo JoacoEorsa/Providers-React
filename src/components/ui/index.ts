@@ -2,6 +2,7 @@ export * from "./button";
 export * from "./checkbox";
 export * from "./dialog";
 export * from "./dropdown-menu";
+export * from "./error-message";
 export * from "./icons";
 export * from "./input";
 export * from "./label";

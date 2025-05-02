@@ -38,3 +38,5 @@ export const getCreateUserRequestSchema = () => {
 };
 
 export const deleteUserRequestSchema = userResponseSchema.pick({ id: true });
+
+export const updateUserRequestSchema = getCreateUserRequestSchema;

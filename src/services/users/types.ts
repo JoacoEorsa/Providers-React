@@ -8,7 +8,7 @@ import type {
   userResponseSchema,
 } from "./schemas";
 
-export type UserResponse = z.infer<typeof userResponseSchema>;
+export type User = z.infer<typeof userResponseSchema>;
 
 export type UserFilterKey = (typeof USER_FILTER_KEYS)[keyof typeof USER_FILTER_KEYS];
 
@@ -17,6 +17,8 @@ export type UserRequestParams = RequestParams<Record<UserFilterKey, string | und
 export type DeleteUserRequest = z.infer<typeof deleteUserRequestSchema>;
 
 export type CreateUserRequest = z.infer<ReturnType<typeof getCreateUserRequestSchema>>;
+
+export type UpdateUserRequest = CreateUserRequest & Pick<User, "id">;
 
 export type CreateUserResponse = {
   data: UserFilterKey;

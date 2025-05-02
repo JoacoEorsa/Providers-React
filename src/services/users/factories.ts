@@ -1,6 +1,6 @@
 import { createQueryKeys } from "@lukemorales/query-key-factory";
 
-import { createUser, deleteUser, getUsersList } from "./api";
+import { createUser, deleteUser, getUsersList, updateUser } from "./api";
 
 export const queries = createQueryKeys("users", {
   list: (params) => {
@@ -16,4 +16,5 @@ export const queries = createQueryKeys("users", {
 export const mutations = {
   create: createUser,
   delete: deleteUser,
+  update: updateUser,
 };

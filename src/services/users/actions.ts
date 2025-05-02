@@ -36,3 +36,16 @@ export const useCreateUserMutation = (props?: UseMutationProps<typeof mutations.
     },
   });
 };
+
+export const useUpdateUserMutation = (props?: UseMutationProps<typeof mutations.update>) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: mutations.update,
+    ...props,
+    onSuccess: (...args) => {
+      queryClient.invalidateQueries({ queryKey: queries.list._def });
+      props?.onSuccess?.(...args);
+    },
+  });
+};

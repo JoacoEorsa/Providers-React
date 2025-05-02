@@ -55,17 +55,24 @@
       }
     },
     "create": {
-      "description": "Complete the form to create a new user",
-      "title": "Add User",
-      "success": "User created successfully",
-      "error": "Not able to create user"
+      "description": "Completa el formulario para crear un nuevo usuario",
+      "title": "Agregar Usuario",
+      "success": "Usuario creado con éxito",
+      "error": "No se pudo crear el usuario"
+    },
+    "update": {
+      "description": "Completa el formulario para actualizar el usuario",
+      "title": "Actualizar Usuario",
+      "success": "Usuario actualizado con éxito",
+      "error": "No se pudo actualizar el usuario"
     }
   },
   "buttons": {
     "delete": "Borrar",
     "confirm": "Confirmar",
     "cancel": "Cancelar",
-    "create": "Crear"
+    "create": "Crear",
+    "update": "Actualizar"
   },
   "table": {
     "noResults": "Sin resultados",

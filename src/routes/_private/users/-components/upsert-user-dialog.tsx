@@ -1,19 +1,32 @@
-import { useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button, Dialog, ErrorMessage, Icons, Input, Label, toast } from "@/components/ui";
+import { Button, Dialog, ErrorMessage, Input, Label, toast } from "@/components/ui";
 import { useTranslation } from "@/i18n";
 import {
   type CreateUserRequest,
   getCreateUserRequestSchema,
+  type UpdateUserRequest,
+  updateUserRequestSchema,
   useCreateUserMutation,
+  type User,
+  useUpdateUserMutation,
 } from "@/services";
 
-export const CreateUserDialog = () => {
+type UpsertUserDialogProps = {
+  isOpen: boolean;
+  onOpenChange: (open: boolean) => void;
+  user?: User;
+};
+
+export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialogProps) => {
   const { t } = useTranslation();
-  const { isPending, mutate: createUser } = useCreateUserMutation();
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const { isPending: isCreating, mutate: createUser } = useCreateUserMutation();
+  const { isPending: isUpdating, mutate: updateUser } = useUpdateUserMutation();
+
+  const isNewUser = !user;
+  const isPending = isUpdating || isCreating;
 
   const {
     formState: { errors },
@@ -22,20 +35,42 @@ export const CreateUserDialog = () => {
     reset,
   } = useForm({
     mode: "onTouched",
-    resolver: zodResolver(getCreateUserRequestSchema()),
+    resolver: zodResolver(isNewUser ? getCreateUserRequestSchema() : updateUserRequestSchema()),
+    values: {
+      email_address: user?.email_address ?? "",
+      name: user?.name ?? "",
+      password: "",
+      password_confirmation: "",
+    },
   });
 
-  const onSubmit: SubmitHandler<CreateUserRequest> = (data) => {
-    createUser(data, {
-      onSuccess: () => {
-        toast.success(t("users.create.success"));
-        setIsDialogOpen(false);
-        reset();
+  const onSubmit: SubmitHandler<CreateUserRequest | UpdateUserRequest> = (data) => {
+    if (isNewUser) {
+      return createUser(data, {
+        onSuccess: () => {
+          toast.success(t("users.create.success"));
+          onOpenChange(false);
+          reset();
+        },
+        onError: () => {
+          toast.error(t("users.create.error"));
+        },
+      });
+    }
+
+    return updateUser(
+      { ...data, id: user.id },
+      {
+        onSuccess: () => {
+          toast.success(t("users.update.success"));
+          onOpenChange(false);
+          reset();
+        },
+        onError: () => {
+          toast.error(t("users.update.error"));
+        },
       },
-      onError: () => {
-        toast.error(t("users.create.error"));
-      },
-    });
+    );
   };
 
   const handleOpenChange = (open: boolean) => {
@@ -43,26 +78,21 @@ export const CreateUserDialog = () => {
       reset();
     }
 
-    setIsDialogOpen(open);
+    onOpenChange(open);
   };
 
   return (
-    <Dialog.Root onOpenChange={handleOpenChange} open={isDialogOpen}>
-      <Dialog.Trigger asChild>
-        <Button variant="outline">
-          <Icons.Plus />
-
-          {t("users.create.title")}
-        </Button>
-      </Dialog.Trigger>
-
-      <Dialog.Content>
+    <Dialog.Root onOpenChange={handleOpenChange} open={isOpen}>
+      <Dialog.Content isDismissible={!isUpdating && !isCreating}>
         <Dialog.Header>
-          <Dialog.Title>{t("users.create.title")}</Dialog.Title>
+          <Dialog.Title>
+            {isNewUser ? t("users.create.title") : t("users.update.title")}
+          </Dialog.Title>
 
-          <Dialog.Description>{t("users.create.description")}</Dialog.Description>
+          <Dialog.Description>
+            {isNewUser ? t("users.create.description") : t("users.update.description")}
+          </Dialog.Description>
         </Dialog.Header>
-
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col gap-2">
             <Label htmlFor="name">{t("form.name")}</Label>
@@ -107,7 +137,7 @@ export const CreateUserDialog = () => {
             </Dialog.Close>
 
             <Button isLoading={isPending} type="submit">
-              {t("buttons.create")}
+              {isNewUser ? t("buttons.create") : t("buttons.update")}
             </Button>
           </Dialog.Footer>
         </form>

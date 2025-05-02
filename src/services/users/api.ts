@@ -4,12 +4,13 @@ import type {
   CreateUserRequest,
   CreateUserResponse,
   DeleteUserRequest,
+  UpdateUserRequest,
+  User,
   UserRequestParams,
-  UserResponse,
 } from "./types";
 
 export const getUsersList = async ({ filter, page }: UserRequestParams) => {
-  const response = await publicApi.get<ServiceResponse<UserResponse[]>>("users", {
+  const response = await publicApi.get<ServiceResponse<User[]>>("users", {
     params: { page, filter },
   });
 
@@ -17,9 +18,13 @@ export const getUsersList = async ({ filter, page }: UserRequestParams) => {
 };
 
 export const deleteUser = async ({ id }: DeleteUserRequest) => {
-  return publicApi.delete<ServiceResponse<UserResponse>>(`users/${id}`);
+  return publicApi.delete<ServiceResponse<User>>(`users/${id}`);
 };
 
 export const createUser = async (data: CreateUserRequest) => {
   return publicApi.post<ServiceResponse<CreateUserResponse>>("users", data);
+};
+
+export const updateUser = async (data: UpdateUserRequest) => {
+  return publicApi.put<ServiceResponse<User>>(`users/${data.id}`, data);
 };

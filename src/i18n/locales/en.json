@@ -59,13 +59,20 @@
       "title": "Add User",
       "success": "User created successfully",
       "error": "Not able to create user"
+    },
+    "update": {
+      "description": "Complete the form to update the user",
+      "title": "Update User",
+      "success": "User updated successfully",
+      "error": "Not able to update user"
     }
   },
   "buttons": {
     "delete": "Delete",
     "confirm": "Confirm",
     "cancel": "Cancel",
-    "create": "Create"
+    "create": "Create",
+    "update": "Update"
   },
   "table": {
     "noResults": "No results",

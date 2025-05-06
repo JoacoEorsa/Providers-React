@@ -12,6 +12,7 @@ import {
   type User,
   useUpdateUserMutation,
 } from "@/services";
+import { handleAxiosFieldErrors } from "@/utils";
 
 type UpsertUserDialogProps = {
   isOpen: boolean;
@@ -33,6 +34,7 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
     handleSubmit,
     register,
     reset,
+    setError,
   } = useForm({
     mode: "onTouched",
     resolver: zodResolver(isNewUser ? getCreateUserRequestSchema() : updateUserRequestSchema()),
@@ -52,8 +54,8 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
           onOpenChange(false);
           reset();
         },
-        onError: () => {
-          toast.error(t("users.create.error"));
+        onError: (error) => {
+          handleAxiosFieldErrors<CreateUserRequest>(error, setError, t("users.create.error"));
         },
       });
     }
@@ -66,8 +68,8 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
           onOpenChange(false);
           reset();
         },
-        onError: () => {
-          toast.error(t("users.update.error"));
+        onError: (error) => {
+          handleAxiosFieldErrors<UpdateUserRequest>(error, setError, t("users.update.error"));
         },
       },
     );

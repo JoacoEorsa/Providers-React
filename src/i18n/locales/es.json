@@ -3,7 +3,8 @@
     "yes": "Sí",
     "no": "No",
     "close": "Cerrar",
-    "filter": "Filtrar"
+    "filter": "Filtrar",
+    "requestError": "No se pudo completar la solicitud. Por favor, inténtelo de nuevo más tarde."
   },
   "greetings": {
     "rootLayout": "Root layout! Me renderizo en todas las rutas (en español)",
@@ -18,17 +19,20 @@
     "name": "Nombre",
     "confirmPassword": "Confirmar contraseña",
     "errors": {
-      "required": "{field} es requerido",
-      "invalidField": "Por favor ingresar un/a {field} válido/a",
-      "minLength": "{field} debe contener al menos {length} caracteres",
-      "containsNumber": "{field} debe contener al menos un número",
-      "passwordMismatch": "Las contraseñas no coinciden"
+      "required": "{field} es requerido.",
+      "invalidField": "Por favor ingresar un/a {field} válido/a.",
+      "minLength": "{field} debe contener al menos {length} caracteres.",
+      "containsNumber": "{field} debe contener al menos un número.",
+      "passwordMismatch": "Las contraseñas no coinciden.",
+      "containsLetter": "{field} debe contener al menos una letra."
     }
   },
   "login": {
     "forgotYourPassword": "¿Olvidaste tu contraseña?",
     "login": "Iniciar Sesión",
-    "noAccount": "¿No tienes una cuenta? <Link>Regístrate</Link>"
+    "noAccount": "¿No tienes una cuenta? <Link>Regístrate</Link>",
+    "error": "No se pudo iniciar sesión",
+    "success": "Inició sesión con éxito"
   },
   "logout": {
     "logOut": "Cerrar sesión",

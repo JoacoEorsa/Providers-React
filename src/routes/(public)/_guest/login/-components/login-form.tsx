@@ -7,6 +7,7 @@ import { Button, ErrorMessage, Input, Label, toast } from "@/components/ui";
 import { useTranslation } from "@/i18n";
 import { getLoginRequestSchema, type LoginRequest, useLoginMutation } from "@/services";
 import { setAuthStoreToken } from "@/stores";
+import { handleAxiosFieldErrors } from "@/utils";
 
 export const LoginForm = () => {
   const { t } = useTranslation();
@@ -21,6 +22,7 @@ export const LoginForm = () => {
     formState: { errors },
     handleSubmit,
     register,
+    setError,
   } = useForm({
     mode: "onTouched",
     resolver: zodResolver(getLoginRequestSchema()),
@@ -29,13 +31,13 @@ export const LoginForm = () => {
   const onSubmit: SubmitHandler<LoginRequest> = (data) => {
     loginMutation.mutate(data, {
       onSuccess: async ({ data: { authToken } }) => {
-        toast.success("Logged in successfully");
+        toast.success(t("login.success"));
         setAuthStoreToken(authToken);
         await router.invalidate();
         await navigate({ to: search.redirect || "/" });
       },
-      onError: () => {
-        toast.error("Not able to log in");
+      onError: (error) => {
+        handleAxiosFieldErrors<LoginRequest>(error, setError, t("login.error"));
       },
     });
   };

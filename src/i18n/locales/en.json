@@ -3,7 +3,8 @@
     "yes": "Yes",
     "no": "No",
     "close": "Close",
-    "filter": "Filter"
+    "filter": "Filter",
+    "requestError": "Unable to complete the request. Please try again later."
   },
   "greetings": {
     "rootLayout": "Root layout! I render on all paths (in English)",
@@ -18,17 +19,20 @@
     "name": "Name",
     "confirmPassword": "Confirm Password",
     "errors": {
-      "required": "{field} is required",
+      "required": "{field} is required.",
       "invalidField": "Please enter a valid {field}.",
-      "minLength": "{field} should contain at least {length} characters",
-      "containsNumber": "{field} must contain at least one number",
-      "passwordMismatch": "Passwords don't match"
+      "minLength": "{field} should contain at least {length} characters.",
+      "containsNumber": "{field} must contain at least one number.",
+      "passwordMismatch": "Passwords don't match.",
+      "containsLetter": "{field} must contain at least one letter."
     }
   },
   "login": {
     "forgotYourPassword": "Forgot your password?",
     "login": "Login",
-    "noAccount": "Don't have an account? <Link>Sign up</Link>"
+    "noAccount": "Don't have an account? <Link>Sign up</Link>",
+    "error": "Not able to log in",
+    "success": "Logged in successfully"
   },
   "logout": {
     "logOut": "Log out",

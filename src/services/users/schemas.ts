@@ -23,6 +23,9 @@ export const getCreateUserRequestSchema = () => {
         })
         .regex(/\d/, {
           message: i18n.t("form.errors.containsNumber", { field: i18n.t("form.password") }),
+        })
+        .regex(/[a-zA-Z]/, {
+          message: i18n.t("form.errors.containsLetter", { field: i18n.t("form.password") }),
         }),
       password_confirmation: z.string(),
     })

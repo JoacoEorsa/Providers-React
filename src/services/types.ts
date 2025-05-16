@@ -31,31 +31,3 @@ export type RequestParams<T> = {
   page?: number;
   filter?: T;
 };
-
-export type PaginationLinks = {
-  first: string;
-  last: string;
-  prev: string | null;
-  next: string | null;
-};
-
-type MetaLink = {
-  url: string | null;
-  label: string;
-  active: boolean;
-};
-
-export type ServiceResponse<T> = {
-  data: T;
-  links?: PaginationLinks;
-  meta?: {
-    current_page: number;
-    from: number;
-    last_page: number;
-    links: MetaLink[];
-    path: string;
-    per_page: number;
-    to: number;
-    total: number;
-  };
-};

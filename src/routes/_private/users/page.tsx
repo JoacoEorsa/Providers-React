@@ -41,8 +41,8 @@ const UsersPage = () => {
     page,
   });
 
-  const lastPage = usersListData?.meta?.last_page;
-  const pageSize = usersListData?.meta?.per_page ?? DEFAULT_PAGE_SIZE;
+  const lastPage = usersListData?.meta?.lastPage;
+  const pageSize = usersListData?.meta?.perPage ?? DEFAULT_PAGE_SIZE;
 
   useEffect(() => {
     if (isSuccess && lastPage && page > lastPage) {

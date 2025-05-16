@@ -1,4 +1,5 @@
 import axios, { type AxiosError } from "axios";
+import { deepCamelKeys } from "string-ts";
 
 import { getAuthStoreState, setAuthStoreToken } from "@/stores";
 import { env } from "./env";
@@ -39,5 +40,11 @@ privateApi.interceptors.response.use(
 );
 
 const publicApi = axios.create(baseApiConfiguration);
+
+publicApi.interceptors.response.use((response) => {
+  response.data = deepCamelKeys(response.data);
+
+  return response;
+});
 
 export { privateApi, publicApi };

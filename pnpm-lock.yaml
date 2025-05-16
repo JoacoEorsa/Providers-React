@@ -80,6 +80,9 @@ importers:
       sonner:
         specifier: ^2.0.3
         version: 2.0.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      string-ts:
+        specifier: ^2.2.1
+        version: 2.2.1
       tailwind-variants:
         specifier: ^1.0.0
         version: 1.0.0(tailwindcss@4.1.4)
@@ -4376,6 +4379,9 @@ packages:
     peerDependenciesMeta:
       prettier:
         optional: true
+
+  string-ts@2.2.1:
+    resolution: {integrity: sha512-Q2u0gko67PLLhbte5HmPfdOjNvUKbKQM+mCNQae6jE91DmoFHY6HH9GcdqCeNx87DZ2KKjiFxmA0R/42OneGWw==}
 
   string-width@4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
@@ -9205,6 +9211,8 @@ snapshots:
       - bufferutil
       - supports-color
       - utf-8-validate
+
+  string-ts@2.2.1: {}
 
   string-width@4.2.3:
     dependencies:

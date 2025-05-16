@@ -14,20 +14,17 @@ export const DeleteUserDialog = ({ isOpen, onOpenChange, user }: DeleteUserDialo
   const { isPending, mutate: deleteUser } = useUsersDeleteMutation();
 
   const handleDelete = async () => {
-    deleteUser(
-      { id: user.id },
-      {
-        onSuccess: () => {
-          toast.success(t("users.table.columns.actions.deletionSuccess", { name: user.name }));
-        },
-        onError: () => {
-          toast.error(t("users.table.columns.actions.deletionError", { name: user.name }));
-        },
-        onSettled: () => {
-          onOpenChange(false);
-        },
+    deleteUser(user.id, {
+      onSuccess: () => {
+        toast.success(t("users.table.columns.actions.deletionSuccess", { name: user.name }));
       },
-    );
+      onError: () => {
+        toast.error(t("users.table.columns.actions.deletionError", { name: user.name }));
+      },
+      onSettled: () => {
+        onOpenChange(false);
+      },
+    });
   };
 
   return (

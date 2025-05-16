@@ -32,7 +32,7 @@ export const UserRowActions = ({ row }: UserRowActionsProps) => {
         <DropdownMenu.Content align="end">
           <DropdownMenu.Item
             onClick={() => {
-              return navigator.clipboard.writeText(row.getValue("email_address"));
+              return navigator.clipboard.writeText(row.getValue("emailAddress"));
             }}
           >
             {t("users.table.columns.actions.copyUserEmail")}

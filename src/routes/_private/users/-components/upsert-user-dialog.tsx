@@ -4,10 +4,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Dialog, ErrorMessage, Input, Label, toast } from "@/components/ui";
 import { useTranslation } from "@/i18n";
 import {
-  type CreateUserRequest,
-  getCreateUserRequestSchema,
-  type UpdateUserRequest,
-  updateUserRequestSchema,
+  type CreateUser,
+  getUserSchema,
+  type UpdateUser,
   useCreateUserMutation,
   type User,
   useUpdateUserMutation,
@@ -37,16 +36,16 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
     setError,
   } = useForm({
     mode: "onTouched",
-    resolver: zodResolver(isNewUser ? getCreateUserRequestSchema() : updateUserRequestSchema()),
+    resolver: zodResolver(getUserSchema()),
     values: {
-      email_address: user?.email_address ?? "",
+      emailAddress: user?.emailAddress ?? "",
       name: user?.name ?? "",
       password: "",
-      password_confirmation: "",
+      passwordConfirmation: "",
     },
   });
 
-  const onSubmit: SubmitHandler<CreateUserRequest | UpdateUserRequest> = (data) => {
+  const onSubmit: SubmitHandler<CreateUser | UpdateUser> = (data) => {
     if (isNewUser) {
       return createUser(data, {
         onSuccess: () => {
@@ -55,7 +54,7 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
           reset();
         },
         onError: (error) => {
-          handleAxiosFieldErrors<CreateUserRequest>(error, setError, t("users.create.error"));
+          handleAxiosFieldErrors<CreateUser>(error, setError, t("users.create.error"));
         },
       });
     }
@@ -69,7 +68,7 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
           reset();
         },
         onError: (error) => {
-          handleAxiosFieldErrors<UpdateUserRequest>(error, setError, t("users.update.error"));
+          handleAxiosFieldErrors<UpdateUser>(error, setError, t("users.update.error"));
         },
       },
     );
@@ -107,9 +106,9 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
           <div className="flex flex-col gap-2">
             <Label htmlFor="emailAddress">{t("form.email")}</Label>
 
-            <Input {...register("email_address")} id="emailAddress" size="sm" />
+            <Input {...register("emailAddress")} id="emailAddress" size="sm" />
 
-            <ErrorMessage errorMessage={errors?.email_address?.message} />
+            <ErrorMessage errorMessage={errors?.emailAddress?.message} />
           </div>
 
           <div className="flex flex-col gap-2">
@@ -124,13 +123,13 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
             <Label htmlFor="passwordConfirmation">{t("form.confirmPassword")}</Label>
 
             <Input
-              {...register("password_confirmation")}
+              {...register("passwordConfirmation")}
               id="passwordConfirmation"
               size="sm"
               type="password"
             />
 
-            <ErrorMessage errorMessage={errors?.password_confirmation?.message} />
+            <ErrorMessage errorMessage={errors?.passwordConfirmation?.message} />
           </div>
 
           <Dialog.Footer>

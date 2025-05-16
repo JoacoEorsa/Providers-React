@@ -1,30 +1,27 @@
+import { deepSnakeKeys } from "string-ts";
+import { z } from "zod";
+
 import { publicApi } from "@/config/api";
-import type { ServiceResponse } from "@/services/types";
-import type {
-  CreateUserRequest,
-  CreateUserResponse,
-  DeleteUserRequest,
-  UpdateUserRequest,
-  User,
-  UserRequestParams,
-} from "./types";
+import { parsePaginatedResponse } from "@/services/schemas";
+import { userSchema } from "./schemas";
+import type { CreateUser, UpdateUser, User, UserRequestParams } from "./types";
 
 export const getUsersList = async ({ filter, page }: UserRequestParams) => {
-  const response = await publicApi.get<ServiceResponse<User[]>>("users", {
+  const response = await publicApi.get("users", {
     params: { page, filter },
   });
 
-  return response?.data;
+  return parsePaginatedResponse(z.array(userSchema), response.data);
 };
 
-export const deleteUser = async ({ id }: DeleteUserRequest) => {
-  return publicApi.delete<ServiceResponse<User>>(`users/${id}`);
+export const deleteUser = async (id: User["id"]) => {
+  return publicApi.delete(`users/${id}`);
 };
 
-export const createUser = async (data: CreateUserRequest) => {
-  return publicApi.post<ServiceResponse<CreateUserResponse>>("users", data);
+export const createUser = async (data: CreateUser) => {
+  return publicApi.post("users", deepSnakeKeys(data));
 };
 
-export const updateUser = async (data: UpdateUserRequest) => {
-  return publicApi.put<ServiceResponse<User>>(`users/${data.id}`, data);
+export const updateUser = async (data: UpdateUser) => {
+  return publicApi.put(`users/${data.id}`, deepSnakeKeys(data));
 };

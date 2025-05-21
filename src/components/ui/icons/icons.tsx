@@ -20,6 +20,9 @@ const AVAILABLE_ICONIFY_ICONS = {
   Search: "search",
   Close: "x",
   Plus: "plus",
+  Eye: "eye",
+  EyeOff: "eye-off",
+  Lock: "lock",
 };
 
 export const initializeIcons = () => {

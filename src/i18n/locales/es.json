@@ -18,6 +18,7 @@
     "password": "Contraseña",
     "name": "Nombre",
     "confirmPassword": "Confirmar contraseña",
+    "passwordMustInclude": "La contraseña debe incluir",
     "errors": {
       "required": "{field} es requerido.",
       "invalidField": "Por favor ingresar un/a {field} válido/a.",

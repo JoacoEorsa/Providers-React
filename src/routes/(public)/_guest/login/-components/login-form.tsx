@@ -3,7 +3,7 @@ import { Trans } from "react-i18next";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate, useRouter, useSearch } from "@tanstack/react-router";
 
-import { Button, ErrorMessage, Input, Label, toast } from "@/components/ui";
+import { Button, ErrorMessage, Input, Label, PasswordInput, toast } from "@/components/ui";
 import { useTranslation } from "@/i18n";
 import { getLoginRequestSchema, type LoginRequest, useLoginMutation } from "@/services";
 import { setAuthStoreToken } from "@/stores";
@@ -64,7 +64,7 @@ export const LoginForm = () => {
           </Link>
         </div>
 
-        <Input {...register("password")} type="password" />
+        <PasswordInput {...register("password")} />
 
         <ErrorMessage errorMessage={errors?.password?.message} />
       </div>

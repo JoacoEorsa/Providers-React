@@ -7,6 +7,8 @@ export * from "./icons";
 export * from "./input";
 export * from "./label";
 export * from "./navigation-menu";
+export * from "./password-input";
+export * from "./password-validator";
 export * from "./radio-group";
 export * from "./table";
 export * from "./toast";

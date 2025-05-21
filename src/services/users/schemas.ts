@@ -8,6 +8,18 @@ export const userSchema = z.object({
   emailAddress: z.string().email(),
 });
 
+export const hasMinLength = (value: string) => {
+  return value.length >= 8;
+};
+
+export const hasNumber = (value: string) => {
+  return /\d/.test(value);
+};
+
+export const hasLetter = (value: string) => {
+  return /[a-zA-Z]/.test(value);
+};
+
 export const getUserSchema = () => {
   return userSchema
     .omit({ id: true })
@@ -18,13 +30,13 @@ export const getUserSchema = () => {
         .email({ message: i18n.t("form.errors.invalidField", { field: i18n.t("form.email") }) }),
       password: z
         .string()
-        .min(8, {
+        .refine(hasMinLength, {
           message: i18n.t("form.errors.minLength", { field: i18n.t("form.password"), length: 8 }),
         })
-        .regex(/\d/, {
+        .refine(hasNumber, {
           message: i18n.t("form.errors.containsNumber", { field: i18n.t("form.password") }),
         })
-        .regex(/[a-zA-Z]/, {
+        .refine(hasLetter, {
           message: i18n.t("form.errors.containsLetter", { field: i18n.t("form.password") }),
         }),
       passwordConfirmation: z.string(),

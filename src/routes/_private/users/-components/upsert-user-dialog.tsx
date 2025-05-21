@@ -1,7 +1,16 @@
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button, Dialog, ErrorMessage, Input, Label, toast } from "@/components/ui";
+import {
+  Button,
+  Dialog,
+  ErrorMessage,
+  Input,
+  Label,
+  PasswordInput,
+  PasswordValidator,
+  toast,
+} from "@/components/ui";
 import { useTranslation } from "@/i18n";
 import {
   type CreateUser,
@@ -29,6 +38,7 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
   const isPending = isUpdating || isCreating;
 
   const {
+    control,
     formState: { errors },
     handleSubmit,
     register,
@@ -114,19 +124,18 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
           <div className="flex flex-col gap-2">
             <Label htmlFor="password">{t("form.password")}</Label>
 
-            <Input {...register("password")} id="password" size="sm" type="password" />
+            <PasswordInput {...register("password")} id="password" size="sm" />
 
-            <ErrorMessage errorMessage={errors?.password?.message} />
+            <PasswordValidator control={control} name="password" />
           </div>
 
           <div className="flex flex-col gap-2">
             <Label htmlFor="passwordConfirmation">{t("form.confirmPassword")}</Label>
 
-            <Input
+            <PasswordInput
               {...register("passwordConfirmation")}
               id="passwordConfirmation"
               size="sm"
-              type="password"
             />
 
             <ErrorMessage errorMessage={errors?.passwordConfirmation?.message} />

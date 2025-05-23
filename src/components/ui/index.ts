@@ -10,5 +10,6 @@ export * from "./navigation-menu";
 export * from "./password-input";
 export * from "./password-validator";
 export * from "./radio-group";
+export * from "./select";
 export * from "./table";
 export * from "./toast";

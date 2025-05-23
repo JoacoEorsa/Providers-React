@@ -11,6 +11,7 @@ const AVAILABLE_ICONIFY_ICONS = {
   Check: "check",
   ChevronDown: "chevron-down",
   ChevronRight: "chevron-right",
+  ChevronLeft: "chevron-left",
   Circle: "circle",
   Home: "home",
   LoaderCircle: "loader-circle",

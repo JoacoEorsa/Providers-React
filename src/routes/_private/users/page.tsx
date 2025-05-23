@@ -43,6 +43,7 @@ const UsersPage = () => {
 
   const lastPage = usersListData?.meta?.lastPage;
   const pageSize = usersListData?.meta?.perPage ?? DEFAULT_PAGE_SIZE;
+  const totalItems = usersListData?.meta?.total ?? 0;
 
   useEffect(() => {
     if (isSuccess && lastPage && page > lastPage) {
@@ -60,6 +61,7 @@ const UsersPage = () => {
       }
     },
     pageCount: lastPage,
+    meta: { totalItems },
   });
 
   return (

@@ -85,11 +85,10 @@
       "columns": "Columnas"
     },
     "pagination": {
-      "pageCount": "{currentPage} de {totalPages}",
-      "buttons": {
-        "next": "Siguiente",
-        "previous": "Anterior"
-      }
+      "range": "{from}-{to} de {total}",
+      "prev": "Página anterior",
+      "next": "Página siguiente",
+      "gotoPage": "Ir a la página {{page}}"
     }
   },
   "navigation": {

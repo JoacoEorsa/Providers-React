@@ -4,6 +4,7 @@ const paginatedResponseSchema = z.object({
   meta: z.object({
     lastPage: z.number(),
     perPage: z.number(),
+    total: z.number(),
   }),
 });
 

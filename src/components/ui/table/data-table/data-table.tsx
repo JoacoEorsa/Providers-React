@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 
 import type { AvailableRoutesId } from "@/config/router";
 import { useTranslation } from "@/i18n";
+import { Pagination } from "../pagination";
 import { flexRender, Table, type TableProps } from "../table";
-import { Pagination } from "./pagination";
 import { SearchTextInput } from "./search-text-input";
 import { ViewOptions } from "./view-options";
 
@@ -104,7 +104,18 @@ export const DataTable = <T,>({
         </Table.Body>
       </Table.Root>
 
-      {table.options.manualPagination ? <Pagination isLoading={isLoading} table={table} /> : null}
+      {table.options.manualPagination ? (
+        <Pagination
+          isLoading={isLoading}
+          onPageChange={(next: number) => {
+            return table.setPageIndex(next - 1);
+          }}
+          page={table.getState().pagination.pageIndex + 1}
+          pageSize={table.getState().pagination.pageSize}
+          totalItems={table.options.meta?.totalItems ?? 0}
+          totalPages={table.getPageCount()}
+        />
+      ) : null}
     </div>
   );
 };

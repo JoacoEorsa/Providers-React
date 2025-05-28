@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import { Icons, Input } from "@/components/ui";
 import type { AvailableRoutesId } from "@/config/router";
 import { useSearchText } from "@/hooks";
@@ -10,23 +12,32 @@ type SearchTextInputProps = {
 };
 
 export const SearchTextInput = ({ path, placeholder }: SearchTextInputProps) => {
+  const { t } = useTranslation();
   const {
     actions: { setPaginatedSearchText },
     searchText,
   } = useSearchText(path);
 
-  const { t } = useTranslation();
+  const [localSearchValue, setLocalSearchValue] = useState(searchText ?? "");
+
+  useEffect(() => {
+    setLocalSearchValue(searchText ?? "");
+  }, [searchText]);
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setLocalSearchValue(value);
+    setPaginatedSearchText(value);
+  };
 
   return (
     <Input
       className="max-w-sm"
       left={<Icons.Search />}
-      onChange={(event) => {
-        return setPaginatedSearchText(event.target.value);
-      }}
+      onChange={handleSearchChange}
       placeholder={placeholder ?? t("common.filter")}
       size={SIZE.SMALL}
-      value={searchText ?? ""}
+      value={localSearchValue}
     />
   );
 };

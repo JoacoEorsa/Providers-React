@@ -20,6 +20,7 @@ const AVAILABLE_ICONIFY_ICONS = {
   MoreHorizontal: "more-horizontal",
   Menu: "menu",
   Search: "search",
+  Slash: "slash",
   Close: "x",
   Plus: "plus",
   Eye: "eye",

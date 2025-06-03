@@ -1,0 +1,137 @@
+import type { Meta, StoryObj } from "@storybook/react";
+
+import { Breadcrumb, DropdownMenu } from "@/components/ui";
+import { Icons } from "../icons";
+
+const meta: Meta<typeof Breadcrumb.Root> = {
+  title: "Components/UI/Breadcrumb",
+  component: Breadcrumb.Root,
+  tags: ["autodocs"],
+  parameters: { layout: "centered" },
+};
+
+export default meta;
+
+type Story = StoryObj<typeof Breadcrumb.Root>;
+
+export const Basic: Story = {
+  render: () => {
+    return (
+      <Breadcrumb.Root>
+        <Breadcrumb.List>
+          <Breadcrumb.Item>
+            <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Separator />
+          <Breadcrumb.Item>
+            <Breadcrumb.Link href="/docs">Docs</Breadcrumb.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Separator />
+          <Breadcrumb.Item>
+            <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>
+          </Breadcrumb.Item>
+        </Breadcrumb.List>
+      </Breadcrumb.Root>
+    );
+  },
+};
+
+export const WithEllipsisDropdown: Story = {
+  render: () => {
+    return (
+      <Breadcrumb.Root>
+        <Breadcrumb.List>
+          <Breadcrumb.Item>
+            <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Separator />
+          <Breadcrumb.Item>
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger className="flex items-center gap-1">
+                <Breadcrumb.Ellipsis className="h-4 w-4" />
+                <span className="sr-only">Toggle menu</span>
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content align="start">
+                <DropdownMenu.Item>
+                  <a href="/docs">Documentation</a>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item>
+                  <a href="/themes">Themes</a>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item>
+                  <a href="https://github.com/">Github</a>
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Root>
+          </Breadcrumb.Item>
+          <Breadcrumb.Separator />
+          <Breadcrumb.Item>
+            <Breadcrumb.Link href="/docs/components">Components</Breadcrumb.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Separator />
+          <Breadcrumb.Item>
+            <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>
+          </Breadcrumb.Item>
+        </Breadcrumb.List>
+      </Breadcrumb.Root>
+    );
+  },
+};
+
+export const WithDropdownMenu: Story = {
+  render: () => {
+    return (
+      <Breadcrumb.Root>
+        <Breadcrumb.List>
+          <Breadcrumb.Item>
+            <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Separator />
+          <Breadcrumb.Item>
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger className="flex items-center gap-1">
+                Components
+                <Icons.ChevronDown />
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content align="start">
+                <DropdownMenu.Item>Documentation</DropdownMenu.Item>
+                <DropdownMenu.Item>Themes</DropdownMenu.Item>
+                <DropdownMenu.Item>GitHub</DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Root>
+          </Breadcrumb.Item>
+          <Breadcrumb.Separator />
+          <Breadcrumb.Item>
+            <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>
+          </Breadcrumb.Item>
+        </Breadcrumb.List>
+      </Breadcrumb.Root>
+    );
+  },
+};
+
+export const WithCustomSeparator: Story = {
+  render: () => {
+    return (
+      <Breadcrumb.Root>
+        <Breadcrumb.List>
+          <Breadcrumb.Item>
+            <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Separator>
+            <Icons.Slash />
+          </Breadcrumb.Separator>
+          <Breadcrumb.Item>
+            <Breadcrumb.Link href="/components">Components</Breadcrumb.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Separator>
+            <Icons.Slash />
+          </Breadcrumb.Separator>
+          <Breadcrumb.Item>
+            <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>
+          </Breadcrumb.Item>
+        </Breadcrumb.List>
+      </Breadcrumb.Root>
+    );
+  },
+};

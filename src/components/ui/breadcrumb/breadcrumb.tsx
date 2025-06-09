@@ -1,8 +1,14 @@
-import type { ComponentProps } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { Slot } from "@radix-ui/react-slot";
+import { Link as RouterLink } from "@tanstack/react-router";
 import { tv } from "tailwind-variants";
 
 import { Icons } from "../icons";
+
+type LinkProps = Omit<ComponentProps<typeof RouterLink>, "children"> & {
+  asChild?: boolean;
+  children: ReactNode;
+};
 
 const breadcrumbVariants = tv({
   slots: {
@@ -29,10 +35,20 @@ const Item = ({ className, ...props }: ComponentProps<"li">) => {
   return <li className={item({ className })} data-slot="breadcrumb-item" {...props} />;
 };
 
-const Link = ({ asChild, className, ...props }: ComponentProps<"a"> & { asChild?: boolean }) => {
-  const Comp = asChild ? Slot : "a";
+const Link = ({ asChild, children, className, ...props }: LinkProps) => {
+  if (asChild) {
+    return (
+      <Slot className={link({ className })} {...props}>
+        {children}
+      </Slot>
+    );
+  }
 
-  return <Comp className={link({ className })} data-slot="breadcrumb-link" {...props} />;
+  return (
+    <RouterLink className={link({ className })} {...props}>
+      {children}
+    </RouterLink>
+  );
 };
 
 const Page = ({ className, ...props }: ComponentProps<"span">) => {

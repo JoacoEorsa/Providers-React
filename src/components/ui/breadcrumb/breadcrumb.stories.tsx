@@ -20,11 +20,11 @@ export const Basic: Story = {
       <Breadcrumb.Root>
         <Breadcrumb.List>
           <Breadcrumb.Item>
-            <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+            <Breadcrumb.Link to="/">Home</Breadcrumb.Link>
           </Breadcrumb.Item>
           <Breadcrumb.Separator />
           <Breadcrumb.Item>
-            <Breadcrumb.Link href="/docs">Docs</Breadcrumb.Link>
+            <Breadcrumb.Link to="/docs">Docs</Breadcrumb.Link>
           </Breadcrumb.Item>
           <Breadcrumb.Separator />
           <Breadcrumb.Item>
@@ -42,7 +42,7 @@ export const WithEllipsisDropdown: Story = {
       <Breadcrumb.Root>
         <Breadcrumb.List>
           <Breadcrumb.Item>
-            <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+            <Breadcrumb.Link to="/">Home</Breadcrumb.Link>
           </Breadcrumb.Item>
           <Breadcrumb.Separator />
           <Breadcrumb.Item>
@@ -66,7 +66,7 @@ export const WithEllipsisDropdown: Story = {
           </Breadcrumb.Item>
           <Breadcrumb.Separator />
           <Breadcrumb.Item>
-            <Breadcrumb.Link href="/docs/components">Components</Breadcrumb.Link>
+            <Breadcrumb.Link to="/docs/components">Components</Breadcrumb.Link>
           </Breadcrumb.Item>
           <Breadcrumb.Separator />
           <Breadcrumb.Item>
@@ -84,7 +84,7 @@ export const WithDropdownMenu: Story = {
       <Breadcrumb.Root>
         <Breadcrumb.List>
           <Breadcrumb.Item>
-            <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+            <Breadcrumb.Link to="/">Home</Breadcrumb.Link>
           </Breadcrumb.Item>
           <Breadcrumb.Separator />
           <Breadcrumb.Item>
@@ -116,19 +116,45 @@ export const WithCustomSeparator: Story = {
       <Breadcrumb.Root>
         <Breadcrumb.List>
           <Breadcrumb.Item>
-            <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+            <Breadcrumb.Link to="/">Home</Breadcrumb.Link>
           </Breadcrumb.Item>
           <Breadcrumb.Separator>
             <Icons.Slash />
           </Breadcrumb.Separator>
           <Breadcrumb.Item>
-            <Breadcrumb.Link href="/components">Components</Breadcrumb.Link>
+            <Breadcrumb.Link to="/components">Components</Breadcrumb.Link>
           </Breadcrumb.Item>
           <Breadcrumb.Separator>
             <Icons.Slash />
           </Breadcrumb.Separator>
           <Breadcrumb.Item>
             <Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>
+          </Breadcrumb.Item>
+        </Breadcrumb.List>
+      </Breadcrumb.Root>
+    );
+  },
+};
+
+export const WithAsChildExternalLink: Story = {
+  render: () => {
+    return (
+      <Breadcrumb.Root>
+        <Breadcrumb.List>
+          <Breadcrumb.Item>
+            <Breadcrumb.Link to="/">Home</Breadcrumb.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Separator />
+          <Breadcrumb.Item>
+            <Breadcrumb.Link asChild>
+              <a href="https://www.google.com" rel="noopener noreferrer">
+                Google
+              </a>
+            </Breadcrumb.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Separator />
+          <Breadcrumb.Item>
+            <Breadcrumb.Page>Current Page</Breadcrumb.Page>
           </Breadcrumb.Item>
         </Breadcrumb.List>
       </Breadcrumb.Root>

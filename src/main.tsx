@@ -14,6 +14,7 @@ import reportWebVitals from "@/reportWebVitals";
 
 import "@/styles.css";
 import { env } from "./config/env";
+import { TooltipProvider } from "./components/ui/tooltip";
 
 initializeSentry();
 initializeIcons();
@@ -28,8 +29,10 @@ if (!rootElement.innerHTML) {
     <StrictMode>
       <I18nextProvider>
         <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-          <Toaster />
+          <TooltipProvider>
+            <RouterProvider router={router} />
+            <Toaster />
+          </TooltipProvider>
         </QueryClientProvider>
       </I18nextProvider>
     </StrictMode>,

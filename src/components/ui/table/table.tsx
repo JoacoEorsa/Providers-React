@@ -18,12 +18,12 @@ const tableVariants = tv({
     root: "w-full caption-bottom text-sm",
     header: "[&_tr]:border-b",
     body: "[&_tr:last-child]:border-0",
-    footer: "bg-muted/50 border-t font-medium [&>tr]:last:border-b-0",
-    row: "hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors",
+    footer: "border-t bg-muted/50 font-medium [&>tr]:last:border-b-0",
+    row: "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
     cell: "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
-    head: "text-muted-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
-    caption: "text-muted-foreground mt-4 text-sm",
-    skeleton: "bg-muted h-3 animate-pulse rounded-md",
+    head: "h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+    caption: "mt-4 text-sm text-muted-foreground",
+    skeleton: "h-3 animate-pulse rounded-md bg-muted",
   },
 });
 

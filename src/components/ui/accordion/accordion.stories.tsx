@@ -1,13 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { ComponentProps } from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Accordion } from "./accordion";
 
-const meta: Meta<typeof Accordion> = {
+const meta = {
   component: Accordion.Root,
   parameters: { layout: "padded" },
   tags: ["autodocs"],
   title: "Components/UI/Accordion",
-} satisfies Meta<typeof Accordion>;
+} satisfies Meta<ComponentProps<typeof Accordion.Root>>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -19,15 +20,21 @@ const items = [
 ];
 
 export const Single: Story = {
-  render: () => {
+  args: {
+    type: "single",
+    collapsible: true,
+    className: "mx-auto max-w-md",
+  },
+  render: (args) => {
     return (
-      <Accordion.Root className="mx-auto max-w-md" type="single" collapsible>
+      <Accordion.Root {...args}>
         {items.map((item) => {
           return (
             <Accordion.Item key={item.value} value={item.value}>
               <Accordion.Header>
                 <Accordion.Trigger>{item.header}</Accordion.Trigger>
               </Accordion.Header>
+
               <Accordion.Content className="py-4">
                 This is the accordion content. You can place any content here such as text, lists,
                 or even other components.
@@ -41,15 +48,20 @@ export const Single: Story = {
 };
 
 export const Multiple: Story = {
-  render: () => {
+  args: {
+    type: "multiple",
+    className: "mx-auto max-w-md",
+  },
+  render: (args) => {
     return (
-      <Accordion.Root className="mx-auto max-w-md" type="multiple">
+      <Accordion.Root {...args}>
         {items.map((item) => {
           return (
             <Accordion.Item key={item.value} value={item.value}>
               <Accordion.Header>
                 <Accordion.Trigger>{item.header}</Accordion.Trigger>
               </Accordion.Header>
+
               <Accordion.Content className="py-4">
                 This is the accordion content. You can place any content here such as text, lists,
                 or even other components.
@@ -63,15 +75,21 @@ export const Multiple: Story = {
 };
 
 export const DefaultValue: Story = {
-  render: () => {
+  args: {
+    className: "mx-auto max-w-md",
+    defaultValue: "2",
+    type: "single",
+  },
+  render: (args) => {
     return (
-      <Accordion.Root className="mx-auto max-w-md" defaultValue="2" type="single">
+      <Accordion.Root {...args}>
         {items.map((item) => {
           return (
             <Accordion.Item key={item.value} value={item.value}>
               <Accordion.Header>
                 <Accordion.Trigger>{item.header}</Accordion.Trigger>
               </Accordion.Header>
+
               <Accordion.Content className="py-4">
                 This is the accordion content. You can place any content here such as text, lists,
                 or even other components.

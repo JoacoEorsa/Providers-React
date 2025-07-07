@@ -1,5 +1,5 @@
 import js from "@eslint/js";
-import stylisticJs from "@stylistic/eslint-plugin-js";
+import stylisticJs from "@stylistic/eslint-plugin";
 import tanstackRouter from "@tanstack/eslint-plugin-router";
 import type { ESLint, Linter } from "eslint";
 import i18next from "eslint-plugin-i18next";
@@ -68,7 +68,7 @@ const config: Linter.Config[] = [
   // Custom plugins rules
   {
     plugins: {
-      "@stylistic/js": stylisticJs,
+      "@stylistic": stylisticJs,
       "@tanstack/router": tanstackRouter as unknown as ESLint.Plugin,
       i18next,
       "prefer-arrow-functions": preferArrowFunctions as ESLint.Plugin,
@@ -79,11 +79,11 @@ const config: Linter.Config[] = [
       "unused-imports": unusedImports,
     },
     rules: {
-      "@stylistic/js/no-multi-spaces": "warn",
-      "@stylistic/js/no-multiple-empty-lines": ["warn", { max: 1 }],
-      "@stylistic/js/no-trailing-spaces": "warn",
-      "@stylistic/js/object-curly-spacing": ["warn", "always"],
-      "@stylistic/js/padding-line-between-statements": [
+      "@stylistic/no-multi-spaces": "warn",
+      "@stylistic/no-multiple-empty-lines": ["warn", { max: 1 }],
+      "@stylistic/no-trailing-spaces": "warn",
+      "@stylistic/object-curly-spacing": ["warn", "always"],
+      "@stylistic/padding-line-between-statements": [
         "warn",
         { blankLine: "always", prev: "*", next: "return" },
       ],
@@ -134,6 +134,7 @@ const config: Linter.Config[] = [
   // Storybook rules
   ...storybook.configs["flat/recommended"],
   { files: ["**/*.stories.{ts,tsx}"], rules: { "i18next/no-literal-string": "off" } },
+  { ignores: ["!.storybook"] },
 ];
 
 export default config;

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Icons, Label, RadioGroup } from "@/components/ui";
+import { Icons, Label } from "@/components/ui";
+import { RadioGroup } from "./radio-group";
 
 const meta: Meta<typeof RadioGroup.Root> = {
   component: RadioGroup.Root,
@@ -37,9 +38,10 @@ export const Default: Story = {
               <div className="flex items-center space-x-2" key={item.value}>
                 <RadioGroup.Item id={item.value} value={item.value}>
                   <RadioGroup.Indicator>
-                    <Icons.Circle className="bg-primary absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full" />
+                    <Icons.Circle className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary" />
                   </RadioGroup.Indicator>
                 </RadioGroup.Item>
+
                 <Label htmlFor={item.value}>{item.label}</Label>
               </div>
             );
@@ -60,9 +62,10 @@ export const DisabledGroup: Story = {
             <div className="flex items-center space-x-2" key={item.value}>
               <RadioGroup.Item id={item.value} value={item.value}>
                 <RadioGroup.Indicator>
-                  <Icons.Circle className="bg-primary absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full" />
+                  <Icons.Circle className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary" />
                 </RadioGroup.Indicator>
               </RadioGroup.Item>
+
               <Label htmlFor={item.value}>{item.label}</Label>
             </div>
           );

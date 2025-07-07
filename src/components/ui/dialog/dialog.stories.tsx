@@ -1,7 +1,8 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Button, Dialog } from "@/components/ui";
+import { Button } from "@/components/ui";
+import { Dialog } from "./dialog";
 
 const meta: Meta<typeof Dialog.Root> = {
   component: Dialog.Root,
@@ -26,12 +27,15 @@ export const Default: Story = {
         <Dialog.Content>
           <Dialog.Header>
             <Dialog.Title>Are you sure you want to do this action?</Dialog.Title>
+
             <Dialog.Description>You will lose your progress.</Dialog.Description>
           </Dialog.Header>
+
           <Dialog.Footer className="flex items-center justify-end gap-2">
             <Dialog.Close asChild>
               <Button variant="outline">No</Button>
             </Dialog.Close>
+
             <Button
               onClick={() => {
                 return setOpen(false);
@@ -59,12 +63,15 @@ export const RequiredDialog: Story = {
         <Dialog.Content isDismissible={false}>
           <Dialog.Header>
             <Dialog.Title>Are you sure you want to do this action?</Dialog.Title>
+
             <Dialog.Description>{`You can't close without responding.`}</Dialog.Description>
           </Dialog.Header>
+
           <Dialog.Footer className="flex items-center justify-end gap-2">
             <Dialog.Close asChild>
               <Button variant="outline">Cancel</Button>
             </Dialog.Close>
+
             <Button
               onClick={() => {
                 return setOpen(false);

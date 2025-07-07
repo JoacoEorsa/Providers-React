@@ -13,6 +13,7 @@ const config = {
   singleQuote: false,
   tabWidth: 2,
   tailwindFunctions: ["tv"],
+  tailwindStylesheet: "./src/styles.css",
   trailingComma: "all",
   useTabs: false,
 };

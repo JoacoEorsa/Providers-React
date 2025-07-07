@@ -41,12 +41,12 @@ export type PaginationProps = {
 const paginationVariants = tv({
   slots: {
     root: "flex flex-col-reverse items-end gap-y-2 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-y-0",
-    pageCount: "text-muted-foreground text-sm",
+    pageCount: "text-sm text-muted-foreground",
     arrowButton:
       "h-9 min-w-9 rounded-md border p-2 focus-visible:ring-2 focus-visible:outline-none",
     pageButton:
       "h-9 min-w-9 rounded-md border p-2 text-sm focus-visible:ring-2 focus-visible:outline-none",
-    ellipsis: "text-muted-foreground self-end select-none",
+    ellipsis: "self-end text-muted-foreground select-none",
     list: "flex items-center gap-1",
   },
   variants: {

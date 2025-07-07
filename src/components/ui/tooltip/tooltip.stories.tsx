@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Tooltip, TooltipProvider } from "./tooltip";
 
-const meta: Meta<typeof Tooltip> = {
+const meta: Meta<typeof Tooltip.Root> = {
   component: Tooltip.Root,
   parameters: { layout: "padded" },
   tags: ["autodocs"],
@@ -16,7 +16,7 @@ const meta: Meta<typeof Tooltip> = {
       );
     },
   ],
-} satisfies Meta<typeof Tooltip>;
+} satisfies Meta<typeof Tooltip.Root>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -28,6 +28,7 @@ export const Default: Story = {
     return (
       <Tooltip.Root>
         <Tooltip.Trigger>Hover me</Tooltip.Trigger>
+
         <Tooltip.Content>
           <p>Tooltip content</p>
         </Tooltip.Content>
@@ -44,6 +45,7 @@ export const Positions: Story = {
           return (
             <Tooltip.Root key={position}>
               <Tooltip.Trigger className="capitalize">{position}</Tooltip.Trigger>
+
               <Tooltip.Content side={position}>
                 <p className="capitalize">{`${position} content`}</p>
               </Tooltip.Content>

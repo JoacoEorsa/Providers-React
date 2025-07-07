@@ -6,17 +6,17 @@ import { Icons } from "@/components/ui";
 import type { Styled } from "@/types/styles";
 
 const buttonVariants = tv({
-  base: "focus-visible:ring-ring inline-flex cursor-pointer items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap transition-all duration-300 ease-in-out focus-visible:ring-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  base: "inline-flex cursor-pointer items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap transition-all duration-300 ease-in-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   variants: {
     variant: {
       default:
-        "bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80 focus-visible:ring-primary/50 shadow",
+        "bg-primary text-primary-foreground shadow hover:bg-primary/90 focus-visible:ring-primary/50 active:bg-primary/80",
       destructive:
-        "bg-destructive text-destructive-foreground hover:bg-destructive/90 active:bg-destructive/80 focus-visible:ring-destructive/50 shadow-sm",
+        "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 focus-visible:ring-destructive/50 active:bg-destructive/80",
       outline:
-        "border-input hover:bg-accent hover:text-accent-foreground border bg-transparent shadow-sm",
+        "border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground",
       secondary:
-        "bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary/80 focus-visible:ring-secondary/50 shadow-sm",
+        "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 focus-visible:ring-secondary/50 active:bg-secondary/80",
       ghost: "hover:bg-accent hover:text-accent-foreground",
       link: "text-primary underline-offset-4 hover:underline",
     },

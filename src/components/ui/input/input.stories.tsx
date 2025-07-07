@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Icons, Input } from "@/components/ui";
+import { Icons } from "@/components/ui";
 import { SIZE } from "@/types/styles";
+import { Input } from "./input";
 
 const meta: Meta<typeof Input> = {
   args: { placeholder: "Type your text here..." },

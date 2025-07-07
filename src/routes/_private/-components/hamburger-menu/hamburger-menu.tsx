@@ -1,8 +1,7 @@
-import { useTranslation } from "react-i18next";
-import type { ReactNode } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 
 import { Button, DropdownMenu, Icons } from "@/components/ui";
-import type { resources } from "@/i18n";
+import { type resources, useTranslation } from "@/i18n";
 import { LogoutButton } from "./logout-button";
 
 export const HamburgerMenu = () => {

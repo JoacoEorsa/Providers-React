@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Button, type ButtonProps, Icons } from "@/components/ui";
+import { Icons } from "@/components/ui";
+import { Button, type ButtonProps } from "./button";
 
 const sizes: ButtonProps["size"][] = ["default", "icon", "lg", "sm"];
 const variants: ButtonProps["variant"][] = [

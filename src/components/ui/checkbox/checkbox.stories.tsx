@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Label } from "../label";
+import { Label } from "@/components/ui";
 import { Checkbox } from "./checkbox";
 
 const meta: Meta<typeof Checkbox> = {
@@ -22,6 +22,7 @@ export const DefaultWithLabel: Story = {
     return (
       <div className="flex items-center space-x-2">
         <Checkbox id="terms" {...props} />
+
         <Label htmlFor="terms">Accept terms and conditions</Label>
       </div>
     );
@@ -33,9 +34,11 @@ export const DefaultWithLabelAndText: Story = {
     return (
       <div className="flex items-start space-x-2">
         <Checkbox id="terms" {...props} />
+
         <div className="grid gap-1.5 leading-none">
           <Label htmlFor="terms">Accept terms and conditions</Label>
-          <p className="text-muted-foreground text-sm">
+
+          <p className="text-sm text-muted-foreground">
             You agree to our Terms of Service and Privacy Policy.
           </p>
         </div>
@@ -49,6 +52,7 @@ export const Disabled: Story = {
     return (
       <div className="flex items-center space-x-2">
         <Checkbox id="terms" {...props} disabled />
+
         <Label htmlFor="terms">Accept terms and conditions</Label>
       </div>
     );

@@ -7,7 +7,7 @@ const cardVariants = tv({
     header:
       "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 has-[data-slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
     title: "leading-none font-semibold",
-    description: "text-muted-foreground text-sm",
+    description: "text-sm text-muted-foreground",
     footer: "flex items-center pt-6",
     action: "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
   },

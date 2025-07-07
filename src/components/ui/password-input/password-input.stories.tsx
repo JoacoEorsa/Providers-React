@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Icons, PasswordInput } from "@/components/ui";
+import { Icons } from "@/components/ui";
 import { SIZE } from "@/types/styles";
+import { PasswordInput } from "./password-input";
 
 const meta: Meta<typeof PasswordInput> = {
   args: { placeholder: "Enter your password..." },

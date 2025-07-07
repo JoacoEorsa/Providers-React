@@ -1,16 +1,16 @@
 import { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Select } from "./select";
 
-const meta: Meta<typeof Select> = {
+const meta: Meta<typeof Select.Root> = {
   title: "Components/UI/Select",
   component: Select.Root,
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
-};
+} satisfies Meta<typeof Select.Root>;
 
 export default meta;
 
@@ -31,6 +31,7 @@ export const Basic: Story = {
         <Select.Trigger>
           <Select.Value placeholder="Select a fruit" />
         </Select.Trigger>
+
         <Select.Content>
           {options.map((opt) => {
             return (
@@ -52,15 +53,21 @@ export const WithLabelAndSeparator: Story = {
         <Select.Trigger>
           <Select.Value placeholder="Pick an option" />
         </Select.Trigger>
+
         <Select.Content>
           <Select.Group>
             <Select.Label>Fruits</Select.Label>
+
             <Select.Item value="apple">Apple</Select.Item>
+
             <Select.Item value="banana">Banana</Select.Item>
           </Select.Group>
+
           <Select.Separator />
+
           <Select.Group>
             <Select.Label>Other</Select.Label>
+
             <Select.Item value="pineapple">Pineapple</Select.Item>
           </Select.Group>
         </Select.Content>
@@ -76,10 +83,12 @@ export const Controlled: Story = {
     return (
       <div className="space-y-2">
         <p>Selected: {value}</p>
+
         <Select.Root onValueChange={setValue} value={value}>
           <Select.Trigger>
             <Select.Value placeholder="Select a fruit" />
           </Select.Trigger>
+
           <Select.Content>
             {options.map((opt) => {
               return (

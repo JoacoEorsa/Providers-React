@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Button, toast, Toaster } from "@/components/ui";
+import { Button } from "@/components/ui";
+import { toast, Toaster } from "./toast";
 
 const meta: Meta<typeof Toaster> = {
   component: Toaster,

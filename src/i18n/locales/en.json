@@ -25,6 +25,7 @@
       "minLength": "{field} should contain at least {length} characters.",
       "containsNumber": "{field} must contain at least one number.",
       "passwordMismatch": "Passwords don't match.",
+      "passwordTooWeak": "Password is too weak.",
       "containsLetter": "{field} must contain at least one letter."
     }
   },

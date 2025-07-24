@@ -104,6 +104,7 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
             {isNewUser ? t("users.create.description") : t("users.update.description")}
           </Dialog.Description>
         </Dialog.Header>
+
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col gap-2">
             <Label htmlFor="name">{t("form.name")}</Label>
@@ -125,6 +126,8 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
             <Label htmlFor="password">{t("form.password")}</Label>
 
             <PasswordInput {...register("password")} id="password" size="sm" />
+
+            <ErrorMessage errorMessage={errors?.password?.message} />
 
             <PasswordValidator control={control} name="password" />
           </div>

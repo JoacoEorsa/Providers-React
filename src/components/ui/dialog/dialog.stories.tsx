@@ -33,7 +33,7 @@ export const Default: Story = {
 
           <Dialog.Footer className="flex items-center justify-end gap-2">
             <Dialog.Close asChild>
-              <Button variant="outline">No</Button>
+              <Button variant="outlined">No</Button>
             </Dialog.Close>
 
             <Button
@@ -69,14 +69,13 @@ export const RequiredDialog: Story = {
 
           <Dialog.Footer className="flex items-center justify-end gap-2">
             <Dialog.Close asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outlined">Cancel</Button>
             </Dialog.Close>
 
             <Button
               onClick={() => {
                 return setOpen(false);
               }}
-              variant="destructive"
             >
               Confirm
             </Button>

@@ -2,15 +2,19 @@ import type { ComponentProps } from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { tv } from "tailwind-variants";
 
+import { Icons } from "@/components/ui";
+
 const radioGroupVariants = tv({
   slots: {
-    root: "grid gap-3 disabled:opacity-50",
-    item: "peer aspect-square size-4 shrink-0 rounded-full border border-input shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:bg-input/30 dark:aria-invalid:ring-destructive/40",
-    indicator: "relative flex items-center justify-center",
+    root: "grid gap-3",
+    item: "peer aspect-square size-4 shrink-0 cursor-pointer rounded-full border border-border-neutral-tertiary shadow-xs transition-[box-shadow] outline-none focus-visible:ring-4 focus-visible:ring-background-brand-default/25 disabled:cursor-not-allowed disabled:border-border-disabled-default disabled:bg-background-disabled-default data-[state=checked]:bg-background-brand-default data-[state=checked]:text-icon-brand-on-brand data-[state=checked]:disabled:border-border-disabled-default data-[state=checked]:disabled:bg-background-disabled-default",
+    indicatorWrapper: "relative flex items-center justify-center",
+    indicator:
+      "absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-icon-brand-on-brand",
   },
 });
 
-const { indicator, item, root } = radioGroupVariants();
+const { indicator, indicatorWrapper, item, root } = radioGroupVariants();
 
 const Root = ({ className, ...props }: ComponentProps<typeof RadioGroupPrimitive.Root>) => {
   return (
@@ -24,10 +28,12 @@ const Indicator = ({
 }: ComponentProps<typeof RadioGroupPrimitive.Indicator>) => {
   return (
     <RadioGroupPrimitive.Indicator
-      className={indicator({ className })}
+      className={indicatorWrapper({ className })}
       data-slot="radio-group-indicator"
       {...props}
-    />
+    >
+      <Icons.Circle className={indicator()} />
+    </RadioGroupPrimitive.Indicator>
   );
 };
 

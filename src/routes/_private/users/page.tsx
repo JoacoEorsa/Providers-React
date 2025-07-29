@@ -75,9 +75,10 @@ const UsersPage = () => {
               onClick={() => {
                 return setIsCreateDialogOpen(true);
               }}
-              variant="outline"
+              variant="elevated"
             >
               <Icons.Plus />
+
               {t("users.create.title")}
             </Button>
           }

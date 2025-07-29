@@ -5,7 +5,7 @@ export const Header = () => {
   const { t } = useTranslation();
 
   return (
-    <header className="flex items-center justify-between bg-primary p-4 text-primary-foreground">
+    <header className="flex items-center justify-between bg-background-brand-default p-4 text-text-brand-on-brand">
       <img className="h-10" src="./logo.svg" />
 
       <span>{t("greetings.rootLayout")}</span>

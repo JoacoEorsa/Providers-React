@@ -12,10 +12,10 @@ type LinkProps = Omit<ComponentProps<typeof RouterLink>, "children"> & {
 
 const breadcrumbVariants = tv({
   slots: {
-    list: "flex flex-wrap items-center gap-1.5 text-sm break-words text-muted-foreground sm:gap-2.5",
+    list: "flex flex-wrap items-center gap-1.5 text-sm break-words text-text-default-secondary sm:gap-2.5",
     item: "inline-flex items-center gap-1.5",
-    link: "transition-colors hover:text-foreground",
-    page: "font-normal text-foreground",
+    link: "transition-colors hover:text-text-default-default",
+    page: "font-normal text-text-default-default",
     separator: "[&>svg]:size-3.5",
     ellipsis: "flex size-9 items-center justify-center",
   },

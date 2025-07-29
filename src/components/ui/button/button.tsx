@@ -6,19 +6,21 @@ import { Icons } from "@/components/ui";
 import type { Styled } from "@/types/styles";
 
 const buttonVariants = tv({
-  base: "inline-flex cursor-pointer items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap transition-all duration-300 ease-in-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  base: "inline-flex cursor-pointer items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap transition-all duration-300 ease-in-out focus-visible:ring-4 focus-visible:ring-background-brand-default/25 focus-visible:outline-none disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   variants: {
     variant: {
-      default:
-        "bg-primary text-primary-foreground shadow hover:bg-primary/90 focus-visible:ring-primary/50 active:bg-primary/80",
-      destructive:
-        "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 focus-visible:ring-destructive/50 active:bg-destructive/80",
-      outline:
-        "border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground",
+      primary:
+        "bg-background-brand-default text-text-brand-on-brand hover:bg-background-brand-hover active:bg-background-brand-default disabled:bg-background-disabled-default disabled:text-text-disabled-on-disabled",
       secondary:
-        "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 focus-visible:ring-secondary/50 active:bg-secondary/80",
-      ghost: "hover:bg-accent hover:text-accent-foreground",
-      link: "text-primary underline-offset-4 hover:underline",
+        "bg-background-brand-secondary text-text-brand-on-brand-secondary hover:bg-background-brand-secondary-hover active:bg-background-brand-secondary disabled:bg-background-disabled-default disabled:text-text-disabled-on-disabled",
+      tertiary:
+        "bg-background-brand-tertiary text-text-brand-on-brand-tertiary hover:bg-background-brand-tertiary-hover active:bg-background-brand-tertiary disabled:bg-background-disabled-default disabled:text-text-disabled-on-disabled",
+      outlined:
+        "border border-border-brand-default bg-transparent text-text-default-default shadow-sm hover:bg-background-default-hover active:bg-transparent disabled:border-border-disabled-default disabled:text-text-disabled-default",
+      elevated:
+        "border border-border-default-default bg-transparent text-text-default-default shadow-md hover:bg-background-default-hover active:bg-transparent disabled:border-border-disabled-default disabled:text-text-disabled-default",
+      plainText:
+        "text-text-brand-default hover:text-text-brand-secondary active:text-text-brand-default disabled:text-text-disabled-default",
     },
     size: {
       sm: "px-1.5 py-1 text-xs md:px-2 md:py-1.5 md:text-sm",
@@ -28,7 +30,7 @@ const buttonVariants = tv({
     },
   },
   defaultVariants: {
-    variant: "default",
+    variant: "primary",
     size: "default",
   },
 });

@@ -26,7 +26,7 @@ export const PasswordInput = (props: ComponentProps<typeof Input>) => {
             e.preventDefault();
             togglePasswordVisibility();
           }}
-          variant="ghost"
+          variant="plainText"
         >
           {isPasswordVisible ? <Icons.Eye /> : <Icons.EyeOff />}
         </Button>

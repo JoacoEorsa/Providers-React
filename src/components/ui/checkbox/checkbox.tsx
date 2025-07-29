@@ -6,7 +6,7 @@ import { Icons } from "../icons";
 
 const checkboxVariants = tv({
   slots: {
-    root: "peer size-4 shrink-0 rounded-[4px] border border-input shadow-xs transition-shadow outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:bg-input/30 dark:aria-invalid:ring-destructive/40 dark:data-[state=checked]:bg-primary",
+    root: "peer size-4 shrink-0 cursor-pointer rounded-sm border border-border-neutral-tertiary bg-background-default-default shadow-xs transition-shadow outline-none focus-visible:ring-[3px] focus-visible:ring-background-brand-default/25 disabled:cursor-not-allowed disabled:border-border-disabled-default disabled:bg-background-disabled-default data-[state=checked]:bg-background-brand-default data-[state=checked]:text-icon-brand-on-brand data-[state=checked]:disabled:bg-background-disabled-default data-[state=checked]:disabled:text-icon-disabled-on-disabled",
     indicator: "flex items-center justify-center text-current transition-none",
     icon: "size-3.5",
   },

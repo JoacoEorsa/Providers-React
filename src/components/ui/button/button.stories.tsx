@@ -5,12 +5,12 @@ import { Button, type ButtonProps } from "./button";
 
 const sizes: ButtonProps["size"][] = ["default", "icon", "lg", "sm"];
 const variants: ButtonProps["variant"][] = [
-  "default",
-  "destructive",
-  "ghost",
-  "link",
-  "outline",
+  "primary",
   "secondary",
+  "tertiary",
+  "outlined",
+  "elevated",
+  "plainText",
 ];
 
 const meta: Meta<typeof Button> = {

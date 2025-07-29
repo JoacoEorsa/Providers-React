@@ -20,7 +20,7 @@ export const LogoutButton = () => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <Button className="w-full justify-start" size="sm" variant="ghost">
+        <Button className="w-full justify-start" size="sm" variant="plainText">
           <Icons.LogOut />
 
           {t("logout.logOut")}
@@ -30,12 +30,15 @@ export const LogoutButton = () => {
       <Dialog.Content>
         <Dialog.Header>
           <Dialog.Title>{t("logout.areYouSureYouWantToLogout")}</Dialog.Title>
+
           <Dialog.Description>{t("logout.youWillLoseYourChanges")}</Dialog.Description>
         </Dialog.Header>
+
         <Dialog.Footer className="flex items-center justify-end gap-2">
           <Dialog.Close asChild>
-            <Button variant="outline">{t("common.no")}</Button>
+            <Button variant="outlined">{t("common.no")}</Button>
           </Dialog.Close>
+
           <Button onClick={handleClick}>{t("common.yes")}</Button>
         </Dialog.Footer>
       </Dialog.Content>

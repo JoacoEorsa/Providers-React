@@ -6,9 +6,9 @@ import { SIZE } from "@/types/styles";
 const conditionCheckerVariants = tv({
   slots: {
     root: "flex items-center gap-2",
-    wrapper: "rounded-full bg-gray-300 transition-all duration-300",
-    icon: "text-gray-500 transition-colors duration-300",
-    label: "text-sm text-gray-600",
+    wrapper: "rounded-full bg-background-default-tertiary transition-all duration-300",
+    icon: "text-text-brand-on-brand-tertiary transition-colors duration-300",
+    label: "text-sm text-text-default-secondary",
   },
   variants: {
     isValid: {

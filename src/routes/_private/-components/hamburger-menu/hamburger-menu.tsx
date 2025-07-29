@@ -20,7 +20,11 @@ export const HamburgerMenu = () => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <Button className="focus-visible:ring-secondary/50" size="icon" variant="outline">
+        <Button
+          className="focus-visible:ring-background-default-default/25"
+          size="icon"
+          variant="secondary"
+        >
           <Icons.Menu />
         </Button>
       </DropdownMenu.Trigger>

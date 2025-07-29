@@ -19,7 +19,7 @@ export const Default: Story = {
     return (
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
-          <Button className="ml-auto" variant="outline">
+          <Button className="ml-auto" variant="outlined">
             Open dropdown
           </Button>
         </DropdownMenu.Trigger>

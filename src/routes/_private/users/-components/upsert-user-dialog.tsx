@@ -146,7 +146,7 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
 
           <Dialog.Footer>
             <Dialog.Close disabled={isPending} asChild>
-              <Button variant="outline">{t("buttons.cancel")}</Button>
+              <Button variant="outlined">{t("buttons.cancel")}</Button>
             </Dialog.Close>
 
             <Button isLoading={isPending} type="submit">

@@ -24,14 +24,14 @@ export const Default: Story = {
         </Card.Header>
 
         <Card.Content>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm">
             This is the card content. You can place any content here such as text, lists, or even
             other components.
           </p>
         </Card.Content>
 
         <Card.Footer className="flex justify-between">
-          <Button variant="outline">Cancel</Button>
+          <Button variant="outlined">Cancel</Button>
 
           <Button>Confirm</Button>
         </Card.Footer>

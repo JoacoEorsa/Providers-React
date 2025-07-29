@@ -40,10 +40,10 @@ export const DeleteUserDialog = ({ isOpen, onOpenChange, user }: DeleteUserDialo
 
         <Dialog.Footer>
           <Dialog.Close disabled={isPending} asChild>
-            <Button variant="outline">{t("buttons.cancel")}</Button>
+            <Button variant="outlined">{t("buttons.cancel")}</Button>
           </Dialog.Close>
 
-          <Button isLoading={isPending} onClick={handleDelete} type="submit" variant="destructive">
+          <Button isLoading={isPending} onClick={handleDelete} type="submit">
             {t("buttons.confirm")}
           </Button>
         </Dialog.Footer>

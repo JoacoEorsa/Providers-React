@@ -6,6 +6,10 @@ import { Input } from "./input";
 
 const meta: Meta<typeof Input> = {
   args: { placeholder: "Type your text here..." },
+  argTypes: {
+    disabled: { control: { type: "boolean" } },
+    size: { control: { type: "select" }, options: Object.values(SIZE) },
+  },
   component: Input,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

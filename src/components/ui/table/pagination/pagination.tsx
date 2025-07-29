@@ -41,12 +41,12 @@ export type PaginationProps = {
 const paginationVariants = tv({
   slots: {
     root: "flex flex-col-reverse items-end gap-y-2 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-y-0",
-    pageCount: "text-sm text-muted-foreground",
+    pageCount: "text-sm text-text-default-secondary",
     arrowButton:
-      "h-9 min-w-9 rounded-md border p-2 focus-visible:ring-2 focus-visible:outline-none",
+      "h-9 min-w-9 cursor-pointer rounded-md border border-border-default-default p-2 focus-visible:ring-4 focus-visible:ring-background-brand-default/25 focus-visible:outline-none active:bg-background-default-default",
     pageButton:
-      "h-9 min-w-9 rounded-md border p-2 text-sm focus-visible:ring-2 focus-visible:outline-none",
-    ellipsis: "self-end text-muted-foreground select-none",
+      "h-9 min-w-9 cursor-pointer rounded-md border border-border-default-default p-2 text-sm hover:bg-background-default-hover focus-visible:ring-4 focus-visible:ring-background-brand-default/25 focus-visible:outline-none active:bg-background-default-default",
+    ellipsis: "self-end text-text-default-tertiary select-none",
     list: "flex items-center gap-1",
   },
   variants: {
@@ -56,11 +56,14 @@ const paginationVariants = tv({
         arrowButton: "pointer-events-none opacity-50",
       },
       false: {
-        arrowButton: "hover:bg-muted",
+        arrowButton: "hover:bg-background-default-hover",
       },
     },
     active: {
-      true: { pageButton: "bg-primary text-primary-foreground shadow" },
+      true: {
+        pageButton:
+          "border-background-brand-default bg-background-brand-default text-text-brand-on-brand shadow hover:bg-background-brand-default active:bg-background-brand-default",
+      },
       false: {},
     },
   },

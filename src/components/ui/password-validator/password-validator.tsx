@@ -32,8 +32,10 @@ export const PasswordValidator = <T extends FieldValues>({
   ];
 
   return (
-    <div className="flex flex-col gap-3 rounded-md bg-gray-100 p-4">
-      <h3 className="text-sm font-semibold text-gray-700">{t("form.passwordMustInclude")}</h3>
+    <div className="flex flex-col gap-3 rounded-md bg-background-default-secondary p-4">
+      <h3 className="text-sm font-semibold text-text-default-default">
+        {t("form.passwordMustInclude")}
+      </h3>
 
       {validations.map(({ label, validationFunc }) => {
         return <ConditionChecker isValid={validationFunc(value)} key={label} label={label} />;

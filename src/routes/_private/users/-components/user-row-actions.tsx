@@ -21,7 +21,7 @@ export const UserRowActions = ({ row }: UserRowActionsProps) => {
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
           <div className="flex justify-end">
-            <Button className="size-8" variant="ghost">
+            <Button className="size-8" variant="plainText">
               <span className="sr-only">{t("users.table.columns.actions.ariaLabel")}</span>
 
               <Icons.MoreHorizontal />

@@ -14,16 +14,17 @@ import { tv } from "tailwind-variants";
 
 const tableVariants = tv({
   slots: {
-    wrapper: "relative w-full overflow-x-auto rounded-md border",
+    wrapper: "relative w-full overflow-x-auto rounded-md border border-border-default-default",
     root: "w-full caption-bottom text-sm",
-    header: "[&_tr]:border-b",
+    header: "[&_tr]:border-b [&_tr]:border-border-default-default",
     body: "[&_tr:last-child]:border-0",
-    footer: "border-t bg-muted/50 font-medium [&>tr]:last:border-b-0",
-    row: "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
-    cell: "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
-    head: "h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
-    caption: "mt-4 text-sm text-muted-foreground",
-    skeleton: "h-3 animate-pulse rounded-md bg-muted",
+    footer:
+      "border-t border-border-default-default bg-background-default-hover font-medium [&>tr]:last:border-b-0",
+    row: "border-b border-border-default-default transition-colors hover:bg-background-default-hover data-[state=selected]:bg-background-default-hover",
+    cell: "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5",
+    head: "h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-text-default-secondary [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5",
+    caption: "mt-4 text-sm text-text-default-secondary",
+    skeleton: "h-3 animate-pulse rounded-md bg-background-default-tertiary",
   },
 });
 

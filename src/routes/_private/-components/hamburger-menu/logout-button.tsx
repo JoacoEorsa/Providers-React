@@ -1,6 +1,6 @@
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
-import { Button, Dialog, Icons } from "@/components/ui";
+import { Button, Dialog, Icons } from "@/components";
 import { useTranslation } from "@/i18n";
 import { setAuthStoreToken } from "@/stores";
 

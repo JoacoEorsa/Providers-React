@@ -1,4 +1,4 @@
-import { Button, Dialog, toast } from "@/components/ui";
+import { Button, Dialog, toast } from "@/components";
 import { useTranslation } from "@/i18n";
 import { type User, useUsersDeleteMutation } from "@/services";
 

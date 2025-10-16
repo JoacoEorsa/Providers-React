@@ -2,7 +2,7 @@ import { type ComponentProps } from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { Icons } from "@/components/ui";
+import { Icons } from "@/components";
 import type { Styled } from "@/types/styles";
 
 const buttonVariants = tv({

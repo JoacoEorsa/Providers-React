@@ -5,7 +5,7 @@ import ReactDOM from "react-dom/client";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "@tanstack/react-router";
 
-import { initializeIcons, Toaster } from "@/components/ui";
+import { initializeIcons, Toaster, TooltipProvider } from "@/components";
 import { queryClient } from "@/config/query-client";
 import { router } from "@/config/router";
 import { getSentryErrorHandlers, initializeSentry } from "@/config/sentry";
@@ -14,7 +14,6 @@ import reportWebVitals from "@/reportWebVitals";
 
 import "@/styles.css";
 import { env } from "./config/env";
-import { TooltipProvider } from "./components/ui/tooltip";
 
 initializeSentry();
 initializeIcons();

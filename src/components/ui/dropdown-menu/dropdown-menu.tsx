@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { tv } from "tailwind-variants";
 
-import { Icons } from "@/components/ui";
+import { Icons } from "@/components";
 
 const dropdownVariants = tv({
   slots: {

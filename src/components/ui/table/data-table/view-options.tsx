@@ -1,4 +1,4 @@
-import { Button, DropdownMenu, Icons, type TableProps } from "@/components/ui";
+import { Button, DropdownMenu, Icons, type TableProps } from "@/components";
 import { useTranslation } from "@/i18n";
 
 type ViewOptionsProps<T> = {

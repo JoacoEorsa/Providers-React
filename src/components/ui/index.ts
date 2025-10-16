@@ -1,5 +1,7 @@
+export * from "./accordion";
 export * from "./breadcrumb";
 export * from "./button";
+export * from "./card";
 export * from "./checkbox";
 export * from "./dialog";
 export * from "./dropdown-menu";
@@ -13,4 +15,6 @@ export * from "./password-validator";
 export * from "./radio-group";
 export * from "./select";
 export * from "./table";
+export * from "./tabs";
 export * from "./toast";
+export * from "./tooltip";

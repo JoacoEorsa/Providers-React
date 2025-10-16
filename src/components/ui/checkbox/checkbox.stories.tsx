@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Label } from "@/components/ui";
+import { Label } from "@/components";
 import { Checkbox } from "./checkbox";
 
 const meta: Meta<typeof Checkbox> = {

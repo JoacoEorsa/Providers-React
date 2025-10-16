@@ -1,7 +1,7 @@
 import { type ComponentProps, type ReactNode } from "react";
 import { tv } from "tailwind-variants";
 
-import { IconWrapper } from "@/components/ui";
+import { IconWrapper } from "@/components";
 import { SIZE, type Size, type Styled } from "@/types/styles";
 
 const inputVariants = tv({

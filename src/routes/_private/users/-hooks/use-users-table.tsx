@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 
-import { createColumnHelper, useTable, type UseTableProps } from "@/components/ui";
+import { createColumnHelper, useTable, type UseTableProps } from "@/components";
 import { useTranslation } from "@/i18n";
 import type { User } from "@/services";
-import { UserRowActions } from "../-components/user-row-actions";
+import { UserRowActions } from "../-components";
 
 export const useUsersTable = ({ data = [], ...props }: Omit<UseTableProps<User>, "columns">) => {
   const { t } = useTranslation();

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Icons, Input } from "@/components/ui";
+import { Icons, Input } from "@/components";
 import type { AvailableRoutesId } from "@/config/router";
 import { useSearchText } from "@/hooks";
 import { useTranslation } from "@/i18n";

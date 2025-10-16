@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { Button, DropdownMenu, Icons } from "@/components/ui";
+import { Button, DropdownMenu, Icons } from "@/components";
 import { type resources, useTranslation } from "@/i18n";
 import { LogoutButton } from "./logout-button";
 

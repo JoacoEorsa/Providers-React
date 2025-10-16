@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { DropdownMenu, Icons } from "@/components/ui";
+import { DropdownMenu, Icons } from "@/components";
 import { Breadcrumb } from "./breadcrumb";
 
 const meta: Meta<typeof Breadcrumb.Root> = {

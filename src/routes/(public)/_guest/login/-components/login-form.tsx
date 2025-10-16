@@ -2,7 +2,7 @@ import { type SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate, useRouter, useSearch } from "@tanstack/react-router";
 
-import { Button, ErrorMessage, Input, Label, PasswordInput, toast } from "@/components/ui";
+import { Button, ErrorMessage, Input, Label, PasswordInput, toast } from "@/components";
 import { Trans, useTranslation } from "@/i18n";
 import { getLoginRequestSchema, type LoginRequest, useLoginMutation } from "@/services";
 import { setAuthStoreToken } from "@/stores";

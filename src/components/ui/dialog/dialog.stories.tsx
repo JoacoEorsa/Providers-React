@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Button } from "@/components/ui";
+import { Button } from "@/components";
 import { Dialog } from "./dialog";
 
 const meta: Meta<typeof Dialog.Root> = {

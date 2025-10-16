@@ -10,7 +10,7 @@ import {
   PasswordInput,
   PasswordValidator,
   toast,
-} from "@/components/ui";
+} from "@/components";
 import { useTranslation } from "@/i18n";
 import {
   type CreateUser,

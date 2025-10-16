@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 
-import { Button, DataTable, Icons } from "@/components/ui";
+import { Button, DataTable, Icons } from "@/components";
 import { DEFAULT_PAGE_SIZE } from "@/constants";
 import {
   paginationValidationWithDefaults,
@@ -13,8 +13,8 @@ import {
 } from "@/hooks";
 import { useTranslation } from "@/i18n";
 import { USER_FILTER_KEYS, useUsersListQuery } from "@/services";
-import { UpsertUserDialog } from "./-components/upsert-user-dialog";
-import { useUsersTable } from "./-hooks/use-users-table";
+import { UpsertUserDialog } from "./-components";
+import { useUsersTable } from "./-hooks";
 
 const UsersPage = () => {
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);

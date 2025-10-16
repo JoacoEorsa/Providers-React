@@ -21,6 +21,9 @@ export const env = createEnv({
 
     VITE_ENABLE_DEVTOOLS: z.string().optional(),
     VITE_ENABLE_REACT_SCAN: z.string().optional(),
+
+    VITE_POSTHOG_API_KEY: z.string().optional(),
+    VITE_POSTHOG_HOST: z.string().optional(),
   },
 
   /**

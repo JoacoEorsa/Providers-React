@@ -72,7 +72,7 @@ const config: Linter.Config[] = [
       "@tanstack/router": tanstackRouter as unknown as ESLint.Plugin,
       i18next,
       "prefer-arrow-functions": preferArrowFunctions as ESLint.Plugin,
-      "react-hooks": reactHooks,
+      "react-hooks": reactHooks as ESLint.Plugin,
       "simple-import-sort": simpleImportSort,
       "sort-destructure-keys": sortDestructureKeys,
       unicorn,
@@ -132,7 +132,7 @@ const config: Linter.Config[] = [
   },
 
   // Storybook rules
-  ...storybook.configs["flat/recommended"],
+  ...(storybook.configs["flat/recommended"] as Linter.Config[]),
   { files: ["**/*.stories.{ts,tsx}"], rules: { "i18next/no-literal-string": "off" } },
   { ignores: ["!.storybook"] },
 ];

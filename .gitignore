@@ -14,7 +14,8 @@ dist-ssr
 .cspellcache
 
 # Editor directories and files
-.idea
+.idea/*
+!.idea/tailwindcss.xml
 .DS_Store
 *.suo
 *.ntvs*

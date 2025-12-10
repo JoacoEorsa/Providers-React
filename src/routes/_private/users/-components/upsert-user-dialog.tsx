@@ -1,5 +1,7 @@
 import { type SubmitHandler, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 
 import {
   Button,
@@ -9,9 +11,7 @@ import {
   Label,
   PasswordInput,
   PasswordValidator,
-  toast,
 } from "@/components";
-import { useTranslation } from "@/i18n";
 import {
   type CreateUser,
   getUserSchema,

@@ -50,7 +50,7 @@ type InputProps = {
 } & Omit<ComponentProps<"input">, "size"> &
   Styled;
 
-const Input = ({
+export const Input = ({
   className,
   containerClassName,
   left,
@@ -86,5 +86,3 @@ const Input = ({
     </div>
   );
 };
-
-export { Input };

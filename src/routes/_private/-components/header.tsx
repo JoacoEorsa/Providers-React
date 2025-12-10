@@ -1,4 +1,5 @@
-import { useTranslation } from "@/i18n";
+import { useTranslation } from "react-i18next";
+
 import { HamburgerMenu } from "./hamburger-menu";
 
 export const Header = () => {

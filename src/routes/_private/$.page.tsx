@@ -1,6 +1,5 @@
+import { useTranslation } from "react-i18next";
 import { createFileRoute } from "@tanstack/react-router";
-
-import { useTranslation } from "@/i18n";
 
 const CatchAllPage = () => {
   const { t } = useTranslation();

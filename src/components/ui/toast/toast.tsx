@@ -1,7 +1,5 @@
-import { toast, Toaster as SonnerToaster, type ToasterProps } from "sonner";
+import { Toaster as SonnerToaster, type ToasterProps } from "sonner";
 
-const Toaster = (props: ToasterProps) => {
+export const Toaster = (props: ToasterProps) => {
   return <SonnerToaster {...props} />;
 };
-
-export { toast, Toaster };

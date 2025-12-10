@@ -1,9 +1,10 @@
 import { type SubmitHandler, useForm } from "react-hook-form";
+import { Trans, useTranslation } from "react-i18next";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate, useRouter, useSearch } from "@tanstack/react-router";
+import { toast } from "sonner";
 
-import { Button, ErrorMessage, Input, Label, PasswordInput, toast } from "@/components";
-import { Trans, useTranslation } from "@/i18n";
+import { Button, ErrorMessage, Input, Label, PasswordInput } from "@/components";
 import { getLoginRequestSchema, type LoginRequest, useLoginMutation } from "@/services";
 import { setAuthStoreToken } from "@/stores";
 import { handleAxiosFieldErrors } from "@/utils";

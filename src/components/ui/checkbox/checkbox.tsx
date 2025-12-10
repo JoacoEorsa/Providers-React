@@ -16,7 +16,7 @@ const { icon, indicator, root } = checkboxVariants();
 
 export type CheckboxProps = ComponentProps<typeof CheckboxPrimitive.Root>;
 
-const Checkbox = ({ className, ...props }: CheckboxProps) => {
+export const Checkbox = ({ className, ...props }: CheckboxProps) => {
   return (
     <CheckboxPrimitive.Root className={root({ className })} data-slot="checkbox" {...props}>
       <CheckboxPrimitive.Indicator className={indicator()} data-slot="checkbox-indicator">
@@ -25,5 +25,3 @@ const Checkbox = ({ className, ...props }: CheckboxProps) => {
     </CheckboxPrimitive.Root>
   );
 };
-
-export { Checkbox };

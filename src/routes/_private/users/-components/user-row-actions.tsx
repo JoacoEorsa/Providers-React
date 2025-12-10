@@ -1,8 +1,8 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import type { Row } from "@tanstack/react-table";
 
 import { Button, DropdownMenu, Icons } from "@/components";
-import { useTranslation } from "@/i18n";
 import { type User } from "@/services";
 import { DeleteUserDialog } from "./delete-user-dialog";
 import { UpsertUserDialog } from "./upsert-user-dialog";

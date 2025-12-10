@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import { flexRender, type Table as TableProps } from "@tanstack/react-table";
 
 import type { AvailableRoutesId } from "@/config/router";
-import { useTranslation } from "@/i18n";
 import { Pagination } from "../pagination";
-import { flexRender, Table, type TableProps } from "../table";
+import { Table } from "../table";
 import { SearchTextInput } from "./search-text-input";
 import { ViewOptions } from "./view-options";
 

@@ -1,7 +1,8 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { createColumnHelper } from "@tanstack/react-table";
 
-import { createColumnHelper, useTable, type UseTableProps } from "@/components";
-import { useTranslation } from "@/i18n";
+import { useTable, type UseTableProps } from "@/components";
 import type { User } from "@/services";
 import { UserRowActions } from "../-components";
 

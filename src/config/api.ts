@@ -9,7 +9,7 @@ const baseApiConfiguration = {
   headers: { "Content-Type": "application/json" },
 };
 
-const privateApi = axios.create(baseApiConfiguration);
+export const privateApi = axios.create(baseApiConfiguration);
 
 privateApi.interceptors.request.use(
   (config) => {
@@ -39,12 +39,10 @@ privateApi.interceptors.response.use(
   },
 );
 
-const publicApi = axios.create(baseApiConfiguration);
+export const publicApi = axios.create(baseApiConfiguration);
 
 publicApi.interceptors.response.use((response) => {
   response.data = deepCamelKeys(response.data);
 
   return response;
 });
-
-export { privateApi, publicApi };

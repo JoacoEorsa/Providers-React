@@ -5,7 +5,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 import { Icons } from "@/components";
 import type { Styled } from "@/types/styles";
 
-const buttonVariants = tv({
+export const buttonVariants = tv({
   base: "inline-flex cursor-pointer items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap transition-all duration-300 ease-in-out focus-visible:ring-4 focus-visible:ring-background-brand-default/25 focus-visible:outline-none disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   variants: {
     variant: {
@@ -42,7 +42,7 @@ export type ButtonProps = {
   VariantProps<typeof buttonVariants> &
   Styled;
 
-const Button = ({
+export const Button = ({
   asChild = false,
   children,
   className,
@@ -68,5 +68,3 @@ const Button = ({
     </button>
   );
 };
-
-export { Button, buttonVariants };

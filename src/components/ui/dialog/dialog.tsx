@@ -1,9 +1,9 @@
 import type { ComponentProps } from "react";
+import { useTranslation } from "react-i18next";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { tv } from "tailwind-variants";
 
 import { Button, Icons } from "@/components";
-import { useTranslation } from "@/i18n";
 
 const dialogVariants = tv({
   slots: {

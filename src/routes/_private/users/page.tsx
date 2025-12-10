@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 
@@ -11,7 +12,6 @@ import {
   usePagination,
   useSearchText,
 } from "@/hooks";
-import { useTranslation } from "@/i18n";
 import { USER_FILTER_KEYS, useUsersListQuery } from "@/services";
 import { UpsertUserDialog } from "./-components";
 import { useUsersTable } from "./-hooks";

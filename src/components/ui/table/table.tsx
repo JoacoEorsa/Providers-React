@@ -1,12 +1,7 @@
 import type { ComponentProps } from "react";
 import {
-  createColumnHelper,
-  flexRender,
   getCoreRowModel,
   getPaginationRowModel,
-  type OnChangeFn,
-  type PaginationState,
-  type Table as TableProps,
   type TableOptions,
   useReactTable,
 } from "@tanstack/react-table";
@@ -101,5 +96,3 @@ export const useTable = <T,>({ columns, data, ...props }: UseTableProps<T>) => {
 };
 
 export const Table = { Body, Caption, Cell, Footer, Head, Header, Root, Row, Skeleton };
-
-export { createColumnHelper, flexRender, type OnChangeFn, type PaginationState, type TableProps };

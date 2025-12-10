@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Button, DropdownMenu, Icons } from "@/components";
-import { type resources, useTranslation } from "@/i18n";
+import { type resources } from "@/i18n";
 import { LogoutButton } from "./logout-button";
 
 export const HamburgerMenu = () => {

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { createColumnHelper, flexRender } from "@tanstack/react-table";
 
-import { createColumnHelper, flexRender, Table, useTable } from "./table";
+import { Table, useTable } from "./table";
 
 const meta: Meta<typeof Table.Root> = {
   component: Table.Root,

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Icons, Input } from "@/components";
 import type { AvailableRoutesId } from "@/config/router";
 import { useSearchText } from "@/hooks";
-import { useTranslation } from "@/i18n";
 import { SIZE } from "@/types/styles";
 
 type SearchTextInputProps = {

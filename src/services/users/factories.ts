@@ -1,13 +1,22 @@
 import { createQueryKeys } from "@lukemorales/query-key-factory";
 
-import { createUser, deleteUser, getUsersList, updateUser } from "./api";
+import { createUser, deleteUser, getUser, getUsers, updateUser } from "./api";
+import type { User } from "./types";
 
 export const queries = createQueryKeys("users", {
+  detail: (id: User["id"]) => {
+    return {
+      queryKey: [id],
+      queryFn: () => {
+        return getUser(id);
+      },
+    };
+  },
   list: (params) => {
     return {
       queryKey: [params],
       queryFn: () => {
-        return getUsersList(params);
+        return getUsers(params);
       },
     };
   },

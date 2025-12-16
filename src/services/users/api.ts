@@ -3,15 +3,19 @@ import { z } from "zod";
 
 import { publicApi } from "@/config/api";
 import { parsePaginatedResponse } from "@/services/schemas";
-import { userSchema } from "./schemas";
+import { getUserSchema } from "./schemas";
 import type { CreateUser, UpdateUser, User, UserRequestParams } from "./types";
 
-export const getUsersList = async ({ filter, page }: UserRequestParams) => {
-  const response = await publicApi.get("users", {
-    params: { page, filter },
-  });
+export const getUser = async (id: User["id"]) => {
+  const response = await publicApi.get(`users/${id}`);
 
-  return parsePaginatedResponse(z.array(userSchema), response.data);
+  return getUserSchema().parse(response.data);
+};
+
+export const getUsers = async (params: UserRequestParams) => {
+  const response = await publicApi.get("users", { params });
+
+  return parsePaginatedResponse(z.array(getUserSchema()), response.data);
 };
 
 export const deleteUser = async (id: User["id"]) => {
@@ -22,6 +26,6 @@ export const createUser = async (data: CreateUser) => {
   return publicApi.post("users", deepSnakeKeys(data));
 };
 
-export const updateUser = async (data: UpdateUser) => {
-  return publicApi.put(`users/${data.id}`, deepSnakeKeys(data));
+export const updateUser = async ({ id, ...payload }: UpdateUser) => {
+  return publicApi.put(`users/${id}`, deepSnakeKeys(payload));
 };

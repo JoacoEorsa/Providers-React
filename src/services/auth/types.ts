@@ -1,6 +1,6 @@
 import type { z } from "zod";
 
-import type { getLoginRequestSchema, loginResponseSchema } from "./schemas";
+import type { getLoginPayloadSchema, loginResponseSchema } from "./schemas";
 
-export type LoginRequest = z.infer<ReturnType<typeof getLoginRequestSchema>>;
+export type LoginPayload = z.infer<ReturnType<typeof getLoginPayloadSchema>>;
 export type LoginResponse = z.infer<typeof loginResponseSchema>;

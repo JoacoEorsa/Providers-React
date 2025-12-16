@@ -5,14 +5,14 @@ import { Link, useNavigate, useRouter, useSearch } from "@tanstack/react-router"
 import { toast } from "sonner";
 
 import { Button, ErrorMessage, Input, Label, PasswordInput } from "@/components";
-import { getLoginRequestSchema, type LoginRequest, useLoginMutation } from "@/services";
+import { getLoginPayloadSchema, type LoginPayload, useLogin } from "@/services";
 import { setAuthStoreToken } from "@/stores";
 import { handleAxiosFieldErrors } from "@/utils";
 
 export const LoginForm = () => {
   const { t } = useTranslation();
 
-  const loginMutation = useLoginMutation();
+  const loginMutation = useLogin();
 
   const router = useRouter();
   const search = useSearch({ from: "/(public)/_guest/login/" });
@@ -25,10 +25,10 @@ export const LoginForm = () => {
     setError,
   } = useForm({
     mode: "onTouched",
-    resolver: zodResolver(getLoginRequestSchema()),
+    resolver: zodResolver(getLoginPayloadSchema()),
   });
 
-  const onSubmit: SubmitHandler<LoginRequest> = (data) => {
+  const onSubmit: SubmitHandler<LoginPayload> = (data) => {
     loginMutation.mutate(data, {
       onSuccess: async ({ data: { authToken } }) => {
         toast.success(t("login.success"));
@@ -37,7 +37,7 @@ export const LoginForm = () => {
         await navigate({ to: search.redirect || "/" });
       },
       onError: (error) => {
-        handleAxiosFieldErrors<LoginRequest>(error, setError, t("login.error"));
+        handleAxiosFieldErrors<LoginPayload>(error, setError, t("login.error"));
       },
     });
   };

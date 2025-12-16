@@ -12,30 +12,19 @@ import {
   PasswordInput,
   PasswordValidator,
 } from "@/components";
-import {
-  type CreateUser,
-  getUserSchema,
-  type UpdateUser,
-  useCreateUserMutation,
-  type User,
-  useUpdateUserMutation,
-} from "@/services";
+import { getUpdateUserSchema, type UpdateUser, type User, useUpdateUser } from "@/services";
 import { handleAxiosFieldErrors } from "@/utils";
 
-type UpsertUserDialogProps = {
+type UpdateUserDialogProps = {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
-  user?: User;
+  user: User;
 };
 
-export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialogProps) => {
+export const UpdateUserDialog = ({ isOpen, onOpenChange, user }: UpdateUserDialogProps) => {
   const { t } = useTranslation();
 
-  const { isPending: isCreating, mutate: createUser } = useCreateUserMutation();
-  const { isPending: isUpdating, mutate: updateUser } = useUpdateUserMutation();
-
-  const isNewUser = !user;
-  const isPending = isUpdating || isCreating;
+  const { isPending: isUpdating, mutate: updateUser } = useUpdateUser();
 
   const {
     control,
@@ -46,42 +35,27 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
     setError,
   } = useForm({
     mode: "onTouched",
-    resolver: zodResolver(getUserSchema()),
+    resolver: zodResolver(getUpdateUserSchema()),
     values: {
-      emailAddress: user?.emailAddress ?? "",
-      name: user?.name ?? "",
+      id: user.id,
+      emailAddress: user.emailAddress ?? "",
+      name: user.name ?? "",
       password: "",
       passwordConfirmation: "",
     },
   });
 
-  const onSubmit: SubmitHandler<CreateUser | UpdateUser> = (data) => {
-    if (isNewUser) {
-      return createUser(data, {
-        onSuccess: () => {
-          toast.success(t("users.create.success"));
-          onOpenChange(false);
-          reset();
-        },
-        onError: (error) => {
-          handleAxiosFieldErrors<CreateUser>(error, setError, t("users.create.error"));
-        },
-      });
-    }
-
-    return updateUser(
-      { ...data, id: user.id },
-      {
-        onSuccess: () => {
-          toast.success(t("users.update.success"));
-          onOpenChange(false);
-          reset();
-        },
-        onError: (error) => {
-          handleAxiosFieldErrors<UpdateUser>(error, setError, t("users.update.error"));
-        },
+  const onSubmit: SubmitHandler<UpdateUser> = (data) => {
+    return updateUser(data, {
+      onSuccess: () => {
+        toast.success(t("users.update.success"));
+        onOpenChange(false);
+        reset();
       },
-    );
+      onError: (error) => {
+        handleAxiosFieldErrors<UpdateUser>(error, setError, t("users.update.error"));
+      },
+    });
   };
 
   const handleOpenChange = (open: boolean) => {
@@ -94,15 +68,11 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
 
   return (
     <Dialog.Root onOpenChange={handleOpenChange} open={isOpen}>
-      <Dialog.Content isDismissible={!isUpdating && !isCreating}>
+      <Dialog.Content isDismissible={!isUpdating}>
         <Dialog.Header>
-          <Dialog.Title>
-            {isNewUser ? t("users.create.title") : t("users.update.title")}
-          </Dialog.Title>
+          <Dialog.Title>{t("users.update.title")}</Dialog.Title>
 
-          <Dialog.Description>
-            {isNewUser ? t("users.create.description") : t("users.update.description")}
-          </Dialog.Description>
+          <Dialog.Description>{t("users.update.description")}</Dialog.Description>
         </Dialog.Header>
 
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -145,12 +115,12 @@ export const UpsertUserDialog = ({ isOpen, onOpenChange, user }: UpsertUserDialo
           </div>
 
           <Dialog.Footer>
-            <Dialog.Close disabled={isPending} asChild>
+            <Dialog.Close disabled={isUpdating} asChild>
               <Button variant="outlined">{t("buttons.cancel")}</Button>
             </Dialog.Close>
 
-            <Button isLoading={isPending} type="submit">
-              {isNewUser ? t("buttons.create") : t("buttons.update")}
+            <Button isLoading={isUpdating} type="submit">
+              {t("buttons.update")}
             </Button>
           </Dialog.Footer>
         </form>

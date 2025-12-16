@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
 import { Button, Dialog } from "@/components";
-import { type User, useUsersDeleteMutation } from "@/services";
+import { useDeleteUser, type User } from "@/services";
 
 type DeleteUserDialogProps = {
   isOpen: boolean;
@@ -13,7 +13,7 @@ type DeleteUserDialogProps = {
 export const DeleteUserDialog = ({ isOpen, onOpenChange, user }: DeleteUserDialogProps) => {
   const { t } = useTranslation();
 
-  const { isPending, mutate: deleteUser } = useUsersDeleteMutation();
+  const { isPending, mutate: deleteUser } = useDeleteUser();
 
   const handleDelete = async () => {
     deleteUser(user.id, {

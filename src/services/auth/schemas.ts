@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import i18n from "@/i18n";
 
-export const getLoginRequestSchema = () => {
+export const getLoginPayloadSchema = () => {
   return z.object({
     email: z.email({
       message: i18n.t("form.errors.invalidField", { field: i18n.t("form.email") }),

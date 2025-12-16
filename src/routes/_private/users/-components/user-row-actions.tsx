@@ -5,7 +5,7 @@ import type { Row } from "@tanstack/react-table";
 import { Button, DropdownMenu, Icons } from "@/components";
 import { type User } from "@/services";
 import { DeleteUserDialog } from "./delete-user-dialog";
-import { UpsertUserDialog } from "./upsert-user-dialog";
+import { UpdateUserDialog } from "./update-user-dialog";
 
 type UserRowActionsProps = {
   row: Row<User>;
@@ -13,11 +13,24 @@ type UserRowActionsProps = {
 
 export const UserRowActions = ({ row }: UserRowActionsProps) => {
   const { t } = useTranslation();
+
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   const [showUpdateDialog, setShowUpdateDialog] = useState(false);
 
   return (
     <>
+      <UpdateUserDialog
+        isOpen={showUpdateDialog}
+        onOpenChange={setShowUpdateDialog}
+        user={row.original}
+      />
+
+      <DeleteUserDialog
+        isOpen={showConfirmDelete}
+        onOpenChange={setShowConfirmDelete}
+        user={row.original}
+      />
+
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
           <div className="flex justify-end">
@@ -55,18 +68,6 @@ export const UserRowActions = ({ row }: UserRowActionsProps) => {
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
-
-      <UpsertUserDialog
-        isOpen={showUpdateDialog}
-        onOpenChange={setShowUpdateDialog}
-        user={row.original}
-      />
-
-      <DeleteUserDialog
-        isOpen={showConfirmDelete}
-        onOpenChange={setShowConfirmDelete}
-        user={row.original}
-      />
     </>
   );
 };

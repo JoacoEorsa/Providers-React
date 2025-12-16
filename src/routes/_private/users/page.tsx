@@ -12,12 +12,13 @@ import {
   usePagination,
   useSearchText,
 } from "@/hooks";
-import { USER_FILTER_KEYS, useUsersListQuery } from "@/services";
-import { UpsertUserDialog } from "./-components";
+import { USER_FILTER_KEYS, useUsers } from "@/services";
+import { CreateUserDialog } from "./-components";
 import { useUsersTable } from "./-hooks";
 
 const UsersPage = () => {
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
+
   const {
     actions: { changePage },
     page,
@@ -34,7 +35,7 @@ const UsersPage = () => {
     data: usersListData,
     isLoading,
     isSuccess,
-  } = useUsersListQuery({
+  } = useUsers({
     filter: {
       [USER_FILTER_KEYS.EMAIL]: debouncedSearchText,
     },
@@ -66,6 +67,8 @@ const UsersPage = () => {
 
   return (
     <>
+      <CreateUserDialog isOpen={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen} />
+
       <div className="flex flex-col gap-y-2">
         <h1>{t("users.title")}</h1>
 
@@ -90,8 +93,6 @@ const UsersPage = () => {
           withSearch
         />
       </div>
-
-      <UpsertUserDialog isOpen={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen} />
     </>
   );
 };

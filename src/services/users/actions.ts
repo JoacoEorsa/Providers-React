@@ -2,16 +2,20 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import type { RequestParams, UseMutationProps, UseQueryProps } from "@/services/types";
 import { mutations, queries } from "./factories";
-import type { UserFilterKey } from "./types";
+import type { User, UserFilterKey } from "./types";
 
-export const useUsersListQuery = (
+export const useUser = (id: User["id"], props?: UseQueryProps<typeof queries.detail>) => {
+  return useQuery({ ...queries.detail(id), ...props });
+};
+
+export const useUsers = (
   params: RequestParams<Record<UserFilterKey, string | undefined>>,
   props?: UseQueryProps<typeof queries.list>,
 ) => {
   return useQuery({ ...queries.list(params), ...props });
 };
 
-export const useUsersDeleteMutation = (props?: UseMutationProps<typeof mutations.delete>) => {
+export const useDeleteUser = (props?: UseMutationProps<typeof mutations.delete>) => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -24,7 +28,7 @@ export const useUsersDeleteMutation = (props?: UseMutationProps<typeof mutations
   });
 };
 
-export const useCreateUserMutation = (props?: UseMutationProps<typeof mutations.create>) => {
+export const useCreateUser = (props?: UseMutationProps<typeof mutations.create>) => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -37,7 +41,7 @@ export const useCreateUserMutation = (props?: UseMutationProps<typeof mutations.
   });
 };
 
-export const useUpdateUserMutation = (props?: UseMutationProps<typeof mutations.update>) => {
+export const useUpdateUser = (props?: UseMutationProps<typeof mutations.update>) => {
   const queryClient = useQueryClient();
 
   return useMutation({

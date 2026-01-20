@@ -17,7 +17,7 @@ export const useUsersTable = ({ data = [], ...props }: Omit<UseTableProps<User>,
         meta: { stringifiedHeader: t("users.table.columns.id") },
         header: t("users.table.columns.id"),
       }),
-      columnHelper.accessor("emailAddress", {
+      columnHelper.accessor("email", {
         meta: { stringifiedHeader: t("users.table.columns.email") },
         header: t("users.table.columns.email"),
       }),

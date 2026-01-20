@@ -1,10 +1,3 @@
-/**
- * The `persist` middleware automatically saves the `token` to localStorage under the key "auth".
- * We only store the `token` here to comply with HIPAA regulations, ensuring that no sensitive user information
- * beyond authentication tokens is persisted.
- *
- */
-
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

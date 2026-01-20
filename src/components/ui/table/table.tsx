@@ -16,8 +16,8 @@ const tableVariants = tv({
     footer:
       "border-t border-border-default-default bg-background-default-hover font-medium [&>tr]:last:border-b-0",
     row: "border-b border-border-default-default transition-colors hover:bg-background-default-hover data-[state=selected]:bg-background-default-hover",
-    cell: "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5",
-    head: "h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-text-default-secondary [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5",
+    cell: "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 *:[[role=checkbox]]:translate-y-0.5",
+    head: "h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-text-default-secondary [&:has([role=checkbox])]:pr-0 *:[[role=checkbox]]:translate-y-0.5",
     caption: "mt-4 text-sm text-text-default-secondary",
     skeleton: "h-3 animate-pulse rounded-md bg-background-default-tertiary",
   },

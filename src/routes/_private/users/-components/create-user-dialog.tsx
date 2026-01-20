@@ -77,11 +77,11 @@ export const CreateUserDialog = ({ isOpen, onOpenChange }: CreateUserDialogProps
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="emailAddress">{t("form.email")}</Label>
+            <Label htmlFor="email">{t("form.email")}</Label>
 
-            <Input {...register("emailAddress")} id="emailAddress" size="sm" />
+            <Input {...register("email")} id="email" size="sm" />
 
-            <ErrorMessage errorMessage={errors?.emailAddress?.message} />
+            <ErrorMessage errorMessage={errors?.email?.message} />
           </div>
 
           <div className="flex flex-col gap-2">

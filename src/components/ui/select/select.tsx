@@ -6,13 +6,26 @@ import { Icons } from "../icons";
 
 const selectVariants = tv({
   slots: {
-    trigger:
-      "flex w-fit cursor-pointer items-center justify-between gap-2 rounded-md border border-border-default-default bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-4 focus-visible:ring-background-brand-default/25 disabled:cursor-not-allowed data-[placeholder]:text-text-default-tertiary data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-text-default-default",
-    content:
-      "relative z-50 max-h-(--radix-select-content-available-height) min-w-[8rem] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border border-border-default-default bg-background-default-default text-text-default-default shadow-md data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+    trigger: [
+      "flex w-fit cursor-pointer items-center justify-between gap-2 rounded-md border border-border-default-default bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none",
+      "focus-visible:ring-4 focus-visible:ring-background-brand-default/25 disabled:cursor-not-allowed",
+      "data-placeholder:text-text-default-tertiary data-[size=default]:h-9 data-[size=sm]:h-8",
+      "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2",
+      "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-text-default-default",
+    ],
+    content: [
+      "relative z-50 max-h-(--radix-select-content-available-height) min-w-32 origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border border-border-default-default bg-background-default-default text-text-default-default shadow-md",
+      "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+      "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+    ],
     viewport: "p-1",
     label: "px-2 py-1.5 text-xs text-text-default-secondary",
-    item: "relative flex w-full cursor-pointer items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none focus:bg-background-default-secondary focus:text-text-default-default data-[disabled]:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-text-default-default *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+    item: [
+      "relative flex w-full cursor-pointer items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none",
+      "focus:bg-background-default-secondary focus:text-text-default-default data-disabled:pointer-events-none",
+      "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-text-default-default",
+      "*:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+    ],
     separator: "pointer-events-none -mx-1 my-1 h-px bg-border-default-default",
     scrollButton: "flex cursor-default items-center justify-center py-1",
   },
@@ -22,7 +35,7 @@ const selectVariants = tv({
         content:
           "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
         viewport:
-          "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)] scroll-my-1",
+          "h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width) scroll-my-1",
       },
     },
   },

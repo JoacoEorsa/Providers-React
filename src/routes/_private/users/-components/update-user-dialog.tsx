@@ -38,7 +38,7 @@ export const UpdateUserDialog = ({ isOpen, onOpenChange, user }: UpdateUserDialo
     resolver: zodResolver(getUpdateUserSchema()),
     values: {
       id: user.id,
-      emailAddress: user.emailAddress ?? "",
+      email: user.email ?? "",
       name: user.name ?? "",
       password: "",
       passwordConfirmation: "",
@@ -85,11 +85,11 @@ export const UpdateUserDialog = ({ isOpen, onOpenChange, user }: UpdateUserDialo
           </div>
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="emailAddress">{t("form.email")}</Label>
+            <Label htmlFor="email">{t("form.email")}</Label>
 
-            <Input {...register("emailAddress")} id="emailAddress" size="sm" />
+            <Input {...register("email")} id="email" size="sm" />
 
-            <ErrorMessage errorMessage={errors?.emailAddress?.message} />
+            <ErrorMessage errorMessage={errors?.email?.message} />
           </div>
 
           <div className="flex flex-col gap-2">

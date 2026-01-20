@@ -6,19 +6,37 @@ import { Icons } from "@/components";
 import type { Styled } from "@/types/styles";
 
 export const buttonVariants = tv({
-  base: "inline-flex cursor-pointer items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap transition-all duration-300 ease-in-out focus-visible:ring-4 focus-visible:ring-background-brand-default/25 focus-visible:outline-none disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  base: [
+    "inline-flex cursor-pointer items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap",
+    "transition-all duration-300 ease-in-out",
+    "focus-visible:ring-4 focus-visible:ring-background-brand-default/25 focus-visible:outline-none disabled:pointer-events-none",
+    "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+    "disabled:bg-background-disabled-default disabled:text-text-disabled-on-disabled",
+  ],
   variants: {
     variant: {
-      primary:
-        "bg-background-brand-default text-text-brand-on-brand hover:bg-background-brand-hover active:bg-background-brand-default disabled:bg-background-disabled-default disabled:text-text-disabled-on-disabled",
-      secondary:
-        "bg-background-brand-secondary text-text-brand-on-brand-secondary hover:bg-background-brand-secondary-hover active:bg-background-brand-secondary disabled:bg-background-disabled-default disabled:text-text-disabled-on-disabled",
-      tertiary:
-        "bg-background-brand-tertiary text-text-brand-on-brand-tertiary hover:bg-background-brand-tertiary-hover active:bg-background-brand-tertiary disabled:bg-background-disabled-default disabled:text-text-disabled-on-disabled",
-      outlined:
-        "border border-border-brand-default bg-transparent text-text-default-default shadow-sm hover:bg-background-default-hover active:bg-transparent disabled:border-border-disabled-default disabled:text-text-disabled-default",
-      elevated:
-        "border border-border-default-default bg-transparent text-text-default-default shadow-md hover:bg-background-default-hover active:bg-transparent disabled:border-border-disabled-default disabled:text-text-disabled-default",
+      primary: [
+        "bg-background-brand-default text-text-brand-on-brand",
+        "hover:bg-background-brand-hover active:bg-background-brand-default",
+      ],
+      secondary: [
+        "bg-background-brand-secondary text-text-brand-on-brand-secondary",
+        "hover:bg-background-brand-secondary-hover active:bg-background-brand-secondary",
+      ],
+      tertiary: [
+        "bg-background-brand-tertiary text-text-brand-on-brand-tertiary",
+        "hover:bg-background-brand-tertiary-hover active:bg-background-brand-tertiary",
+      ],
+      outlined: [
+        "border border-border-brand-default bg-transparent text-text-default-default shadow-sm",
+        "hover:bg-background-default-hover active:bg-transparent",
+        "disabled:border-border-disabled-default disabled:text-text-disabled-default",
+      ],
+      elevated: [
+        "border border-border-default-default bg-transparent text-text-default-default shadow-md",
+        "hover:bg-background-default-hover active:bg-transparent",
+        "disabled:border-border-disabled-default disabled:text-text-disabled-default",
+      ],
       plainText:
         "text-text-brand-default hover:text-text-brand-secondary active:text-text-brand-default disabled:text-text-disabled-default",
     },

@@ -2,14 +2,14 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import type { RequestParams, UseMutationProps, UseQueryProps } from "@/services/types";
 import { mutations, queries } from "./factories";
-import type { User, UserFilterKey } from "./types";
+import type { User, UsersFilter } from "./types";
 
 export const useUser = (id: User["id"], props?: UseQueryProps<typeof queries.detail>) => {
   return useQuery({ ...queries.detail(id), ...props });
 };
 
 export const useUsers = (
-  params: RequestParams<Record<UserFilterKey, string | undefined>>,
+  params: RequestParams<UsersFilter>,
   props?: UseQueryProps<typeof queries.list>,
 ) => {
   return useQuery({ ...queries.list(params), ...props });

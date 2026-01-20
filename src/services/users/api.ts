@@ -3,8 +3,9 @@ import { z } from "zod";
 
 import { publicApi } from "@/config/api";
 import { parsePaginatedResponse } from "@/services/schemas";
+import type { RequestParams } from "../types";
 import { getUserSchema } from "./schemas";
-import type { CreateUser, UpdateUser, User, UserRequestParams } from "./types";
+import type { CreateUser, UpdateUser, User, UsersFilter } from "./types";
 
 export const getUser = async (id: User["id"]) => {
   const response = await publicApi.get(`users/${id}`);
@@ -12,7 +13,7 @@ export const getUser = async (id: User["id"]) => {
   return getUserSchema().parse(response.data);
 };
 
-export const getUsers = async (params: UserRequestParams) => {
+export const getUsers = async (params: RequestParams<UsersFilter>) => {
   const response = await publicApi.get("users", { params });
 
   return parsePaginatedResponse(z.array(getUserSchema()), response.data);

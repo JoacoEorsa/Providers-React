@@ -1,7 +1,7 @@
 import { type ComponentProps, useState } from "react";
 
 import { Button, Icons } from "@/components";
-import { Input } from "../input";
+import { Input } from "./ui/input";
 
 export const PasswordInput = (props: ComponentProps<typeof Input>) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);

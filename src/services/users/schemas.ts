@@ -6,7 +6,7 @@ export const getUserSchema = () => {
   return z.object({
     id: z.number(),
     name: z.string(),
-    emailAddress: z.email({
+    email: z.email({
       message: i18n.t("form.errors.invalidField", { field: i18n.t("form.email") }),
     }),
   });
@@ -50,4 +50,8 @@ export const getUpdateUserSchema = () => {
   return getCreateUserSchema().extend({
     id: getUserSchema().shape.id,
   });
+};
+
+export const getUsersFilterSchema = () => {
+  return getUserSchema().pick({ email: true });
 };

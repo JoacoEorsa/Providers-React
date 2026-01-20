@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { type ChangeEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Icons, Input } from "@/components";
@@ -24,7 +24,7 @@ export const SearchTextInput = ({ path, placeholder }: SearchTextInputProps) => 
     setLocalSearchValue(searchText ?? "");
   }, [searchText]);
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setLocalSearchValue(value);
     setPaginatedSearchText(value);

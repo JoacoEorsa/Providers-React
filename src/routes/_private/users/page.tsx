@@ -12,7 +12,7 @@ import {
   usePagination,
   useSearchText,
 } from "@/hooks";
-import { USER_FILTER_KEYS, useUsers } from "@/services";
+import { useUsers } from "@/services";
 import { CreateUserDialog } from "./-components";
 import { useUsersTable } from "./-hooks";
 
@@ -36,9 +36,7 @@ const UsersPage = () => {
     isLoading,
     isSuccess,
   } = useUsers({
-    filter: {
-      [USER_FILTER_KEYS.EMAIL]: debouncedSearchText,
-    },
+    filter: { email: debouncedSearchText || "" },
     page,
   });
 

@@ -1,5 +1,4 @@
 import { type SubmitHandler, useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
@@ -12,6 +11,7 @@ import {
   PasswordInput,
   PasswordValidator,
 } from "@/components";
+import { useTranslation } from "@/i18n";
 import { type CreateUser, getCreateUserSchema, useCreateUser } from "@/services";
 import { handleAxiosFieldErrors } from "@/utils";
 
@@ -79,9 +79,9 @@ export const CreateUserDialog = ({ isOpen, onOpenChange }: CreateUserDialogProps
           <div className="flex flex-col gap-2">
             <Label htmlFor="email">{t("form.email")}</Label>
 
-            <Input {...register("email")} id="email" size="sm" />
+            <Input {...register("emailAddress")} id="email" size="sm" />
 
-            <ErrorMessage errorMessage={errors?.email?.message} />
+            <ErrorMessage errorMessage={errors?.emailAddress?.message} />
           </div>
 
           <div className="flex flex-col gap-2">

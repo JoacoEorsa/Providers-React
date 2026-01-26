@@ -1,8 +1,8 @@
 import { type ComponentProps } from "react";
-import { useTranslation } from "react-i18next";
 import { tv } from "tailwind-variants";
 
 import { Icons } from "@/components";
+import { useTranslation } from "@/i18n";
 import type { Styled } from "@/types/styles";
 import { PAGINATION_ITEM_TYPE } from "./get-pagination-items";
 import { usePaginationRange } from "./use-pagination-range";

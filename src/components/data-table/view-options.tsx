@@ -1,7 +1,7 @@
-import { useTranslation } from "react-i18next";
 import type { Column, Table } from "@tanstack/react-table";
 
 import { Button, DropdownMenu, Icons } from "@/components";
+import { useTranslation } from "@/i18n";
 
 type ViewOptionsProps<T> = {
   table: Table<T>;

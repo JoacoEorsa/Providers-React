@@ -1,6 +1,6 @@
 import { type Control, type FieldValues, type Path, useWatch } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 
+import { useTranslation } from "@/i18n";
 import { hasLetter, hasMinLength, hasNumber } from "@/services";
 import { ConditionChecker } from "./condition-checker";
 

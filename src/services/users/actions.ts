@@ -1,5 +1,6 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
+import { queryClient } from "@/config/query-client";
 import type { RequestParams, UseMutationProps, UseQueryProps } from "@/services/types";
 import { mutations, queries } from "./factories";
 import type { User, UsersFilter } from "./types";
@@ -16,8 +17,6 @@ export const useUsers = (
 };
 
 export const useDeleteUser = (props?: UseMutationProps<typeof mutations.delete>) => {
-  const queryClient = useQueryClient();
-
   return useMutation({
     mutationFn: mutations.delete,
     ...props,
@@ -29,8 +28,6 @@ export const useDeleteUser = (props?: UseMutationProps<typeof mutations.delete>)
 };
 
 export const useCreateUser = (props?: UseMutationProps<typeof mutations.create>) => {
-  const queryClient = useQueryClient();
-
   return useMutation({
     mutationFn: mutations.create,
     ...props,
@@ -42,8 +39,6 @@ export const useCreateUser = (props?: UseMutationProps<typeof mutations.create>)
 };
 
 export const useUpdateUser = (props?: UseMutationProps<typeof mutations.update>) => {
-  const queryClient = useQueryClient();
-
   return useMutation({
     mutationFn: mutations.update,
     ...props,

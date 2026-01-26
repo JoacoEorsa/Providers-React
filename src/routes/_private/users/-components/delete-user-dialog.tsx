@@ -1,7 +1,7 @@
-import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
 import { Button, Dialog } from "@/components";
+import { useTranslation } from "@/i18n";
 import { useDeleteUser, type User } from "@/services";
 
 type DeleteUserDialogProps = {

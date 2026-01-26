@@ -4,12 +4,12 @@ import type {
   getCreateUserSchema,
   getUpdateUserSchema,
   getUserSchema,
-  getUsersFilterSchema,
+  usersFilterSchema,
 } from "./schemas";
 
 export type User = z.infer<ReturnType<typeof getUserSchema>>;
 
-export type UsersFilter = z.infer<ReturnType<typeof getUsersFilterSchema>>;
+export type UsersFilter = z.infer<typeof usersFilterSchema>;
 
 export type CreateUser = z.infer<ReturnType<typeof getCreateUserSchema>>;
 

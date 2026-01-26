@@ -12,7 +12,7 @@ type LinkProps = Omit<ComponentProps<typeof RouterLink>, "children"> & {
 
 const breadcrumbVariants = tv({
   slots: {
-    list: "flex flex-wrap items-center gap-1.5 text-sm break-words text-text-default-secondary sm:gap-2.5",
+    list: "flex flex-wrap items-center gap-1.5 text-sm wrap-break-word text-text-default-secondary sm:gap-2.5",
     item: "inline-flex items-center gap-1.5",
     link: "transition-colors hover:text-text-default-default",
     page: "font-normal text-text-default-default",
@@ -38,14 +38,14 @@ const Item = ({ className, ...props }: ComponentProps<"li">) => {
 const Link = ({ asChild, children, className, ...props }: LinkProps) => {
   if (asChild) {
     return (
-      <Slot className={link({ className })} {...props}>
+      <Slot className={link({ className })} data-slot="breadcrumb-link" {...props}>
         {children}
       </Slot>
     );
   }
 
   return (
-    <RouterLink className={link({ className })} {...props}>
+    <RouterLink className={link({ className })} data-slot="breadcrumb-link" {...props}>
       {children}
     </RouterLink>
   );

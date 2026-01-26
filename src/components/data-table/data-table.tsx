@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
-import { useTranslation } from "react-i18next";
 import { flexRender, type Table as TableProps } from "@tanstack/react-table";
 
 import { Pagination, Table } from "@/components/ui/table";
 import type { AvailableRoutesId } from "@/config/router";
+import { useTranslation } from "@/i18n";
 import { SearchTextInput } from "./search-text-input";
 import { ViewOptions } from "./view-options";
 

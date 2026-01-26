@@ -6,28 +6,28 @@ export const getUserSchema = () => {
   return z.object({
     id: z.number(),
     name: z.string(),
-    email: z.email({
+    emailAddress: z.email({
       message: i18n.t("form.errors.invalidField", { field: i18n.t("form.email") }),
     }),
   });
 };
 
-export const hasMinLength = (value: string) => {
-  return value.length >= 8;
+export const hasMinLength = (value?: string) => {
+  return (value?.length ?? 0) >= 8;
 };
 
-export const hasNumber = (value: string) => {
-  return /\d/.test(value);
+export const hasNumber = (value?: string) => {
+  return /\d/.test(value || "");
 };
 
-export const hasLetter = (value: string) => {
-  return /[a-zA-Z]/.test(value);
+export const hasLetter = (value?: string) => {
+  return /[a-zA-Z]/.test(value || "");
 };
 
 export const getCreateUserSchema = () => {
   return getUserSchema()
     .omit({ id: true })
-    .extend({
+    .safeExtend({
       password: z
         .string()
         .refine(hasMinLength, { message: i18n.t("form.errors.passwordTooWeak") })
@@ -47,11 +47,11 @@ export const getCreateUserSchema = () => {
 };
 
 export const getUpdateUserSchema = () => {
-  return getCreateUserSchema().extend({
+  return getCreateUserSchema().safeExtend({
     id: getUserSchema().shape.id,
   });
 };
 
-export const getUsersFilterSchema = () => {
-  return getUserSchema().pick({ email: true });
-};
+export const usersFilterSchema = z.object({
+  email: z.string().optional(),
+});

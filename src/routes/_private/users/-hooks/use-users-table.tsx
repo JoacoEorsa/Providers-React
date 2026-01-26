@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
 import { createColumnHelper } from "@tanstack/react-table";
 
 import { useTable, type UseTableProps } from "@/components";
+import { useTranslation } from "@/i18n";
 import type { User } from "@/services";
 import { UserRowActions } from "../-components";
 
@@ -17,7 +17,7 @@ export const useUsersTable = ({ data = [], ...props }: Omit<UseTableProps<User>,
         meta: { stringifiedHeader: t("users.table.columns.id") },
         header: t("users.table.columns.id"),
       }),
-      columnHelper.accessor("email", {
+      columnHelper.accessor("emailAddress", {
         meta: { stringifiedHeader: t("users.table.columns.email") },
         header: t("users.table.columns.email"),
       }),

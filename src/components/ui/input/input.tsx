@@ -74,6 +74,7 @@ export const Input = ({
             left: left ? size : undefined,
             right: right ? size : undefined,
           })}
+          data-slot="input"
           {...props}
         />
 

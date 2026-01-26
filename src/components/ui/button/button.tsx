@@ -71,12 +71,13 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   return asChild ? (
-    <Slot className={buttonVariants({ variant, size, className })} {...props}>
+    <Slot className={buttonVariants({ variant, size, className })} data-slot="button" {...props}>
       {children}
     </Slot>
   ) : (
     <button
       className={buttonVariants({ variant, size, className })}
+      data-slot="button"
       disabled={isLoading || disabled}
       type="button"
       {...props}

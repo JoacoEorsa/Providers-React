@@ -1,8 +1,8 @@
-import { useTranslation } from "react-i18next";
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
 import { NavigationMenu } from "@/components";
 import type { AvailableRoutesToPath } from "@/config/router";
+import { useTranslation } from "@/i18n";
 import { getAuthStoreState } from "@/stores";
 import { Header } from "./-components";
 

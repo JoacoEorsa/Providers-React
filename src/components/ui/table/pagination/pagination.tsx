@@ -62,7 +62,7 @@ const paginationVariants = tv({
     active: {
       true: {
         pageButton:
-          "border-background-brand-default bg-background-brand-default text-text-brand-on-brand shadow hover:bg-background-brand-default active:bg-background-brand-default",
+          "border-background-brand-default bg-background-brand-default text-text-brand-on-brand shadow-sm hover:bg-background-brand-default active:bg-background-brand-default",
       },
       false: {},
     },

@@ -9,7 +9,7 @@ const inputOtpVariants = tv({
     root: "disabled:cursor-not-allowed",
     container: "flex items-center gap-2 has-disabled:opacity-50",
     group: "flex items-center",
-    slot: "data-[active=true]:border-ring data-[active=true]:ring-ring/50 data-[active=true]:aria-invalid:ring-destructive/20 dark:data-[active=true]:aria-invalid:ring-destructive/40 aria-invalid:border-destructive data-[active=true]:aria-invalid:border-destructive dark:bg-input/30 border-input relative flex h-9 w-9 items-center justify-center border-y border-r text-sm shadow-xs transition-all outline-none first:rounded-l-md first:border-l last:rounded-r-md data-[active=true]:z-10 data-[active=true]:ring-[3px]",
+    slot: "relative flex size-9 items-center justify-center border-y border-r border-border-default-default text-sm shadow-xs transition-all outline-none first:rounded-l-md first:border-l last:rounded-r-md aria-invalid:border-border-destructive-default data-[active=true]:z-10 data-[active=true]:border-border-brand-default data-[active=true]:ring-[3px] data-[active=true]:ring-border-brand-default/50 data-[active=true]:aria-invalid:border-border-destructive-default data-[active=true]:aria-invalid:ring-border-destructive-default/20 dark:bg-background-default-secondary/30 dark:data-[active=true]:aria-invalid:ring-border-destructive-default/40",
     caretWrapper: "pointer-events-none absolute inset-0 flex items-center justify-center",
     caret: "h-4 w-0.5 animate-caret-blink bg-black duration-1000",
   },
@@ -17,7 +17,7 @@ const inputOtpVariants = tv({
 
 const { caret, caretWrapper, container, group, root, slot } = inputOtpVariants();
 
-export const Root = ({
+const Root = ({
   className,
   containerClassName,
   ...props
@@ -34,17 +34,11 @@ export const Root = ({
   );
 };
 
-export const Group = ({ className, ...props }: ComponentProps<"div">) => {
+const Group = ({ className, ...props }: ComponentProps<"div">) => {
   return <div className={group({ className })} data-slot="input-otp-group" {...props} />;
 };
 
-export const Slot = ({
-  className,
-  index,
-  ...props
-}: ComponentProps<"div"> & {
-  index: number;
-}) => {
+const Slot = ({ className, index, ...props }: ComponentProps<"div"> & { index: number }) => {
   const inputOTPContext = useContext(OTPInputContext);
   const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {};
 
@@ -61,7 +55,7 @@ export const Slot = ({
   );
 };
 
-export const Caret = () => {
+const Caret = () => {
   return (
     <div className={caretWrapper()}>
       <div className={caret()} />
@@ -69,7 +63,7 @@ export const Caret = () => {
   );
 };
 
-export const Separator = (props: ComponentProps<"div">) => {
+const Separator = (props: ComponentProps<"div">) => {
   return (
     <div data-slot="input-otp-separator" role="separator" {...props}>
       <Icons.Minus />
@@ -77,7 +71,7 @@ export const Separator = (props: ComponentProps<"div">) => {
   );
 };
 
-export const InputOTP = {
+export const InputOtp = {
   Root,
   Group,
   Slot,

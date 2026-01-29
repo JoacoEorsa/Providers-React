@@ -1,7 +1,7 @@
 import axios, { type AxiosError } from "axios";
 import { deepCamelKeys } from "string-ts";
 
-import { getAuthStoreState, setAuthStoreToken } from "@/stores";
+import { clearAuthToken, getAuthStoreState } from "@/stores";
 import { env } from "./env";
 
 const baseApiConfiguration = {
@@ -32,7 +32,7 @@ privateApi.interceptors.response.use(
   },
   async (error: AxiosError) => {
     if (error?.response?.status === 401) {
-      return setAuthStoreToken(null);
+      return clearAuthToken();
     }
 
     return Promise.reject(error);

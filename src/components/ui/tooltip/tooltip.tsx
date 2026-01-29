@@ -10,7 +10,7 @@ const tooltipVariants = tv({
       "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
     ],
     arrow:
-      "rounded-0.5 z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 bg-background-brand-default fill-background-brand-default",
+      "z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-lg bg-background-brand-default fill-background-brand-default",
   },
 });
 

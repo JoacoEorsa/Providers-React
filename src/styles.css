@@ -4,6 +4,26 @@
 
 @theme {
   --animate-caret-blink: caret-blink 1.25s ease-out infinite;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
 
 @keyframes caret-blink {
@@ -210,12 +230,12 @@ code {
   --color-background-brand-tertiary: var(--brand-100);
   --color-background-brand-tertiary-hover: var(--brand-200);
 
-  --color-background-danger-default: var(--red-500);
-  --color-background-danger-hover: var(--red-600);
-  --color-background-danger-secondary: var(--red-200);
-  --color-background-danger-secondary-hover: var(--red-300);
-  --color-background-danger-tertiary: var(--red-100);
-  --color-background-danger-tertiary-hover: var(--red-200);
+  --color-background-destructive-default: var(--red-500);
+  --color-background-destructive-hover: var(--red-600);
+  --color-background-destructive-secondary: var(--red-200);
+  --color-background-destructive-secondary-hover: var(--red-300);
+  --color-background-destructive-tertiary: var(--red-100);
+  --color-background-destructive-tertiary-hover: var(--red-200);
 
   --color-background-default-default: var(--white-950);
   --color-background-default-hover: var(--gray-100);
@@ -263,9 +283,9 @@ code {
   --color-border-brand-secondary: var(--brand-600);
   --color-border-brand-tertiary: var(--brand-500);
 
-  --color-border-danger-default: var(--red-700);
-  --color-border-danger-secondary: var(--red-600);
-  --color-border-danger-tertiary: var(--red-500);
+  --color-border-destructive-default: var(--red-700);
+  --color-border-destructive-secondary: var(--red-600);
+  --color-border-destructive-tertiary: var(--red-500);
 
   --color-border-default-default: var(--gray-300);
   --color-border-default-secondary: var(--gray-500);
@@ -299,12 +319,12 @@ code {
   --color-icon-brand-secondary: var(--brand-600);
   --color-icon-brand-tertiary: var(--brand-500);
 
-  --color-icon-danger-default: var(--red-700);
-  --color-icon-danger-on-danger: var(--red-100);
-  --color-icon-danger-on-danger-secondary: var(--red-700);
-  --color-icon-danger-on-danger-tertiary: var(--red-700);
-  --color-icon-danger-secondary: var(--red-600);
-  --color-icon-danger-tertiary: var(--red-500);
+  --color-icon-destructive-default: var(--red-700);
+  --color-icon-destructive-on-destructive: var(--red-100);
+  --color-icon-destructive-on-destructive-secondary: var(--red-700);
+  --color-icon-destructive-on-destructive-tertiary: var(--red-700);
+  --color-icon-destructive-secondary: var(--red-600);
+  --color-icon-destructive-tertiary: var(--red-500);
 
   --color-icon-default-default: var(--gray-900);
   --color-icon-default-secondary: var(--gray-500);
@@ -351,12 +371,12 @@ code {
   --color-text-brand-secondary: var(--brand-600);
   --color-text-brand-tertiary: var(--brand-500);
 
-  --color-text-danger-default: var(--red-700);
-  --color-text-danger-on-danger: var(--red-100);
-  --color-text-danger-on-danger-secondary: var(--red-700);
-  --color-text-danger-on-danger-tertiary: var(--red-700);
-  --color-text-danger-secondary: var(--red-600);
-  --color-text-danger-tertiary: var(--red-500);
+  --color-text-destructive-default: var(--red-700);
+  --color-text-destructive-on-destructive: var(--red-100);
+  --color-text-destructive-on-destructive-secondary: var(--red-700);
+  --color-text-destructive-on-destructive-tertiary: var(--red-700);
+  --color-text-destructive-secondary: var(--red-600);
+  --color-text-destructive-tertiary: var(--red-500);
 
   --color-text-default-default: var(--gray-900);
   --color-text-default-secondary: var(--gray-500);

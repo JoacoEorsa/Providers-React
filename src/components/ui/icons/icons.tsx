@@ -4,35 +4,12 @@ import { Icon, loadIcons } from "@iconify/react";
 import { tv } from "tailwind-variants";
 
 import { SIZE, type Size, type Styled } from "@/types/styles";
-
-const LUCIDE_PREFIX = "lucide:";
-
-const AVAILABLE_ICONIFY_ICONS = {
-  Check: "check",
-  ChevronDown: "chevron-down",
-  ChevronRight: "chevron-right",
-  ChevronUp: "chevron-up",
-  ChevronLeft: "chevron-left",
-  Circle: "circle",
-  Home: "home",
-  LoaderCircle: "loader-circle",
-  LogOut: "log-out",
-  Minus: "minus",
-  MoreHorizontal: "more-horizontal",
-  Menu: "menu",
-  Search: "search",
-  Slash: "slash",
-  Close: "x",
-  Plus: "plus",
-  Eye: "eye",
-  EyeOff: "eye-off",
-  Lock: "lock",
-};
+import { AVAILABLE_ICONIFY_ICONS, LIBRARY_PREFIX } from "./available-icons";
 
 export const initializeIcons = () => {
   return loadIcons(
     Object.values(AVAILABLE_ICONIFY_ICONS).map((icon) => {
-      return `${LUCIDE_PREFIX}${icon}`;
+      return `${LIBRARY_PREFIX}:${icon}`;
     }),
   );
 };
@@ -62,7 +39,9 @@ const iconifyIcons = Object.fromEntries(
     return [
       key,
       ({ className, ...rest }: IconifyIconProps) => {
-        return <Icon className={icon({ className })} icon={`${LUCIDE_PREFIX}${value}`} {...rest} />;
+        return (
+          <Icon className={icon({ className })} icon={`${LIBRARY_PREFIX}:${value}`} {...rest} />
+        );
       },
     ];
   }),

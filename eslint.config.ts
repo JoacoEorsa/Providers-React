@@ -2,21 +2,22 @@ import js from "@eslint/js";
 import stylisticJs from "@stylistic/eslint-plugin";
 import tanstackRouter from "@tanstack/eslint-plugin-router";
 import type { ESLint, Linter } from "eslint";
+import { defineConfig } from "eslint/config";
+import betterTailwindcss from "eslint-plugin-better-tailwindcss";
 import i18next from "eslint-plugin-i18next";
 import preferArrowFunctions from "eslint-plugin-prefer-arrow-functions";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment -- The type doesn't exist.
-// @ts-expect-error
+// @ts-expect-error -- No types available
 import sortDestructureKeys from "eslint-plugin-sort-destructure-keys";
 import storybook from "eslint-plugin-storybook";
 import unicorn from "eslint-plugin-unicorn";
-import unusedImports from "eslint-plugin-unused-imports";
 import globals from "globals";
 import ts from "typescript-eslint";
+import { parser } from "typescript-eslint";
 
-const config: Linter.Config[] = [
+export default defineConfig([
   { settings: { react: { version: "detect" } } },
   { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
   { languageOptions: { globals: globals.browser } },
@@ -32,6 +33,7 @@ const config: Linter.Config[] = [
       "no-extra-boolean-cast": "error",
       "no-nested-ternary": "error",
       "no-unneeded-ternary": "error",
+      "no-unused-vars": "off",
       "object-shorthand": "warn",
     },
   },
@@ -52,18 +54,18 @@ const config: Linter.Config[] = [
     },
   },
 
-  // TypeScript rules
-  ...([
-    ...ts.configs.recommended,
-    {
-      rules: {
-        "@typescript-eslint/consistent-type-imports": "warn",
-        "@typescript-eslint/method-signature-style": ["error", "property"],
-        "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
-      },
+  // TypeScript rules (flat config: spread recommended config directly)
+  ...ts.configs.recommended,
+  {
+    plugins: { "@typescript-eslint": ts.plugin },
+    languageOptions: { parser },
+    rules: {
+      "@typescript-eslint/consistent-type-imports": ["warn"],
+      "@typescript-eslint/method-signature-style": ["error", "property"],
+      "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
+      "@typescript-eslint/no-unused-vars": ["error", { enableAutofixRemoval: { imports: true } }],
     },
-  ] as Linter.Config[]),
+  },
 
   // Custom plugins rules
   {
@@ -71,12 +73,11 @@ const config: Linter.Config[] = [
       "@stylistic": stylisticJs,
       "@tanstack/router": tanstackRouter as unknown as ESLint.Plugin,
       i18next,
-      "prefer-arrow-functions": preferArrowFunctions as ESLint.Plugin,
       "react-hooks": reactHooks as ESLint.Plugin,
       "simple-import-sort": simpleImportSort,
       "sort-destructure-keys": sortDestructureKeys,
       unicorn,
-      "unused-imports": unusedImports,
+      "prefer-arrow-functions": preferArrowFunctions as ESLint.Plugin,
     },
     rules: {
       "@stylistic/no-multi-spaces": "warn",
@@ -123,18 +124,26 @@ const config: Linter.Config[] = [
       ],
       "sort-destructure-keys/sort-destructure-keys": "warn",
       "unicorn/filename-case": ["error", { case: "kebabCase" }],
-      "unused-imports/no-unused-imports": "warn",
-      "unused-imports/no-unused-vars": [
-        "warn",
-        { vars: "all", varsIgnorePattern: "^_", args: "after-used", argsIgnorePattern: "^_" },
-      ],
+    },
+  },
+
+  {
+    plugins: { "better-tailwindcss": betterTailwindcss },
+    rules: {
+      ...betterTailwindcss.configs.recommended.rules,
+      "better-tailwindcss/enforce-consistent-line-wrapping": "off",
+    },
+    settings: {
+      "better-tailwindcss": {
+        entryPoint: "src/styles.css",
+      },
     },
   },
 
   // Storybook rules
-  ...(storybook.configs["flat/recommended"] as Linter.Config[]),
-  { files: ["**/*.stories.{ts,tsx}"], rules: { "i18next/no-literal-string": "off" } },
-  { ignores: ["!.storybook"] },
-];
-
-export default config;
+  ...((storybook.configs["flat/recommended"] as Linter.Config[]) || []),
+  {
+    files: ["**/*.stories.{ts,tsx}"],
+    rules: { "i18next/no-literal-string": ["off"] },
+  },
+]);

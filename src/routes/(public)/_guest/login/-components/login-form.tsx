@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { Button, ErrorMessage, Input, Label, PasswordInput } from "@/components";
 import { Trans, useTranslation } from "@/i18n";
 import { getLoginPayloadSchema, type LoginPayload, useLogin } from "@/services";
-import { setAuthStoreToken } from "@/stores";
+import { setAuthToken } from "@/stores";
 import { handleAxiosFieldErrors } from "@/utils";
 
 export const LoginForm = () => {
@@ -32,7 +32,7 @@ export const LoginForm = () => {
     loginMutation.mutate(data, {
       onSuccess: async ({ data: { authToken } }) => {
         toast.success(t("login.success"));
-        setAuthStoreToken(authToken);
+        setAuthToken(authToken);
         await router.invalidate();
         await navigate({ to: search.redirect || "/" });
       },

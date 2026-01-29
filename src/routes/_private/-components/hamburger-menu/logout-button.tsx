@@ -1,20 +1,20 @@
+import { useTranslation } from "react-i18next";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
 import { Button, Dialog, Icons } from "@/components";
-import { useTranslation } from "@/i18n";
-import { setAuthStoreToken } from "@/stores";
+import { clearAuthToken } from "@/stores";
 
 export const LogoutButton = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    setAuthStoreToken(null);
+  const handleClick = async () => {
+    clearAuthToken();
 
-    router.invalidate().finally(() => {
-      navigate({ to: "/login" });
-    });
+    await router.invalidate();
+
+    navigate({ to: "/login" });
   };
 
   return (

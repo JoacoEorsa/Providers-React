@@ -1,12 +1,11 @@
+/* eslint-disable @typescript-eslint/consistent-type-definitions -- Overriding interfaces for Meta types */
 import "@tanstack/react-table";
 
 declare module "@tanstack/react-table" {
-  // eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/consistent-type-definitions
-  interface ColumnMeta<TData extends RowData, TValue> {
+  interface ColumnMeta {
     stringifiedHeader?: string;
   }
-  // eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/consistent-type-definitions
-  interface TableMeta<TData extends RowData> {
+  interface TableMeta {
     totalItems: number;
   }
 }

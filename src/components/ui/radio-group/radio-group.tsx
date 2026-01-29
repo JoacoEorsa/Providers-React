@@ -14,7 +14,7 @@ const radioGroupVariants = tv({
     ],
     indicatorWrapper: "relative flex items-center justify-center",
     indicator:
-      "absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-icon-brand-on-brand",
+      "absolute top-1/2 left-1/2 size-2 -translate-1/2 rounded-full bg-icon-brand-on-brand",
   },
 });
 

@@ -54,7 +54,7 @@ export const WithEllipsisDropdown: Story = {
           <Breadcrumb.Item>
             <DropdownMenu.Root>
               <DropdownMenu.Trigger className="flex items-center gap-1">
-                <Breadcrumb.Ellipsis className="h-4 w-4" />
+                <Breadcrumb.Ellipsis className="size-4" />
 
                 <span className="sr-only">Toggle menu</span>
               </DropdownMenu.Trigger>

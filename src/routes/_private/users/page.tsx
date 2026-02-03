@@ -79,7 +79,6 @@ const UsersPage = () => {
               variant="elevated"
             >
               <Icons.Plus />
-
               {t("users.create.title")}
             </Button>
           }

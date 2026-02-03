@@ -1,3 +1,5 @@
+import type { ComponentPropsWithoutRef } from "react";
+
 export type Styled = {
   className?: string;
 };
@@ -11,3 +13,8 @@ export const SIZE = {
 } as const;
 
 export type Size = (typeof SIZE)[keyof typeof SIZE];
+
+export type SvgCustomProps = {
+  className?: string;
+  size?: number;
+} & ComponentPropsWithoutRef<"svg">;

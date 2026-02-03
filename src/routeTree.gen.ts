@@ -65,12 +65,12 @@ const publicGuestLoginPageRoute = publicGuestLoginPageRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof PrivatePageRoute
-  '/terms/': typeof publicTermsPageRoute
-  '/$/': typeof PrivateSplatPageRoute
-  '/dashboard/': typeof PrivateDashboardPageRoute
-  '/users/': typeof PrivateUsersPageRoute
-  '/login/': typeof publicGuestLoginPageRoute
-  '/register/': typeof publicGuestRegisterPageRoute
+  '/terms': typeof publicTermsPageRoute
+  '/$': typeof PrivateSplatPageRoute
+  '/dashboard': typeof PrivateDashboardPageRoute
+  '/users': typeof PrivateUsersPageRoute
+  '/login': typeof publicGuestLoginPageRoute
+  '/register': typeof publicGuestRegisterPageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof PrivatePageRoute
@@ -97,12 +97,12 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/terms/'
-    | '/$/'
-    | '/dashboard/'
-    | '/users/'
-    | '/login/'
-    | '/register/'
+    | '/terms'
+    | '/$'
+    | '/dashboard'
+    | '/users'
+    | '/login'
+    | '/register'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/terms' | '/$' | '/dashboard' | '/users' | '/login' | '/register'
   id:
@@ -129,7 +129,7 @@ declare module '@tanstack/react-router' {
     '/_private': {
       id: '/_private'
       path: ''
-      fullPath: '/'
+      fullPath: ''
       preLoaderRoute: typeof PrivateLayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
@@ -150,42 +150,42 @@ declare module '@tanstack/react-router' {
     '/_private/users/': {
       id: '/_private/users/'
       path: '/users'
-      fullPath: '/users/'
+      fullPath: '/users'
       preLoaderRoute: typeof PrivateUsersPageRouteImport
       parentRoute: typeof PrivateLayoutRoute
     }
     '/_private/dashboard/': {
       id: '/_private/dashboard/'
       path: '/dashboard'
-      fullPath: '/dashboard/'
+      fullPath: '/dashboard'
       preLoaderRoute: typeof PrivateDashboardPageRouteImport
       parentRoute: typeof PrivateLayoutRoute
     }
     '/_private/$/': {
       id: '/_private/$/'
       path: '/$'
-      fullPath: '/$/'
+      fullPath: '/$'
       preLoaderRoute: typeof PrivateSplatPageRouteImport
       parentRoute: typeof PrivateLayoutRoute
     }
     '/(public)/terms/': {
       id: '/(public)/terms/'
       path: '/terms'
-      fullPath: '/terms/'
+      fullPath: '/terms'
       preLoaderRoute: typeof publicTermsPageRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(public)/_guest/register/': {
       id: '/(public)/_guest/register/'
       path: '/register'
-      fullPath: '/register/'
+      fullPath: '/register'
       preLoaderRoute: typeof publicGuestRegisterPageRouteImport
       parentRoute: typeof publicGuestLayoutRoute
     }
     '/(public)/_guest/login/': {
       id: '/(public)/_guest/login/'
       path: '/login'
-      fullPath: '/login/'
+      fullPath: '/login'
       preLoaderRoute: typeof publicGuestLoginPageRouteImport
       parentRoute: typeof publicGuestLayoutRoute
     }

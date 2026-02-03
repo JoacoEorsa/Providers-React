@@ -21,8 +21,13 @@
     "email": "Email",
     "password": "Password",
     "name": "Name",
+    "files": "Files",
     "confirmPassword": "Confirm Password",
     "passwordMustInclude": "Password must include",
+    "dropzone": {
+      "instructions": "Drop your files here or click to browse"
+    },
+    "submit": "Submit",
     "errors": {
       "required": "{field} is required.",
       "invalidField": "Please enter a valid {field}.",
@@ -30,7 +35,13 @@
       "containsNumber": "{field} must contain at least one number.",
       "passwordMismatch": "Passwords don't match.",
       "passwordTooWeak": "Password is too weak.",
-      "containsLetter": "{field} must contain at least one letter."
+      "containsLetter": "{field} must contain at least one letter.",
+      "invalidFileType": "File format is invalid",
+      "fileTooLarge": "File is too large",
+      "fileTooSmall": "File is too small",
+      "tooManyFiles": "Too many files",
+      "fileAndSizeRestriction": "Only {allowed} files allowed. Max {maxSize}.",
+      "maximumFiles": "{max} files max."
     }
   },
   "login": {

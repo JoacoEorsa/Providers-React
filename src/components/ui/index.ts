@@ -8,6 +8,7 @@ export * from "./command";
 export * from "./dialog";
 export * from "./dropdown-menu";
 export * from "./error-message";
+export * from "./file-dropzone";
 export * from "./icons";
 export * from "./input";
 export * from "./input-otp";

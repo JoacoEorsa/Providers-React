@@ -11,7 +11,7 @@ const commandVariants = tv({
     input:
       "flex w-full bg-background-default-default py-2.5 text-sm text-text-default-default outline-hidden disabled:cursor-not-allowed disabled:bg-background-disabled-default disabled:text-text-disabled-on-disabled",
     list: "max-h-52 overflow-x-hidden overflow-y-auto p-1",
-    empty: "py-2 text-center text-sm text-text-default-secondary",
+    empty: "text-center text-sm text-text-default-secondary",
     group:
       "overflow-hidden text-text-default-default **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group-heading]]:text-text-default-secondary",
     separator: "-mx-1 h-px bg-border-default-default",

@@ -1,5 +1,5 @@
-import { type ComponentProps } from "react";
-import { Slot } from "@radix-ui/react-slot";
+import { type ComponentProps, type JSX } from "react";
+import { Slot, Slottable } from "@radix-ui/react-slot";
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { Icons } from "@/components";
@@ -41,48 +41,83 @@ export const buttonVariants = tv({
         "text-text-brand-default hover:text-text-brand-secondary active:text-text-brand-default disabled:text-text-disabled-default",
     },
     size: {
+      xs: "px-1 py-0.5 text-xs md:px-1.5 md:py-1 md:text-sm",
       sm: "px-1.5 py-1 text-xs md:px-2 md:py-1.5 md:text-sm",
-      default: "px-1.5 py-1 text-sm md:px-2 md:py-1.5 md:text-base",
+      md: "px-1.5 py-1 text-sm md:px-2 md:py-1.5 md:text-base",
       lg: "px-3 py-2 text-lg",
       icon: "p-3",
     },
+    isIconOnly: {
+      true: "",
+      false: "",
+    },
   },
+  compoundVariants: [
+    { size: "xs", isIconOnly: true, class: "p-0" },
+    { size: "sm", isIconOnly: true, class: "p-1.5" },
+    { size: "md", isIconOnly: true, class: "p-2" },
+    { size: "lg", isIconOnly: true, class: "p-3" },
+  ],
   defaultVariants: {
     variant: "primary",
-    size: "default",
+    size: "md",
   },
 });
 
 export type ButtonProps = {
   asChild?: boolean;
+  PrefixIcon?: JSX.Element;
   isLoading?: boolean;
 } & ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> &
   Styled;
 
 export const Button = ({
+  PrefixIcon,
   asChild = false,
   children,
   className,
   disabled,
   isLoading = false,
   size,
+  type = "button",
   variant,
   ...props
 }: ButtonProps) => {
+  const Spinner = <Icons.LoaderCircle className="animate-spin" />;
+
+  const isIconOnly = PrefixIcon && !children;
+
+  const renderPrefix = () => {
+    if (isLoading) {
+      return Spinner;
+    }
+
+    if (PrefixIcon) {
+      return PrefixIcon;
+    }
+  };
+
   return asChild ? (
-    <Slot className={buttonVariants({ variant, size, className })} data-slot="button" {...props}>
-      {children}
+    <Slot
+      className={buttonVariants({ size, variant, className, isIconOnly })}
+      data-slot="button"
+      {...props}
+    >
+      {renderPrefix()}
+
+      <Slottable>{children}</Slottable>
     </Slot>
   ) : (
     <button
-      className={buttonVariants({ variant, size, className })}
+      className={buttonVariants({ size, variant, className, isIconOnly })}
       data-slot="button"
-      disabled={isLoading || disabled}
-      type="button"
+      disabled={disabled || isLoading}
+      type={type}
       {...props}
     >
-      {isLoading ? <Icons.LoaderCircle className="animate-spin" /> : null}
+      {renderPrefix()}
+
       {children}
     </button>
   );

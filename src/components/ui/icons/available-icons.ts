@@ -20,4 +20,5 @@ export const AVAILABLE_ICONIFY_ICONS = {
   Eye: "eye",
   EyeOff: "eye-off",
   Lock: "lock",
+  X: "x",
 };

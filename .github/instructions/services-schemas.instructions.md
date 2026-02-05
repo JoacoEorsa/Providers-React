@@ -13,6 +13,7 @@ Zod validation schemas. Use getter functions for schemas with i18n.
 - [ ] Schemas with i18n MUST be getter functions (e.g., `getUserFormSchema()`)
 - [ ] Import `i18n` from `@/i18n` for translations
 - [ ] Don't manually define types here (use types.ts with `z.infer`)
+- [ ] For enums: Both object and tuple array formats work with `z.enum()` - don't convert between them
 
 ## ✅ DO
 
@@ -60,4 +61,29 @@ export const userSchema = z.object({
   name: z.string(),
 });
 type User = { id: number; name: string }; // ❌ Redundant, use z.infer in types.ts
+```
+
+## Enums in Zod v4
+
+**⚠️ IMPORTANT:** Zod v4 supports `z.enum()` with BOTH formats. Don't suggest converting between them.
+
+✅ **Both formats work:**
+
+```typescript
+// Object format
+export const USER_ROLES = {
+  ADMIN: "admin",
+  USER: "user",
+} as const;
+
+const schema1 = z.object({
+  role: z.enum(USER_ROLES), // ✅ Works directly
+});
+
+// Tuple array format
+export const STATUS = ["active", "inactive"] as const;
+
+const schema2 = z.object({
+  status: z.enum(STATUS), // ✅ Also works
+});
 ```

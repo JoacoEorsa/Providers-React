@@ -1,5 +1,5 @@
 ---
-applyTo: "**/use-*.ts,**/use-*.tsx,**/use*.ts,**/use*.tsx"
+applyTo: "**/use*.ts,**/use*.tsx"
 ---
 
 # Hooks Instructions

@@ -1,4 +1,4 @@
-import { type ComponentProps, type JSX } from "react";
+import { type ComponentProps, forwardRef, type JSX } from "react";
 import { Slot, Slottable } from "@radix-ui/react-slot";
 import { tv, type VariantProps } from "tailwind-variants";
 
@@ -72,53 +72,61 @@ export type ButtonProps = {
   VariantProps<typeof buttonVariants> &
   Styled;
 
-export const Button = ({
-  PrefixIcon,
-  asChild = false,
-  children,
-  className,
-  disabled,
-  isLoading = false,
-  size,
-  type = "button",
-  variant,
-  ...props
-}: ButtonProps) => {
-  const Spinner = <Icons.LoaderCircle className="animate-spin" />;
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      PrefixIcon,
+      asChild = false,
+      children,
+      className,
+      disabled,
+      isLoading = false,
+      size,
+      type = "button",
+      variant,
+      ...props
+    },
+    ref,
+  ) => {
+    const Spinner = <Icons.LoaderCircle className="animate-spin" />;
 
-  const isIconOnly = PrefixIcon && !children;
+    const isIconOnly = PrefixIcon && !children;
 
-  const renderPrefix = () => {
-    if (isLoading) {
-      return Spinner;
-    }
+    const renderPrefix = () => {
+      if (isLoading) {
+        return Spinner;
+      }
 
-    if (PrefixIcon) {
-      return PrefixIcon;
-    }
-  };
+      if (PrefixIcon) {
+        return PrefixIcon;
+      }
+    };
 
-  return asChild ? (
-    <Slot
-      className={buttonVariants({ size, variant, className, isIconOnly })}
-      data-slot="button"
-      {...props}
-    >
-      {renderPrefix()}
+    return asChild ? (
+      <Slot
+        className={buttonVariants({ size, variant, className, isIconOnly })}
+        data-slot="button"
+        {...props}
+      >
+        {renderPrefix()}
 
-      <Slottable>{children}</Slottable>
-    </Slot>
-  ) : (
-    <button
-      className={buttonVariants({ size, variant, className, isIconOnly })}
-      data-slot="button"
-      disabled={disabled || isLoading}
-      type={type}
-      {...props}
-    >
-      {renderPrefix()}
+        <Slottable>{children}</Slottable>
+      </Slot>
+    ) : (
+      <button
+        className={buttonVariants({ size, variant, className, isIconOnly })}
+        data-slot="button"
+        disabled={disabled || isLoading}
+        ref={ref}
+        type={type}
+        {...props}
+      >
+        {renderPrefix()}
 
-      {children}
-    </button>
-  );
-};
+        {children}
+      </button>
+    );
+  },
+);
+
+Button.displayName = "Button";

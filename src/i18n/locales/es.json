@@ -23,6 +23,9 @@
     "dropzone": {
       "instructions": "Arrastra tus archivos aquí o haz click para elegir"
     },
+    "datePicker": {
+      "placeholder": "Seleccionar fecha"
+    },
     "submit": "Enviar",
     "errors": {
       "required": "{field} es requerido.",

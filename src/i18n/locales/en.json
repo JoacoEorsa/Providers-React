@@ -27,6 +27,9 @@
     "dropzone": {
       "instructions": "Drop your files here or click to browse"
     },
+    "datePicker": {
+      "placeholder": "Pick a date"
+    },
     "submit": "Submit",
     "errors": {
       "required": "{field} is required.",

@@ -5,6 +5,7 @@ import {
   Trans,
   useTranslation,
 } from "react-i18next";
+import { enUS as enDateLocale, es as esDateLocale } from "date-fns/locale";
 import i18n from "i18next";
 
 import { en, es } from "./locales";
@@ -14,7 +15,7 @@ const LOCALE = "en";
 export const resources = {
   en: { translation: en },
   es: { translation: es },
-};
+} as const;
 
 i18n.use(initReactI18next).init({
   debug: false,
@@ -30,4 +31,11 @@ export const I18nextProvider = ({ children }: PropsWithChildren) => {
 
 export default i18n;
 
-export { Trans, useTranslation };
+const dateLocale = (
+  {
+    en: enDateLocale,
+    es: esDateLocale,
+  } as const
+)[LOCALE];
+
+export { dateLocale, Trans, useTranslation };

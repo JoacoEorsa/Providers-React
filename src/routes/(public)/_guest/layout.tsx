@@ -1,7 +1,7 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 import { z } from "zod";
 
-import { getAuthStoreState } from "@/stores";
+import { getAuthStoreState } from "@/stores/use-auth-store";
 
 const GuestLayout = () => {
   return <Outlet />;

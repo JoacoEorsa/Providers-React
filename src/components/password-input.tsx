@@ -1,6 +1,7 @@
 import { type ComponentProps, useState } from "react";
 
-import { Button, Icons } from "@/components";
+import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
 import { Input } from "./ui/input";
 
 export const PasswordInput = (props: ComponentProps<typeof Input>) => {

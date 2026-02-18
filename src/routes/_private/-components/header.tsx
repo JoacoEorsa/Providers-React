@@ -1,4 +1,4 @@
-import { Logo } from "@/assets";
+import { Logo } from "@/assets/images";
 import { useTranslation } from "@/i18n";
 import { HamburgerMenu } from "./hamburger-menu";
 

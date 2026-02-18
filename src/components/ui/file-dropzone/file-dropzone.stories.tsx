@@ -3,7 +3,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import z from "zod";
 
-import { Button, ErrorMessage, FileDropzone } from "@/components";
+import { Button } from "@/components/ui/button";
+import { ErrorMessage } from "@/components/ui/error-message";
+import { FileDropzone } from "@/components/ui/file-dropzone";
 import { useTranslation } from "@/i18n";
 import i18n from "@/i18n";
 

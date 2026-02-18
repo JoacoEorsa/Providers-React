@@ -107,14 +107,13 @@ When creating or modifying features that involve API calls:
 1. **Create the service domain folder** if it doesn't exist (e.g., `services/users/`)
 2. **Create all 6 required files** with proper structure
 3. **Never make API calls directly** from components, routes, or hooks
-4. **Always import from `@/services`** not from individual service files
+4. **Always import from the specific service files** (e.g. `@/services/users/actions`, `@/services/users/schemas`, `@/services/users/types`) — no barrel files (`index.ts`).
 
 Services are organized by domain (e.g., `auth`, `users`) with a consistent file structure:
 
 ```
 services/
 └── users/
-    ├── index.ts         # Re-exports everything
     ├── api.ts           # API calls (axios requests)
     ├── actions.ts       # React Query hooks (useQuery, useMutation)
     ├── factories.ts     # Query key factories using @lukemorales/query-key-factory
@@ -125,8 +124,8 @@ services/
 ### Key Conventions
 
 - [ ] Each service domain has its own folder under `services/`
-- [ ] All 6 files (`index.ts`, `api.ts`, `actions.ts`, `factories.ts`, `schemas.ts`, `types.ts`) must exist
-- [ ] `index.ts` re-exports from `actions`, `schemas`, and `types` only
+- [ ] All 5 files (`api.ts`, `actions.ts`, `factories.ts`, `schemas.ts`, `types.ts`) must exist
+- [ ] Do not add barrel files (`index.ts`); import directly from the file you need
 - [ ] Types are inferred from Zod schemas, not manually defined
 - [ ] Schemas with i18n use getter functions (e.g., `getUserSchema()`)
 
@@ -157,8 +156,9 @@ type User = { id: number; name: string }; // ❌ Should be in services/users/typ
 ### ✅ DO
 
 ```typescript
-// ✅ Use the services layer
-import { useUsers, type User } from "@/services";
+// ✅ Use the services layer — import from specific service files (no barrel files)
+import { useUsers } from "@/services/users/actions";
+import type { User } from "@/services/users/types";
 
 const UserList = () => {
   const { data: users } = useUsers({ page: 1 });

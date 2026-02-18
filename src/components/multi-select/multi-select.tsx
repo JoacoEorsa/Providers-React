@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { tv } from "tailwind-variants";
 
+import { Badge } from "@/components/ui/badge";
+import { Command } from "@/components/ui/command";
+import { Icons } from "@/components/ui/icons";
+import { Popover } from "@/components/ui/popover";
+import { Skeleton } from "@/components/ui/skeleton";
 import type { Option } from "@/types";
-import { Badge, Command, Icons, Popover, Skeleton } from "../ui";
 
 const multiSelectVariants = tv({
   slots: {

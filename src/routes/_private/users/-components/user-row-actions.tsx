@@ -1,9 +1,11 @@
 import { useState } from "react";
 import type { Row } from "@tanstack/react-table";
 
-import { Button, DropdownMenu, Icons } from "@/components";
+import { Button } from "@/components/ui/button";
+import { DropdownMenu } from "@/components/ui/dropdown-menu";
+import { Icons } from "@/components/ui/icons";
 import { useTranslation } from "@/i18n";
-import { type User } from "@/services";
+import type { User } from "@/services/users/types";
 import { DeleteUserDialog } from "./delete-user-dialog";
 import { UpdateUserDialog } from "./update-user-dialog";
 

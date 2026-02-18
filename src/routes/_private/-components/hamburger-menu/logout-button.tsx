@@ -1,8 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
-import { Button, Dialog, Icons } from "@/components";
-import { clearAuthToken } from "@/stores";
+import { Button } from "@/components/ui/button";
+import { Dialog } from "@/components/ui/dialog";
+import { Icons } from "@/components/ui/icons";
+import { clearAuthToken } from "@/stores/use-auth-store";
 
 export const LogoutButton = () => {
   const { t } = useTranslation();

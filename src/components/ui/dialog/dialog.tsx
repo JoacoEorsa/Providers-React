@@ -2,7 +2,8 @@ import type { ComponentProps } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { tv } from "tailwind-variants";
 
-import { Button, Icons } from "@/components";
+import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
 import { useTranslation } from "@/i18n";
 
 const dialogVariants = tv({

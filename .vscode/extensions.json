@@ -2,7 +2,6 @@
   "recommendations": [
     "bradlc.vscode-tailwindcss",
     "dbaeumer.vscode-eslint",
-    "eliostruyf.vscode-typescript-exportallmodule",
     "esbenp.prettier-vscode",
     "streetsidesoftware.code-spell-checker"
   ]

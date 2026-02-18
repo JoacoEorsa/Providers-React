@@ -3,8 +3,8 @@ import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { Link, type LinkProps } from "@tanstack/react-router";
 import { tv } from "tailwind-variants";
 
-import { Icons } from "@/components";
-import type { Styled } from "@/types/styles";
+import { Icons } from "@/components/ui/icons";
+import type { Styled } from "@/types";
 
 export const navigationVariants = tv({
   slots: {

@@ -1,10 +1,11 @@
 import { type ChangeEvent, useEffect, useState } from "react";
 
-import { Icons, Input } from "@/components";
+import { Icons } from "@/components/ui/icons";
+import { Input } from "@/components/ui/input";
 import type { AvailableRoutesId } from "@/config/router";
-import { useSearchText } from "@/hooks";
+import { useSearchText } from "@/hooks/use-search";
 import { useTranslation } from "@/i18n";
-import { SIZE } from "@/types/styles";
+import { SIZE } from "@/types";
 
 type SearchTextInputProps = {
   path: AvailableRoutesId;

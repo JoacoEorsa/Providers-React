@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import { Command as CommandPrimitive } from "cmdk";
 import { tv } from "tailwind-variants";
 
-import { Icons } from "@/components/ui";
+import { Icons } from "@/components/ui/icons";
 
 const commandVariants = tv({
   slots: {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Button } from "@/components";
+import { Button } from "@/components/ui/button";
 import { Card } from "./card";
 
 const meta: Meta<typeof Card.Root> = {

@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { tv } from "tailwind-variants";
 
-import { Icons } from "@/components";
+import { Icons } from "@/components/ui/icons";
 
 const accordionVariants = tv({
   slots: {

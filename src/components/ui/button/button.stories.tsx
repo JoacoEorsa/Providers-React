@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Icons } from "@/components";
+import { Icons } from "@/components/ui/icons";
 import { Button, type ButtonProps } from "./button";
 
 const sizes: ButtonProps["size"][] = ["md", "icon", "lg", "sm"];

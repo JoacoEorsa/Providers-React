@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { createColumnHelper } from "@tanstack/react-table";
 
-import { useTable, type UseTableProps } from "@/components";
+import { useTable, type UseTableProps } from "@/components/ui/table";
 import { useTranslation } from "@/i18n";
-import type { User } from "@/services";
-import { UserRowActions } from "../-components";
+import type { User } from "@/services/users/types";
+import { UserRowActions } from "../-components/user-row-actions";
 
 export const useUsersTable = ({ data = [], ...props }: Omit<UseTableProps<User>, "columns">) => {
   const { t } = useTranslation();

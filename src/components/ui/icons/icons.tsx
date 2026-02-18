@@ -3,7 +3,7 @@ import type { IconProps } from "@iconify/react";
 import { Icon, loadIcons } from "@iconify/react";
 import { tv } from "tailwind-variants";
 
-import { SIZE, type Size, type Styled } from "@/types/styles";
+import { SIZE, type Size, type Styled } from "@/types";
 import { AVAILABLE_ICONIFY_ICONS, LIBRARY_PREFIX } from "./available-icons";
 
 export const initializeIcons = () => {

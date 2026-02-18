@@ -1,6 +1,8 @@
 import type { Column, Table } from "@tanstack/react-table";
 
-import { Button, DropdownMenu, Icons } from "@/components";
+import { Button } from "@/components/ui/button";
+import { DropdownMenu } from "@/components/ui/dropdown-menu";
+import { Icons } from "@/components/ui/icons";
 import { useTranslation } from "@/i18n";
 
 type ViewOptionsProps<T> = {

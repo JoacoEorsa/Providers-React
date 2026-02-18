@@ -3,10 +3,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate, useRouter, useSearch } from "@tanstack/react-router";
 import { toast } from "sonner";
 
-import { Button, ErrorMessage, Input, Label, PasswordInput } from "@/components";
+import { PasswordInput } from "@/components/password-input";
+import { Button } from "@/components/ui/button";
+import { ErrorMessage } from "@/components/ui/error-message";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Trans, useTranslation } from "@/i18n";
-import { getLoginPayloadSchema, type LoginPayload, useLogin } from "@/services";
-import { setAuthToken } from "@/stores";
+import { useLogin } from "@/services/auth/actions";
+import { getLoginPayloadSchema } from "@/services/auth/schemas";
+import type { LoginPayload } from "@/services/auth/types";
+import { setAuthToken } from "@/stores/use-auth-store";
 import { handleAxiosFieldErrors } from "@/utils";
 
 export const LoginForm = () => {

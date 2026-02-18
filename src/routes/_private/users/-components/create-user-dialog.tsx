@@ -2,17 +2,17 @@ import { type SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
-import {
-  Button,
-  Dialog,
-  ErrorMessage,
-  Input,
-  Label,
-  PasswordInput,
-  PasswordValidator,
-} from "@/components";
+import { PasswordInput } from "@/components/password-input";
+import { Button } from "@/components/ui/button";
+import { Dialog } from "@/components/ui/dialog";
+import { ErrorMessage } from "@/components/ui/error-message";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { PasswordValidator } from "@/components/ui/password-validator";
 import { useTranslation } from "@/i18n";
-import { type CreateUser, getCreateUserSchema, useCreateUser } from "@/services";
+import { useCreateUser } from "@/services/users/actions";
+import { getCreateUserSchema } from "@/services/users/schemas";
+import type { CreateUser } from "@/services/users/types";
 import { handleAxiosFieldErrors } from "@/utils";
 
 type CreateUserDialogProps = {

@@ -3,7 +3,7 @@ import { z } from "zod";
 
 import { publicApi } from "@/config/api";
 import { parsePaginatedResponse } from "@/services/schemas";
-import type { RequestParams } from "../types";
+import type { RequestParams } from "@/services/types";
 import { getUserSchema } from "./schemas";
 import type { CreateUser, UpdateUser, User, UsersFilter } from "./types";
 

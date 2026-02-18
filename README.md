@@ -54,10 +54,6 @@ Wanna know what a tailwind class name does? with this wonderful extension you ca
 
 Tired of making mistakes because your english is not exactly perfect? Well boy oh howdy do I have the extension for ya! It's basically eslint but for english.
 
-### eliostruyf.vscode-typescript-exportallmodule <!-- cspell: disable-line -->
-
-Ever had to create an index file with just a bunch of exports? Ever wondered why don't we automate all of that? Well wonder no more! With this barrel file generator you can generate your barrel files automatically.
-
 ## Emoji Guide
 
 **For reviewers: Emojis can be added to comments to call out blocking versus non-blocking feedback.**

@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
 
-import { Button, DropdownMenu, Icons } from "@/components";
+import { Button } from "@/components/ui/button";
+import { DropdownMenu } from "@/components/ui/dropdown-menu";
+import { Icons } from "@/components/ui/icons";
+import type { resources } from "@/i18n";
 import { useTranslation } from "@/i18n";
-import { type resources } from "@/i18n";
 import { LogoutButton } from "./logout-button";
 
 export const HamburgerMenu = () => {

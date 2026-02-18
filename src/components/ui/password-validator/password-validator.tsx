@@ -1,7 +1,7 @@
 import { type Control, type FieldValues, type Path, useWatch } from "react-hook-form";
 
 import { useTranslation } from "@/i18n";
-import { hasLetter, hasMinLength, hasNumber } from "@/services";
+import { hasLetter, hasMinLength, hasNumber } from "@/services/users/schemas";
 import { ConditionChecker } from "./condition-checker";
 
 type PasswordValidatorProps<T extends FieldValues> = {

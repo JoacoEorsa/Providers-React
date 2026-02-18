@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
-import { Icons, IconWrapper } from "@/components";
-import { SIZE } from "@/types/styles";
+import { Icons, IconWrapper } from "@/components/ui/icons";
+import { SIZE } from "@/types";
 
 const conditionCheckerVariants = tv({
   slots: {

@@ -1,8 +1,10 @@
 import { toast } from "sonner";
 
-import { Button, Dialog } from "@/components";
+import { Button } from "@/components/ui/button";
+import { Dialog } from "@/components/ui/dialog";
 import { useTranslation } from "@/i18n";
-import { useDeleteUser, type User } from "@/services";
+import { useDeleteUser } from "@/services/users/actions";
+import type { User } from "@/services/users/types";
 
 type DeleteUserDialogProps = {
   isOpen: boolean;

@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { tv } from "tailwind-variants";
 
-import { Icons } from "@/components";
+import { Icons } from "@/components/ui/icons";
 
 const radioGroupVariants = tv({
   slots: {

@@ -5,7 +5,9 @@ import ReactDOM from "react-dom/client";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "@tanstack/react-router";
 
-import { initializeIcons, Toaster, TooltipProvider } from "@/components";
+import { initializeIcons } from "@/components/ui/icons";
+import { Toaster } from "@/components/ui/toast";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { queryClient } from "@/config/query-client";
 import { router } from "@/config/router";
 import { getSentryErrorHandlers, initializeSentry } from "@/config/sentry";

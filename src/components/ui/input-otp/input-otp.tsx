@@ -2,7 +2,7 @@ import { type ComponentProps, useContext } from "react";
 import { OTPInput, OTPInputContext } from "input-otp";
 import { tv } from "tailwind-variants";
 
-import { Icons } from "@/components";
+import { Icons } from "@/components/ui/icons";
 
 const inputOtpVariants = tv({
   slots: {

@@ -1,8 +1,8 @@
 import { type ComponentProps, type ReactNode } from "react";
 import { tv } from "tailwind-variants";
 
-import { IconWrapper } from "@/components";
-import { SIZE, type Size, type Styled } from "@/types/styles";
+import { IconWrapper } from "@/components/ui/icons";
+import { SIZE, type Size, type Styled } from "@/types";
 
 const inputVariants = tv({
   slots: {

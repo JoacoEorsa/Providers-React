@@ -1,10 +1,10 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
-import { NavigationMenu } from "@/components";
+import { NavigationMenu } from "@/components/ui/navigation-menu";
 import type { AvailableRoutesToPath } from "@/config/router";
 import { useTranslation } from "@/i18n";
-import { getAuthStoreState } from "@/stores";
-import { Header } from "./-components";
+import { getAuthStoreState } from "@/stores/use-auth-store";
+import { Header } from "./-components/header";
 
 const PrivateLayout = () => {
   const { t } = useTranslation();

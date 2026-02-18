@@ -2,19 +2,17 @@ import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 
-import { Button, DataTable, Icons } from "@/components";
-import { DEFAULT_PAGE_SIZE } from "@/constants";
-import {
-  paginationValidationWithDefaults,
-  searchTextValidation,
-  useDebounce,
-  usePagination,
-  useSearchText,
-} from "@/hooks";
+import { DataTable } from "@/components/data-table";
+import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/ui/icons";
+import { DEFAULT_PAGE_SIZE } from "@/constants/pagination";
+import { useDebounce } from "@/hooks/use-debounce";
+import { paginationValidationWithDefaults, usePagination } from "@/hooks/use-pagination";
+import { searchTextValidation, useSearchText } from "@/hooks/use-search";
 import { useTranslation } from "@/i18n";
-import { useUsers } from "@/services";
-import { CreateUserDialog } from "./-components";
-import { useUsersTable } from "./-hooks";
+import { useUsers } from "@/services/users/actions";
+import { CreateUserDialog } from "./-components/create-user-dialog";
+import { useUsersTable } from "./-hooks/use-users-table";
 
 const UsersPage = () => {
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);

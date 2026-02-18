@@ -25,7 +25,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
 import { useTranslation } from "@/i18n";
-import { type CreateUser, getCreateUserSchema, useCreateUser } from "@/services";
+import { useCreateUser } from "@/services/users/actions";
+import { getCreateUserSchema } from "@/services/users/schemas";
+import type { CreateUser } from "@/services/users/types";
 import { handleAxiosFieldErrors } from "@/utils";
 
 const UserForm = () => {

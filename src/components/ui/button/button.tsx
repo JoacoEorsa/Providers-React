@@ -2,8 +2,8 @@ import { type ComponentProps, forwardRef, type JSX } from "react";
 import { Slot, Slottable } from "@radix-ui/react-slot";
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { Icons } from "@/components";
-import type { Styled } from "@/types/styles";
+import { Icons } from "@/components/ui/icons";
+import type { Styled } from "@/types";
 
 export const buttonVariants = tv({
   base: [

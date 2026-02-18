@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Icons } from "@/components";
-import { SIZE } from "@/types/styles";
+import { Icons } from "@/components/ui/icons";
+import { SIZE } from "@/types";
 import { Input } from "./input";
 
 const meta: Meta<typeof Input> = {

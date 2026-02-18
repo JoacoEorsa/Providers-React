@@ -1,9 +1,9 @@
 import { type ComponentProps } from "react";
 import { tv } from "tailwind-variants";
 
-import { Icons } from "@/components";
+import { Icons } from "@/components/ui/icons";
 import { useTranslation } from "@/i18n";
-import type { Styled } from "@/types/styles";
+import type { Styled } from "@/types";
 import { PAGINATION_ITEM_TYPE } from "./get-pagination-items";
 import { usePaginationRange } from "./use-pagination-range";
 

@@ -1,7 +1,7 @@
 import axios, { type AxiosError } from "axios";
 import { deepCamelKeys } from "string-ts";
 
-import { clearAuthToken, getAuthStoreState } from "@/stores";
+import { clearAuthToken, getAuthStoreState } from "@/stores/use-auth-store";
 import { env } from "./env";
 
 const baseApiConfiguration = {

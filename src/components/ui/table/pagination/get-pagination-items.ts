@@ -34,9 +34,14 @@ export const getPaginationItems = ({ currentPage, totalPages }: BuildArgs) => {
   const nearStartEdge = currentPage <= MIDDLE_VISIBLE_BUTTONS + 1;
   const nearEndEdge = currentPage >= lastPage - MIDDLE_VISIBLE_BUTTONS;
 
-  const leftEllipsis = nearStartEdge ? [] : ([{ type: PAGINATION_ITEM_TYPE.ELLIPSIS }] as const);
+  const leftEllipsis = nearStartEdge
+    ? []
+    : ([{ type: PAGINATION_ITEM_TYPE.ELLIPSIS, index: 0 }] as const);
+
   const rightEllipsis =
-    nearEndEdge && !nearStartEdge ? [] : ([{ type: PAGINATION_ITEM_TYPE.ELLIPSIS }] as const);
+    nearEndEdge && !nearStartEdge
+      ? []
+      : ([{ type: PAGINATION_ITEM_TYPE.ELLIPSIS, index: 1 }] as const);
 
   const middlePages = () => {
     if (nearStartEdge) {

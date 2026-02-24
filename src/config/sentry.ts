@@ -3,7 +3,7 @@ import * as Sentry from "@sentry/react";
 import { env } from "@/config/env";
 import { router } from "./router";
 
-export const isSentryEnabled = Boolean(env.VITE_SENTRY_DSN);
+const isSentryEnabled = Boolean(env.VITE_SENTRY_DSN);
 
 export const initializeSentry = () => {
   if (!isSentryEnabled) {

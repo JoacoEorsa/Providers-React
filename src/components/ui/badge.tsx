@@ -55,7 +55,7 @@ const badgeSlots = tv({
   },
 });
 
-export type BadgeProps = ComponentProps<"span"> &
+type BadgeProps = ComponentProps<"span"> &
   VariantProps<typeof badgeSlots> & {
     asChild?: boolean;
     icon?: ReactElement;

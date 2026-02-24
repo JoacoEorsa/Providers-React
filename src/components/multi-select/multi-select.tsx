@@ -145,14 +145,16 @@ export const MultiSelect = ({
 
         <Popover.Content style={{ width: contentWidth }}>
           <Command.Root className="w-full">
-            <Command.Input autoFocus={false} placeholder={searchPlaceholder} />
+            <Command.Input placeholder={searchPlaceholder} />
 
             <Command.List>
               <Command.Empty>
                 {isLoading ? (
                   <div className="space-y-1">
-                    {Array.from({ length: 4 }).map((_, index) => {
-                      return <Skeleton className="h-7 w-full" key={index} />;
+                    {Array.from({ length: 4 }, (_, index) => {
+                      return index;
+                    }).map((value) => {
+                      return <Skeleton className="h-7 w-full" key={`skeleton-${value}`} />;
                     })}
                   </div>
                 ) : (

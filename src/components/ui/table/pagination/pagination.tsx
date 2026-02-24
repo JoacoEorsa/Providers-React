@@ -173,13 +173,15 @@ export const Pagination = ({
           page={page}
         />
 
-        {items.map((item, i) => {
+        {items.map((item) => {
+          const key = `${item.type}-${item.index}`;
+
           if (item.type === PAGINATION_ITEM_TYPE.PAGE_BUTTON) {
             return (
               <PageButton
                 index={item.index}
                 isLoading={isLoading}
-                key={item.index}
+                key={key}
                 onPageChange={onPageChange}
                 page={page}
               />
@@ -187,7 +189,7 @@ export const Pagination = ({
           }
 
           if (item.type === PAGINATION_ITEM_TYPE.ELLIPSIS) {
-            return <Ellipsis key={`${PAGINATION_ITEM_TYPE}-${i}`} />;
+            return <Ellipsis key={key} />;
           }
 
           return null;

@@ -62,12 +62,16 @@ const Caption = ({ className, ...props }: ComponentProps<"caption">) => {
 };
 
 const Skeleton = ({ columnsLength, pageSize }: { columnsLength: number; pageSize: number }) => {
-  const rows = Array.from({ length: pageSize }, (_, index) => {
+  return Array.from({ length: pageSize }, (_, index) => {
+    return index;
+  }).map((rowValue) => {
     return (
-      <Row key={index}>
-        {Array.from({ length: columnsLength }, (_, idx) => {
+      <Row key={`skeleton-row-${rowValue}`}>
+        {Array.from({ length: columnsLength }, (_, index) => {
+          return index;
+        }).map((colValue) => {
           return (
-            <Cell className="h-12" key={idx}>
+            <Cell className="h-12" key={`skeleton-cell-${rowValue}-${colValue}`}>
               <div className={skeleton()} />
             </Cell>
           );
@@ -75,8 +79,6 @@ const Skeleton = ({ columnsLength, pageSize }: { columnsLength: number; pageSize
       </Row>
     );
   });
-
-  return rows;
 };
 
 export type UseTableProps<T> = Omit<TableOptions<T>, "getCoreRowModel">;

@@ -12,7 +12,7 @@ type AuthStoreActions = {
 
 type AuthStore = AuthStoreState & AuthStoreActions;
 
-export const useAuthStore = create<AuthStore>()(
+const useAuthStore = create<AuthStore>()(
   persist(
     (set) => {
       return {

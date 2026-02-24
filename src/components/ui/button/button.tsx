@@ -88,19 +88,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const Spinner = <Icons.LoaderCircle className="animate-spin" />;
-
     const isIconOnly = PrefixIcon && !children;
 
-    const renderPrefix = () => {
-      if (isLoading) {
-        return Spinner;
-      }
-
-      if (PrefixIcon) {
-        return PrefixIcon;
-      }
-    };
+    const Prefix = isLoading ? (
+      <Icons.LoaderCircle className="animate-spin" />
+    ) : (
+      (PrefixIcon ?? null)
+    );
 
     return asChild ? (
       <Slot
@@ -108,7 +102,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         data-slot="button"
         {...props}
       >
-        {renderPrefix()}
+        {Prefix}
 
         <Slottable>{children}</Slottable>
       </Slot>
@@ -121,7 +115,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         {...props}
       >
-        {renderPrefix()}
+        {Prefix}
 
         {children}
       </button>

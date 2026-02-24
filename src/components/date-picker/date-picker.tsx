@@ -3,7 +3,10 @@ import { format } from "date-fns";
 import { tv } from "tailwind-variants";
 
 import { dateLocale, useTranslation } from "@/i18n";
-import { Button, Calendar, Icons, Popover } from "../ui";
+import { Button } from "../ui/button";
+import { Calendar } from "../ui/calendar";
+import { Icons } from "../ui/icons";
+import { Popover } from "../ui/popover";
 
 const datePickerVariants = tv({
   slots: {

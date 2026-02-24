@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useId, useState } from "react";
 import { cn } from "tailwind-variants";
 
 import type { Option, Styled } from "@/types";
@@ -29,6 +29,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
     ref,
   ) => {
     const [open, setOpen] = useState(false);
+    const listboxId = useId();
 
     const selectedOption = options.find((option) => {
       return option.value === value;
@@ -38,6 +39,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
       <Popover.Root onOpenChange={setOpen} open={open}>
         <Popover.Trigger asChild>
           <button
+            aria-controls={listboxId}
             aria-expanded={open}
             className={cn(
               "flex min-w-full items-center justify-between gap-2 px-3 py-2.5",
@@ -63,7 +65,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
         </Popover.Trigger>
 
         <Popover.Content align="start" className="w-(--radix-popover-trigger-width) p-0">
-          <Command.Root>
+          <Command.Root id={listboxId}>
             <Command.Input placeholder={searchPlaceholder} />
             <Command.List>
               <Command.Empty>{emptyMessage}</Command.Empty>

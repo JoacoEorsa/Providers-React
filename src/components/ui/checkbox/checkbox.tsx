@@ -14,7 +14,7 @@ const checkboxVariants = tv({
 
 const { icon, indicator, root } = checkboxVariants();
 
-export type CheckboxProps = ComponentProps<typeof CheckboxPrimitive.Root>;
+type CheckboxProps = ComponentProps<typeof CheckboxPrimitive.Root>;
 
 export const Checkbox = ({ className, ...props }: CheckboxProps) => {
   return (

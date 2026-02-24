@@ -6,7 +6,7 @@ import { tv } from "tailwind-variants";
 import { Icons } from "@/components/ui/icons";
 import type { Styled } from "@/types";
 
-export const navigationVariants = tv({
+const navigationVariants = tv({
   slots: {
     root: "group/navigation-menu relative flex max-w-max flex-1 items-center justify-center",
     list: "group flex flex-1 list-none items-center justify-center gap-1",

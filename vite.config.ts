@@ -10,6 +10,9 @@ export default defineConfig(({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   return {
+    build: {
+      sourcemap: "hidden",
+    },
     plugins: [
       tanstackRouter(),
       viteReact(),
@@ -21,6 +24,10 @@ export default defineConfig(({ mode }) => {
 
         // Auth tokens can be obtained from https://sentry.io/orgredirect/organizations/:orgslug/settings/auth-tokens/
         authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
+
+        sourcemaps: {
+          filesToDeleteAfterUpload: ["./dist/**/*.map"],
+        },
       }),
     ],
     resolve: { alias: { "@": path.resolve(__dirname, "./src") } },

@@ -14,6 +14,24 @@ jobs:
       id-token: write
     if: github.actor != 'dependabot[bot]'
     steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get latest release tag with gh
+        id: latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Try latest release; fallback to latest tag if none
+          set -e
+          LATEST=$(gh release view --json tagName --jq .tagName 2>/dev/null || true)
+          if [ -z "$LATEST" ]; then
+            LATEST=$(git tag --sort=-creatordate | head -n 1)
+          fi
+          echo "tag=$LATEST" >> $GITHUB_OUTPUT
+
       - name: Set PR title
         uses: actions/github-script@v8
         with:
@@ -39,15 +57,36 @@ jobs:
             };
 
             const today = new Date();
+            const dateStr = today.toLocaleDateString('en-GB');
 
-            let title = `Invalid branch name 👀 (type/task-id/description)`;
+            const rawLatest = process.env.LATEST_TAG || '${{ steps.latest.outputs.tag }}';
+            const parse = (s) => {
+              if (!s) return null;
+              s = s.trim().replace(/^v/, '');
+              const m = s.match(/^(\d+)\.(\d+)\.(\d+)/);
+              return m ? { major:+m[1], minor:+m[2], patch:+m[3] } : null;
+            };
+
+            const bumpMinor = ({major, minor}) => `${major}.${minor + 1}.0`;
+            const bumpPatch = ({major, minor, patch}) => `${major}.${minor}.${patch + 1}`;
+
+            let title = pr.title; // default
             let updatedBody = body;
 
-            if (["main", "master"].includes(baseBranch)) {
-              title = `[Release] vX.X.X 🚀 - ${today.toLocaleDateString('en-GB')}`;
+            if (baseBranch === "main") {
+              const latest = parse(rawLatest) ?? { major:0, minor:0, patch:0 };
+              let next = "X.X.X";
+
+              if (branchName === "develop") {
+                next = bumpMinor(latest);
+              } else {
+                next = bumpPatch(latest);
+              }
+
+              title = `[Release] v${next} 🚀 - ${dateStr}`;
               updatedBody = '';
-            } else if (["main", "master", "staging", "develop", "demo"].includes(branchName)) {
-              title = `Merge from ${branchName} to ${baseBranch}`;
+            } else if (["main", "staging", "develop", "demo"].includes(branchName)) {
+              title = `[No-task] Backmerge from ${branchName} to ${baseBranch}`;
             } else {
               try {
               const [type, id, description] = branchName.split('/');
@@ -62,13 +101,7 @@ jobs:
               }
             }
 
-            await github.rest.pulls.update({
-              owner,
-              repo,
-              pull_number,
-              title,
-              body: updatedBody
-            });
+            await github.rest.pulls.update({ owner, repo, pull_number, title, body: updatedBody });
 
       - uses: actions/labeler@v6
         with:

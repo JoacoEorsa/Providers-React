@@ -1,0 +1,229 @@
+{
+  "id": "cmh1hjfqx00fnpc0ljbudqk6m",
+  "_ref_id": "coll_mh1hjfme_425c906c-dd6f-4f9c-8015-29ac98277278",
+  "v": 10,
+  "name": "providers-internal-onboarding",
+  "folders": [],
+  "requests": [
+    {
+      "v": "16",
+      "id": "cmh1hjijv00fppc0lb0ga4t0o",
+      "name": "Login",
+      "method": "POST",
+      "endpoint": "<<base_url>>/api/auth/login",
+      "params": [],
+      "headers": [],
+      "preRequestScript": "",
+      "testScript": "export {};\npw.env.set(\"token\", pw.response.body.data.access_token);",
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "body": {
+        "contentType": "application/json",
+        "body": "{\n  \"email\": \"new2.tester@gmail.com\",\n  \"password\": \"Password123\"\n}"
+      },
+      "requestVariables": [],
+      "responses": {},
+      "_ref_id": "req_mh1lmq38_2038653c-8b9d-4fad-8d62-2abba0605a5e"
+    },
+    {
+      "v": "16",
+      "id": "cmh2bq9qu00rwpc0lzns62rm0",
+      "name": "Signup",
+      "method": "POST",
+      "endpoint": "<<base_url>>/api/auth/signup",
+      "params": [],
+      "headers": [],
+      "preRequestScript": "",
+      "testScript": "export {};\n",
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "body": {
+        "contentType": "application/json",
+        "body": "{\n  \"name\": \"New Tester\",\n  \"email\": \"new3.tester@gmail.com\",\n  \"password\": \"weakpass\",\n  \"password_confirmation\": \"weakpass\"\n}"
+      },
+      "requestVariables": [],
+      "responses": {},
+      "_ref_id": "req_mh3tjkg4_c5d7a0af-1284-4a1c-9e0b-395984c21d65"
+    },
+    {
+      "v": "16",
+      "id": "cmh1ij4i900g3pc0lie4ujx90",
+      "name": "ListProviders",
+      "method": "GET",
+      "endpoint": "<<base_url>>/api/providers",
+      "params": [],
+      "headers": [],
+      "preRequestScript": "",
+      "testScript": "",
+      "auth": {
+        "authType": "bearer",
+        "grantTypeInfo": {
+          "grantType": "AUTHORIZATION_CODE",
+          "authEndpoint": "",
+          "tokenEndpoint": "",
+          "clientID": "",
+          "clientSecret": "",
+          "token": "<<token>>",
+          "isPKCE": false,
+          "codeVerifierMethod": "S256",
+          "authRequestParams": [],
+          "tokenRequestParams": [],
+          "refreshRequestParams": []
+        },
+        "addTo": "HEADERS",
+        "authActive": true,
+        "token": "<<token>>"
+      },
+      "body": {
+        "contentType": null,
+        "body": null
+      },
+      "requestVariables": [],
+      "responses": {},
+      "_ref_id": "req_mh1lmq39_62843a1c-695b-4454-92ee-bc9f911990c4"
+    },
+    {
+      "v": "16",
+      "id": "cmh1l8mml00hfpc0l593lh6l8",
+      "name": "ListProvidersFiltered",
+      "method": "GET",
+      "endpoint": "<<base_url>>/api/providers?filter[specialty_id]=3&filter[gender]=female&filter[clinic_id]=3",
+      "params": [],
+      "headers": [],
+      "preRequestScript": "",
+      "testScript": "",
+      "auth": {
+        "authType": "bearer",
+        "grantTypeInfo": {
+          "grantType": "AUTHORIZATION_CODE",
+          "authEndpoint": "",
+          "tokenEndpoint": "",
+          "clientID": "",
+          "clientSecret": "",
+          "token": "<<token>>",
+          "isPKCE": false,
+          "codeVerifierMethod": "S256",
+          "authRequestParams": [],
+          "tokenRequestParams": [],
+          "refreshRequestParams": []
+        },
+        "addTo": "HEADERS",
+        "authActive": true,
+        "token": "<<token>>"
+      },
+      "body": {
+        "contentType": null,
+        "body": null
+      },
+      "requestVariables": [],
+      "responses": {},
+      "_ref_id": "req_mh1lmq39_da3dbeb3-d01f-4ea0-8974-07f0cba1ccf3"
+    },
+    {
+      "v": "16",
+      "id": "cmh28bpu600nfpc0lt64dckbl",
+      "name": "ListProviderFavorited",
+      "method": "GET",
+      "endpoint": "<<base_url>>/api/providers?filter[favorited]=true",
+      "params": [],
+      "headers": [],
+      "preRequestScript": "",
+      "testScript": "",
+      "auth": {
+        "authType": "bearer",
+        "grantTypeInfo": {
+          "grantType": "AUTHORIZATION_CODE",
+          "authEndpoint": "",
+          "tokenEndpoint": "",
+          "clientID": "",
+          "clientSecret": "",
+          "token": "<<token>>",
+          "isPKCE": false,
+          "codeVerifierMethod": "S256",
+          "authRequestParams": [],
+          "tokenRequestParams": [],
+          "refreshRequestParams": []
+        },
+        "addTo": "HEADERS",
+        "authActive": true,
+        "token": "<<token>>"
+      },
+      "body": {
+        "contentType": null,
+        "body": null
+      },
+      "requestVariables": [],
+      "responses": {},
+      "_ref_id": "req_mh28b6nl_f51fb4a8-70a5-4ef2-9c31-e997966aa8ed"
+    },
+    {
+      "v": "16",
+      "id": "cmh1irlza00g7pc0l8mnlzlmo",
+      "name": "FavoriteProvider",
+      "method": "PATCH",
+      "endpoint": "http://localhost/api/providers/1/favorite",
+      "params": [],
+      "headers": [],
+      "preRequestScript": "",
+      "testScript": "",
+      "auth": {
+        "authType": "bearer",
+        "grantTypeInfo": {
+          "grantType": "AUTHORIZATION_CODE",
+          "authEndpoint": "",
+          "tokenEndpoint": "",
+          "clientID": "",
+          "clientSecret": "",
+          "token": "<<token>>",
+          "isPKCE": false,
+          "codeVerifierMethod": "S256",
+          "authRequestParams": [],
+          "tokenRequestParams": [],
+          "refreshRequestParams": []
+        },
+        "addTo": "HEADERS",
+        "authActive": true,
+        "token": "<<token>>"
+      },
+      "body": {
+        "contentType": "application/json",
+        "body": "{\"favorited\": false}"
+      },
+      "requestVariables": [],
+      "responses": {},
+      "_ref_id": "req_mh1lmq39_f7f771bc-6a79-4416-bc8d-79f992c463ae"
+    },
+    {
+      "v": "16",
+      "id": "cmhtjt6q406kspc0luea8myih",
+      "name": "Favorite Provider",
+      "method": "PATCH",
+      "endpoint": "<<base_url>>/api/providers/1/favorite",
+      "params": [],
+      "headers": [],
+      "preRequestScript": "",
+      "testScript": "",
+      "auth": {
+        "authType": "bearer",
+        "token": "<<token>>",
+        "authActive": true
+      },
+      "body": {
+        "contentType": "application/json",
+        "body": "{\n  \"favorited\": true\n}"
+      },
+      "requestVariables": [],
+      "responses": {}
+    }
+  ],
+  "auth": {
+    "authType": "none",
+    "authActive": true
+  },
+  "headers": [],
+  "variables": []
+}

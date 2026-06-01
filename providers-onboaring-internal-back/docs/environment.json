@@ -1,0 +1,19 @@
+{
+  "id": "cmh1hrbi100fvpc0lyhvs2mdj",
+  "v": 2,
+  "name": "Local",
+  "variables": [
+    {
+      "key": "token",
+      "secret": false,
+      "initialValue": "",
+      "currentValue": ""
+    },
+    {
+      "key": "base_url",
+      "secret": false,
+      "initialValue": "http://localhost",
+      "currentValue": ""
+    }
+  ]
+}

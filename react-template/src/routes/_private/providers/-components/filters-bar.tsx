@@ -3,10 +3,9 @@ import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { useTranslation } from "@/i18n";
-import type { Clinic, Gender, Specialty } from "@/types/provider";
+import { type Clinic, type Gender, GENDERS, type Specialty } from "@/types/provider";
 
 const ALL_VALUE = "__all__";
-const GENDERS: Gender[] = ["female", "male", "other"];
 
 type Props = {
   search: string;

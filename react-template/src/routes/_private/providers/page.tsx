@@ -9,12 +9,10 @@ import { paginationValidationWithDefaults, usePagination } from "@/hooks/use-pag
 import { searchTextValidation, useSearchText } from "@/hooks/use-search";
 import { useTranslation } from "@/i18n";
 import { useProviders } from "@/services/providers/actions";
-import type { Specialty } from "@/types/provider";
+import { GENDERS, type Specialty } from "@/types/provider";
 import { FiltersBar } from "./-components/filters-bar";
 import { PageIntro } from "./-components/page-intro";
 import { ProviderGrid } from "./-components/provider-grid";
-
-const GENDERS = ["male", "female", "other"] as const;
 
 const providersSearchSchema = z.object({
   ...searchTextValidation.shape,

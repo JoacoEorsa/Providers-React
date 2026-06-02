@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { GENDERS } from "@/types/provider";
+
 export const specialtySchema = z.object({
   id: z.number().int().positive(),
   name: z.string().min(1),
@@ -23,7 +25,7 @@ export const providerSchema = z.object({
   name: z.string().min(1),
   email: z.email(),
   phone: z.string().min(1),
-  gender: z.enum(["male", "female", "other"]),
+  gender: z.enum(GENDERS),
   about: z.string().nullable(),
   languages: z.array(z.string()).nullable(),
   profilePic: z.url().nullable(),

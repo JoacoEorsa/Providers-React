@@ -1,4 +1,6 @@
-export type Gender = "male" | "female" | "other";
+export const GENDERS = ["male", "female", "other"] as const;
+
+export type Gender = (typeof GENDERS)[number];
 
 export type Specialty = {
   id: number;

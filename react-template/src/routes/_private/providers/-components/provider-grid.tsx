@@ -17,7 +17,7 @@ type Props = {
 const SkeletonCard = () => {
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-xl border border-border-default-default bg-background-default-default">
-      <Skeleton className="aspect-350/219 rounded-none" />
+      <Skeleton className="aspect-16/10 rounded-none" />
       <div className="flex flex-1 flex-col gap-5 p-5">
         <div className="flex flex-col gap-2">
           <Skeleton className="h-7 w-3/4" />

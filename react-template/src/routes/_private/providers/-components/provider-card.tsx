@@ -23,7 +23,7 @@ export const ProviderCard = ({ isFavorite, onToggleFavorite, onViewDetails, prov
       aria-labelledby={titleId}
       className="group h-full gap-0 overflow-hidden p-0 transition-all duration-200 ease-out hover:-translate-y-1 hover:border-border-default-secondary hover:shadow-md motion-reduce:transform-none motion-reduce:transition-none"
     >
-      <div className="relative aspect-350/219 overflow-hidden bg-background-default-secondary">
+      <div className="relative aspect-16/10 overflow-hidden bg-background-default-secondary">
         {hasPhoto ? (
           <img
             alt={t("providers.card.portraitAlt", { name: provider.name })}

@@ -143,9 +143,7 @@ const ProvidersPage = () => {
         error={error ? t("common.requestError") : null}
         favoriteIds={favoriteIds}
         loading={isLoading}
-        onRetry={() => {
-          return refetch();
-        }}
+        onRetry={refetch}
         onToggleFavorite={toggleFavorite}
         providers={providers}
       />

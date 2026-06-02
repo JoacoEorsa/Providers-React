@@ -9,7 +9,8 @@ import { paginationValidationWithDefaults, usePagination } from "@/hooks/use-pag
 import { searchTextValidation, useSearchText } from "@/hooks/use-search";
 import { useTranslation } from "@/i18n";
 import { useProviders } from "@/services/providers/actions";
-import { GENDERS, type Specialty } from "@/types/provider";
+import { GENDERS } from "@/services/providers/schemas";
+import type { Specialty } from "@/services/providers/types";
 import { FiltersBar } from "./-components/filters-bar";
 import { PageIntro } from "./-components/page-intro";
 import { ProviderGrid } from "./-components/provider-grid";

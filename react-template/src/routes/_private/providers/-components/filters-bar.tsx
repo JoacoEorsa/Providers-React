@@ -3,7 +3,8 @@ import { Icons } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { useTranslation } from "@/i18n";
-import { type Clinic, type Gender, GENDERS, type Specialty } from "@/types/provider";
+import { GENDERS } from "@/services/providers/schemas";
+import type { Clinic, Gender, Specialty } from "@/services/providers/types";
 
 const ALL_VALUE = "__all__";
 

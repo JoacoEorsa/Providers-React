@@ -1,10 +1,18 @@
-import type { Gender } from "@/types/provider";
+import type { z } from "zod";
 
-export type { Clinic, Gender, Provider, Specialty } from "@/types/provider";
+import type {
+  clinicSchema,
+  providerSchema,
+  providersFilterSchema,
+  specialtySchema,
+} from "./schemas";
 
-export type ProvidersFilter = {
-  name?: string;
-  specialtyId?: number;
-  clinicId?: number;
-  gender?: Gender;
-};
+export type Specialty = z.infer<typeof specialtySchema>;
+
+export type Clinic = z.infer<typeof clinicSchema>;
+
+export type Provider = z.infer<typeof providerSchema>;
+
+export type ProvidersFilter = z.infer<typeof providersFilterSchema>;
+
+export type Gender = Provider["gender"];

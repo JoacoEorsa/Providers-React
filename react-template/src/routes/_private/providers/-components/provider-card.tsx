@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Icons } from "@/components/ui/icons";
 import { useTranslation } from "@/i18n";
-import type { Provider } from "@/types/provider";
+import type { Provider } from "@/services/providers/types";
 
 type Props = {
   isFavorite: boolean;

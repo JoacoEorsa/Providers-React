@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useTranslation } from "@/i18n";
-import type { Provider } from "@/types/provider";
+import type { Provider } from "@/services/providers/types";
 import { ProviderCard } from "./provider-card";
 
 type Props = {

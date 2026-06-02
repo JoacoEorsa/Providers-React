@@ -1,35 +1,32 @@
 import { z } from "zod";
 
-export const getSpecialtySchema = () => {
-  return z.object({
-    id: z.number(),
-    name: z.string(),
-  });
-};
+export const specialtySchema = z.object({
+  id: z.number().int().positive(),
+  name: z.string().min(1),
+});
 
-export const getClinicSchema = () => {
-  return z.object({
-    id: z.number(),
-    name: z.string(),
-    address: z.string().nullable(),
-    city: z.string().nullable(),
-    state: z.string().nullable(),
-    zipCode: z.string().nullable(),
-    phone: z.string().nullable(),
-  });
-};
+export const clinicSchema = z.object({
+  id: z.number().int().positive(),
+  name: z.string().min(1),
+  address: z.string().min(1).nullable(),
+  city: z.string().min(1).nullable(),
+  state: z.string().length(2).nullable(),
+  zipCode: z
+    .string()
+    .regex(/^\d{5}(-\d{4})?$/)
+    .nullable(),
+  phone: z.string().min(1).nullable(),
+});
 
-export const getProviderSchema = () => {
-  return z.object({
-    id: z.number(),
-    name: z.string(),
-    email: z.string(),
-    phone: z.string(),
-    gender: z.enum(["male", "female", "other"]),
-    about: z.string().nullable(),
-    languages: z.array(z.string()).nullable(),
-    profilePic: z.string().nullable(),
-    specialty: getSpecialtySchema().nullable(),
-    clinics: z.array(getClinicSchema()),
-  });
-};
+export const providerSchema = z.object({
+  id: z.number().int().positive(),
+  name: z.string().min(1),
+  email: z.email(),
+  phone: z.string().min(1),
+  gender: z.enum(["male", "female", "other"]),
+  about: z.string().nullable(),
+  languages: z.array(z.string()).nullable(),
+  profilePic: z.url().nullable(),
+  specialty: specialtySchema.nullable(),
+  clinics: z.array(clinicSchema),
+});

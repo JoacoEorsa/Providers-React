@@ -9,7 +9,7 @@ import { paginationValidationWithDefaults, usePagination } from "@/hooks/use-pag
 import { searchTextValidation, useSearchText } from "@/hooks/use-search";
 import { useTranslation } from "@/i18n";
 import { useProviders } from "@/services/providers/actions";
-import type { Clinic, Gender, Specialty } from "@/types/provider";
+import type { Specialty } from "@/types/provider";
 import { FiltersBar } from "./-components/filters-bar";
 import { PageIntro } from "./-components/page-intro";
 import { ProviderGrid } from "./-components/provider-grid";
@@ -24,6 +24,8 @@ const providersSearchSchema = z.object({
   gender: z.enum(GENDERS).optional(),
   favoritesOnly: z.boolean().optional(),
 });
+
+type ProvidersSearch = z.infer<typeof providersSearchSchema>;
 
 const uniqueById = <T extends { id: number }>(items: T[]): T[] => {
   const seen = new Map<number, T>();
@@ -68,31 +70,10 @@ const ProvidersPage = () => {
     });
   };
 
-  const setFilter = (
-    patch: Partial<{
-      clinicId: number | null;
-      favoritesOnly: boolean;
-      gender: Gender | null;
-      specialtyId: number | null;
-    }>,
-  ) => {
+  const setFilter = (patch: Partial<ProvidersSearch>) => {
     navigate({
       search: (prev) => {
-        const next = { ...prev, page: 1 };
-        if ("specialtyId" in patch) {
-          next.specialtyId = patch.specialtyId ?? undefined;
-        }
-        if ("clinicId" in patch) {
-          next.clinicId = patch.clinicId ?? undefined;
-        }
-        if ("gender" in patch) {
-          next.gender = patch.gender ?? undefined;
-        }
-        if ("favoritesOnly" in patch) {
-          next.favoritesOnly = patch.favoritesOnly ? true : undefined;
-        }
-
-        return next;
+        return { ...prev, ...patch, page: 1 };
       },
     });
   };
@@ -100,8 +81,8 @@ const ProvidersPage = () => {
   const { data, error, isLoading, refetch } = useProviders({
     filter: {
       clinicId,
-      gender: gender ?? undefined,
-      name: debouncedSearchText || undefined,
+      gender,
+      name: debouncedSearchText,
       specialtyId,
     },
     page,
@@ -114,7 +95,7 @@ const ProvidersPage = () => {
   const from = totalFound === 0 ? 0 : (page - 1) * perPage + 1;
   const to = Math.min(page * perPage, totalFound);
 
-  const derivedSpecialties: Specialty[] = uniqueById(
+  const derivedSpecialties = uniqueById(
     providers.map((p) => {
       return p.specialty;
     }).filter((s): s is Specialty => {
@@ -122,7 +103,7 @@ const ProvidersPage = () => {
     }),
   );
 
-  const derivedClinics: Clinic[] = uniqueById(
+  const derivedClinics = uniqueById(
     providers.flatMap((p) => {
       return p.clinics;
     }),
@@ -138,17 +119,17 @@ const ProvidersPage = () => {
         favoritesOnly={favoritesOnly ?? false}
         gender={gender ?? null}
         onClinicChange={(value) => {
-          return setFilter({ clinicId: value });
+          return setFilter({ clinicId: value ?? undefined });
         }}
         onFavoritesOnlyChange={(value) => {
-          return setFilter({ favoritesOnly: value });
+          return setFilter({ favoritesOnly: value || undefined });
         }}
         onGenderChange={(value) => {
-          return setFilter({ gender: value });
+          return setFilter({ gender: value ?? undefined });
         }}
         onSearchChange={setPaginatedSearchText}
         onSpecialtyChange={(value) => {
-          return setFilter({ specialtyId: value });
+          return setFilter({ specialtyId: value ?? undefined });
         }}
         search={searchText ?? ""}
         specialties={derivedSpecialties}

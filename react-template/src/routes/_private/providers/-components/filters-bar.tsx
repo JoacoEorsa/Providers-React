@@ -10,13 +10,13 @@ const ALL_VALUE = "__all__";
 type Props = {
   search: string;
   onSearchChange: (value: string) => void;
-  specialty: number | null;
-  onSpecialtyChange: (value: number | null) => void;
+  specialty: Specialty["id"] | null;
+  onSpecialtyChange: (value: Specialty["id"] | null) => void;
   specialties: Specialty[];
   gender: Gender | null;
   onGenderChange: (value: Gender | null) => void;
-  clinic: number | null;
-  onClinicChange: (value: number | null) => void;
+  clinic: Clinic["id"] | null;
+  onClinicChange: (value: Clinic["id"] | null) => void;
   clinics: Clinic[];
   favoritesOnly: boolean;
   onFavoritesOnlyChange: (value: boolean) => void;

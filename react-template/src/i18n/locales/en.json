@@ -114,7 +114,44 @@
     "links": {
       "home": "Home",
       "dashboard": "Dashboard",
-      "users": "Users"
+      "users": "Users",
+      "providers": "Providers"
+    }
+  },
+  "providers": {
+    "title": "Healthcare Providers",
+    "subtitle": "Find and connect with healthcare professionals in your area",
+    "searchLabel": "Search providers by name",
+    "searchPlaceholder": "Search providers by name...",
+    "favorites": "Favorites",
+    "providersFound_one": "{count} provider found",
+    "providersFound_other": "{count} providers found",
+    "filters": {
+      "specialtyAll": "All specialties",
+      "genderAll": "All genders",
+      "clinicAll": "All clinics",
+      "gender": {
+        "female": "Female",
+        "male": "Male",
+        "other": "Other"
+      }
+    },
+    "card": {
+      "viewDetails": "View details",
+      "moreLocations_one": "+ {count} more location",
+      "moreLocations_other": "+ {count} more locations",
+      "noLocation": "No location listed",
+      "noPhotoAlt": "No profile picture available",
+      "portraitAlt": "Portrait of {name}",
+      "favoriteAdd": "Add {name} to favorites",
+      "favoriteRemove": "Remove {name} from favorites",
+      "generalSpecialty": "General"
+    },
+    "grid": {
+      "emptyTitle": "No providers match your filters.",
+      "emptyBody": "Try clearing a filter or adjusting your search.",
+      "errorTitle": "Couldn't load providers.",
+      "errorRetry": "Try again"
     }
   }
 }

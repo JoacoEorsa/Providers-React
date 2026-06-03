@@ -109,7 +109,44 @@
     "links": {
       "home": "Inicio",
       "dashboard": "Panel",
-      "users": "Usuarios"
+      "users": "Usuarios",
+      "providers": "Profesionales"
+    }
+  },
+  "providers": {
+    "title": "Profesionales de la salud",
+    "subtitle": "Encuentra y conecta con profesionales de la salud en tu zona",
+    "searchLabel": "Buscar profesionales por nombre",
+    "searchPlaceholder": "Buscar profesionales por nombre...",
+    "favorites": "Favoritos",
+    "providersFound_one": "{count} profesional encontrado",
+    "providersFound_other": "{count} profesionales encontrados",
+    "filters": {
+      "specialtyAll": "Todas las especialidades",
+      "genderAll": "Todos los géneros",
+      "clinicAll": "Todas las clínicas",
+      "gender": {
+        "female": "Femenino",
+        "male": "Masculino",
+        "other": "Otro"
+      }
+    },
+    "card": {
+      "viewDetails": "Ver detalles",
+      "moreLocations_one": "+ {count} ubicación más",
+      "moreLocations_other": "+ {count} ubicaciones más",
+      "noLocation": "Sin ubicación registrada",
+      "noPhotoAlt": "No hay foto de perfil disponible",
+      "portraitAlt": "Retrato de {name}",
+      "favoriteAdd": "Agregar a {name} a favoritos",
+      "favoriteRemove": "Quitar a {name} de favoritos",
+      "generalSpecialty": "Medicina general"
+    },
+    "grid": {
+      "emptyTitle": "Ningún profesional coincide con tus filtros.",
+      "emptyBody": "Prueba quitando un filtro o ajustando tu búsqueda.",
+      "errorTitle": "No se pudieron cargar los profesionales.",
+      "errorRetry": "Reintentar"
     }
   }
 }

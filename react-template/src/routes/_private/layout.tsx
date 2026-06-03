@@ -13,6 +13,7 @@ const PrivateLayout = () => {
     { path: "/", label: t("navigation.links.home") },
     { path: "/dashboard", label: t("navigation.links.dashboard") },
     { path: "/users", label: t("navigation.links.users") },
+    { path: "/providers", label: t("navigation.links.providers") },
   ];
 
   return (

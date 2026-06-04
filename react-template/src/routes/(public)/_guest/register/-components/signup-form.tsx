@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
@@ -40,25 +40,14 @@ export const SignupForm = () => {
     resolver: zodResolver(getSignupPayloadSchema()),
   });
 
-  useEffect(() => {
-    if (!isSuccess) {
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      navigate({ to: "/login", search: { redirect: search.redirect } });
-    }, REDIRECT_DELAY_MS);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [isSuccess, navigate, search.redirect]);
-
   const onSubmit: SubmitHandler<SignupPayload> = (data) => {
     return signup(data, {
       onSuccess: () => {
         toast.success(t("signup.success"));
         setIsSuccess(true);
+        setTimeout(() => {
+          navigate({ to: "/login", search: { redirect: search.redirect } });
+        }, REDIRECT_DELAY_MS);
       },
       onError: (error) => {
         handleAxiosFieldErrors<SignupPayload>(error, setError, t("signup.error"));

@@ -17,7 +17,7 @@ import { Route as PrivateProvidersPageRouteImport } from './routes/_private/prov
 import { Route as PrivateDashboardPageRouteImport } from './routes/_private/dashboard.page'
 import { Route as PrivateSplatPageRouteImport } from './routes/_private/$.page'
 import { Route as publicTermsPageRouteImport } from './routes/(public)/terms.page'
-import { Route as publicGuestRegisterPageRouteImport } from './routes/(public)/_guest/register.page'
+import { Route as publicGuestRegisterPageRouteImport } from './routes/(public)/_guest/register/page'
 import { Route as publicGuestLoginPageRouteImport } from './routes/(public)/_guest/login/page'
 
 const PrivateLayoutRoute = PrivateLayoutRouteImport.update({

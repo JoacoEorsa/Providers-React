@@ -49,6 +49,13 @@
     "error": "No se pudo iniciar sesión",
     "success": "Inició sesión con éxito"
   },
+  "signup": {
+    "submit": "Registrarse",
+    "success": "¡Cuenta creada!",
+    "successRedirect": "Redirigiéndote al inicio de sesión…",
+    "error": "No se pudo crear tu cuenta",
+    "haveAccount": "¿Ya tienes una cuenta? <Link>Inicia sesión</Link>"
+  },
   "logout": {
     "logOut": "Cerrar sesión",
     "areYouSureYouWantToLogout": "¿Estás seguro que quieres cerrar sesión?",

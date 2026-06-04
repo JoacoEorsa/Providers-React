@@ -9,3 +9,10 @@ export const useLogin = (props?: UseMutationProps<typeof mutations.login>) => {
     ...props,
   });
 };
+
+export const useSignup = (props?: UseMutationProps<typeof mutations.signup>) => {
+  return useMutation({
+    mutationFn: mutations.signup,
+    ...props,
+  });
+};

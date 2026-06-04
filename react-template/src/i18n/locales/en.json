@@ -54,6 +54,13 @@
     "error": "Not able to log in",
     "success": "Logged in successfully"
   },
+  "signup": {
+    "submit": "Sign up",
+    "success": "Account created!",
+    "successRedirect": "Redirecting you to login…",
+    "error": "Not able to create your account",
+    "haveAccount": "Already have an account? <Link>Log in</Link>"
+  },
   "logout": {
     "logOut": "Log out",
     "areYouSureYouWantToLogout": "Are you sure you want to logout?",

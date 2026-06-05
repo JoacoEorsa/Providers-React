@@ -18,7 +18,7 @@ import { handleAxiosFieldErrors } from "@/utils";
 export const LoginForm = () => {
   const { t } = useTranslation();
 
-  const loginMutation = useLogin();
+  const { isPending, mutate: login } = useLogin();
 
   const router = useRouter();
   const search = useSearch({ from: "/(public)/_guest/login/" });
@@ -35,10 +35,10 @@ export const LoginForm = () => {
   });
 
   const onSubmit: SubmitHandler<LoginPayload> = (data) => {
-    loginMutation.mutate(data, {
-      onSuccess: async ({ data: { authToken } }) => {
+    return login(data, {
+      onSuccess: async ({ accessToken }) => {
         toast.success(t("login.success"));
-        setAuthToken(authToken);
+        setAuthToken(accessToken);
         await router.invalidate();
         await navigate({ to: search.redirect || "/" });
       },
@@ -75,7 +75,7 @@ export const LoginForm = () => {
         <ErrorMessage errorMessage={errors?.password?.message} />
       </div>
 
-      <Button className="w-full" type="submit">
+      <Button className="w-full" isLoading={isPending} type="submit">
         {t("login.login")}
       </Button>
 
